@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Landing Page</title>
+<link rel="stylesheet" href="final-page.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Funnel+Display:wght@300..800&family=Geist:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<style> 
+/* Spacer sections */
+.spacer{
+  height:200vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+/* MAIN SECTION (IMPORTANT: fixed 100vh) */
+.main{ 
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+  padding:80px 0;
+}
+
+.box_animation{
+  width:140px;
+  height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ccc;
+  border-radius:10px;
+}
+
+/* Zigzag using margin auto */
+.box_animation:nth-child(odd){
+  margin-left:auto;
+  margin-right:10%;
+}
+
+.box_animation:nth-child(even){
+  margin-left:10%;
+  margin-right:auto;
+}
+
+.box{
+  width:100px;
+  height:100px;
+  border-radius:12px;
+  background:#ff9f1c;
+}
+
+.marker{
+  width:100px;
+  height:100px;
+} 
+
+.box_animation{
+  width:140px;
+  height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ccc;
+  border-radius:10px;
+}
+
+/* Zigzag using margin auto */
+.box_animation:nth-child(odd){
+  margin-left:auto;
+  margin-right:10%;
+}
+
+.box_animation:nth-child(even){
+  margin-left:10%;
+  margin-right:auto;
+}
+
+.box{
+  width:100px;
+  height:100px;
+  border-radius:12px;
+  background:#ff9f1c;
+}
+
+.marker{
+  width:100px;
+  height:100px;
+}
+/* Section Layout */
+.service{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.inner{
+  width:90%;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.left{
+  width:50%;
+}
+
+.left h2{
+  font-size:40px;
+  margin-bottom:0px;
+  position:relative;
+  padding-left:20px;
+}
+
+/* Square */
+/* .left h2::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:80px;
+  height:80px;
+  border-radius:14px;
+  transition:0.4s ease;
+} */
+
+/* List */
+.left ul{
+  list-style:none;
+}
+
+.left li{
+  font-size:22px;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateX(-60px);
+}
+
+/* Right dummy image block */
+.right{
+  width:40%;
+  height:400px;
+  border-radius:20px;
+  background:#f3f3f3;
+}
+
+/* ========================= */
+/* 🎨 COLOR THEMES */
+/* ========================= */
+
+.service.tech h2::before{
+  background:#1e6091;
+}
+
+.service.marketing h2::before{
+  background:#ff006e;
+}
+
+.service.design h2::before{
+  background:#8338ec;
+}
+
+
+.col-md-5 {
+  position: relative;
+}
+
+.dots {
+  width: 32px;
+  height: 32px;
+  background: #ffcc00;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+/* .dots {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #ffcc00;
+  border-radius: 50%;
+  z-index: 999;
+} */
+
+/* initial positions */
+/* .dot1 { top: 50%; left: 40%; }
+.dot2 { top: 50%; left: 50%; }
+.dot3 { top: 50%; left: 60%; } */
+
+
+/* initial spread */
+/* .dot1 { transform: translate(-80px, -50%); }
+.dot2 { transform: translate(0px, -50%); }
+.dot3 { transform: translate(80px, -50%); } */
+
+/* target dot */
+.dot-target {
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+}
+
+</style>
+</head>
+
+<body>
+
+    <header>
+		<ul>
+			<li>
+				<img src="images/white_logo.png" alt="Logo">
+			</li>
+		</ul>
+	</header>
+	<section class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="banner_data">
+						<h4>MAXIMISE YOUR BUSINESS GROWTH WITH,</h4>
+						<h1>India's Top <br> Digital <span>Marketing</span> <br> Agency</h1>
+						<p>Armed with a data-driven approach, we tackle the toughest challenges in the digital marketing arena. Let your brand thrive with our result-driven digital marketing services and martech solutions.</p>
+						<ul>
+							<li>
+								<div><span>350+</span> very satisfied clients around the worldwide.</div> <img src="images/smile.png" alt="img" class="img-fluid">
+							</li>
+							<li>
+								<div><span>200+</span> good award winning digital media agency.</div> <img src="images/microphone.png" alt="img" class="img-fluid">
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form_div">
+						<h2>Let's connect Constellation</h2>
+						<p>Let's connect our constellation! Reach out and let the magic of collaboration illuminate our skies.</p>
+						<form>
+							<div class="row">
+								<div class="col-md-6 p-2">
+									<input type="text" class="form-control" placeholder="Name" aria-label="Name">
+								</div>
+								<div class="col-md-6 p-2"> 
+									<input type="email" class="form-control" placeholder="Email" aria-label="Email">
+								</div>
+								<div class="col-md-12 p-2"> 
+									<input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number">
+								</div>
+								<div class="col-md-12 p-2">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>Services</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+								<div class="col-md-6 p-2">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>Min Budget</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+								<div class="col-md-6 p-2">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>Max Budget</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+								<div class="col-md-12 p-2">
+									<textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
+								</div>
+								<div class="col-12 p-2">
+									<input type="submit" value="Send it to the moon">
+								</div>
+							</div>  
+						</form>
+					</div>
+				</div>
+			</div> 
+	  	</div>	
+	</section>
+
+
+	<section class="global_brands">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 mx-auto text-center">
+					<ul class="star">
+						<li><img src="images/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="images/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="images/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="images/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="images/Star.png" alt="img" class="img-fluid"></li>
+					</ul>
+				</div>
+				<div class="col-12 text-center"> 
+					<h3>trusted by global brands</h3>
+					<ul class="brand_logos">
+						<li>
+							<img src="images/aditya-birla-capital.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<img src="images/Max-Healthcare.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<img src="images/tata.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<img src="images/Hero_MotoCorp.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<img src="images/shl.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<img src="images/Housing.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<img src="images/OYO.png" alt="img" class="img-fluid">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    
+	<section class="creative_agency">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h1>We are a creative bold digital <span>agency</span> based in india.</h1>
+				</div>
+				<div class="col-md-6">
+					<div class="row align-items-center">
+						<div class="col-md-5">
+							<div class="circle">
+								<h2>20<sup>+</sup></h2>
+							</div>
+              <div class="dots dot1"></div>
+              <div class="dots dot2"></div>
+              <div class="dots dot3"></div>
+						</div>
+						<div class="col-md-7">
+							<h3><span>20+ years of experience</span> We are dedicated to providing outstanding digital and design services meet the functional and aesthetic.</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<ul class="work">
+						<li>
+							<h4><span>350+</span> very satisfied clients around the worldwide.</h4>
+							<img src="images/smile.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<h4><span>200+</span> good award winning digital media agency.</h4>
+							<img src="images/microphone.png" alt="img" class="img-fluid">
+						</li>
+						<li>
+							<h4><span>750+</span> successfully project completed in one year.</h4>
+							<img src="images/projects.png" alt="img" class="img-fluid">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="always_do">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-7 mx-auto">
+                  <div class="heading-wrap align-center">
+                    <h2 class="heading">
+                      <span class="word">We always do</span>
+
+                      <span class="line line-2">
+                        <p><span class="word yellow_text">More</span>
+                        <span class="word fw-400">than just</span></p>
+                        <span class="word fw-400">websites</span>
+                      </span>
+                    </h2>
+
+                    <div class="hero-subheading-wrap">
+                      <p class="txt-32">
+                        We conduct research and transform insights into an effective website
+                      </p>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-12 chart_list">
+                <div class="row">
+                  <div class="col-md-4 p-2">
+                    <div class="d-flex gap-2 justify-content-between">
+                      <ul>
+                        <li>
+                          <img src="images/chart1.png" alt="img" class="img-fluid">
+                        </li>
+                        
+                        <li>
+                          <img src="images/chart2.png" alt="img" class="img-fluid">
+                        </li>
+                      </ul>
+                      <ul class="mt">
+                        <li>
+                          <img src="images/chart3.png" alt="img" class="img-fluid">
+                        </li>
+                        
+                        <li>
+                          <img src="images/chart4.png" alt="img" class="img-fluid">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4 p-2">
+                    <div class="center_logo">
+                      <img src="images/center-logo.png" alt="img" class="img-fluid w-100">
+                    </div>
+                  </div>
+                  <div class="col-md-4 p-2">
+                    <div class="d-flex gap-2 justify-content-between">
+                      <ul class="mt">
+                        <li>
+                          <img src="images/chart5.png" alt="img" class="img-fluid">
+                        </li>
+                        
+                        <li>
+                          <img src="images/chart6.png" alt="img" class="img-fluid">
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <img src="images/chart7.png" alt="img" class="img-fluid">
+                        </li>
+                        
+                        <li>
+                          <img src="images/chart8.png" alt="img" class="img-fluid">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+<section class="service_list">
+  <ul>
+    <li><span class="color_square color_square1"><span class="dot-target"></span></span> Technology</li>
+    <li><span class="color_square color_square2"><span class="dot-target"></span></span> Marketing</li>
+    <li><span class="color_square color_square3"><span class="dot-target"></span></span> Design</li>
+  </ul>
+</section>
+
+  <div class="main-wrapper">
+
+    <!-- LEFT SIDE SERVICES -->
+    <div class="services"> 
+
+      <section class="service" data-img="https://www.easygifanimator.net/images/samples/eglite.gif">
+        <div class="inner">
+          <div class="left">
+            <div class="list_flex">
+              <div class="list_before"><span class="dot-target"></span></div>
+              <h2>Technology</h2>
+            </div>
+            
+            <ul>
+              <li>Web Development</li>
+              <li>Softwares</li>
+              <li>Mobile Apps</li>
+              <li>Web Apps</li>
+              <li>Front-End</li>
+              <li>Back-End</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="service" data-img="https://www.easygifanimator.net/images/samples/video-to-gif-sample.gif">
+        <div class="inner">
+          <div class="left">
+            <div class="list_flex">
+              <div class="list_before"><span class="dot-target"></span></div>
+              <h2>Marketing</h2>
+            </div>
+            
+            <ul>
+              <li>SEO Optimization</li>
+              <li>Social Media</li>
+              <li>Paid Ads</li>
+              <li>Brand Strategy</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="service" data-img="https://www.easygifanimator.net/images/samples/sparkles.gif">
+        <div class="inner">
+          <div class="left">
+            <div class="list_flex">
+              <div class="list_before"><span class="dot-target"></span></div>
+              <h2>Design</h2>
+            </div>
+            
+            <ul>
+              <li>UI Design</li>
+              <li>UX Research</li>
+              <li>Brand Identity</li>
+              <li>Product Design</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="service" data-img="https://www.easygifanimator.net/images/samples/imageeffects.gif">
+        <div class="inner">
+          <div class="left">
+            <div class="list_flex">
+              <div class="list_before"></div>
+              <h2>Design 11</h2>
+            </div>
+            
+            <ul>
+              <li>UI Design 11</li>
+              <li>UX Research 11</li>
+              <li>Brand Identity 11</li>
+              <li>Product Design 11</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT SIDE STICKY IMAGE -->
+    <div class="image-container">
+      <img id="serviceImage" src="https://www.easygifanimator.net/images/samples/eglite.gif" alt="">
+    </div>
+  </div>
+
+
+<section class="integrate">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-7 text-center mx-auto">
+        <h1>then integrate the site</h1>
+        <p>into your sales system</p>
+      </div>
+      <div class="brand_logo">
+        <div class="col-md-11 mx-auto">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="social_service social_service_left">
+                <div class="social_service_text">
+                  <img src="images/megaphone.png" alt="img" class="img-fluid"> Ads
+                </div>
+                <div class="social_service_text">
+                  <img src="images/mail.png" alt="img" class="img-fluid"> Email distribution
+                </div>
+                <div class="social_service_text">
+                  <img src="images/photo.png" alt="img" class="img-fluid"> Social media
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="images/brand-logo.png" alt="img" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <div class="social_service social_service_right">
+                <div class="social_service_text">
+                  <img src="images/crm.png" alt="img" class="img-fluid"> CRM
+                </div>
+                <div class="social_service_text">
+                  <img src="images/chat-ai.png" alt="img" class="img-fluid"> Chat bot
+                </div>
+                <div class="social_service_text">
+                  <img src="images/ticket.png" alt="img" class="img-fluid"> Tickets operator
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+
+<script>
+// gsap.registerPlugin(Flip, ScrollTrigger);
+
+// let ctx;
+
+// function initFlip(){
+
+//   ctx && ctx.revert();
+
+//   ctx = gsap.context(() => {
+
+//     const secondState = Flip.getState(".second .marker");
+//     const thirdState  = Flip.getState(".third .marker");
+//     const fourthState = Flip.getState(".fourth .marker");
+
+//     const tl = gsap.timeline({
+//       scrollTrigger:{
+//         trigger: ".main",
+//         start: "top top",
+//         end: "+=2500",   // 👈 scroll distance controlled here
+//         scrub: 1,
+//         pin: true,
+//         anticipatePin: 1
+//       }
+//     });
+
+//     tl.add(
+//       Flip.fit(".box", secondState, {
+//         duration:1,
+//         ease:"none"
+//       })
+//     )
+//     .add(
+//       Flip.fit(".box", thirdState, {
+//         duration:1,
+//         ease:"none"
+//       }),
+//       "+=0.5"
+//     );
+
+//   });
+
+// }
+
+// initFlip();
+
+// window.addEventListener("resize", () => {
+//   ScrollTrigger.refresh();
+//   initFlip();
+// });
+gsap.registerPlugin(Flip, ScrollTrigger);
+
+let ctx;
+
+function initFlip(){
+
+  ctx && ctx.revert();
+
+  ctx = gsap.context(() => {
+
+    const containers = gsap.utils.toArray(".box_animation");
+    const box = document.querySelector(".box");
+
+    const tl = gsap.timeline({
+      scrollTrigger:{
+        trigger: ".main",
+        start: "top top",
+        end: "+=" + (containers.length * 300), // dynamic scroll distance
+        end: "+=" + (containers.length * window.innerHeight * 0.5),
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
+
+    // skip first container (already contains box)
+    containers.slice(1).forEach((container) => {
+
+      const state = Flip.getState(container.querySelector(".marker"));
+
+      tl.add(
+        Flip.fit(box, state, {
+          duration:1,
+          ease:"none"
+        })
+      );
+
+    });
+
+  });
+
+}
+
+initFlip();
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+  initFlip();
+});
+</script>
+
+<!-- <script>
+  gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".service").forEach((section) => {
+
+  const heading = section.querySelector("h2");
+  const items = section.querySelectorAll("li");
+
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger: section,
+      start: "top top",
+      end: "+=100%",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1
+    }
+  });
+
+  // Heading fade-up
+  tl.from(heading, {
+    opacity:0,
+    y:60,
+    duration:0.6
+  });
+
+  // List stagger animation
+  tl.to(items, {
+    x:0,
+    opacity:1,
+    stagger:0.2,
+    duration:0.6,
+    ease:"power2.out"
+  });
+
+});
+</script> -->
+
+<script>
+//   gsap.registerPlugin(ScrollTrigger);
+
+// const service = gsap.utils.toArray(".service");
+// const serviceImage = document.getElementById("serviceImage");
+
+// service.forEach((section) => {
+
+//   const heading = section.querySelector("h2");
+//   const items = section.querySelectorAll("li");
+
+//   const tl = gsap.timeline({
+//     scrollTrigger:{
+//       trigger: section,
+//       start: "top top",
+//       end: "+=100%",
+//       scrub: true,
+//       pin: true,
+//       anticipatePin: 1,
+//       onEnter: () => changeImage(section.dataset.img),
+//       onEnterBack: () => changeImage(section.dataset.img)
+//     }
+//   });
+
+//   // Heading animation
+//   tl.from(heading, {
+//     opacity:0,
+//     y:60,
+//     duration:0.6
+//   });
+
+//   // List animation
+//   tl.to(items, {
+//     x:0,
+//     opacity:1,
+//     stagger:0.2,
+//     duration:0.6,
+//     ease:"power2.out"
+//   });
+
+// });
+
+
+// function changeImage(src){
+
+//   if(image.getAttribute("src") === src) return;
+
+//   gsap.to(image, {
+//     opacity:0,
+//     duration:0.3,
+//     onComplete: () => {
+//       image.setAttribute("src", src);
+//       gsap.to(image, { opacity:1, duration:0.3 });
+//     }
+//   });
+
+// }
+</script>
+
+<script>
+// gsap.registerPlugin(ScrollTrigger);
+
+// gsap.fromTo(".heading .word",
+//   {
+//     y: 80,
+//     opacity: 0,
+//     scale: 0.8,
+//     filter: "blur(10px)"
+//   },
+//   {
+//     y: 0,
+//     opacity: 1,
+//     scale: 1,
+//     filter: "blur(0px)",
+//     duration: 1,
+//     stagger: 0.4,
+//     ease: "power4.out",
+//     scrollTrigger: {
+//       trigger: ".heading",
+//       start: "top 75%",
+//       toggleActions: "play reverse play reverse"
+//     }
+//   }
+// );
+
+
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const sections = gsap.utils.toArray(".service");
+// const image = document.getElementById("serviceImage");
+
+// sections.forEach((section) => {
+
+//   const items = section.querySelectorAll("li");
+
+//   // List reveal when heading hits top
+//   gsap.fromTo(items,
+//     { x: -60, opacity: 0 },
+//     {
+//       x: 0,
+//       opacity: 1,
+//       stagger: 0.2,
+//       duration: 0.6,
+//       ease: "power2.out",
+//       scrollTrigger: {
+//         trigger: section,
+//         start: "top top",   // 👈 trigger when heading hits top
+//         toggleActions: "play none none reverse"
+//       }
+//     }
+//   );
+
+//   // Image change
+//   ScrollTrigger.create({
+//     trigger: section,
+//     start: "top top",
+//     onEnter: () => changeImage(section.dataset.img),
+//     onEnterBack: () => changeImage(section.dataset.img)
+//   });
+
+// });
+
+
+// function changeImage(src){
+
+//   if(image.getAttribute("src") === src) return;
+
+//   gsap.to(image, {
+//     opacity:0,
+//     duration:0.3,
+//     onComplete: () => {
+//       image.setAttribute("src", src);
+//       gsap.to(image, { opacity:1, duration:0.3 });
+//     }
+//   });
+
+// }
+
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const sections = gsap.utils.toArray(".service");
+// const image = document.getElementById("serviceImage");
+
+// sections.forEach((section) => {
+
+//   const items = section.querySelectorAll("li");
+
+//   // list reveal
+//   gsap.fromTo(items,
+//     { x: -60, opacity: 0 },
+//     {
+//       x: 0,
+//       opacity: 1,
+//       stagger: 0.2,
+//       duration: 0.6,
+//       ease: "power2.out",
+//       scrollTrigger: {
+//         trigger: section,
+//         start: "top top",   // when heading reaches top
+//         toggleActions: "play none none reverse"
+//       }
+//     }
+//   );
+
+//   // image change
+//   ScrollTrigger.create({
+//     trigger: section,
+//     start: "top top",
+//     onEnter: () => changeImage(section.dataset.img),
+//     onEnterBack: () => changeImage(section.dataset.img)
+//   });
+
+// });
+
+// function changeImage(src){
+
+//   if(image.getAttribute("src") === src) return;
+
+//   gsap.to(image, {
+//     opacity:0,
+//     duration:0.3,
+//     onComplete: () => {
+//       image.setAttribute("src", src);
+//       gsap.to(image, { opacity:1, duration:0.3 });
+//     }
+//   });
+
+// }
+</script>
+
+<script>
+ gsap.registerPlugin(ScrollTrigger);
+
+const allServices = gsap.utils.toArray(".service");
+const serviceImage = document.getElementById("serviceImage");
+
+
+/* ======================================
+   1️⃣ SERVICE LIST PIN + INSTANT HIDE
+====================================== */
+
+ScrollTrigger.create({
+  trigger: ".service_list",
+  start: "top top",
+  end: "+=200",
+  pin: true,
+  pinSpacing: false,   // 🔥 THIS FIXES THE GAP
+  onLeave: () => {
+    gsap.set(".service_list", { autoAlpha: 0 });
+  },
+  onEnterBack: () => {
+    gsap.set(".service_list", { autoAlpha: 1 });
+  }
+});
+
+
+/* ======================================
+   2️⃣ SERVICES PIN + REVEAL
+====================================== */
+
+allServices.forEach((section) => {
+
+  const items = section.querySelectorAll("li");
+
+  // initial hidden state
+  gsap.set(items, { opacity: 0, y: 40 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top top",
+      end: "+=120%",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1,
+      onEnter: () => changeImage(section.dataset.img),
+      onEnterBack: () => changeImage(section.dataset.img)
+    }
+  });
+
+  // 👇 Important:
+  // No early animation before pinned properly
+  tl.fromTo(items,
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.2,
+      ease: "power2.out"
+    }
+  );
+
+});
+
+
+/* ======================================
+   3️⃣ IMAGE CHANGE
+====================================== */
+
+function changeImage(src){
+
+  if(!src) return;
+  if(serviceImage.getAttribute("src") === src) return;
+
+  gsap.killTweensOf(serviceImage);
+
+  gsap.to(serviceImage, {
+    opacity: 0,
+    duration: 0.3,
+    onComplete: () => {
+      serviceImage.setAttribute("src", src);
+      gsap.to(serviceImage, { opacity: 1, duration: 0.3 });
+    }
+  });
+
+}
+</script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const dots = gsap.utils.toArray(".dots");
+  
+  // 🔥 VERY IMPORTANT
+  gsap.set(dots, {
+    position: "fixed",
+    left: "50%",
+    top: "100%",        // start from bottom of screen
+    xPercent: -50,
+    yPercent: -50
+  });
+  
+  
+  // helper → center of screen
+  function centerX() {
+    return window.innerWidth / 2;
+  }
+  
+  function centerY() {
+    return window.innerHeight / 2;
+  }
+  
+  
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".creative_agency",
+      start: "top bottom",      // start when section enters screen
+      end: "bottom top",        // end when section leaves
+      scrub: 1.5,
+      invalidateOnRefresh: true
+    }
+  });
+  
+  
+  // ==========================
+  // STEP 1 → rise from bottom
+  // ==========================
+  tl.to(dots, {
+    top: centerY,
+    stagger: 0.2,
+    ease: "none"
+  });
+  
+  
+  // ==========================
+  // STEP 2 → spread slightly
+  // ==========================
+  tl.to(dots, {
+    x: (i) => (i - 1) * 60,
+    scale: 1.2,
+    ease: "none"
+  });
+  </script>
+
+<!-- <script>
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const dots = gsap.utils.toArray(".dots");
+  const targets = gsap.utils.toArray(".dot-target");
+  const globe = document.querySelector(".center_logo");
+  
+  function getMove(from, to) {
+    const f = from.getBoundingClientRect();
+    const t = to.getBoundingClientRect();
+  
+    return {
+    x: t.left - f.left,
+    y: t.top - f.top
+    };
+  }
+  
+  const tl = gsap.timeline({
+    scrollTrigger: {
+    trigger: ".creative_agency",
+    start: "top top",
+    end: "+=1000",
+    scrub: 3,
+    invalidateOnRefresh: true
+    }
+  });
+  
+  
+  // ==========================
+  // STEP 1 → stagger entry
+  // ==========================
+  tl.from(dots, {
+    opacity: 1,
+    y: -50,
+    stagger: 0.3   // 🔥 ONE BY ONE ENTRY
+  });
+  
+  
+  // ==========================
+  // STEP 2 → go behind globe
+  // ==========================
+  dots.forEach((dot, i) => {
+    tl.to(dot, {
+    x: () => getMove(dot, globe).x,
+    y: () => getMove(dot, globe).y,
+    scale: 0.6,
+    ease: "power2.out",
+    duration: 2
+    }, i * 0.4); // 🔥 NOT SAME TIME
+  });
+  
+  
+  // ==========================
+  // STEP 3 → go to headings
+  // ==========================
+  dots.forEach((dot, i) => {
+    tl.to(dot, {
+    x: () => getMove(dot, targets[i]).x,
+    y: () => getMove(dot, targets[i]).y,
+    scale: 1,
+    ease: "power2.inOut",
+    duration: 1
+    }, 2 + i * 0.5); // 🔥 stagger again
+  });
+  
+  
+  // ==========================
+  // STEP 4 → ATTACH EFFECT 🔥
+  // ==========================
+  targets.forEach((target, i) => {
+    ScrollTrigger.create({
+    trigger: target,
+    start: "top center",
+    end: "+=500",
+    scrub: true,
+    onUpdate: (self) => {
+      const move = getMove(dots[i], target);
+  
+      gsap.set(dots[i], {
+      x: move.x,
+      y: move.y
+      });
+    }
+    });
+  });
+  </script> -->
+
+
+<!-- <script>   
+// Circle from "creative_agency" smoothly follows scroll:
+        // 1) moves behind globe card
+        // 2) continues into first .service heading and adopts its color
+        // const circleEl = document.querySelector(".creative_agency .circle");
+        const globeCard = document.querySelector(".center_logo");
+        const firstServiceHeading = document.querySelector(".service h2");
+
+        if (circleEl && globeCard && firstServiceHeading) {
+          // Smooth "turn white" overlay (keeps your background image intact)
+          let overlay = circleEl.querySelector(".circle-overlay");
+          if (!overlay) {
+            overlay = document.createElement("div");
+            overlay.className = "circle-overlay";
+            overlay.style.position = "absolute";
+            overlay.style.inset = "0";
+            overlay.style.borderRadius = "50%";
+            overlay.style.background = "rgb(18 88 133 / 98%)";
+            overlay.style.opacity = "0";
+            overlay.style.pointerEvents = "none";
+            overlay.style.zIndex = "20";
+			globeCard.style.backgroundColor = "rgb(18 88 133 / 98%)";
+            circleEl.appendChild(overlay);
+          }
+
+          // two small circles that "come out" and travel with scroll
+          let mini1 = circleEl.querySelector(".circle-mini-1");
+          let mini2 = circleEl.querySelector(".circle-mini-2");
+
+          if (!mini1) {	
+            mini1 = document.createElement("div");
+            mini1.className = "circle-mini circle-mini-1";
+            mini1.style.left = "10%";
+            mini1.style.top = "10%";
+            circleEl.appendChild(mini1);
+          }
+          if (!mini2) {
+            mini2 = document.createElement("div");
+            mini2.className = "circle-mini circle-mini-2";
+            mini2.style.right = "5%";
+            mini2.style.bottom = "5%";
+            circleEl.appendChild(mini2);
+          }
+
+          const circleToGlobeY = () => {
+            const circleRect = circleEl.getBoundingClientRect();
+            const globeRect = globeCard.getBoundingClientRect();
+            return (globeRect.top + globeRect.height / 2) - (circleRect.top + circleRect.height / 2);
+          };
+
+          const circleToGlobeX = () => {
+            const circleRect = circleEl.getBoundingClientRect();
+            const globeRect = globeCard.getBoundingClientRect();
+            const globeCenterX = globeRect.left + globeRect.width / 2;
+            const circleCenterX = circleRect.left + circleRect.width / 2;
+            return globeCenterX - circleCenterX;
+          };
+
+          const circleToServiceY = () => {
+            const circleRect = circleEl.getBoundingClientRect();
+            const serviceRect = firstServiceHeading.getBoundingClientRect();
+            // align vertically with center of heading square
+            return (serviceRect.top + serviceRect.height / 2) - (circleRect.top + circleRect.height / 2);
+          };
+
+          const circleToServiceX = () => {
+            const circleRect = circleEl.getBoundingClientRect();
+            const serviceRect = firstServiceHeading.getBoundingClientRect();
+            // heading square is 80px wide and sits at left edge of h2
+            const squareCenterX = serviceRect.left + 40;
+            const circleCenterX = circleRect.left + circleRect.width / 2;
+            return squareCenterX - circleCenterX;
+          };
+
+          const serviceColor = getComputedStyle(firstServiceHeading)
+            .getPropertyValue("--service-accent-color") || "#1e6091";
+          const ballColor = getComputedStyle(overlay).backgroundColor || "rgb(18 88 133 / 98%)";
+
+          // Phase 1: move only the inner overlay "ball" from creative section
+          // down into the center of the globe card
+          gsap.to(overlay, {
+            y: circleToGlobeY,
+            x: circleToGlobeX,
+            opacity: 1,
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".creative_agency",
+              start: "bottom bottom",     // start once you scroll past creative section
+              endTrigger: globeCard,
+              end: "center center",       // finish when globe card is centered
+              scrub: true,
+              invalidateOnRefresh: true
+            }
+          });
+
+          // Globe background reacts only while the ball is on it
+          gsap.to(globeCard, {
+            backgroundColor: ["#ffffff", ballColor, "#ffffff"],
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".creative_agency",
+              start: "bottom 90%",   // just before ball reaches globe
+              end: "bottom 10%",     // after it passes center
+              scrub: true
+            }
+          });
+
+          // =========================
+          // Three decorative dots path (follow same scroll as main ball)
+          // =========================
+          const dots = gsap.utils.toArray(".creative_agency .dots");
+
+          const dotOffsetsX = [-40, 0, 40]; // left, center, right of main path
+          const dotOffsetYToService = 80;   // place slightly below heading square
+
+          // fade in while leaving creative section
+          gsap.to(dots, {
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".creative_agency",
+              start: "bottom bottom",
+              end: "bottom 80%",
+              scrub: true
+            }
+          });
+
+          // phase 1: dots move with ball to globe center
+          gsap.to(dots, {
+            x: (i) => circleToGlobeX() + dotOffsetsX[i] || 0,
+            y: () => circleToGlobeY(),
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".creative_agency",
+              start: "bottom bottom",
+              endTrigger: globeCard,
+              end: "center center",
+              scrub: true,
+              invalidateOnRefresh: true
+            }
+          });
+
+          // phase 2: dots move with ball to service heading (below square)
+          gsap.to(dots, {
+            x: (i) => circleToServiceX() + dotOffsetsX[i] || 0,
+            y: () => circleToServiceY() + dotOffsetYToService,
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: "[data-anim='cards-paralax']",
+              start: "bottom bottom",
+              endTrigger: ".service.tech",
+              end: "top center",
+              scrub: true,
+              invalidateOnRefresh: true
+            }
+          });
+
+          // Phase 2: from globe center to first service heading + color change
+          gsap.to(overlay, {
+            y: circleToServiceY,
+            x: circleToServiceX,
+            backgroundColor: serviceColor,
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: "[data-anim='cards-paralax']",
+              start: "bottom bottom",
+              endTrigger: ".service.tech",
+              end: "top center",
+              scrub: true,
+              invalidateOnRefresh: true
+            }
+          });
+
+          // Minis fade out of main circle and drift with scroll
+          const miniOffsetY = () => circleToServiceY() + 100; // end a bit below the heading square
+
+          gsap.to([mini1, mini2], {
+            opacity: 1,
+            y: miniOffsetY,
+            x: circleToServiceX,
+            stagger: 0.1,
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: "[data-anim='cards-paralax']",
+              start: "bottom bottom",
+              endTrigger: ".service.tech",
+              end: "top center",
+              scrub: true,
+              invalidateOnRefresh: true
+            }
+          });
+        }
+</script> -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GSAP Flip Proper Setup</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:sans-serif;
+  overflow-x:hidden;
+}
+
+/* Spacer sections */
+.spacer{
+  height:200vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+/* MAIN SECTION (IMPORTANT: fixed 100vh) */
+.main{ 
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+  padding:80px 0;
+}
+
+.container{
+  width:140px;
+  height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ccc;
+  border-radius:10px;
+}
+
+/* Zigzag using margin auto */
+.container:nth-child(odd){
+  margin-left:auto;
+  margin-right:10%;
+}
+
+.container:nth-child(even){
+  margin-left:10%;
+  margin-right:auto;
+}
+
+.box{
+  width:100px;
+  height:100px;
+  border-radius:12px;
+  background:#ff9f1c;
+}
+
+.marker{
+  width:100px;
+  height:100px;
+}
+}
+
+.container{
+  width:140px;
+  height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ccc;
+  border-radius:10px;
+}
+
+/* Zigzag using margin auto */
+.container:nth-child(odd){
+  margin-left:auto;
+  margin-right:10%;
+}
+
+.container:nth-child(even){
+  margin-left:10%;
+  margin-right:auto;
+}
+
+.box{
+  width:100px;
+  height:100px;
+  border-radius:12px;
+  background:#ff9f1c;
+}
+
+.marker{
+  width:100px;
+  height:100px;
+}
+/* Section Layout */
+.service{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.inner{
+  width:90%;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.left{
+  width:50%;
+}
+
+.left h2{
+  font-size:70px;
+  margin-bottom:40px;
+  position:relative;
+  padding-left:120px;
+}
+
+/* Square */
+.left h2::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:80px;
+  height:80px;
+  border-radius:14px;
+  transition:0.4s ease;
+}
+
+/* List */
+.left ul{
+  list-style:none;
+}
+
+.left li{
+  font-size:22px;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateX(-60px);
+}
+
+/* Right dummy image block */
+.right{
+  width:40%;
+  height:400px;
+  border-radius:20px;
+  background:#f3f3f3;
+}
+
+/* ========================= */
+/* 🎨 COLOR THEMES */
+/* ========================= */
+
+.service.tech h2::before{
+  background:#1e6091;
+}
+
+.service.marketing h2::before{
+  background:#ff006e;
+}
+
+.service.design h2::before{
+  background:#8338ec;
+}
+</style>
+</head>
+
+<body>
+
+   <section class="service tech">
+    <div class="inner">
+      <div class="left">
+        <h2>Technology</h2>
+        <ul>
+          <li>Web Development</li>
+          <li>Softwares</li>
+          <li>Mobile Apps</li>
+          <li>Web Apps</li>
+          <li>Front-End</li>
+          <li>Back-End</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+  <section class="service marketing">
+    <div class="inner">
+      <div class="left">
+        <h2>Marketing</h2>
+        <ul>
+          <li>SEO Optimization</li>
+          <li>Social Media</li>
+          <li>Paid Ads</li>
+          <li>Brand Strategy</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+  <section class="service design">
+    <div class="inner">
+      <div class="left">
+        <h2>Design</h2>
+        <ul>
+          <li>UI Design</li>
+          <li>UX Research</li>
+          <li>Brand Identity</li>
+          <li>Product Design</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+  <section class="service tech">
+    <div class="inner">
+      <div class="left">
+        <h2>Technology 1</h2>
+        <ul>
+          <li>Web Development</li>
+          <li>Softwares</li>
+          <li>Mobile Apps</li>
+          <li>Web Apps</li>
+          <li>Front-End</li>
+          <li>Back-End</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+  <section class="service marketing">
+    <div class="inner">
+      <div class="left">
+        <h2>Marketing 1</h2>
+        <ul>
+          <li>SEO Optimization</li>
+          <li>Social Media</li>
+          <li>Paid Ads</li>
+          <li>Brand Strategy</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+  <section class="service design">
+    <div class="inner">
+      <div class="left">
+        <h2>Design 1</h2>
+        <ul>
+          <li>UI Design</li>
+          <li>UX Research</li>
+          <li>Brand Identity</li>
+          <li>Product Design</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+<div class="spacer">Scroll Down</div>
+
+<div class="main">
+
+  <div class="container initial">
+    <div class="box"></div>
+  </div>
+
+  <div class="container second">
+    <div class="marker"></div>
+  </div>
+
+  <div class="container third">
+    <div class="marker"></div>
+  </div>
+  
+  <div class="container fourth">
+    <div class="marker"></div>
+  </div>
+
+</div>
+
+<div class="spacer">End Section</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+
+<script>
+// gsap.registerPlugin(Flip, ScrollTrigger);
+
+// let ctx;
+
+// function initFlip(){
+
+//   ctx && ctx.revert();
+
+//   ctx = gsap.context(() => {
+
+//     const secondState = Flip.getState(".second .marker");
+//     const thirdState  = Flip.getState(".third .marker");
+//     const fourthState = Flip.getState(".fourth .marker");
+
+//     const tl = gsap.timeline({
+//       scrollTrigger:{
+//         trigger: ".main",
+//         start: "top top",
+//         end: "+=2500",   // 👈 scroll distance controlled here
+//         scrub: 1,
+//         pin: true,
+//         anticipatePin: 1
+//       }
+//     });
+
+//     tl.add(
+//       Flip.fit(".box", secondState, {
+//         duration:1,
+//         ease:"none"
+//       })
+//     )
+//     .add(
+//       Flip.fit(".box", thirdState, {
+//         duration:1,
+//         ease:"none"
+//       }),
+//       "+=0.5"
+//     );
+
+//   });
+
+// }
+
+// initFlip();
+
+// window.addEventListener("resize", () => {
+//   ScrollTrigger.refresh();
+//   initFlip();
+// });
+gsap.registerPlugin(Flip, ScrollTrigger);
+
+let ctx;
+
+function initFlip(){
+
+  ctx && ctx.revert();
+
+  ctx = gsap.context(() => {
+
+    const containers = gsap.utils.toArray(".container");
+    const box = document.querySelector(".box");
+
+    const tl = gsap.timeline({
+      scrollTrigger:{
+        trigger: ".main",
+        start: "top top",
+        end: "+=" + (containers.length * 300), // dynamic scroll distance
+        end: "+=" + (containers.length * window.innerHeight * 0.5),
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
+
+    // skip first container (already contains box)
+    containers.slice(1).forEach((container) => {
+
+      const state = Flip.getState(container.querySelector(".marker"));
+
+      tl.add(
+        Flip.fit(box, state, {
+          duration:1,
+          ease:"none"
+        })
+      );
+
+    });
+
+  });
+
+}
+
+initFlip();
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+  initFlip();
+});
+</script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".service").forEach((section) => {
+
+  const heading = section.querySelector("h2");
+  const items = section.querySelectorAll("li");
+
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger: section,
+      start: "top top",
+      end: "+=100%",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1
+    }
+  });
+
+  // Heading fade-up
+  tl.from(heading, {
+    opacity:0,
+    y:60,
+    duration:0.6
+  });
+
+  // List stagger animation
+  tl.to(items, {
+    x:0,
+    opacity:1,
+    stagger:0.2,
+    duration:0.6,
+    ease:"power2.out"
+  });
+
+});
+</script>
+
+</body>
+</html>
