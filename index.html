@@ -143,7 +143,8 @@
   font-size:22px;
   margin-bottom:18px;
   opacity:0;
-  transform:translateX(-60px);
+  transform:translateX(-60px);left: 130px;
+    position: relative;
 }
 
 /* Right dummy image block */
@@ -295,19 +296,19 @@
 
         /* --- 3D Bar Chart Styles --- */
         .chart-wrapper {
-            height: 450px;
+            height: 550px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             padding-bottom: 0px;
-            margin-top: 50px;
+            margin-top: -90px;
         }
 
         .bar-container {
             position: relative;
-            width: 100px;
+            width: 130px;
             margin-right: 60px; /* Space for depth */
-            height: 0px; /* Initial height for GSAP */
+            height: 0px;margin-bottom: -70px; /* Initial height for GSAP */
         }
 
         /* Base faces */
@@ -325,10 +326,10 @@
             /* Borders removed for the clean 3D look */
         }
 
-        .bar-right {bottom: 0;left: 100%;width: 60px; /* Depth */height: 100%;transform-origin: left bottom;transform: skewY(-45deg);z-index: 1; 
+        .bar-right {bottom: 0;left: 100%;width: 80px; /* Depth */height: 100%;transform-origin: left bottom;transform: skewY(-45deg);z-index: 1; 
         }
 
-        .bar-top {bottom: 100%;left: 0; width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg); z-index: 3; display: flex; align-items: center; justify-content: center;
+        .bar-top {bottom: 100%;left: 0; width: 100%;height: 80px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg); z-index: 3; display: flex; align-items: center; justify-content: center;
         }
 
         /* Hide the text to match the clean reference image */
@@ -359,19 +360,27 @@
         .bar-container.bar-3 .bar-top { background: linear-gradient(to bottom right, #aedb4a, #86ba31);
         } */
         /* Bar 1: Orange */
+        .bar-container.bar-1{z-index: 9;}
+        .bar-container.bar-2{z-index: 5;}
+        .bar-container.bar-3{z-index:1;}
         .bar-container.bar-1 .bar-front {background: linear-gradient(12.2deg, #C63D29 24.59%, #D88A21 82.78%);}
         .bar-container.bar-1 .bar-right {background: linear-gradient(14.62deg, #C63D29 0.26%, #A02020 96.97%);}
         .bar-container.bar-1 .bar-top { background: linear-gradient(111.36deg, #D88A21 37.56%, #C63D29 75.52%); }
 
         /* Bar 2: Yellow */
-        .bar-container.bar-2 .bar-front { background-color: #ffcc00; }
-        .bar-container.bar-2 .bar-right { background-color: #cca300; }
-        .bar-container.bar-2 .bar-top { background-color: #ffe066; }
+        .bar-container.bar-2 .bar-front {background: linear-gradient(28.82deg, #89C2D4 33.45%, #3C6AA1 102.29%);
+}
+        .bar-container.bar-2 .bar-right {background: linear-gradient(15.98deg, #89C2D4 -52.59%, #3C6AA1 89.79%);}
+        .bar-container.bar-2 .bar-top {background: linear-gradient(28.82deg, #89C2D4 24.89%, #3C6AA1 95.48%);
+}
 
         /* Bar 3: Green */
-        .bar-container.bar-3 .bar-front { background-color: #84e300; }
-        .bar-container.bar-3 .bar-right { background-color: #61a600; }
-        .bar-container.bar-3 .bar-top { background-color: #baff5c; }
+        .bar-container.bar-3 .bar-front {background: linear-gradient(22.23deg, #ACC437 49.45%, #6CA850 96.75%);
+}
+        .bar-container.bar-3 .bar-right {background: linear-gradient(4.27deg, #ACC437 -36.81%, #6CA850 61.59%);
+}
+        .bar-container.bar-3 .bar-top {background: linear-gradient(315.88deg, #ACC437 42.21%, #6CA850 91.69%);
+}
 
         /* Responsive adjustments */
         @media (max-width: 991px) {
@@ -382,7 +391,7 @@
             .bar-top span { font-size: 11px; }
             .title-bg { font-size: 3rem; }
         }
-        .bar-top {bottom: 100%;left: 0;width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg);border: 0px solid #111;z-index: 3;display: flex;align-items: center;justify-content: center;
+        .bar-top {bottom: 100%;left: 0;width: 100%;height: 80px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg);border: 0px solid #111;z-index: 3;display: flex;align-items: center;justify-content: center;
 }
 
 /* Text inside the top face */
@@ -672,7 +681,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
               <div class="col-md-12 chart_list">
                 <div class="row">
                   <div class="col-md-4 p-2">
-                    <div class="d-flex gap-2 justify-content-between">
+                    <div class="d-flex gap-2 justify-content-end">
                       <ul>
                         <li>
                           <img src="images/chart1.png" alt="img" class="img-fluid">
@@ -699,7 +708,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
                     </div>
                   </div>
                   <div class="col-md-4 p-2">
-                    <div class="d-flex gap-2 justify-content-between">
+                    <div class="d-flex gap-2 justify-content-start">
                       <ul class="mt">
                         <li>
                           <img src="images/chart5.png" alt="img" class="img-fluid">
@@ -913,96 +922,94 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 </section>
 
 
-
-
-<!-- UPDATED HTML (lorem + button centered at bottom) -->
+ 
 <section class="svc" id="services-scroll">
-	<div class="svc__wrap">
-		<!-- LEFT: sticky media -->
-		<aside class="svc__media" aria-label="Services media">
-        <h1 class="our_process">Our Process</h1>
-			<div class="svc__mediaInner"> 
-				<div class="svc__mediaOverlay">
-					<!-- <h2 class="svc__kicker"><span class="svc__number">01</span></h2>
-					<div class="svc__mediaRule" aria-hidden="true"></div> -->
-          <h2 class="svc__kicker">
+	<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="svc__wrap">
+          <!-- LEFT: sticky media -->
+          <aside class="svc__media" aria-label="Services media">
+              <h1 class="our_process">Our Process</h1>
+            <div class="svc__mediaInner"> 
+              <div class="svc__mediaOverlay"> 
+                <h2 class="svc__kicker">
 
-            <!-- Active Number Box -->
-            <span class="svc__numberBox">
-              <span class="svc__number svc__number--current">1</span>
-            </span>
+                  <!-- Active Number Box -->
+                  <span class="svc__numberBox">
+                    <span class="svc__number svc__number--current">1</span>
+                  </span>
 
-            <!-- Numbers List (outside box) -->
-            <span class="svc__numberList">
-              <span class="svc__number svc__number--next">2</span>
-            </span>
+                  <!-- Numbers List (outside box) -->
+                  <span class="svc__numberList">
+                    <span class="svc__number svc__number--next">2</span>
+                  </span>
 
-          </h2>
-				</div>
+                </h2>
+              </div>
 
-				<div class="svc__progress" aria-hidden="true">
-					<div class="svc__progressTrack">
-						<div class="svc__progressFill"></div>
-					</div>
-				</div>
-			</div>
-		</aside>
+              <div class="svc__progress" aria-hidden="true">
+                <div class="svc__progressTrack">
+                  <div class="svc__progressFill"></div>
+                </div>
+              </div>
+            </div>
+          </aside>
 
-		<!-- RIGHT: sticky stage -->
-		<div class="svc__right">
-			<div class="svc__stage" aria-label="Service panels">
-				<article class="svc__card svc__card--light" data-card="0">
-					<!-- <div class="svc__num">01</div> -->
-					<div class="svc__cardText">
-						<h3>Strategic sessions</h3>
-						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-            <img src="images/process.gif" alt="img" class="img-fluid">
-					</div> 
-				</article>
+          <!-- RIGHT: sticky stage -->
+          <div class="svc__right">
+            <div class="svc__stage" aria-label="Service panels">
+              <article class="svc__card svc__card--light" data-card="0"> 
+                <div class="svc__cardText">
+                  <h3>Strategic sessions</h3>
+                  <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+                  <img src="images/process.gif" alt="img" class="img-fluid">
+                </div> 
+              </article>
 
-				<article class="svc__card svc__card--dark" data-card="1">
-					<!-- <div class="svc__num">02</div> -->
-					<div class="svc__cardText">
-						<h3>Strategic sessions</h3>
-						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-            <img src="images/process.gif" alt="img" class="img-fluid">
-					</div> 
-				</article>
+              <article class="svc__card svc__card--dark" data-card="1"> 
+                <div class="svc__cardText">
+                  <h3>Strategic sessions</h3>
+                  <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+                  <img src="images/process.gif" alt="img" class="img-fluid">
+                </div> 
+              </article>
 
-				<article class="svc__card svc__card--light" data-card="2">
-					<!-- <div class="svc__num">03</div> -->
-					<div class="svc__cardText">
-						<h3>Strategic sessions</h3>
-						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-            <img src="images/process.gif" alt="img" class="img-fluid">
-					</div> 
-				</article>
+              <article class="svc__card svc__card--light" data-card="2"> 
+                <div class="svc__cardText">
+                  <h3>Strategic sessions</h3>
+                  <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+                  <img src="images/process.gif" alt="img" class="img-fluid">
+                </div> 
+              </article>
 
-				<article class="svc__card svc__card--dark" data-card="3">
-					<!-- <div class="svc__num">04</div> -->
-					<div class="svc__cardText">
-						<h3>Strategic sessions</h3>
-						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-            <img src="images/process.gif" alt="img" class="img-fluid">
-					</div> 
-				</article>
-			</div>
+              <article class="svc__card svc__card--dark" data-card="3"> 
+                <div class="svc__cardText">
+                  <h3>Strategic sessions</h3>
+                  <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+                  <img src="images/process.gif" alt="img" class="img-fluid">
+                </div> 
+              </article>
+            </div>
 
-			<!-- scroll runway -->
-			<div class="svc__triggers" aria-hidden="true">
-				<div class="svc__trigger"></div>
-				<div class="svc__trigger"></div>
-				<div class="svc__trigger"></div>
-				<div class="svc__trigger"></div>
-			</div>
-		</div>
-	</div>
+            <!-- scroll runway -->
+            <div class="svc__triggers" aria-hidden="true">
+              <div class="svc__trigger"></div>
+              <div class="svc__trigger"></div>
+              <div class="svc__trigger"></div>
+              <div class="svc__trigger"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
 
 <!-- Statices bar section -->
-    <section id="stats-section " class="pt-5 pb-0 overflow-hidden graph_bar">
+    <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar">
         <div class="container mt-5">
             <div class="row align-items-center">
                 
@@ -1121,6 +1128,8 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 
@@ -1888,27 +1897,6 @@ function changeImage(src){
 </script> -->
 
 
-<!-- Bars animation script -->
-<script>
-  // Register ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Create a timeline connected to scroll progress
-  const tl2 = gsap.timeline({
-      scrollTrigger: {
-          trigger: "#stats-section",
-          start: "top 55%",     // Start animation when section's top hits 75% of viewport
-          end: "bottom 80%",    // End animation when section's bottom hits 80% of viewport
-          scrub: 1,             // 1 second scrub smoothing (creates the responsive scroll feel)
-      }
-  });
-
-  // Animate the height of each bar. 
-  // Because of how the CSS is structured, increasing the front face height automatically pushes the top face up!
-  tl2.to(".bar-1", { height: "250px", ease: "none" }, 0)
-    .to(".bar-2", { height: "370px", ease: "none" }, 0)
-    .to(".bar-3", { height: "480px", ease: "none" }, 0);
-</script>
 
 
 <!-- Testimonial section script  -->
@@ -2081,6 +2069,27 @@ var nextNumberEl = root.querySelector(".svc__number--next");
 	setActiveNumber(0);
 
 })();
+</script>
+<!-- Bars animation script -->
+<script>
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Create a timeline connected to scroll progress
+  var tl2 = gsap.timeline({
+      scrollTrigger: {
+          trigger: "#stats-section",
+          start: "top 55%",     // Start animation when section's top hits 75% of viewport
+          end: "bottom 80%",    // End animation when section's bottom hits 80% of viewport
+          scrub: 1,             // 1 second scrub smoothing (creates the responsive scroll feel)
+      }
+  });
+
+  // Animate the height of each bar. 
+  // Because of how the CSS is structured, increasing the front face height automatically pushes the top face up!
+  tl2.to(".bar-1", { height: "250px", ease: "none" }, 0)
+    .to(".bar-2", { height: "370px", ease: "none" }, 0)
+    .to(".bar-3", { height: "480px", ease: "none" }, 0);
 </script>
 </body>
 
