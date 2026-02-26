@@ -222,106 +222,28 @@
 
 
 
-/* Bars section style  */
+/* ====================Bars section style============================  */
 
 
-
+#stats-section{background-color: #F6F6F6;}
         /* Spacers to allow scrolling for the demo */
-         
-
         /* Typography Styles */
-        .fw-black {
-            font-weight: 900;
-        }
-        
-        .title-main {
-            font-size: 3.5rem;
-            color: #1a1a1a;
-            letter-spacing: -1px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .title-bg {
-            font-size: 4rem;
-            color: #b0b5c1;
-            opacity: 0.3;
-            position: absolute;
-            top: -20px;
-            left: 0;
-            z-index: 1;
-            white-space: nowrap;
-        }
-
-        .cursive-title {
-            font-family: 'Caveat', cursive;
-            font-size: 4.5rem;
-            color: #5333ed; /* Purple */
-            line-height: 0.8;
-            transform: rotate(-5deg);
-            display: inline-block;
-            margin-top: 10px;
-            margin-bottom: 30px;
-            z-index: 3;
-            position: relative;
-        }
-
-        .btn-custom {
-            background-color: #5333ed;
-            color: white;
-            border-radius: 50px;
-            padding: 12px 32px;
-            font-weight: 800;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(83, 51, 237, 0.3);
-        }
-
-        .btn-custom:hover {
-            background-color: #4221d0;
-            color: white;
-            transform: translateY(-2px);
-        }
-
+#stats-section .main-title p{font-size: 16px; font-weight: 400 !important; }       
+#stats-section .title-main {font-size: 42px;color: #000;letter-spacing: 1px;position: relative;z-index: 2;}
+#stats-section .title-bg {font-size: 4rem;color: #b0b5c1;opacity: 0.3;position: absolute;top: -20px;left: 0;z-index: 1;white-space: nowrap;}
+#stats-section  .cursive-title {font-family: 'Caveat', cursive;font-size: 4.5rem; color: #5333ed; /* Purple */ line-height: 0.8; transform: rotate(-5deg);display: inline-block; margin-top: 10px; margin-bottom: 30px; z-index: 3; position: relative;}
+#stats-section .bar-button{ background-color: #FFA106; color: white; border-radius: 50px; padding: 12px 32px; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
+            /* box-shadow: 0 4px 15px rgba(83, 51, 237, 0.3); */}
+ #stats-section .btn-custom:hover {  background-color: #4221d0; color: white;  transform: translateY(-2px);}
         /* --- 3D Bar Chart Styles --- */
-        .chart-wrapper {
-            height: 450px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 50px;
-            margin-top: 50px;
-        }
-
-        .bar-container {
-            position: relative;
-            width: 100px;
-            margin-right: 60px; /* Space for depth */
-            height: 0px; /* Initial height for GSAP */
-        }
-
+#stats-section .chart-wrapper { height: 450px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 50px; margin-top: 50px;}
+ #stats-section .bar-container {  position: relative; width: 110px; margin-right: 60px; /* Space for depth */ height: 0px; /* Initial height for GSAP */}
         /* Base faces */
-        .bar-front, .bar-right, .bar-top {
-            position: absolute;
-            box-sizing: border-box;
-        }
-
-        .bar-front {
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            /* Borders removed for the clean 3D look */
-        }
-
-        .bar-right {bottom: 0;left: 100%;width: 60px; /* Depth */height: 100%;transform-origin: left bottom;transform: skewY(-45deg);z-index: 1; 
-        }
-
-        .bar-top {bottom: 100%;left: 0; width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg); z-index: 3; display: flex; align-items: center; justify-content: center;
-        }
+#stats-section .bar-front, .bar-right, .bar-top { position: absolute; box-sizing: border-box;}
+#stats-section .bar-front { bottom: 0; left: 0; width: 100%; height: 100%; z-index: 2;
+            /* Borders removed for the clean 3D look */}
+#stats-section .bar-right {bottom: 0;left: 100%;width: 60px; /* Depth */height: 100%;transform-origin: left bottom;transform: skewY(-45deg);z-index: 1; }
+#stats-section .bar-top {bottom: 100%;left: 0; width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg); z-index: 3; display: flex; align-items: center; justify-content: center;}
 
         /* Hide the text to match the clean reference image */
         /* .bar-top span {
@@ -351,19 +273,19 @@
         .bar-container.bar-3 .bar-top { background: linear-gradient(to bottom right, #aedb4a, #86ba31);
         } */
         /* Bar 1: Orange */
-        .bar-container.bar-1 .bar-front { background-color: #ff8400; }
-        .bar-container.bar-1 .bar-right { background-color: #cc6a00; }
-        .bar-container.bar-1 .bar-top { background-color: #ffb159; }
+        #stats-section .bar-container.bar-1 .bar-front { background-color: #ff8400; }
+        #stats-section .bar-container.bar-1 .bar-right { background-color: #cc6a00; }
+        #stats-section .bar-container.bar-1 .bar-top { background-color: #ffb159; }
 
         /* Bar 2: Yellow */
-        .bar-container.bar-2 .bar-front { background-color: #ffcc00; }
-        .bar-container.bar-2 .bar-right { background-color: #cca300; }
-        .bar-container.bar-2 .bar-top { background-color: #ffe066; }
+        #stats-section .bar-container.bar-2 .bar-front { background-color: #ffcc00; }
+        #stats-section .bar-container.bar-2 .bar-right { background-color: #cca300; }
+        #stats-section .bar-container.bar-2 .bar-top { background-color: #ffe066; }
 
         /* Bar 3: Green */
-        .bar-container.bar-3 .bar-front { background-color: #84e300; }
-        .bar-container.bar-3 .bar-right { background-color: #61a600; }
-        .bar-container.bar-3 .bar-top { background-color: #baff5c; }
+        #stats-section .bar-container.bar-3 .bar-front { background-color: #84e300; }
+        #stats-section .bar-container.bar-3 .bar-right { background-color: #61a600; }
+        #stats-section .bar-container.bar-3 .bar-top { background-color: #baff5c; }
 
         /* Responsive adjustments */
         @media (max-width: 991px) {
@@ -374,103 +296,50 @@
             .bar-top span { font-size: 11px; }
             .title-bg { font-size: 3rem; }
         }
-        .bar-top {bottom: 100%;left: 0;width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg);border: 2px solid #111;z-index: 3;display: flex;align-items: center;justify-content: center;
-}
-
+#stats-section .bar-top {bottom: 100%;left: 0;width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg);border: 2px solid #111;z-index: 3;display: flex;    align-items: flex-start;justify-content: flex-start;}
 /* Text inside the top face */
-.bar-top span {
-transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-align: center;line-height: 1.1;color: #111;
-}
+#stats-section .bar-top span {transform: skewX(6deg) rotate(359deg);font-weight: 700;font-size: 12px;text-align: left;line-height: 1;padding: 3px 12px;color: #111;}
 /*  */
-.bar-front {border: 2px solid #111;border-top: none; 
-}
-.bar-right {transform-origin: left bottom;border-right: 2px solid #111;border-bottom: 2px solid #111;
-}
-
+#stats-section .bar-front {border: 2px solid #111;border-top: none; }
+#stats-section .bar-right {transform-origin: left bottom;border-right: 2px solid #111;border-bottom: 2px solid #111;}
 
 /* =================Testimonial section style ========================= */
-.section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 700; 
-            text-transform: uppercase;
-        }
-
-        .section-title span {
-            color: #f7df1e; /* Yellow "SAY" */
-            font-style: italic;
-        }
-
+.testimonial-section{background-color: #002B55;}
+.testimonial-section .section-title { text-align: center; font-size: 32px; font-weight: 700;  text-transform: uppercase; color: #fff;}
+.testimonial-section .section-title span { color: #f7df1e; font-style: italic; font-family: 'Qwigley';}
         /* Container for the cards */
-        .stack-container {
-            position: relative; 
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .testimonial-card {
-            background: white;
-            color: #333;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            
+.testimonial-section .stack-container { position: relative;  margin: 0 auto; padding: 20px;}
+.testimonial-section .testimonial-card {  background: white; color: #333; border-radius: 15px; padding: 40px; margin-bottom: 40px; min-height: 350px; display: flex; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             /* Sticky positioning for the stack effect */
-            position: sticky;
-            top: 150px; 
-            transform-origin: center top;
+ position: sticky; top: 150px;  transform-origin: center top;}
+.testimonial-section .profile-section { text-align: center; border-right: 1px solid #e0e0e0; padding-right: 30px; flex: 0 0 250px;}
+.testimonial-section .profile-img { width: 150px; height: 150px; border-radius: 50%;object-fit: cover;margin-bottom: 15px;}
+.testimonial-section .profile-name { font-weight: 700; font-size: 18px;  margin-bottom: 2px; color: #002A54;}
+.testimonial-section .profile-role {font-size: 14px;color: #002A54;}
+.testimonial-section .quote-section { padding-left: 40px; position: relative;}
+.testimonial-section .quote-icon { font-size: 3rem;color: #6366f1; /* Purple quote marks */ line-height: 1; position: absolute; top: -20px; left: 40px;}
+.testimonial-section .quote-text { font-size: 20px; line-height: 1.5; font-weight: 500;margin-top: 70px;color: #002A54;}
+
+/* =================Cta section style ========================= */
+/* CTA Section Styling */
+.cta-section {position: relative; overflow: hidden;text-align: center; }
+        /* Background GIF and Gradient Overlay */
+.cta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./images/cta-gif.gif') center center / cover no-repeat; z-index: 1;}
+        /* Gradient Overlay to match the image's orange-to-yellow feel */
+.cta-overlay {  position: absolute;  top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255, 126, 0, 0.85) 0%, rgba(255, 212, 0, 0.7) 100%); z-index: 2;}
+        /* Content Container */
+.cta-content { position: relative; z-index: 3; max-width: 800px; margin: 0 auto;}
+.cta-heading { font-size: 47px; font-weight: 800; color: #ffffff; margin-bottom: 40px; line-height: 1.1; letter-spacing: -1px;}
+        /* Rounded Pill Button */
+.btn-custom {  background-color: #ffffff;  color: #002A54;   font-weight: 500; padding: 18px 45px; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 1.1rem; border: none;}
+.btn-custom:hover {  transform: translateY(-3px);  box-shadow: 0 10px 20px rgba(0,0,0,0.1); background-color: #f8f9fa;}
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .cta-heading {
+                font-size: 2.2rem;
+            }
         }
 
-        .profile-section {
-            text-align: center;
-            border-right: 1px solid #e0e0e0;
-            padding-right: 30px;
-            flex: 0 0 250px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
-
-        .profile-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 2px;
-        }
-
-        .profile-role {
-            font-size: 0.85rem;
-            color: #777;
-        }
-
-        .quote-section {
-            padding-left: 40px;
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 3rem;
-            color: #6366f1; /* Purple quote marks */
-            line-height: 1;
-            position: absolute;
-            top: -20px;
-            left: 40px;
-        }
-
-        .quote-text {
-            font-size: 1.4rem;
-            line-height: 1.5;
-            font-weight: 500;
-            margin-top: 70px;
-        }
 </style>
 </head>
 
@@ -867,18 +736,23 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
         <div class="container my-5">
             <div class="row align-items-center">
                 
-                <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
+                <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
                     <div class="position-relative">
                         <!-- <div class="title-bg fw-black">CREATE A WEBSITE</div> -->
                         <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
                         <!-- <div class="cursive-title">sell out<br>your event</div> -->
                     </div>
                     
-                    <p class="mb-4 text-secondary fw-bold" style="max-width: 400px;">
-                        We analyze your project goals and structure a visual representation that guarantees audience engagement and maximizes conversion rates efficiently.
+                    <p class="mb-4 text-secondary " style="max-width: 600px;">
+                      We get to know you, discuss your goals, preferences, and
+                      ideas. We gather information about your event. Next, we
+                      prepare a presentation with the concept of your future
+                      website: showcasing references and features that can be
+                      implemented on the site. We develop the site structure in
+                      the form of a flowchart.
                     </p>
                     
-                    <a href="#" class="btn btn-custom text-decoration-none">Discuss the project with us</a>
+                    <a href="#" class="btn btn-custom bar-button text-decoration-none">Discuss the project with us</a>
                 </div>
 
                 <div class="col-lg-7">
@@ -913,7 +787,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
    
 <!-- =========================Testimonial section ===========================  -->
 <!--  -->
-<section>
+<section class="testimonial-section">
   <div class="container">
   <h2 class="section-title">What Our<br>Clients <span>Say</span></h2>
 
@@ -959,6 +833,27 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 <!-- =========================Testimonial section end ===========================  -->
 
 
+<!-- ======================CTA section ============================= -->
+
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <!-- <div class="cta-overlay"></div> -->
+  
+  <div class="container cta-content">
+      <h2 class="cta-heading">
+          Let’s create a measurable impact on your business.
+      </h2>
+      <a href="#" class="btn-custom">
+          Discuss the project with us
+      </a>
+  </div>
+</section>
+<!-- ======================CTA section END ============================= -->
+
+
+<!-- ====================Footer section ========================== -->
+ <!--  -->
+<!-- ====================Footer section END========================== -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -1763,7 +1658,7 @@ function changeImage(src){
 
   const cards = gsap.utils.toArray(".testimonial-card");
 
-  cards.forEach((card, index) => {
+  cards.forEach((card, index) => {  
       // We only want to animate the cards that are being covered
       if (index !== cards.length - 1) {
           gsap.to(card, {
