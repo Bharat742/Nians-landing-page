@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Funnel+Display:wght@300..800&family=Geist:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style> 
 /* Spacer sections */
 .spacer{
@@ -223,13 +223,11 @@
 
 
 
-/* Bars section style  */
+/* ====================Bars section style============================  */
 
 
-
+#stats-section{background-color: #F6F6F6;}
         /* Spacers to allow scrolling for the demo */
-         
-
         /* Typography Styles */
         .fw-black {
             font-weight: 900;
@@ -395,9 +393,7 @@
 }
 
 /* Text inside the top face */
-.bar-top span {
-transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-align: center;line-height: 1.1;color: #111;
-}
+#stats-section .bar-top span {transform: skewX(6deg) rotate(359deg);font-weight: 700;font-size: 12px;text-align: left;line-height: 1;padding: 3px 12px;color: #111;}
 /*  */
 .bar-front {border: 0px solid #111;border-top: none; 
 }
@@ -406,18 +402,9 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 
 
 /* =================Testimonial section style ========================= */
-.section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 700; 
-            text-transform: uppercase;
-        }
-
-        .section-title span {
-            color: #f7df1e; /* Yellow "SAY" */
-            font-style: italic;
-        }
-
+.testimonial-section{background-color: #002B55;}
+.testimonial-section .section-title { text-align: center; font-size: 32px; font-weight: 700;  text-transform: uppercase; color: #fff;}
+.testimonial-section .section-title span { color: #f7df1e; font-style: italic; font-family: 'Qwigley';}
         /* Container for the cards */
         .stack-container {
             position: relative; 
@@ -437,57 +424,87 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             
             /* Sticky positioning for the stack effect */
-            position: sticky;
-            top: 150px; 
-            transform-origin: center top;
+ position: sticky; top: 150px;  transform-origin: center top;}
+.testimonial-section .profile-section { text-align: center; border-right: 1px solid #e0e0e0; padding-right: 30px; flex: 0 0 250px;}
+.testimonial-section .profile-img { width: 150px; height: 150px; border-radius: 50%;object-fit: cover;margin-bottom: 15px;}
+.testimonial-section .profile-name { font-weight: 700; font-size: 18px;  margin-bottom: 2px; color: #002A54;}
+.testimonial-section .profile-role {font-size: 14px;color: #002A54;}
+.testimonial-section .quote-section { padding-left: 40px; position: relative;}
+.testimonial-section .quote-icon { font-size: 3rem;color: #6366f1; /* Purple quote marks */ line-height: 1; position: absolute; top: -20px; left: 40px;}
+.testimonial-section .quote-text { font-size: 20px; line-height: 1.5; font-weight: 500;margin-top: 70px;color: #002A54;}
+
+/* =================Cta section style ========================= */
+/* CTA Section Styling */
+.cta-section {position: relative; overflow: hidden;text-align: center; }
+        /* Background GIF and Gradient Overlay */
+.cta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./images/cta-gif.gif') center center / cover no-repeat; z-index: 1;}
+        /* Gradient Overlay to match the image's orange-to-yellow feel */
+.cta-overlay {  position: absolute;  top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255, 126, 0, 0.85) 0%, rgba(255, 212, 0, 0.7) 100%); z-index: 2;}
+        /* Content Container */
+.cta-content { position: relative; z-index: 3; max-width: 800px; margin: 0 auto;}
+.cta-heading { font-size: 47px; font-weight: 800; color: #ffffff; margin-bottom: 40px; line-height: 1.1; letter-spacing: -1px;}
+        /* Rounded Pill Button */
+.btn-custom {  background-color: #ffffff;  color: #002A54;   font-weight: 500; padding: 18px 45px; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 1.1rem; border: none;}
+.btn-custom:hover {  transform: translateY(-3px);  box-shadow: 0 10px 20px rgba(0,0,0,0.1); background-color: #f8f9fa;}
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .cta-heading {
+                font-size: 2.2rem;
+            }
         }
 
-        .profile-section {
-            text-align: center;
-            border-right: 1px solid #e0e0e0;
-            padding-right: 30px;
-            flex: 0 0 250px;
-        }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
+/* ======================Footer style ============== */
+.footer-section { padding: 60px 0; color: #333; }
+        
+        /* Titles */
+        .footer-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 25px; color: #212529; }
+        .sub-title { font-size: 1.2rem; font-weight: 600; margin-top: 20px; margin-bottom: 10px; }
+
+        /* Contact Details */
+        .phone-box {
+            display: inline-block;
+            background-color: #e1f1ff;
+            padding: 5px 15px;
+            border-radius: 4px;
+            color: #444;
+            font-weight: 500;
             margin-bottom: 15px;
         }
 
-        .profile-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 2px;
-        }
+        /* Social Icons */
+        .social-links { display: flex; gap: 20px; margin-top: 30px; }
+        .social-links a { color: #333; font-size: 1.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: #007bff; }
 
-        .profile-role {
-            font-size: 0.85rem;
-            color: #777;
+        /* Locations Box */
+        .locations-container {
+            background-color: #f2f2f2;
+            padding: 30px;
+            border-radius: 4px;
         }
+        .location-item { margin-bottom: 20px; }
+        .location-name { font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .location-name i { color: #007bff; }
+        .address-text { font-size: 0.9rem; color: #666; line-height: 1.5; padding-left: 24px; }
 
-        .quote-section {
-            padding-left: 40px;
-            position: relative;
+        /* Partner Ecosystem */
+        .partner-section { margin-top: 40px; }
+        .logo-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
-
-        .quote-icon {
-            font-size: 3rem;
-            color: #6366f1; /* Purple quote marks */
-            line-height: 1;
-            position: absolute;
-            top: -20px;
-            left: 40px;
+        .logo-item {
+            height: 40px;
+            filter: grayscale(0%);
+            opacity: 0.9;
+            transition: opacity 0.3s;
         }
-
-        .quote-text {
-            font-size: 1.4rem;
-            line-height: 1.5;
-            font-weight: 500;
-            margin-top: 70px;
-        }
+        .logo-item:hover { opacity: 1; }
 </style>
 </head>
 
@@ -1013,7 +1030,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
         <div class="container mt-5">
             <div class="row align-items-center">
                 
-                <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
+                <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
                     <div class="position-relative">
                         <!-- <div class="title-bg fw-black">CREATE A WEBSITE</div> -->
                         <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
@@ -1021,7 +1038,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
                     </div>
                     
                     <p>
-                        We analyze your project goals and structure a visual representation that guarantees audience engagement and maximizes conversion rates efficiently.
+                      We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.
                     </p>
                     
                     <a href="#">Discuss the project with us</a>
@@ -1120,6 +1137,90 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 <!-- =========================Testimonial section end ===========================  -->
 
 
+<!-- ======================CTA section ============================= -->
+
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <!-- <div class="cta-overlay"></div> -->
+  
+  <div class="container cta-content">
+      <h2 class="cta-heading">
+          Let’s create a measurable impact on your business.
+      </h2>
+      <a href="#" class="btn-custom">
+          Discuss the project with us
+      </a>
+  </div>
+</section>
+<!-- ======================CTA section END ============================= -->
+
+
+<!-- ====================Footer section ========================== -->
+ <!--  -->
+ <footer class="footer-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-3 mb-5 mb-lg-0">
+              <h4 class="footer-title">Contact Details</h4>
+              
+              <div class="sub-title">Sales Queries</div>
+              <div class="phone-box">9899920599</div>
+
+              <div class="sub-title">HR Queries</div>
+              <div class="phone-box">9899885476</div>
+
+              <h4 class="footer-title mt-5">Stay Connected</h4>
+              <div class="social-links">
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+          </div>
+
+          <div class="col-lg-9">
+              <h4 class="footer-title">Our Locations</h4>
+              
+              <div class="locations-container">
+                  <div class="row">
+                      <div class="col-md-4 location-item">
+                          <div class="location-name"><i class="fa-solid fa-location-dot"></i> Gurgaon</div>
+                          <div class="address-text">
+                              1101, 11th Floor, Welldone Techpark, Sohna road, Sector 48, Gurgaon, Haryana, 122018
+                          </div>
+                      </div>
+                      <div class="col-md-4 location-item">
+                          <div class="location-name"><i class="fa-solid fa-location-dot"></i> Mumbai</div>
+                          <div class="address-text">
+                              Technopolis Knowledge Park, 5th floor, Hanuman Nagar, Andheri East, Mumbai, Maharashtra, 400093
+                          </div>
+                      </div>
+                      <div class="col-md-4 location-item">
+                          <div class="location-name"><i class="fa-solid fa-location-dot"></i> Bengaluru</div>
+                          <div class="address-text">
+                              Prestige Atlanta, 80 Feet Rd, Koramangala 1A Block, Bengaluru, KA 560034
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="partner-section">
+                  <h4 class="footer-title">Partner Ecosystem</h4>
+                  <div class="logo-strip">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" class="logo-item">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/HubSpot_Logo.svg" alt="HubSpot" class="logo-item">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" class="logo-item">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google" class="logo-item">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Drupal_logo.svg" alt="Drupal" class="logo-item">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" alt="Salesforce" class="logo-item">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Adobe_Corporate_logo.svg" alt="Adobe" class="logo-item">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- ====================Footer section END========================== -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -1897,6 +1998,10 @@ function changeImage(src){
 </script> -->
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59693895cc9a6c7ef6fab9ba8609efffc862a980
 
 
 <!-- Testimonial section script  -->
@@ -1905,7 +2010,7 @@ function changeImage(src){
 
   const cards = gsap.utils.toArray(".testimonial-card");
 
-  cards.forEach((card, index) => {
+  cards.forEach((card, index) => {  
       // We only want to animate the cards that are being covered
       if (index !== cards.length - 1) {
           gsap.to(card, {
