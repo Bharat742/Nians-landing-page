@@ -489,8 +489,319 @@ section{padding: 60px 0px;}
 .brand_logo .social_service.social_service_right .social_service_text:nth-child(1){position: absolute; top: 40px; left: -50px;}
 .brand_logo .social_service.social_service_right .social_service_text:nth-child(2){position: absolute; bottom: 10px; left: 20px;}
 .brand_logo .social_service.social_service_right .social_service_text:nth-child(3){position: absolute; bottom: 40px; left: 220px;}
+:root {
+  color-scheme: light dark;
+  /* keep this tighter + capped (matches the “small gap” feel) */
+  --svc-gap: clamp(12px, 1.2vw, 18px);
+  --svc-gap-max: 18px;
+  --svc-radius: 26px;
+  --svc-pad: clamp(18px, 2.2vw, 34px);
+  --svc-h: clamp(560px, 76vh, 760px);
+  --svc-top: clamp(14px, 2vh, 24px);
+  --svc-enter: calc(var(--svc-h) + clamp(120px, 18vh, 240px));
+  /* card surface tweaks */
+  --svc-card-odd: color-mix(in srgb, Canvas 92%, CanvasText 8%);
+  --svc-card-even: color-mix(in srgb, Canvas 88%, CanvasText 12%);
+}
+.svc__mediaOverlay h2{color: #000;}
+.svc__numberWrap {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 230px;
+  height: 230px;
+  border-radius: 12px;
+  background: #FFA106;
+  transition: background 0.4s ease;
+}
+.svc__kicker {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}  
+/* Numbers outside box */
+.svc__numberList {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;height: 280px;justify-content: center;
+}
 
+.svc__numberList .svc__number {
+	font-size: 128px;
+	opacity: 1 !important;
+	font-weight: 700;color: #002A54BA;width: 220px;
+    text-align: center;
+}
 
+.svc__number {
+	font-size: 128px;
+    font-weight: 800;
+    color: #fff;
+    font-family: 'poppins', sans-serif;
+}
+.svc__stage {
+	position: relative;
+	height: 600px;
+	perspective: 1200px;
+}
+
+.svc__card {
+	position: absolute;
+	inset: 0;
+	border-radius: 20px;
+	overflow: hidden;
+	/* box-shadow: 0 40px 80px rgba(0,0,0,0.35); */
+	transform-origin: center top;
+	will-change: transform;
+}
+
+.svc__card img {
+	width: 100%; 
+    object-fit: none;
+    display: flex;
+    align-items: center;
+    object-position: top;
+}
+.svc__numberBox {
+	width: 230px;
+	height: 230px;
+	background:#FFA106;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 128px;
+	font-weight: 700;
+	color: #fff;
+	transition: all 0.4s ease;
+}
+.svc__wrap {
+  /* cap overall width so columns stay “tight” */
+  margin: 0 auto;
+  display: grid;
+  /* let columns shrink more before stacking to prevent overlap */
+  grid-template-columns: minmax(360px, 0fr) minmax(360px, 0.95fr);
+  column-gap: min(var(--svc-gap), var(--svc-gap-max));
+  row-gap: var(--svc-gap);
+  align-items: start;
+}
+.our_process{font-size: 36px;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    color: #000;margin-top: -80px;}
+@media (max-width: 860px) {
+  .svc {
+    /* once stacked: keep both blocks same width + centered, and avoid sticky weirdness */
+  }
+  .svc__wrap {
+    max-width: 760px;
+    grid-template-columns: 1fr;
+    row-gap: clamp(18px, 3vw, 28px);
+  }
+  .svc__media, .svc__stage {
+    position: relative;
+    top: auto;
+  }
+  .svc__right {
+    /* ensure right side doesn’t “drift” wider/narrower than media when stacked */
+    width: 100%;
+  }
+}
+.svc__media {
+  position: sticky;
+  top: var(--svc-top);
+  height: var(--svc-h);
+}
+.svc__mediaInner {
+  height: 100%;
+  border-radius: var(--svc-radius);
+  overflow: hidden;
+  position: relative;
+  background: CanvasText;
+}
+.svc__images {
+  position: absolute;
+  inset: 0;
+}
+.svc__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 180ms linear;
+}
+.svc__img.is-active {
+  opacity: 1;
+}
+.svc__mediaOverlay {
+  position: absolute;
+  inset: 0;
+  padding: var(--svc-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  pointer-events: none;
+}
+.svc__kicker {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  font-size: clamp(56px, 6.6vw, 92px);
+}
+.svc__progress {
+  position: absolute;
+  left: var(--svc-pad);
+  right: var(--svc-pad);
+  bottom: calc(var(--svc-pad) * 0.65);
+  pointer-events: none;
+}
+.svc__progressTrack {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+}
+.svc__progressFill {
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: rgba(255, 255, 255, 0.85);
+}
+.svc__right {
+  position: relative;
+}
+.svc__stage {
+  position: sticky;
+  top: var(--svc-top);
+  height: var(--svc-h);
+  border-radius: var(--svc-radius);
+}
+.svc__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  /* padding: clamp(22px, 2.6vw, 44px); */
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center; */
+  /* center the content block vertically */
+  align-items: center;
+  text-align: left;
+  gap: clamp(16px, 2vw, 28px);
+  transform: translate(-50%, -50%) translate3d(0, var(--card-y, 0px), 0) scale(var(--card-s, 1));
+  transform-origin: 50% 65%;
+  will-change: transform;
+  border-radius: 0;
+  /* default (dark scheme or system Canvas) */
+  background: #fff;
+  color: CanvasText;
+  /* odd/even surface variation */
+  /* if user is in LIGHT scheme, flip to light surfaces + dark text */
+}
+.svc__card:nth-child(even) {
+  background: #fff;
+}
+@media (prefers-color-scheme: light) {
+  .svc__card {
+    background: color-mix(in srgb, Canvas 96%, CanvasText 4%);
+    color: CanvasText;
+  }
+  .svc__card:nth-child(even) {
+    background: #fff;
+  }
+}
+.svc__num {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: clamp(84px, 7vw, 120px);
+  line-height: 1;
+} 
+.svc__cardText h3 {
+  margin: 0 0 12px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(22px, 2.3vw, 34px);
+  text-transform: inherit;color:#000;
+}
+.svc__cardText p {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.85;color:#000;
+}
+.svc__plus {
+  position: absolute;
+  bottom: clamp(28px, 4vh, 44px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: currentColor;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+.svc__plus:hover {
+  background: currentColor;
+  color: Canvas;
+}
+.svc__triggers {
+  position: relative;
+}
+.svc__trigger {
+  height: 100vh;
+}
+.case_study_box1{background: #002A54;}
+.case_study_box1 img{margin-left: auto; display: flex;}
+.case_study_box2{background: #1DB7D1;}
+.case_study_box3{background: #FFA106;}
+.case-study .case_study_box{color: #fff;text-align: center;padding: 30px 0px 0px;height: 100%;}
+.case-study .case_study_box h1{font-size: 36px;font-weight: 800;font-family: 'Poppins', sans-serif;}
+.case-study .case_study_box p, .case-study .case_study_box ul li{font-size: 14px;font-weight: 300;font-family: 'Poppins', sans-serif;}
+.case-study .case_study_box ul{display: flex;padding-left: 0px; justify-content: space-between;}
+.list_pointers span{position: relative;}
+.list_pointers{display: flex;gap: 20px;justify-content: center;margin-bottom: 60px;}
+.list_pointers span::before{content:"";position: absolute;top:0;bottom:0;left:-12px; margin:auto;height: 5px;width: 5px;background: #fff;border-radius: 50%;}
+.list_pointers span:first-child::before{content: unset;}
+.testimonial {background: #002A54;}
+.testimonial .section-title{color: #fff;font-size: 60px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-family: "Funnel Display", sans-serif;
+    letter-spacing: -.04em;
+    text-align: center;}
+.testimonial .section-title span{font-family: "Covered By Your Grace", sans-serif;
+    font-size: 2em;
+    font-weight: 400;
+    color: #ffd900;
+    transform: skew(-8deg, -4deg);
+    line-height: 0.9;
+    margin-top: -20px;
+    text-transform: capitalize;
+    position: absolute;
+    color: #FFA106;
+    text-transform: lowercase;margin-top: -47px;}
+
+.testimonial{background: #002A54;}
+.testimonial h2{color: #fff;}
+.testimonial .yellow_text{position: absolute;color: #FFA106;text-transform: lowercase;}
+.testimonial h3{font-size: 26px;font-weight: 500;font-family: 'Poppins', sans-serif;color: #002A54;}
+.testimonial h6{margin-bottom: 0;font-size: 16px;font-weight: 400;font-family: 'Poppins', sans-serif;color: #002A54;}
+.testimonial p{font-size: 20px;font-weight: 400;font-family: 'Poppins', sans-serif;color: #002A54;}
+.testimonial p b{font-size: 22px;font-weight: 700;font-family: 'Poppins', sans-serif;color: #002A54; }
+.testimonial .d-flex{gap: 20px;margin-bottom: 30px;}
 
 
 @media (max-width: 479px){
