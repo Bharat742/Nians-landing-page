@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Funnel+Display:wght@300..800&family=Geist:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Funnel+Display:wght@300..800&family=Geist:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <style> 
 /* Spacer sections */
@@ -234,13 +234,21 @@
             font-weight: 900;
         }
         
-        .title-main {
-            font-size: 3.5rem;
-            color: #1a1a1a;
-            letter-spacing: -1px;
+        .title-main { 
             position: relative;
             z-index: 2;
+            font-size: 36px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            color: #000;
+            text-transform: uppercase;
         }
+       .graph_bar p, .graph_bar a  {font-size: 16px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    color: #000;}
+    .graph_bar a{color: #fff;background: #FFA106;text-decoration: none;padding: 15px 30px;border-radius: 30px;margin-top: 25px; display: inline-block;}
+    .graph_bar{ background: #F6F6F6;}
 
         .title-bg {
             font-size: 4rem;
@@ -291,7 +299,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 50px;
+            padding-bottom: 0px;
             margin-top: 50px;
         }
 
@@ -351,9 +359,9 @@
         .bar-container.bar-3 .bar-top { background: linear-gradient(to bottom right, #aedb4a, #86ba31);
         } */
         /* Bar 1: Orange */
-        .bar-container.bar-1 .bar-front { background-color: #ff8400; }
-        .bar-container.bar-1 .bar-right { background-color: #cc6a00; }
-        .bar-container.bar-1 .bar-top { background-color: #ffb159; }
+        .bar-container.bar-1 .bar-front {background: linear-gradient(12.2deg, #C63D29 24.59%, #D88A21 82.78%);}
+        .bar-container.bar-1 .bar-right {background: linear-gradient(14.62deg, #C63D29 0.26%, #A02020 96.97%);}
+        .bar-container.bar-1 .bar-top { background: linear-gradient(111.36deg, #D88A21 37.56%, #C63D29 75.52%); }
 
         /* Bar 2: Yellow */
         .bar-container.bar-2 .bar-front { background-color: #ffcc00; }
@@ -374,7 +382,7 @@
             .bar-top span { font-size: 11px; }
             .title-bg { font-size: 3rem; }
         }
-        .bar-top {bottom: 100%;left: 0;width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg);border: 2px solid #111;z-index: 3;display: flex;align-items: center;justify-content: center;
+        .bar-top {bottom: 100%;left: 0;width: 100%;height: 60px; /* Depth */transform-origin: left bottom;transform: skewX(-45deg);border: 0px solid #111;z-index: 3;display: flex;align-items: center;justify-content: center;
 }
 
 /* Text inside the top face */
@@ -382,9 +390,9 @@
 transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-align: center;line-height: 1.1;color: #111;
 }
 /*  */
-.bar-front {border: 2px solid #111;border-top: none; 
+.bar-front {border: 0px solid #111;border-top: none; 
 }
-.bar-right {transform-origin: left bottom;border-right: 2px solid #111;border-bottom: 2px solid #111;
+.bar-right {transform-origin: left bottom;border-right: 0px solid #111;border-bottom: 0px solid #111;
 }
 
 
@@ -415,7 +423,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
             padding: 40px;
             margin-bottom: 40px;
             min-height: 350px;
-            display: flex;
+            /* display: flex; */
             align-items: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             
@@ -524,7 +532,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 										<option value="3">Three</option>
 									</select>
 								</div>
-								<div class="col-md-6 p-2">
+								<!-- <div class="col-md-6 p-2">
 									<select class="form-select" aria-label="Default select example">
 										<option selected>Min Budget</option>
 										<option value="1">One</option>
@@ -539,7 +547,7 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 										<option value="2">Two</option>
 										<option value="3">Three</option>
 									</select>
-								</div>
+								</div> -->
 								<div class="col-md-12 p-2">
 									<textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
 								</div>
@@ -718,13 +726,13 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
         </div>
     </section>
 
-<section class="service_list">
+<!-- <section class="service_list">
   <ul>
     <li><span class="color_square color_square1"><span class="dot-target"></span></span> Technology</li>
     <li><span class="color_square color_square2"><span class="dot-target"></span></span> Marketing</li>
     <li><span class="color_square color_square3"><span class="dot-target"></span></span> Design</li>
   </ul>
-</section>
+</section> -->
 
   <div class="main-wrapper">
 
@@ -861,10 +869,141 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
 </section>
 
 
+<section class="case-study">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 p-1 ps-0">
+        <div class="case_study_box case_study_box1">
+          <h1>OYO</h1>
+          <p>Innovated Community Empowerment Website</p>
+          <p class="list_pointers">
+            <span>UI/UX</span>
+            <span>Web</span>
+            <span>Mobile</span>
+          </p> 
+          <img src="images/oyo-img.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 p-1">
+        <div class="case_study_box case_study_box2">
+          <h1>BAIDYANATH</h1>
+          <p>Innovated Community Empowerment Website</p>
+          <p class="list_pointers">
+            <span>UI/UX</span>
+            <span>Web</span>
+            <span>Mobile</span>
+          </p>
+          <img src="images/baidynath.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 p-1 pe-0">
+        <div class="case_study_box case_study_box3">
+          <h1>ACE CLOUD</h1>
+          <p>Innovated Community Empowerment Website</p>
+          <p class="list_pointers">
+            <span>UI/UX</span>
+            <span>Web</span>
+            <span>Mobile</span>
+          </p>
+          <img src="images/ace-cloud.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- UPDATED HTML (lorem + button centered at bottom) -->
+<section class="svc" id="services-scroll">
+	<div class="svc__wrap">
+		<!-- LEFT: sticky media -->
+		<aside class="svc__media" aria-label="Services media">
+        <h1 class="our_process">Our Process</h1>
+			<div class="svc__mediaInner"> 
+				<div class="svc__mediaOverlay">
+					<!-- <h2 class="svc__kicker"><span class="svc__number">01</span></h2>
+					<div class="svc__mediaRule" aria-hidden="true"></div> -->
+          <h2 class="svc__kicker">
+
+            <!-- Active Number Box -->
+            <span class="svc__numberBox">
+              <span class="svc__number svc__number--current">1</span>
+            </span>
+
+            <!-- Numbers List (outside box) -->
+            <span class="svc__numberList">
+              <span class="svc__number svc__number--next">2</span>
+            </span>
+
+          </h2>
+				</div>
+
+				<div class="svc__progress" aria-hidden="true">
+					<div class="svc__progressTrack">
+						<div class="svc__progressFill"></div>
+					</div>
+				</div>
+			</div>
+		</aside>
+
+		<!-- RIGHT: sticky stage -->
+		<div class="svc__right">
+			<div class="svc__stage" aria-label="Service panels">
+				<article class="svc__card svc__card--light" data-card="0">
+					<!-- <div class="svc__num">01</div> -->
+					<div class="svc__cardText">
+						<h3>Strategic sessions</h3>
+						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+            <img src="images/process.gif" alt="img" class="img-fluid">
+					</div> 
+				</article>
+
+				<article class="svc__card svc__card--dark" data-card="1">
+					<!-- <div class="svc__num">02</div> -->
+					<div class="svc__cardText">
+						<h3>Strategic sessions</h3>
+						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+            <img src="images/process.gif" alt="img" class="img-fluid">
+					</div> 
+				</article>
+
+				<article class="svc__card svc__card--light" data-card="2">
+					<!-- <div class="svc__num">03</div> -->
+					<div class="svc__cardText">
+						<h3>Strategic sessions</h3>
+						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+            <img src="images/process.gif" alt="img" class="img-fluid">
+					</div> 
+				</article>
+
+				<article class="svc__card svc__card--dark" data-card="3">
+					<!-- <div class="svc__num">04</div> -->
+					<div class="svc__cardText">
+						<h3>Strategic sessions</h3>
+						<p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+            <img src="images/process.gif" alt="img" class="img-fluid">
+					</div> 
+				</article>
+			</div>
+
+			<!-- scroll runway -->
+			<div class="svc__triggers" aria-hidden="true">
+				<div class="svc__trigger"></div>
+				<div class="svc__trigger"></div>
+				<div class="svc__trigger"></div>
+				<div class="svc__trigger"></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
 
 <!-- Statices bar section -->
-    <section id="stats-section" class="py-5 overflow-hidden">
-        <div class="container my-5">
+    <section id="stats-section " class="pt-5 pb-0 overflow-hidden graph_bar">
+        <div class="container mt-5">
             <div class="row align-items-center">
                 
                 <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
@@ -874,11 +1013,11 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
                         <!-- <div class="cursive-title">sell out<br>your event</div> -->
                     </div>
                     
-                    <p class="mb-4 text-secondary fw-bold" style="max-width: 400px;">
+                    <p>
                         We analyze your project goals and structure a visual representation that guarantees audience engagement and maximizes conversion rates efficiently.
                     </p>
                     
-                    <a href="#" class="btn btn-custom text-decoration-none">Discuss the project with us</a>
+                    <a href="#">Discuss the project with us</a>
                 </div>
 
                 <div class="col-lg-7">
@@ -913,45 +1052,60 @@ transform: skewX(48deg) rotate(316deg);font-weight: 900;font-size: 12px;text-ali
    
 <!-- =========================Testimonial section ===========================  -->
 <!--  -->
-<section>
+<section class="testimonial">
   <div class="container">
   <h2 class="section-title">What Our<br>Clients <span>Say</span></h2>
 
   <div class="stack-container" id="stack-wrapper">
-      <div class="testimonial-card">
-          <div class="profile-section">
-              <img src="https://i.pravatar.cc/150?u=evhen" alt="Evhen" class="profile-img">
-              <div class="profile-name">Evhen Kryvin</div>
-              <div class="profile-role">CEO of Svitlo Concert</div>
+      <div class="testimonial-card"> 
+        <div class="d-flex align-items-center">
+          <img src="images/client_img.png" alt="img" class="img-fluid">
+          <div>
+            <h3>Munmun Pal</h3>
+            <h6>Additional Divisional Manager</h6>
           </div>
-          <div class="quote-section">
-              <div class="quote-icon">“</div>
-              <p class="quote-text">A very useful service! It provides a systematic and comprehensive understanding of the market and company situation! It allows for proper planning and decision-making! Highly recommend!</p>
-          </div>
+        </div>
+        <div>
+          <p><b>Impressionable Website Delivery</b></p>
+          <p>It was a great experience working with Nians (formerly Technians). Aesthetic and systematic website design delivering to client requirements was professionally done. The team was agile, responsive and responded well to our delivery needs.</p>
+        </div>
+        <div class="text-end">
+          <img src="images/client_logo.png" alt="img" class="img-fluid">
+        </div> 
       </div>
 
-      <div class="testimonial-card">
-          <div class="profile-section">
-              <img src="https://i.pravatar.cc/150?u=kirill" alt="Kirill" class="profile-img">
-              <div class="profile-name">Kirill Trosko</div>
-              <div class="profile-role">Producer SkyTalks</div>
+      <div class="testimonial-card"> 
+        <div class="d-flex align-items-center">
+          <img src="images/client_img.png" alt="img" class="img-fluid">
+          <div>
+            <h3>Munmun Pal</h3>
+            <h6>Additional Divisional Manager</h6>
           </div>
-          <div class="quote-section">
-              <div class="quote-icon">“</div>
-              <p class="quote-text">This service is a real game-changer! It gives you a clear and organized view of the market and your company's standing. It's perfect for making smart plans and decisions. I can't recommend it enough!</p>
-          </div>
+        </div>
+        <div>
+          <p><b>Impressionable Website Delivery</b></p>
+          <p>It was a great experience working with Nians (formerly Technians). Aesthetic and systematic website design delivering to client requirements was professionally done. The team was agile, responsive and responded well to our delivery needs.</p>
+        </div>
+        <div class="text-end">
+          <img src="images/client_logo.png" alt="img" class="img-fluid">
+        </div> 
       </div>
 
-      <div class="testimonial-card">
-          <div class="profile-section">
-              <img src="https://i.pravatar.cc/150?u=mykhailo" alt="Mykhailo" class="profile-img">
-              <div class="profile-name">Mykhailo Vasyanovych</div>
-              <div class="profile-role">COO of Masters League</div>
+      <div class="testimonial-card"> 
+        <div class="d-flex align-items-center">
+          <img src="images/client_img.png" alt="img" class="img-fluid">
+          <div>
+            <h3>Munmun Pal</h3>
+            <h6>Additional Divisional Manager</h6>
           </div>
-          <div class="quote-section">
-              <div class="quote-icon">“</div>
-              <p class="quote-text">Thank you, guys, for the quick and high-quality execution of the landing page project. We spent minimal time on detailing and discussion. Highly recommend collaborating.</p>
-          </div>
+        </div>
+        <div>
+          <p><b>Impressionable Website Delivery</b></p>
+          <p>It was a great experience working with Nians (formerly Technians). Aesthetic and systematic website design delivering to client requirements was professionally done. The team was agile, responsive and responded well to our delivery needs.</p>
+        </div>
+        <div class="text-end">
+          <img src="images/client_logo.png" alt="img" class="img-fluid">
+        </div> 
       </div>
   </div>
 </div>
@@ -1780,6 +1934,153 @@ function changeImage(src){
           });
       }
   });
+</script>
+
+<script>
+  /* COMPLETE JS — sticky stage + transform-driven stacking + dynamic numbering */
+(function () {
+	"use strict";
+
+	if (!window.gsap || !window.ScrollTrigger) return;
+	gsap.registerPlugin(ScrollTrigger);
+
+	var root = document.querySelector("#services-scroll");
+	if (!root) return;
+
+	var prefersReduced = !!(
+		window.matchMedia &&
+		window.matchMedia("(prefers-reduced-motion: reduce)").matches
+	);
+
+	var stage = root.querySelector(".svc__stage");
+	var cards = Array.prototype.slice.call(root.querySelectorAll(".svc__card"));
+	var triggers = Array.prototype.slice.call(
+		root.querySelectorAll(".svc__trigger")
+	);
+	var progressFill = root.querySelector(".svc__progressFill");
+	// var numberEl = root.querySelector(".svc__number");
+  var currentNumberEl = root.querySelector(".svc__number--current");
+var nextNumberEl = root.querySelector(".svc__number--next");
+
+	if (!stage || !cards.length || triggers.length !== cards.length) return;
+
+	// read --svc-enter from CSS (fallback to stage height + 200)
+	var enterY = 0;
+	try {
+		var v = window
+			.getComputedStyle(document.documentElement)
+			.getPropertyValue("--svc-enter");
+		var n = parseFloat(v);
+		enterY = isFinite(n) && n > 0 ? n : 0;
+	} catch (e) {}
+	if (!enterY) enterY = (stage.offsetHeight || 600) + 200;
+
+	// z-index: later cards above earlier
+	for (var z = 0; z < cards.length; z++) {
+		cards[z].style.zIndex = String(z + 1);
+	}
+
+	// initial transforms
+	gsap.set(cards[0], { y: 0, scale: 1 });
+	for (var i = 1; i < cards.length; i++) {
+		gsap.set(cards[i], { y: enterY, scale: 1 });
+	}
+
+	gsap.set(progressFill, { scaleX: 0, transformOrigin: "0% 50%" });
+
+	// 🔢 Dynamic Number Update
+	// function setActiveNumber(i) {
+	// 	if (!numberEl) return;
+	// 	var num = i + 1;
+	// 	numberEl.textContent = num < 10 ? "" + num : num;
+	// }
+
+  function setActiveNumber(i) {
+
+	if (!currentNumberEl || !nextNumberEl) return;
+
+	var current = i + 1;
+	var next = i + 2;
+
+	currentNumberEl.textContent = current;
+
+	if (next <= cards.length) {
+		nextNumberEl.textContent = next;
+		nextNumberEl.style.opacity = "0.25";
+	} else {
+		nextNumberEl.textContent = "";
+	}
+
+}
+
+	// progress across whole trigger runway
+	ScrollTrigger.create({
+		trigger: root.querySelector(".svc__triggers"),
+		start: "top top",
+		end: "bottom bottom",
+		onUpdate: function (st) {
+			gsap.to(progressFill, {
+				scaleX: st.progress,
+				duration: prefersReduced ? 0 : 0.08,
+				overwrite: true,
+				ease: "none"
+			});
+		}
+	});
+
+	// transitions: next card moves from below; previous shrinks
+	for (var j = 0; j < cards.length - 1; j++) {
+		(function (prevIdx, nextIdx) {
+			var prev = cards[prevIdx];
+			var next = cards[nextIdx];
+			var trig = triggers[nextIdx];
+
+			var tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: trig,
+					start: "top bottom",
+					end: "top top+=24",
+					scrub: true
+				}
+			});
+
+			// next comes into place
+			tl.to(next, { y: 0, ease: "none" }, 0);
+
+			// prev shrinks slightly
+			tl.to(
+				prev,
+				{
+					scale: prefersReduced ? 1 : 0.75,
+					y: prefersReduced ? 0 : -22,
+					ease: "none"
+				},
+				0
+			);
+		})(j, j + 1);
+	}
+
+	// 🔢 Number change based on active card
+	for (var t = 0; t < cards.length; t++) {
+		(function (idx) {
+			ScrollTrigger.create({
+				trigger: triggers[idx],
+				start: "top center",
+				end: "bottom center",
+				onEnter: function () {
+					setActiveNumber(idx);
+				},
+				onEnterBack: function () {
+					setActiveNumber(idx);
+				}
+			});
+		})(t);
+	}
+
+	// initial number
+	setActiveNumber(0);
+
+})();
 </script>
 </body>
 
