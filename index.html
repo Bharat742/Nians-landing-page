@@ -298,7 +298,7 @@
 
         /* --- 3D Bar Chart Styles --- */
         .chart-wrapper {
-            height: 550px;
+            height: 500px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -425,7 +425,8 @@
             min-height: 350px;
             /* display: flex; */
             align-items: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);position: sticky;
+  top: 150px;
             
             /* Sticky positioning for the stack effect */
  position: sticky; top: 150px;  transform-origin: center top;}
@@ -445,10 +446,10 @@
         /* Gradient Overlay to match the image's orange-to-yellow feel */
 .cta-overlay {  position: absolute;  top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255, 126, 0, 0.85) 0%, rgba(255, 212, 0, 0.7) 100%); z-index: 2;}
         /* Content Container */
-.cta-content { position: relative; z-index: 3; max-width: 800px; margin: 0 auto;}
-.cta-heading { font-size: 47px; font-weight: 800; color: #ffffff; margin-bottom: 40px; line-height: 1.1; letter-spacing: -1px;}
+.cta-content { position: relative; z-index: 3; margin: 0 auto;}
+.cta-heading { font-size: 47px; font-weight: 700; color: #ffffff; margin-bottom: 40px; line-height: 1.1; letter-spacing: -1px;}
         /* Rounded Pill Button */
-.btn-custom {  background-color: #ffffff;  color: #002A54;   font-weight: 500; padding: 18px 45px; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 1.1rem; border: none;}
+.btn-custom {  background-color: #ffffff;  color: #002A54;   font-weight: 500; padding: 15px 20px; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 1.1rem; border: none;font-size: 16px;font-weight: 400;font-family: 'Nunito', sans-serif;text-transform: inherit;letter-spacing: 0px;box-shadow: none;}
 .btn-custom:hover {  transform: translateY(-3px);  box-shadow: 0 10px 20px rgba(0,0,0,0.1); background-color: #f8f9fa;}
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -885,7 +886,14 @@
         <h1>then integrate the site</h1>
         <p>into your sales system</p>
       </div>
-      <div class="brand_logo">
+      <div class="brand_logo" id="brand_logo"> 
+   <dotlottie-wc 
+                      src="images/integrate.lottie"  id="brandLogoLottie"
+                      speed="1"  
+                      loop 
+                      autoplay
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
         <div class="col-md-11 mx-auto">
           <div class="row">
             <div class="col-md-4">
@@ -980,19 +988,32 @@
               <h1 class="our_process">Our Process</h1>
             <div class="svc__mediaInner"> 
               <div class="svc__mediaOverlay"> 
-                <h2 class="svc__kicker">
+                <!-- <h2 class="svc__kicker">
 
                   <!-- Active Number Box -->
-                  <span class="svc__numberBox">
+                  <!-- <span class="svc__numberBox">
                     <span class="svc__number svc__number--current">1</span>
-                  </span>
+                  </span> -->
+                 <!--  <div class="svc__numberBox">
+  <div class="svc__number svc__number--current">1</div>
+  <div class="svc__number svc__number--next">2</div>
+</div>
 
                   <!-- Numbers List (outside box) -->
-                  <span class="svc__numberList">
+                  <!-- <span class="svc__numberList">
                     <span class="svc__number svc__number--next">2</span>
-                  </span>
+                  </span> -->
 
-                </h2>
+                <!-- </h2> -->
+                 <h2 class="svc__kicker">
+
+  <div class="svc__numberBox">
+    <div class="svc__number svc__number--current">1</div>
+  </div>
+
+  <div class="svc__number svc__number--next">2</div>
+
+</h2>
               </div>
 
               <div class="svc__progress" aria-hidden="true">
@@ -1008,33 +1029,58 @@
             <div class="svc__stage" aria-label="Service panels">
               <article class="svc__card svc__card--light" data-card="0"> 
                 <div class="svc__cardText">
-                  <h3>Strategic sessions</h3>
+                  <h3>Strategic sessions 11</h3>
                   <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-                  <img src="images/process.gif" alt="img" class="img-fluid">
+                  <!-- <img src="images/process.gif" alt="img" class="img-fluid"> -->
+                  <dotlottie-wc 
+                      src="images/20211129-042402lf30_editor_6n0omtwy.lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                 </div> 
               </article>
 
               <article class="svc__card svc__card--dark" data-card="1"> 
                 <div class="svc__cardText">
-                  <h3>Strategic sessions</h3>
+                  <h3>Strategic sessions 22</h3>
                   <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-                  <img src="images/process.gif" alt="img" class="img-fluid">
+                  <dotlottie-wc 
+                      src="images/20210917-072012lf30_editor_6hszztkk.lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                 </div> 
               </article>
 
               <article class="svc__card svc__card--light" data-card="2"> 
                 <div class="svc__cardText">
-                  <h3>Strategic sessions</h3>
+                  <h3>Strategic sessions 33</h3>
                   <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-                  <img src="images/process.gif" alt="img" class="img-fluid">
+                  <dotlottie-wc 
+                      src="images/20211216-135041lf30_editor_vu9u2tko.lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                 </div> 
               </article>
 
               <article class="svc__card svc__card--dark" data-card="3"> 
                 <div class="svc__cardText">
-                  <h3>Strategic sessions</h3>
+                  <h3>Strategic sessions 44</h3>
                   <p>We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
-                  <img src="images/process.gif" alt="img" class="img-fluid">
+                  <dotlottie-wc 
+                      src="images/20230313-123604lf30_editor_mdusfuwr.lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                 </div> 
               </article>
             </div>
@@ -1297,6 +1343,9 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js" type="module"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 
 
 
@@ -1500,8 +1549,9 @@ function changeImage(src) {
       // We only want to animate the cards that are being covered
       if (index !== cards.length - 1) {
           gsap.to(card, {
-              scale: 0.9,      // Slightly shrink
-              opacity: 0.5,    // Fade out as it's covered
+              scale: 0.7,      // Slightly shrink
+              opacity: 0,  
+              ease: "none",  // Fade out as it's covered
               scrollTrigger: {
                   trigger: card,
                   start: "top 150px", // Starts when card hits the sticky top
@@ -1574,22 +1624,85 @@ var nextNumberEl = root.querySelector(".svc__number--next");
 	// 	numberEl.textContent = num < 10 ? "" + num : num;
 	// }
 
-  function setActiveNumber(i) {
+//   function setActiveNumber(i) {
 
-	if (!currentNumberEl || !nextNumberEl) return;
+// 	if (!currentNumberEl || !nextNumberEl) return;
 
-	var current = i + 1;
-	var next = i + 2;
+// 	var current = i + 1;
+// 	var next = i + 2;
 
-	currentNumberEl.textContent = current;
+// 	currentNumberEl.textContent = current;
 
-	if (next <= cards.length) {
-		nextNumberEl.textContent = next;
-		nextNumberEl.style.opacity = "0.25";
-	} else {
-		nextNumberEl.textContent = "";
-	}
+// 	if (next <= cards.length) {
+// 		nextNumberEl.textContent = next;
+// 		nextNumberEl.style.opacity = "0.25";
+// 	} else {
+// 		nextNumberEl.textContent = "";
+// 	}
 
+// }
+var activeIndex = 0;
+var numberTL;
+
+function setActiveNumber(i) {
+
+  if (i === activeIndex) return;
+
+  var direction = i > activeIndex ? 1 : -1;
+  activeIndex = i;
+
+  var kicker = root.querySelector(".svc__kicker");
+  var box = kicker.querySelector(".svc__numberBox");
+
+  var currentEl = box.querySelector(".svc__number--current");
+  var nextEl = kicker.querySelector(".svc__number--next");
+
+  if (!currentEl || !nextEl) return;
+  if (numberTL) numberTL.kill();
+
+  var total = cards.length;
+  var nextValue = (i + 2 <= total) ? i + 2 : "";
+
+  var moveY = box.offsetHeight;
+
+  numberTL = gsap.timeline({
+    onComplete: function () {
+
+      // update numbers
+      currentEl.textContent = i + 1;
+      nextEl.textContent = nextValue;
+
+      // reset transform only
+      gsap.set(currentEl, { y: 0 });
+      gsap.set(nextEl, { y: 0 });
+
+      // reset colors properly
+      gsap.set(currentEl, { color: "#ffffff" });
+      gsap.set(nextEl, { color: "#002A54BA" });
+    }
+  });
+
+  numberTL
+    // current slides out
+    .to(currentEl, {
+      y: direction === 1 ? -moveY : moveY,
+      duration: 0.6,
+      ease: "power3.inOut"
+    }, 0)
+
+    // next slides into box
+    .to(nextEl, {
+      y: direction === 1 ? -moveY : moveY,
+      duration: 0.6,
+      ease: "power3.inOut"
+    }, 0)
+
+    // 🔥 color animate while entering
+    .to(nextEl, {
+      color: "#ffffff",
+      duration: 0.6,
+      ease: "power2.out"
+    }, 0);
 }
 
 	// progress across whole trigger runway
@@ -1627,15 +1740,23 @@ var nextNumberEl = root.querySelector(".svc__number--next");
 			tl.to(next, { y: 0, ease: "none" }, 0);
 
 			// prev shrinks slightly
-			tl.to(
-				prev,
-				{
-					scale: prefersReduced ? 1 : 0.75,
-					y: prefersReduced ? 0 : -22,
-					ease: "none"
-				},
-				0
-			);
+			// tl.to(
+			// 	prev,
+			// 	{
+			// 		scale: prefersReduced ? 1 : 0.75,
+			// 		y: prefersReduced ? 0 : -22,
+			// 		ease: "none"
+			// 	},
+			// 	0
+			// );
+      tl.to(
+  prev,
+  {
+    y: -enterY,   // pura upar slide
+    ease: "none"
+  },
+  0
+);
 		})(j, j + 1);
 	}
 
@@ -1661,6 +1782,121 @@ var nextNumberEl = root.querySelector(".svc__number--next");
 
 })();
 </script>
+<!-- 
+<script>
+  (function () {
+  "use strict";
+
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var root = document.querySelector("#services-scroll");
+  if (!root) return;
+
+  var stage = root.querySelector(".svc__stage");
+  var cards = gsap.utils.toArray(".svc__card");
+  var triggers = gsap.utils.toArray(".svc__trigger");
+  var progressFill = root.querySelector(".svc__progressFill");
+
+  var currentNumberEl = root.querySelector(".svc__number--current");
+  var nextNumberEl = root.querySelector(".svc__number--next");
+
+  if (!stage || !cards.length || triggers.length !== cards.length) return;
+
+  // Height for slide distance
+  var enterY = stage.offsetHeight;
+
+  // Initial state
+  gsap.set(cards, { y: enterY });
+  gsap.set(cards[0], { y: 0 });
+
+  gsap.set(progressFill, { scaleX: 0, transformOrigin: "0% 50%" });
+
+  // Number update
+  function setActiveNumber(i) {
+    if (!currentNumberEl || !nextNumberEl) return;
+
+    var current = i + 1;
+    var next = i + 2;
+
+    currentNumberEl.textContent = current;
+    nextNumberEl.textContent = next <= cards.length ? next : "";
+
+    gsap.fromTo(currentNumberEl,
+      { opacity: 0.3, y: 10 },
+      { opacity: 1, y: 0, duration: 0.3 }
+    );
+
+    if (nextNumberEl.textContent !== "") {
+      gsap.to(nextNumberEl, { opacity: 0.25, duration: 0.3 });
+    }
+  }
+
+  // Progress bar
+  ScrollTrigger.create({
+    trigger: root.querySelector(".svc__triggers"),
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: function (st) {
+      gsap.to(progressFill, {
+        scaleX: st.progress,
+        duration: 0.1,
+        overwrite: true,
+        ease: "none"
+      });
+    }
+  });
+
+  // Sequential slide effect
+  cards.forEach(function (card, i) {
+
+    ScrollTrigger.create({
+      trigger: triggers[i],
+      start: "top center",
+      end: "bottom center",
+      onEnter: function () {
+        if (i === 0) return;
+
+        gsap.to(cards[i - 1], {
+          y: -enterY,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+
+        gsap.to(cards[i], {
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+
+        setActiveNumber(i);
+      },
+      onEnterBack: function () {
+        if (i === 0) return;
+
+        gsap.to(cards[i], {
+          y: enterY,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+
+        gsap.to(cards[i - 1], {
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+
+        setActiveNumber(i - 1);
+      }
+    });
+
+  });
+
+  setActiveNumber(0);
+
+})();
+</script> -->
+
 <!-- Bars animation script -->
 <script>
   // Register ScrollTrigger plugin
@@ -1678,8 +1914,8 @@ var nextNumberEl = root.querySelector(".svc__number--next");
 
   // Animate the height of each bar. 
   // Because of how the CSS is structured, increasing the front face height automatically pushes the top face up!
-  tl2.to(".bar-1", { height: "250px", ease: "none" }, 0)
-    .to(".bar-2", { height: "370px", ease: "none" }, 0)
+  tl2.to(".bar-1", { height: "200px", ease: "none" }, 0)
+    .to(".bar-2", { height: "330px", ease: "none" }, 0)
     .to(".bar-3", { height: "480px", ease: "none" }, 0);
 </script>
 <!--  -->
@@ -1702,6 +1938,7 @@ slidesPerView:5,spaceBetween: 15,
     },
 });
 </script>
+ <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>
