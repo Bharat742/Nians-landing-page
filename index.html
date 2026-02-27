@@ -10,6 +10,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Funnel+Display:wght@300..800&family=Geist:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
 <style> 
 /* Spacer sections */
 .spacer{
@@ -458,24 +462,34 @@
 .footer-section { padding: 60px 0; color: #333; }
         
         /* Titles */
-        .footer-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 25px; color: #212529; }
-        .sub-title { font-size: 1.2rem; font-weight: 600; margin-top: 20px; margin-bottom: 10px; }
+        .footer-title {font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #212529;}
+        .sub-title {    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #323232;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;}
 
         /* Contact Details */
-        .phone-box {
-            display: inline-block;
-            background-color: #e1f1ff;
-            padding: 5px 15px;
-            border-radius: 4px;
-            color: #444;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
+        .phone-box {display: inline-block;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: #cbe7f9;
+    padding: 5px 10px;
+    color: #323232;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: "Nunito", sans-serif !important;}
 
         /* Social Icons */
         .social-links { display: flex; gap: 20px; margin-top: 30px; }
+        .social-links i{font-size: 30px;}
+        .social-links img:hover{filter: brightness(1) I !important;}
         .social-links a { color: #333; font-size: 1.5rem; transition: color 0.3s; }
-        .social-links a:hover { color: #007bff; }
+        .social-links a:hover { color: #106093; }
 
         /* Locations Box */
         .locations-container {
@@ -484,20 +498,36 @@
             border-radius: 4px;
         }
         .location-item { margin-bottom: 20px; }
-        .location-name { font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-        .location-name i { color: #007bff; }
-        .address-text { font-size: 0.9rem; color: #666; line-height: 1.5; padding-left: 24px; }
+        .location-name {display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600;
+    font-size: 19px;}
+        .location-name i {color: #106093;font-size: 16px;}
+        .address-text {line-height: 1.5;
+    padding-left: 0px;
+    color: #848484;
+    font-size: 14px;
+    font-family: "Nunito", sans-serif !important;
+    font-weight: 500;}
 
         /* Partner Ecosystem */
         .partner-section { margin-top: 40px; }
-        .logo-strip {
+        /* .logo-strip {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 15px;
             margin-top: 20px;
-        }
+        } */
+        .logos{background: #1060931c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;}
         .logo-item {
             height: 40px;
             filter: grayscale(0%);
@@ -895,7 +925,7 @@
 </section>
 
 
-<section class="case-study">
+<section class="case-study pt-0">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 p-1 ps-0">
@@ -1165,16 +1195,14 @@
               
               <div class="sub-title">Sales Queries</div>
               <div class="phone-box">9899920599</div>
-
-              <div class="sub-title">HR Queries</div>
-              <div class="phone-box">9899885476</div>
+ 
 
               <h4 class="footer-title mt-5">Stay Connected</h4>
               <div class="social-links">
-                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                  <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="https://www.facebook.com/Nians.Official"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://x.com/NiansOfficial"><img src="https://nians.com/wp-content/uploads/2025/09/twitter_new.png" style="height:26px;filter: brightness(0);"> </a> 
+                  <a href="https://www.instagram.com/nians.official/"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/company/nians/posts/?feedView=all"><i class="fa-brands fa-linkedin-in"></i></a>
               </div>
           </div>
 
@@ -1206,14 +1234,51 @@
 
               <div class="partner-section">
                   <h4 class="footer-title">Partner Ecosystem</h4>
-                  <div class="logo-strip">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" class="logo-item">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/HubSpot_Logo.svg" alt="HubSpot" class="logo-item">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" class="logo-item">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google" class="logo-item">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Drupal_logo.svg" alt="Drupal" class="logo-item">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" alt="Salesforce" class="logo-item">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Adobe_Corporate_logo.svg" alt="Adobe" class="logo-item">
+                  <div class="swiper footer_logo">
+                    <div class="swiper-wrapper logo-strip">
+                      <div class="swiper-slide logos"> 
+                        <img src="https://nians.com/wp-content/uploads/2024/09/ol1-66f3dcacc204f.webp" alt="Meta" class="logo-item img-fluid">
+                      </div> 
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/meta-1-66f3dcac3cd3a.webp" alt="HubSpot" 
+                          class="logo-item img-fluid">
+                        </div>
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/hubspot-66f3dc8f23c5e.webp" alt="LinkedIn" 
+                          class="logo-item img-fluid">
+                        </div>
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/ol5-66f3dcad31645.webp" alt="Google" 
+                          class="logo-item img-fluid">
+                        </div>
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/google-partner-66f3dc8d59e3f.webp" alt="Drupal" 
+                          class="logo-item img-fluid">
+                        </div>
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/drupal-66f3dc8a8dbcd.webp" 
+                          alt="Salesforce" class="logo-item img-fluid">
+                        </div>
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/salesforce-1-66f3dcaef05b6.webp" 
+                          alt="Adobe" class="logo-item img-fluid">
+                        </div>
+                        
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/adobe-1-66f3dc852d1bd.webp" 
+                          alt="Adobe" class="logo-item img-fluid">
+                        </div>
+                        
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/adobe-1-66f3dc852d1bd.webp" 
+                          alt="Adobe" class="logo-item img-fluid">
+                        </div>
+                        
+                        <div class="swiper-slide logos"> 
+                          <img src="https://nians.com/wp-content/uploads/2024/09/dclogo-66f3dc87849d8.webp" 
+                          alt="Adobe" class="logo-item img-fluid">
+                        </div>
+                    </div>
                   </div>
               </div>
           </div>
@@ -1231,59 +1296,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
 
 
-<script>
-// gsap.registerPlugin(Flip, ScrollTrigger);
-
-// let ctx;
-
-// function initFlip(){
-
-//   ctx && ctx.revert();
-
-//   ctx = gsap.context(() => {
-
-//     const secondState = Flip.getState(".second .marker");
-//     const thirdState  = Flip.getState(".third .marker");
-//     const fourthState = Flip.getState(".fourth .marker");
-
-//     const tl = gsap.timeline({
-//       scrollTrigger:{
-//         trigger: ".main",
-//         start: "top top",
-//         end: "+=2500",   // 👈 scroll distance controlled here
-//         scrub: 1,
-//         pin: true,
-//         anticipatePin: 1
-//       }
-//     });
-
-//     tl.add(
-//       Flip.fit(".box", secondState, {
-//         duration:1,
-//         ease:"none"
-//       })
-//     )
-//     .add(
-//       Flip.fit(".box", thirdState, {
-//         duration:1,
-//         ease:"none"
-//       }),
-//       "+=0.5"
-//     );
-
-//   });
-
-// }
-
-// initFlip();
-
-// window.addEventListener("resize", () => {
-//   ScrollTrigger.refresh();
-//   initFlip();
-// });
+<script> 
 gsap.registerPlugin(Flip, ScrollTrigger);
 
 let ctx;
@@ -1333,245 +1350,13 @@ window.addEventListener("resize", () => {
   ScrollTrigger.refresh();
   initFlip();
 });
-</script>
-
-<!-- <script>
-  gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray(".service").forEach((section) => {
-
-  const heading = section.querySelector("h2");
-  const items = section.querySelectorAll("li");
-
-  const tl = gsap.timeline({
-    scrollTrigger:{
-      trigger: section,
-      start: "top top",
-      end: "+=100%",
-      scrub: true,
-      pin: true,
-      anticipatePin: 1
-    }
-  });
-
-  // Heading fade-up
-  tl.from(heading, {
-    opacity:0,
-    y:60,
-    duration:0.6
-  });
-
-  // List stagger animation
-  tl.to(items, {
-    x:0,
-    opacity:1,
-    stagger:0.2,
-    duration:0.6,
-    ease:"power2.out"
-  });
-
-});
-</script> -->
-
-<script>
-//   gsap.registerPlugin(ScrollTrigger);
-
-// const service = gsap.utils.toArray(".service");
-// const serviceImage = document.getElementById("serviceImage");
-
-// service.forEach((section) => {
-
-//   const heading = section.querySelector("h2");
-//   const items = section.querySelectorAll("li");
-
-//   const tl = gsap.timeline({
-//     scrollTrigger:{
-//       trigger: section,
-//       start: "top top",
-//       end: "+=100%",
-//       scrub: true,
-//       pin: true,
-//       anticipatePin: 1,
-//       onEnter: () => changeImage(section.dataset.img),
-//       onEnterBack: () => changeImage(section.dataset.img)
-//     }
-//   });
-
-//   // Heading animation
-//   tl.from(heading, {
-//     opacity:0,
-//     y:60,
-//     duration:0.6
-//   });
-
-//   // List animation
-//   tl.to(items, {
-//     x:0,
-//     opacity:1,
-//     stagger:0.2,
-//     duration:0.6,
-//     ease:"power2.out"
-//   });
-
-// });
-
-
-// function changeImage(src){
-
-//   if(image.getAttribute("src") === src) return;
-
-//   gsap.to(image, {
-//     opacity:0,
-//     duration:0.3,
-//     onComplete: () => {
-//       image.setAttribute("src", src);
-//       gsap.to(image, { opacity:1, duration:0.3 });
-//     }
-//   });
-
-// }
-</script>
-
-<script>
-// gsap.registerPlugin(ScrollTrigger);
-
-// gsap.fromTo(".heading .word",
-//   {
-//     y: 80,
-//     opacity: 0,
-//     scale: 0.8,
-//     filter: "blur(10px)"
-//   },
-//   {
-//     y: 0,
-//     opacity: 1,
-//     scale: 1,
-//     filter: "blur(0px)",
-//     duration: 1,
-//     stagger: 0.4,
-//     ease: "power4.out",
-//     scrollTrigger: {
-//       trigger: ".heading",
-//       start: "top 75%",
-//       toggleActions: "play reverse play reverse"
-//     }
-//   }
-// );
-
-
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const sections = gsap.utils.toArray(".service");
-// const image = document.getElementById("serviceImage");
-
-// sections.forEach((section) => {
-
-//   const items = section.querySelectorAll("li");
-
-//   // List reveal when heading hits top
-//   gsap.fromTo(items,
-//     { x: -60, opacity: 0 },
-//     {
-//       x: 0,
-//       opacity: 1,
-//       stagger: 0.2,
-//       duration: 0.6,
-//       ease: "power2.out",
-//       scrollTrigger: {
-//         trigger: section,
-//         start: "top top",   // 👈 trigger when heading hits top
-//         toggleActions: "play none none reverse"
-//       }
-//     }
-//   );
-
-//   // Image change
-//   ScrollTrigger.create({
-//     trigger: section,
-//     start: "top top",
-//     onEnter: () => changeImage(section.dataset.img),
-//     onEnterBack: () => changeImage(section.dataset.img)
-//   });
-
-// });
-
-
-// function changeImage(src){
-
-//   if(image.getAttribute("src") === src) return;
-
-//   gsap.to(image, {
-//     opacity:0,
-//     duration:0.3,
-//     onComplete: () => {
-//       image.setAttribute("src", src);
-//       gsap.to(image, { opacity:1, duration:0.3 });
-//     }
-//   });
-
-// }
-
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const sections = gsap.utils.toArray(".service");
-// const image = document.getElementById("serviceImage");
-
-// sections.forEach((section) => {
-
-//   const items = section.querySelectorAll("li");
-
-//   // list reveal
-//   gsap.fromTo(items,
-//     { x: -60, opacity: 0 },
-//     {
-//       x: 0,
-//       opacity: 1,
-//       stagger: 0.2,
-//       duration: 0.6,
-//       ease: "power2.out",
-//       scrollTrigger: {
-//         trigger: section,
-//         start: "top top",   // when heading reaches top
-//         toggleActions: "play none none reverse"
-//       }
-//     }
-//   );
-
-//   // image change
-//   ScrollTrigger.create({
-//     trigger: section,
-//     start: "top top",
-//     onEnter: () => changeImage(section.dataset.img),
-//     onEnterBack: () => changeImage(section.dataset.img)
-//   });
-
-// });
-
-// function changeImage(src){
-
-//   if(image.getAttribute("src") === src) return;
-
-//   gsap.to(image, {
-//     opacity:0,
-//     duration:0.3,
-//     onComplete: () => {
-//       image.setAttribute("src", src);
-//       gsap.to(image, { opacity:1, duration:0.3 });
-//     }
-//   });
-
-// }
-</script>
-
-<!-- services section gsap  -->
+</script> 
 <script>
  gsap.registerPlugin(ScrollTrigger);
-
+ 
 const allServices = gsap.utils.toArray(".service");
 const serviceImage = document.getElementById("serviceImage");
-
+ 
 /* ======================================
    1️⃣ HEADER PINNING (Optimized)
 ====================================== */
@@ -1579,7 +1364,7 @@ ScrollTrigger.create({
   trigger: ".service_list",
   start: "top top",
   // Use a relative end based on the total height of all services
-  endTrigger: ".service-wrapper-container", 
+  endTrigger: ".service-wrapper-container",
   end: "bottom bottom",
   pin: true,
   pinSpacing: false,
@@ -1587,20 +1372,20 @@ ScrollTrigger.create({
   onLeave: () => gsap.to(".service_list", { autoAlpha: 0, duration: 0.3 }),
   onEnterBack: () => gsap.to(".service_list", { autoAlpha: 1, duration: 0.3 })
 });
-
+ 
 /* ======================================
    2️⃣ SERVICES REVEAL (Smoothing the Scrub)
 ====================================== */
 allServices.forEach((section) => {
   const items = section.querySelectorAll("li");
-
-  // Setting a timeline with a scrub value (e.g., 1 or 1.5) 
+ 
+  // Setting a timeline with a scrub value (e.g., 1 or 1.5)
   // makes the animation follow the scroll with a smooth "catch-up" delay.
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: section,
       start: "top top",
-      end: "+=100%", 
+      end: "+=100%",
       scrub: 1.5, // 🔥 Higher number = smoother/slower catch-up
       pin: true,
       anticipatePin: 1,
@@ -1609,28 +1394,28 @@ allServices.forEach((section) => {
       }
     }
   });
-
-  tl.fromTo(items, 
+ 
+  tl.fromTo(items,
     { opacity: 0, y: 60, filter: "blur(10px)" }, // Added blur for a more modern reveal
-    { 
-      opacity: 1, 
-      y: 0, 
+    {
+      opacity: 1,
+      y: 0,
       filter: "blur(0px)",
-      stagger: 0.1, 
-      ease: "power3.out" 
+      stagger: 0.1,
+      ease: "power3.out"
     }
   ).to(items, { opacity: 0, y: -40, delay: 0.5 }); // Optional: fade out as it leaves
 });
-
+ 
 /* ======================================
    3️⃣ IMAGE CHANGE (Crossfade logic)
 ====================================== */
 function changeImage(src) {
   if (!src || serviceImage.getAttribute("src") === src) return;
-
+ 
   // Kill current transitions to prevent flickering
   gsap.killTweensOf(serviceImage);
-
+ 
   // Smooth Crossfade: scale slightly for a "breath" effect
   gsap.to(serviceImage, {
     opacity: 0,
@@ -1639,11 +1424,11 @@ function changeImage(src) {
     ease: "power2.inOut",
     onComplete: () => {
       serviceImage.setAttribute("src", src);
-      gsap.to(serviceImage, { 
-        opacity: 1, 
-        scale: 1, 
-        duration: 0.6, 
-        ease: "power2.out" 
+      gsap.to(serviceImage, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        ease: "power2.out"
       });
     }
   });
@@ -1705,298 +1490,7 @@ function changeImage(src) {
     scale: 1.2,
     ease: "none"
   });
-  </script>
-
-<!-- <script>
-  gsap.registerPlugin(ScrollTrigger);
-  
-  const dots = gsap.utils.toArray(".dots");
-  const targets = gsap.utils.toArray(".dot-target");
-  const globe = document.querySelector(".center_logo");
-  
-  function getMove(from, to) {
-    const f = from.getBoundingClientRect();
-    const t = to.getBoundingClientRect();
-  
-    return {
-    x: t.left - f.left,
-    y: t.top - f.top
-    };
-  }
-  
-  const tl = gsap.timeline({
-    scrollTrigger: {
-    trigger: ".creative_agency",
-    start: "top top",
-    end: "+=1000",
-    scrub: 3,
-    invalidateOnRefresh: true
-    }
-  });
-  
-  
-  // ==========================
-  // STEP 1 → stagger entry
-  // ==========================
-  tl.from(dots, {
-    opacity: 1,
-    y: -50,
-    stagger: 0.3   // 🔥 ONE BY ONE ENTRY
-  });
-  
-  
-  // ==========================
-  // STEP 2 → go behind globe
-  // ==========================
-  dots.forEach((dot, i) => {
-    tl.to(dot, {
-    x: () => getMove(dot, globe).x,
-    y: () => getMove(dot, globe).y,
-    scale: 0.6,
-    ease: "power2.out",
-    duration: 2
-    }, i * 0.4); // 🔥 NOT SAME TIME
-  });
-  
-  
-  // ==========================
-  // STEP 3 → go to headings
-  // ==========================
-  dots.forEach((dot, i) => {
-    tl.to(dot, {
-    x: () => getMove(dot, targets[i]).x,
-    y: () => getMove(dot, targets[i]).y,
-    scale: 1,
-    ease: "power2.inOut",
-    duration: 1
-    }, 2 + i * 0.5); // 🔥 stagger again
-  });
-  
-  
-  // ==========================
-  // STEP 4 → ATTACH EFFECT 🔥
-  // ==========================
-  targets.forEach((target, i) => {
-    ScrollTrigger.create({
-    trigger: target,
-    start: "top center",
-    end: "+=500",
-    scrub: true,
-    onUpdate: (self) => {
-      const move = getMove(dots[i], target);
-  
-      gsap.set(dots[i], {
-      x: move.x,
-      y: move.y
-      });
-    }
-    });
-  });
-  </script> -->
-
-
-<!-- <script>   
-// Circle from "creative_agency" smoothly follows scroll:
-        // 1) moves behind globe card
-        // 2) continues into first .service heading and adopts its color
-        // const circleEl = document.querySelector(".creative_agency .circle");
-        const globeCard = document.querySelector(".center_logo");
-        const firstServiceHeading = document.querySelector(".service h2");
-
-        if (circleEl && globeCard && firstServiceHeading) {
-          // Smooth "turn white" overlay (keeps your background image intact)
-          let overlay = circleEl.querySelector(".circle-overlay");
-          if (!overlay) {
-            overlay = document.createElement("div");
-            overlay.className = "circle-overlay";
-            overlay.style.position = "absolute";
-            overlay.style.inset = "0";
-            overlay.style.borderRadius = "50%";
-            overlay.style.background = "rgb(18 88 133 / 98%)";
-            overlay.style.opacity = "0";
-            overlay.style.pointerEvents = "none";
-            overlay.style.zIndex = "20";
-			globeCard.style.backgroundColor = "rgb(18 88 133 / 98%)";
-            circleEl.appendChild(overlay);
-          }
-
-          // two small circles that "come out" and travel with scroll
-          let mini1 = circleEl.querySelector(".circle-mini-1");
-          let mini2 = circleEl.querySelector(".circle-mini-2");
-
-          if (!mini1) {	
-            mini1 = document.createElement("div");
-            mini1.className = "circle-mini circle-mini-1";
-            mini1.style.left = "10%";
-            mini1.style.top = "10%";
-            circleEl.appendChild(mini1);
-          }
-          if (!mini2) {
-            mini2 = document.createElement("div");
-            mini2.className = "circle-mini circle-mini-2";
-            mini2.style.right = "5%";
-            mini2.style.bottom = "5%";
-            circleEl.appendChild(mini2);
-          }
-
-          const circleToGlobeY = () => {
-            const circleRect = circleEl.getBoundingClientRect();
-            const globeRect = globeCard.getBoundingClientRect();
-            return (globeRect.top + globeRect.height / 2) - (circleRect.top + circleRect.height / 2);
-          };
-
-          const circleToGlobeX = () => {
-            const circleRect = circleEl.getBoundingClientRect();
-            const globeRect = globeCard.getBoundingClientRect();
-            const globeCenterX = globeRect.left + globeRect.width / 2;
-            const circleCenterX = circleRect.left + circleRect.width / 2;
-            return globeCenterX - circleCenterX;
-          };
-
-          const circleToServiceY = () => {
-            const circleRect = circleEl.getBoundingClientRect();
-            const serviceRect = firstServiceHeading.getBoundingClientRect();
-            // align vertically with center of heading square
-            return (serviceRect.top + serviceRect.height / 2) - (circleRect.top + circleRect.height / 2);
-          };
-
-          const circleToServiceX = () => {
-            const circleRect = circleEl.getBoundingClientRect();
-            const serviceRect = firstServiceHeading.getBoundingClientRect();
-            // heading square is 80px wide and sits at left edge of h2
-            const squareCenterX = serviceRect.left + 40;
-            const circleCenterX = circleRect.left + circleRect.width / 2;
-            return squareCenterX - circleCenterX;
-          };
-
-          const serviceColor = getComputedStyle(firstServiceHeading)
-            .getPropertyValue("--service-accent-color") || "#1e6091";
-          const ballColor = getComputedStyle(overlay).backgroundColor || "rgb(18 88 133 / 98%)";
-
-          // Phase 1: move only the inner overlay "ball" from creative section
-          // down into the center of the globe card
-          gsap.to(overlay, {
-            y: circleToGlobeY,
-            x: circleToGlobeX,
-            opacity: 1,
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: ".creative_agency",
-              start: "bottom bottom",     // start once you scroll past creative section
-              endTrigger: globeCard,
-              end: "center center",       // finish when globe card is centered
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-
-          // Globe background reacts only while the ball is on it
-          gsap.to(globeCard, {
-            backgroundColor: ["#ffffff", ballColor, "#ffffff"],
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: ".creative_agency",
-              start: "bottom 90%",   // just before ball reaches globe
-              end: "bottom 10%",     // after it passes center
-              scrub: true
-            }
-          });
-
-          // =========================
-          // Three decorative dots path (follow same scroll as main ball)
-          // =========================
-          const dots = gsap.utils.toArray(".creative_agency .dots");
-
-          const dotOffsetsX = [-40, 0, 40]; // left, center, right of main path
-          const dotOffsetYToService = 80;   // place slightly below heading square
-
-          // fade in while leaving creative section
-          gsap.to(dots, {
-            opacity: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".creative_agency",
-              start: "bottom bottom",
-              end: "bottom 80%",
-              scrub: true
-            }
-          });
-
-          // phase 1: dots move with ball to globe center
-          gsap.to(dots, {
-            x: (i) => circleToGlobeX() + dotOffsetsX[i] || 0,
-            y: () => circleToGlobeY(),
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: ".creative_agency",
-              start: "bottom bottom",
-              endTrigger: globeCard,
-              end: "center center",
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-
-          // phase 2: dots move with ball to service heading (below square)
-          gsap.to(dots, {
-            x: (i) => circleToServiceX() + dotOffsetsX[i] || 0,
-            y: () => circleToServiceY() + dotOffsetYToService,
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: "[data-anim='cards-paralax']",
-              start: "bottom bottom",
-              endTrigger: ".service.tech",
-              end: "top center",
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-
-          // Phase 2: from globe center to first service heading + color change
-          gsap.to(overlay, {
-            y: circleToServiceY,
-            x: circleToServiceX,
-            backgroundColor: serviceColor,
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: "[data-anim='cards-paralax']",
-              start: "bottom bottom",
-              endTrigger: ".service.tech",
-              end: "top center",
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-
-          // Minis fade out of main circle and drift with scroll
-          const miniOffsetY = () => circleToServiceY() + 100; // end a bit below the heading square
-
-          gsap.to([mini1, mini2], {
-            opacity: 1,
-            y: miniOffsetY,
-            x: circleToServiceX,
-            stagger: 0.1,
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: "[data-anim='cards-paralax']",
-              start: "bottom bottom",
-              endTrigger: ".service.tech",
-              end: "top center",
-              scrub: true,
-              invalidateOnRefresh: true
-            }
-          });
-        }
-</script> -->
-
-
-
+  </script> 
 <!-- Testimonial section script  -->
 <script>
   gsap.registerPlugin(ScrollTrigger);
@@ -2188,6 +1682,26 @@ var nextNumberEl = root.querySelector(".svc__number--next");
   tl2.to(".bar-1", { height: "250px", ease: "none" }, 0)
     .to(".bar-2", { height: "370px", ease: "none" }, 0)
     .to(".bar-3", { height: "480px", ease: "none" }, 0);
+</script>
+<!--  -->
+
+<script>
+  const footer_logo = new Swiper('.footer_logo', {
+  // Optional parameters 
+  loop: true,
+slidesPerView:5,spaceBetween: 15,
+ breakpoints: {
+        320: {
+            slidesPerView: 3
+        },
+        768: {
+            slidesPerView: 5
+        }, 
+        1280: {
+            slidesPerView: 5 
+        }
+    },
+});
 </script>
 </body>
 
