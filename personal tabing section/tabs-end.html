@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Scroll Accordion Slide Reveal - Full Sequence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- Main Pinned Container --- */
+        #pin-master {
+            height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 15vh;
+            background: #ffffff;
+            overflow: hidden;
+            position: relative; 
+        }
+
+        /* --- Left Side: Accordion --- */
+        .acc-item {
+            margin-bottom: 20px;
+            position: relative;
+            will-change: margin-top, opacity;
+        }
+
+        .acc-header {
+            display: flex;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        /* The Dotted Circle Slot */
+        .dotted-slot {
+            width: 46px;
+            height: 46px;
+            border: 2px dotted #ccc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        /* The Animated Ball */
+        .ball {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            will-change: transform, opacity;
+        }
+        
+        .bg-red { background-color: #FF4D4D; }
+        .bg-blue { background-color: #4D4DFF; }
+        .bg-purple { background-color: #A020F0; }
+
+        /* The Content Area (List Items) */
+        .acc-content {
+            height: 0;
+            overflow: hidden;
+            padding-left: 66px; 
+            will-change: height;
+        }
+
+        .acc-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+
+        .acc-content li {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #333;
+            opacity: 0;
+            transform: translateX(-40px);
+            will-change: transform, opacity;
+        }
+
+        /* --- Right Side: Visuals --- */
+        .visual-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visual-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0; 
+            transform: scale(0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f5f7;
+            border-radius: 20px;
+            will-change: opacity, transform;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="height: 100vh; display: flex; justify-content: center; align-items: center; background: #f0f0f0;">
+        <h1>Scroll Down to Reveal</h1>
+    </div>
+
+    <section id="pin-master">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-5 offset-md-1">
+                    
+                    <div class="acc-item" id="item-1">
+                        <div class="acc-header">
+                            <div class="dotted-slot"><div class="ball bg-red ball-1"></div></div>
+                            <span style="color: #FF4D4D;">Design</span>
+                        </div>
+                        <div class="acc-content content-1">
+                            <ul>
+                                <li>UI Design</li>
+                                <li>UX Design</li>
+                                <li>UX Consultancy</li>
+                                <li>Design System</li>
+                                <li>Animation</li>
+                                <li>Illustrations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="acc-item" id="item-2">
+                        <div class="acc-header">
+                            <div class="dotted-slot"><div class="ball bg-blue ball-2"></div></div>
+                            <span style="color: #111;" class="title-2">Technology</span>
+                        </div>
+                        <div class="acc-content content-2">
+                            <ul>
+                                <li>Web Development</li>
+                                <li>Mobile Apps</li>
+                                <li>Web Apps</li>
+                                <li>Front-End</li>
+                                <li>Back-End</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="acc-item" id="item-3">
+                        <div class="acc-header">
+                            <div class="dotted-slot"><div class="ball bg-purple ball-3"></div></div>
+                            <span style="color: #111;" class="title-3">Marketing</span>
+                        </div>
+                        <div class="acc-content content-3">
+                            <ul>
+                                <li>Branding</li>
+                                <li>Brand Strategy</li>
+                                <li>Digital Marketing</li>
+                                <li>S.E.O.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-5 offset-md-1">
+                    <div class="visual-container">
+                        <div class="visual-item vis-1">
+                            <h2 style="color: #FF4D4D;">Design Illustration Here</h2>
+                        </div>
+                        <div class="visual-item vis-2">
+                            <h2 style="color: #4D4DFF;">Tech Code Snippet Here</h2>
+                        </div>
+                        <div class="visual-item vis-3">
+                            <h2 style="color: #A020F0;">Marketing Chart Here</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div style="height: 100vh; background: #f0f0f0;"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        function getAutoHeight(element) {
+            gsap.set(element, { height: "auto" });
+            const height = element.offsetHeight;
+            gsap.set(element, { height: 0 }); 
+            return height;
+        }
+
+        window.addEventListener("load", () => {
+            const content1 = document.querySelector(".content-1");
+            const content2 = document.querySelector(".content-2");
+            const content3 = document.querySelector(".content-3");
+
+            const h1 = getAutoHeight(content1);
+            const h2 = getAutoHeight(content2);
+            const h3 = getAutoHeight(content3);
+
+            // Calculate slide up distance
+            const headerHeight = document.querySelector(".acc-header").offsetHeight;
+            const accItemStyle = window.getComputedStyle(document.querySelector(".acc-item"));
+            const marginBottom = parseFloat(accItemStyle.marginBottom);
+            const slideUpDistance = headerHeight + marginBottom;
+
+
+            // --- Context Rectangles for Origins/Destinations ---
+            const pinMaster = document.querySelector("#pin-master");
+            const masterRect = pinMaster.getBoundingClientRect();
+            
+            // Define Top Center Coordinates (Start)
+            const startX = masterRect.width / 2;
+            const startY = 0; 
+
+            // Define Bottom Center Coordinates (End)
+            // Adding a small buffer (e.g., +50) so they go fully off-screen if desired
+            const endX = masterRect.width / 2;
+            const endY = masterRect.height + 50; 
+
+            // Initialize variables to store the final coordinates for the outro
+            const endCoords = { ball1: {x:0, y:0}, ball2: {x:0, y:0}, ball3: {x:0, y:0} };
+
+            // Function to handle initial setup (Top-Center)
+            function setupBallOrigin(selector, ballKey) {
+                const ball = document.querySelector(selector);
+                const ballRect = ball.getBoundingClientRect();
+                
+                // Diff from top-center
+                const diffStartX = startX - (ballRect.left - masterRect.left + ballRect.width / 2);
+                const diffStartY = startY - (ballRect.top - masterRect.top + ballRect.height / 2);
+                
+                // Diff to bottom-center (stored for the final animation phase)
+                endCoords[ballKey].x = endX - (ballRect.left - masterRect.left + ballRect.width / 2);
+                endCoords[ballKey].y = endY - (ballRect.top - masterRect.top + ballRect.height / 2);
+
+                gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 1, scale: 0.5 });
+            }
+
+            setupBallOrigin(".ball-1", "ball1");
+            setupBallOrigin(".ball-2", "ball2");
+            setupBallOrigin(".ball-3", "ball3");
+
+
+            // --- Master Timeline ---
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#pin-master",
+                    start: "top top",
+                    end: "+=4000", // Increased scroll length slightly to accommodate the extra phase
+                    pin: true,
+                    scrub: 1, 
+                    anticipatePin: 1
+                }
+            });
+
+            // PHASE 0: ALL balls fly in from Top-Center
+            tl.addLabel("start")
+              .to([".ball-1", ".ball-2", ".ball-3"], { 
+                  x: 0, 
+                  y: 0, 
+                  opacity: 1, 
+                  scale: 1, 
+                  duration: 0.6, 
+                  ease: "power2.out" 
+              }, "start")
+
+            // PHASE 1: Design Section Reveals
+            tl.addLabel("phase1", "start+=0.4")
+              .to(".content-1", { height: h1, duration: 0.6, ease: "power2.inOut" }, "phase1")
+              .to(".vis-1", { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "phase1")
+              .to(".content-1 li", { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" }, "phase1+=0.2");
+
+
+            // PHASE 2: Transition to Technology
+            tl.addLabel("phase2", "+=0.5")
+              .to(".content-1 li", { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, "phase2")
+              .to(".content-1", { height: 0, duration: 0.6, ease: "power2.inOut" }, "phase2+=0.2")
+              .to("#item-1", { marginTop: -slideUpDistance, opacity: 0, duration: 0.6, ease: "power2.inOut" }, "phase2+=0.2")
+              .to(".vis-1", { opacity: 0, scale: 0.95, duration: 0.4 }, "phase2")
+              
+              .to(".title-2", { color: "#4D4DFF", duration: 0.3 }, "phase2+=0.2")
+              .to(".content-2", { height: h2, duration: 0.6, ease: "power2.inOut" }, "phase2+=0.2")
+              .to(".vis-2", { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "phase2+=0.2")
+              .to(".content-2 li", { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" }, "phase2+=0.4");
+
+
+            // PHASE 3: Transition to Marketing
+            tl.addLabel("phase3", "+=0.5")
+              .to(".content-2 li", { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, "phase3")
+              .to(".content-2", { height: 0, duration: 0.6, ease: "power2.inOut" }, "phase3+=0.2")
+              .to("#item-2", { marginTop: -slideUpDistance, opacity: 0, duration: 0.6, ease: "power2.inOut" }, "phase3+=0.2")
+              .to(".vis-2", { opacity: 0, scale: 0.95, duration: 0.4 }, "phase3")
+              
+              .to(".title-3", { color: "#A020F0", duration: 0.3 }, "phase3+=0.2")
+              .to(".content-3", { height: h3, duration: 0.6, ease: "power2.inOut" }, "phase3+=0.2")
+              .to(".vis-3", { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "phase3+=0.2")
+              .to(".content-3 li", { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" }, "phase3+=0.4");
+
+
+            // PHASE 4: Outro - Collapse final item and drop balls to bottom center
+            tl.addLabel("outro", "+=0.5")
+              // Collapse & hide final section
+              .to(".content-3 li", { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, "outro")
+              .to(".content-3", { height: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
+              .to("#item-3", { opacity: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
+              .to(".vis-3", { opacity: 0, scale: 0.95, duration: 0.4 }, "outro")
+              
+              // Move all balls to bottom center simultaneously
+              .to(".ball-1", { x: endCoords.ball1.x, y: endCoords.ball1.y, opacity: 0, scale: 0.5, duration: 0.8, ease: "power2.in" }, "outro+=0.2")
+              .to(".ball-2", { x: endCoords.ball2.x, y: endCoords.ball2.y, opacity: 0, scale: 0.5, duration: 0.8, ease: "power2.in" }, "outro+=0.2")
+              .to(".ball-3", { x: endCoords.ball3.x, y: endCoords.ball3.y, opacity: 0, scale: 0.5, duration: 0.8, ease: "power2.in" }, "outro+=0.2");
+
+        });
+    </script>
+</body>
+</html>

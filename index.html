@@ -536,6 +536,123 @@
             transition: opacity 0.3s;
         }
         .logo-item:hover { opacity: 1; }
+
+
+
+
+
+/* ===============personal-tabing-section======== */
+#pin-master {
+            height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            /* padding-top: 15vh; */
+            background: #ffffff;
+            overflow: hidden;
+            /* position: relative;   */
+        }
+
+        /* Generic Classes (No more -1, -2 suffixes needed) */
+       .personal-tabing-section .acc-item {
+            margin-bottom: 20px;
+            position: relative;
+            will-change: margin-top, opacity;
+        }
+
+        .personal-tabing-section .acc-header {
+            display: flex;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        
+        /* Smooth color transition for the span */
+        .personal-tabing-section  .acc-header > span {
+            transition: color 0.3s ease;
+        }
+
+        .personal-tabing-section .dotted-slot {
+            width: 55px;
+            height: 50px;
+            border: 2px dotted #ccc;
+            border-radius: 7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .personal-tabing-section .ball {
+            width: 40px;
+            height: 35px;
+            /* border-radius: 50%; */
+            border-radius: 7px;
+            will-change: transform, opacity;
+        }
+        
+        /* Keep your color classes for the balls */
+        .personal-tabing-section  .bg-red { background-color: #002A54; }
+        .personal-tabing-section  .bg-blue { background-color: #1DB7D1; }
+        .personal-tabing-section .bg-purple { background-color: #FFA106; }
+        .personal-tabing-section .bg-green { background-color: #00CC66; } /* Example 4th color */
+
+        .personal-tabing-section .acc-content {
+            height: 0;
+            overflow: hidden;
+            padding-left: 66px; 
+            will-change: height;
+        }
+
+        .personal-tabing-section .acc-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+
+        .personal-tabing-section  .acc-content li {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #333;
+            opacity: 0;
+            transform: translateX(-40px);
+            will-change: transform, opacity;
+        }
+
+        .personal-tabing-section .visual-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .personal-tabing-section  .visual-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0; 
+            transform: scale(0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            will-change: opacity, transform;
+        }
+        .personal-tabing-section .image-container{background: unset !important; width: 100% !important;}
+
+        .personal-tabing-section .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            
+        }
 </style>
 </head>
 
@@ -790,93 +907,109 @@
     <li><span class="color_square color_square3"><span class="dot-target"></span></span> Design</li>
   </ul>
 </section> -->
+<section  class="personal-tabing-section">
+  <div id="pin-master">
+  <div class="container">
+      <div class="row">
+          
+          <div class="col-md-5 offset-md-1">
+              
+              <div class="acc-item">
+                  <div class="acc-header">
+                      <div class="dotted-slot"  data-color="#FF4D4D"><div class="ball bg-red"></div></div>
+                      <span style="color: #000 !important;">Design</span>
+                  </div>
+                  <div class="acc-content">
+                      <ul>
+                          <li>UI Design</li>
+                          <li>UX Design</li>
+                          <li>UX Consultancy</li>
+                          <li>Design System</li>
+                      </ul>
+                  </div>
+              </div>
 
-  <div class="main-wrapper">
+              <div class="acc-item" >
+                  <div class="acc-header">
+                      <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
+                      <span style="color: #000;">Technology</span>
+                  </div>
+                  <div class="acc-content">
+                      <ul>
+                          <li>Web Development</li>
+                          <li>Mobile Apps</li>
+                          <li>Web Apps</li>
+                          <li>Front-End</li>
+                      </ul>
+                  </div>
+              </div>
 
-    <!-- LEFT SIDE SERVICES -->
-    <div class="services"> 
+              <div class="acc-item" >
+                  <div class="acc-header">
+                      <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
+                      <span style="color: #000;">Marketing</span>
+                  </div>
+                  <div class="acc-content">
+                      <ul>
+                          <li>Branding</li>
+                          <li>Brand Strategy</li>
+                          <li>Digital Marketing</li>
+                          <li>S.E.O.</li>
+                      </ul>
+                  </div>
+              </div>
 
-      <section class="service" data-img="./images/gif.gif">
-        <div class="inner">
-          <div class="left">
-            <div class="list_flex">
-              <div class="list_before"><span class="dot-target"></span></div>
-              <h2>Technology</h2>
-            </div>
-            
-            <ul>
-              <li>Web Development</li>
-              <li>Softwares</li>
-              <li>Mobile Apps</li>
-              <li>Web Apps</li>
-              <li>Front-End</li>
-              <li>Back-End</li>
-            </ul>
+              <!-- <div class="acc-item" data-color="#00CC66">
+                  <div class="acc-header">
+                      <div class="dotted-slot"><div class="ball bg-green"></div></div>
+                      <span>Analytics</span>
+                  </div>
+                  <div class="acc-content">
+                      <ul>
+                          <li>Data Tracking</li>
+                          <li>User Insights</li>
+                          <li>Conversion Rate</li>
+                      </ul>
+                  </div>
+              </div> -->
+
           </div>
-        </div>
-      </section>
 
-      <section class="service" data-img="./images/gif.gif">
-        <div class="inner">
-          <div class="left">
-            <div class="list_flex">
-              <div class="list_before"><span class="dot-target"></span></div>
-              <h2>Marketing</h2>
-            </div>
-            
-            <ul>
-              <li>SEO Optimization</li>
-              <li>Social Media</li>
-              <li>Paid Ads</li>
-              <li>Brand Strategy</li>
-            </ul>
+          <div class="col-md-5 offset-md-1">
+              <div class="visual-container">
+                  
+                  <div class="visual-item">
+                      <div class="image-container">
+                          <img src="./images/gif.gif" alt="Design">
+                      </div>
+                  </div>
+                  
+                  <div class="visual-item">
+                      <div class="image-container">
+                          <img src="./images/gif.gif" alt="Tech">
+                      </div>
+                  </div>
+                  
+                  <div class="visual-item">
+                      <div class="image-container">
+                          <img src="./images/gif.gif" alt="Marketing">
+                      </div>
+                  </div>
+
+                  <!-- <div class="visual-item">
+                      <div class="image-container">
+                          <img src="./images/gif.gif" alt="Analytics">
+                      </div>
+                  </div> -->
+
+              </div>
           </div>
-        </div>
-      </section>
 
-      <section class="service" data-img="./images/gif.gif">
-        <div class="inner">
-          <div class="left">
-            <div class="list_flex">
-              <div class="list_before"><span class="dot-target"></span></div>
-              <h2>Design</h2>
-            </div>
-            
-            <ul>
-              <li>UI Design</li>
-              <li>UX Research</li>
-              <li>Brand Identity</li>
-              <li>Product Design</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="service" data-img="./images/gif.gif">
-        <div class="inner">
-          <div class="left">
-            <div class="list_flex">
-              <div class="list_before"></div>
-              <h2>Design 11</h2>
-            </div>
-            
-            <ul>
-              <li>UI Design 11</li>
-              <li>UX Research 11</li>
-              <li>Brand Identity 11</li>
-              <li>Product Design 11</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- RIGHT SIDE STICKY IMAGE -->
-    <div class="image-container">
-      <img id="serviceImage" src="./images/gif.gif" alt="">
-    </div>
+      </div>
   </div>
+</div>
+</section>
+   
 
 
 <section class="integrate">
@@ -1457,7 +1590,7 @@ allServices.forEach((section) => {
 });
  
 /* ======================================
-   3️⃣ IMAGE CHANGE (Crossfade logic)
+    IMAGE CHANGE (Crossfade logic)
 ====================================== */
 function changeImage(src) {
   if (!src || serviceImage.getAttribute("src") === src) return;
@@ -1484,12 +1617,13 @@ function changeImage(src) {
 }
 </script>
 
+<!-- Dots animation style -->
 <script>
   gsap.registerPlugin(ScrollTrigger);
   
   const dots = gsap.utils.toArray(".dots");
   
-  // 🔥 VERY IMPORTANT
+  // VERY IMPORTANT
   gsap.set(dots, {
     position: "fixed",
     left: "50%",
@@ -1920,6 +2054,7 @@ function setActiveNumber(i) {
 </script>
 <!--  -->
 
+<!-- ==============Footer swiper script================== -->
 <script>
   const footer_logo = new Swiper('.footer_logo', {
   // Optional parameters 
@@ -1939,6 +2074,177 @@ slidesPerView:5,spaceBetween: 15,
 });
 </script>
  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<!-- ==============Footer swiper script end================== -->
+
+
+<!-- =============personal-tabing-section script======================= -->
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Helper: Get height of closed element
+  function getAutoHeight(element) {
+      gsap.set(element, { height: "auto" });
+      const height = element.offsetHeight;
+      gsap.set(element, { height: 0 }); 
+      return height;
+  }
+
+  window.addEventListener("load", () => {
+      // Select all items using generic classes (Works for 3, 4, 10, or 20 items automatically)
+      const accItems = document.querySelectorAll(".acc-item");
+      const visuals = document.querySelectorAll(".visual-item");
+      const balls = document.querySelectorAll(".ball");
+
+      // Calculate exact slide up distance based on the first item
+      const headerHeight = document.querySelector(".acc-header").offsetHeight;
+      const accItemStyle = window.getComputedStyle(accItems[0]);
+      const marginBottom = parseFloat(accItemStyle.marginBottom);
+      const slideUpDistance = headerHeight + marginBottom;
+
+      // --- Context Rectangles for Origins/Destinations ---
+      const pinMaster = document.querySelector("#pin-master");
+      const masterRect = pinMaster.getBoundingClientRect();
+      
+      const startX = masterRect.width / 2;
+      const startY = 0; 
+      const endX = masterRect.width / 2;
+      const endY = masterRect.height - 30; 
+      
+      const endCoords = [];
+
+      // Dynamically prep all balls
+      balls.forEach((ball, index) => {
+          const ballRect = ball.getBoundingClientRect();
+          
+          const diffStartX = startX - (ballRect.left - masterRect.left + ballRect.width / 2);
+          const diffStartY = startY - (ballRect.top - masterRect.top + ballRect.height / 2);
+          
+          // Store the bottom destination for each ball
+          endCoords.push({
+              x: endX - (ballRect.left - masterRect.left + ballRect.width / 2),
+              y: endY - (ballRect.top - masterRect.top + ballRect.height / 2)
+          });
+
+          gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 1, scale: 0.5 });
+      });
+
+      // Adjust total scroll duration based on how many items exist
+      const totalScrollDuration = accItems.length * 1500;
+
+      // --- Master Timeline ---
+      const tl = gsap.timeline({
+          scrollTrigger: {
+              trigger: "#pin-master",
+              start: "top top",
+              end: "+=" + totalScrollDuration, 
+              pin: true,
+              scrub: 1, 
+              anticipatePin: 1
+          }
+      });
+
+      // PHASE 0: ALL balls fly in from Top-Center
+      tl.addLabel("start")
+        .to(balls, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "start");
+
+
+      // DYNAMIC LOOP: Build the open/close sequence for every item
+      accItems.forEach((item, index) => {
+          const content = item.querySelector(".acc-content");
+          const lis = content.querySelectorAll("li");
+          const h = getAutoHeight(content);
+          const vis = visuals[index];
+          const span = item.querySelector(".acc-header > span");
+          
+          // Get the unique color for this heading from the HTML data attribute
+          const targetColor = item.getAttribute("data-color") || "#000";
+          
+          let phaseLabel = "phase" + index;
+
+          if (index === 0) {
+              // First item just opens
+              tl.addLabel(phaseLabel, "start+=0.4")
+                .to(span, { color: targetColor, duration: 0.3 }, phaseLabel)
+                .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel)
+                .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel)
+                .to(lis, { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" }, phaseLabel + "+=0.2");
+          } else {
+              // All subsequent items: Close the Previous, then Open the Current
+              let prevItem = accItems[index - 1];
+              let prevContent = prevItem.querySelector(".acc-content");
+              let prevLis = prevContent.querySelectorAll("li");
+              let prevVis = visuals[index - 1];
+              let prevSpan = prevItem.querySelector(".acc-header > span");
+              let prevSlot = prevItem.querySelector(".dotted-slot");
+              let prevBall = prevItem.querySelector(".ball");
+
+              tl.addLabel(phaseLabel, "+=0.5")
+                
+                // 1. Close Previous Content
+                .to(prevLis, { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, phaseLabel)
+                .to(prevContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                
+                // 2. Hide Previous Header & Ball
+                .to(prevSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                .to(prevSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                .to(prevBall, { opacity: 0, duration: 0.1, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                
+                // 3. Slide Previous Parent Up
+                .to(prevItem, { marginTop: -slideUpDistance, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                .to(prevVis, { opacity: 0, scale: 0.95, duration: 0.4 }, phaseLabel)
+                
+                // 4. Open Current Content
+                .to(span, { color: targetColor, duration: 0.3 }, phaseLabel + "+=0.2")
+                .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel + "+=0.2")
+                .to(lis, { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" }, phaseLabel + "+=0.4");
+          }
+      });
+
+
+      // OUTRO PHASE: Close the very last item in the list
+      const lastIdx = accItems.length - 1;
+      const lastItem = accItems[lastIdx];
+      const lastContent = lastItem.querySelector(".acc-content");
+      const lastLis = lastContent.querySelectorAll("li");
+      const lastVis = visuals[lastIdx];
+      const lastSpan = lastItem.querySelector(".acc-header > span");
+      const lastSlot = lastItem.querySelector(".dotted-slot");
+
+      tl.addLabel("outro", "+=0.5")
+        .to(lastLis, { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, "outro")
+        .to(lastContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
+        
+        .to(lastSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
+        .to(lastSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
+        
+        .to(lastVis, { opacity: 0, scale: 0.95, duration: 0.4 }, "outro");
+
+      // Loop through all balls to bring them to the bottom center
+      balls.forEach((ball, i) => {
+          // Dynamic compensation math: ensuring all balls align perfectly at the bottom
+          // despite their parent containers sliding up at different times.
+          const slidesApplied = Math.min(i + 1, accItems.length - 1);
+          const yCompensation = endCoords[i].y + (slideUpDistance * slidesApplied);
+
+          tl.to(ball, { 
+              x: endCoords[i].x, 
+              y: yCompensation, 
+              opacity: 1, 
+              scale: 0.5, 
+              duration: 0.9, 
+              ease: "power2.in" 
+          }, "outro+=0.2");
+      });
+
+  });
+</script>
+
+<!-- =============personal-tabing-section script end======================= -->
 </body>
 
 </html>
+
+
