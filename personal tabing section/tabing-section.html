@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP ScrollTrigger Pinned Tabs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- Core Styles --- */
+        body {
+            /* spacer to allow scrolling before/after */
+            margin-bottom: 50vh; 
+            background-color: #fff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* The main container that gets pinned */
+        #pinned-section {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 10vh; /* Space for headers */
+        }
+
+        /* --- The Sticky Headers Area --- */
+        .header-container {
+            position: relative;
+            z-index: 20;
+            margin-bottom: 60px;
+        }
+
+        .tab-header {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 50px; /* Space for the ball */
+            color: #ccc; /* Inactive color */
+            transition: color 0.3s ease;
+        }
+        
+        .tab-header.active-1 { color: #FF4D4D; }
+        .tab-header.active-2 { color: #4D4DFF; }
+        .tab-header.active-3 { color: #A020F0; }
+
+        /* --- The Floating Balls --- */
+        .ball-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 25;
+        }
+
+        .anim-ball {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            /* Initial Position: centered horizontally, above screen vertically */
+            left: 50%;
+            top: -100px; 
+            transform: translate(-50%, -50%);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            will-change: transform;
+        }
+
+        .ball-1 { background-color: #FF4D4D; }
+        .ball-2 { background-color: #4D4DFF; }
+        .ball-3 { background-color: #A020F0; }
+
+
+        /* --- The Stacked Content Sections --- */
+        .content-stack {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            /* Ensure content doesn't overlap headers */
+        }
+
+        .content-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Start hidden, GSAP handles the reveal */
+            visibility: hidden;
+            opacity: 0;
+            will-change: opacity, transform;
+        }
+
+        /* Initial state for panel 1: visible */
+        .content-panel.panel-1 {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Content Styling */
+        .content-left ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .content-left li {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .content-left h3 {
+             font-size: 4rem;
+             font-weight: 800;
+             margin-bottom: 30px;
+        }
+        
+        /* Placeholder styles for the right-side illustrations */
+        .illustration-placeholder {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            /* Using SVG placeholders as I don't have the source images */
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .illustration-placeholder svg {
+            width: 80%;
+            height: auto;
+            display: block;
+        }
+
+        /* Simple internal animation for placeholders to mimic video */
+        .pulse-anim { animation: pulse 3s infinite ease-in-out; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.8;} 50% { transform: scale(1.05); opacity: 1;} 100% { transform: scale(1); opacity: 0.8;}}
+
+    </style>
+</head>
+<body>
+
+    <div style="height: 50vh; background: #eee; display:flex; justify-content:center; align-items:center;">
+        <h1>Scroll Down</h1>
+    </div>
+
+    <section id="pinned-section">
+        
+        <div class="ball-container">
+            <div class="anim-ball ball-1"></div>
+            <div class="anim-ball ball-2"></div>
+            <div class="anim-ball ball-3"></div>
+        </div>
+
+        <div class="container h-100 d-flex flex-column">
+            
+            <div class="row header-container justify-content-center text-center">
+                <div class="col-md-3 position-relative">
+                    <div class="pos-marker marker-1" style="position:absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 1px; height: 1px;"></div>
+                    <div class="tab-header header-1">Design</div>
+                </div>
+                <div class="col-md-3 position-relative">
+                     <div class="pos-marker marker-2" style="position:absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 1px; height: 1px;"></div>
+                    <div class="tab-header header-2">Technology</div>
+                </div>
+                <div class="col-md-3 position-relative">
+                     <div class="pos-marker marker-3" style="position:absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 1px; height: 1px;"></div>
+                    <div class="tab-header header-3">Marketing</div>
+                </div>
+            </div>
+
+
+            <div class="content-stack">
+                
+                <div class="content-panel panel-1">
+                    <div class="row align-items-center h-100">
+                        <div class="col-lg-5 offset-lg-1 content-left">
+                            <h3 style="color: #FF4D4D;" >Design</h3>
+                            <ul>
+                                <li>UI Design</li>
+                                <li>UX Design</li>
+                                <li>UX Consultancy</li>
+                                <li>Design System</li>
+                                <li>Animation</li>
+                                <li>Illustrations</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 content-right">
+                             <div class="illustration-placeholder">
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="100" cy="100" r="80" fill="#FF4D4D" opacity="0.1"/>
+                                    <circle class="pulse-anim" cx="100" cy="100" r="40" fill="#FF4D4D"/>
+                                    <rect x="150" y="50" width="30" height="50" fill="none" stroke="#333" stroke-width="2"/>
+                                    <circle cx="60" cy="140" r="15" fill="none" stroke="#333" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-panel panel-2">
+                    <div class="row align-items-center h-100">
+                        <div class="col-lg-5 offset-lg-1 content-left">
+                             <h3 style="color: #4D4DFF;">Technology</h3>
+                            <ul>
+                                <li>Web Development</li>
+                                <li>Softwares</li>
+                                <li>Mobile Apps</li>
+                                <li>Web Apps</li>
+                                <li>Front-End</li>
+                                <li>Back-End</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 content-right">
+                             <div class="illustration-placeholder">
+                                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="40" y="60" width="120" height="80" rx="10" fill="#4D4DFF" opacity="0.1"/>
+                                    <circle class="pulse-anim" cx="100" cy="100" r="30" fill="#4D4DFF"/>
+                                    <line x1="20" y1="100" x2="40" y2="100" stroke="#333" stroke-width="2"/>
+                                    <line x1="160" y1="100" x2="180" y2="100" stroke="#333" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-panel panel-3">
+                    <div class="row align-items-center h-100">
+                        <div class="col-lg-5 offset-lg-1 content-left">
+                             <h3 style="color: #A020F0;">Marketing</h3>
+                            <ul>
+                                <li>Branding</li>
+                                <li>Brand Strategy</li>
+                                <li>Digital Marketing</li>
+                                <li>S.E.O.</li>
+                                <li>Campaigns</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 content-right">
+                             <div class="illustration-placeholder">
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="100,20 40,180 160,180" fill="#A020F0" opacity="0.1"/>
+                                    <circle class="pulse-anim" cx="100" cy="120" r="35" fill="#A020F0"/>
+                                    <rect x="140" y="80" width="40" height="30" fill="none" stroke="#333" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div> </section>
+
+    <div style="height: 100vh; background: #eee; display:flex; justify-content:center; align-items:top; padding-top: 100px;">
+        <h2>Next Section...</h2>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Helper function to calculate where the balls should land relative to the headers
+        function getRelativePosition(targetClass, containerClass) {
+            const target = document.querySelector(targetClass);
+            const container = document.querySelector(containerClass);
+            const targetRect = target.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            return {
+                x: targetRect.left - containerRect.left,
+                y: targetRect.top - containerRect.top
+            };
+        }
+
+        // Wait for layout before calculating positions
+        window.addEventListener("load", () => {
+            
+            // 1. Calculate landing positions for balls based on the markers placed in HTML
+            const pos1 = getRelativePosition('.marker-1', '#pinned-section');
+            const pos2 = getRelativePosition('.marker-2', '#pinned-section');
+            const pos3 = getRelativePosition('.marker-3', '#pinned-section');
+            const viewHeight = window.innerHeight;
+
+            // 2. Create the Master Timeline
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#pinned-section",
+                    start: "top top", 
+                    end: "+=4000", // Total scroll distance duration. Adjust for speed.
+                    pin: true,     // Pin the section container
+                    scrub: 0.5,    // Smooth scrubbing effect (0.5s catchup)
+                    anticipatePin: 1
+                }
+            });
+
+            /* --- Timeline Sequence --- */
+
+            // PHASE 1: Intro - Balls drop in and Panel 1 activates
+            tl.addLabel("start")
+              // Move balls to their header positions
+              .to('.ball-1', { x: pos1.x, y: pos1.y, ease: "power2.out", duration: 1.5 }, "start")
+              .to('.ball-2', { x: pos2.x, y: pos2.y, ease: "power2.out", duration: 1.5 }, "start+=0.1")
+              .to('.ball-3', { x: pos3.x, y: pos3.y, ease: "power2.out", duration: 1.5 }, "start+=0.2")
+              // Highlight first header text
+              .to('.header-1', { className: "tab-header active-1", duration: 0.5 }, "start+=0.5")
+              // Ensure panel 1 is visible (it is by default CSS, but good practice)
+              .fromTo('.panel-1', {autoAlpha: 0, y: 50}, {autoAlpha: 1, y:0, duration: 1}, "start+=0.5")
+              .addLabel("panel1-active");
+
+
+            // PHASE 2: Transition to Panel 2 (Technology)
+            tl.addLabel("transition-1-2", "+=1") // Add a gap before starting next phase
+              // Fade out Panel 1
+              .to('.panel-1', { autoAlpha: 0, y: -50, duration: 1 }, "transition-1-2")
+              .to('.header-1', { className: "tab-header", duration: 0.5 }, "transition-1-2")
+              // Fade in Panel 2
+              .fromTo('.panel-2', { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1 }, "transition-1-2")
+              .to('.header-2', { className: "tab-header active-2", duration: 0.5 }, "transition-1-2")
+              // Subtle bump effect on the active ball
+              .to('.ball-2', { scale: 1.2, duration: 0.3, yoyo: true, repeat: 1 }, "transition-1-2+=0.5")
+              .addLabel("panel2-active");
+
+
+            // PHASE 3: Transition to Panel 3 (Marketing)
+            tl.addLabel("transition-2-3", "+=1")
+              // Fade out Panel 2
+              .to('.panel-2', { autoAlpha: 0, y: -50, duration: 1 }, "transition-2-3")
+              .to('.header-2', { className: "tab-header", duration: 0.5 }, "transition-2-3")
+              // Fade in Panel 3
+              .fromTo('.panel-3', { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1 }, "transition-2-3")
+              .to('.header-3', { className: "tab-header active-3", duration: 0.5 }, "transition-2-3")
+              .to('.ball-3', { scale: 1.2, duration: 0.3, yoyo: true, repeat: 1 }, "transition-2-3+=0.5")
+              .addLabel("panel3-active");
+
+
+            // PHASE 4: Outro - Everything exits
+            tl.addLabel("outro", "+=1")
+              // Fade out last panel
+              .to('.panel-3', { autoAlpha: 0, y: -50, duration: 1 }, "outro")
+              .to('.header-3', { className: "tab-header", duration: 0.5 }, "outro")
+              // Drop balls down off-screen relative to their current X position
+              .to('.ball-1', { y: viewHeight + 200, ease: "power2.in", duration: 1.5 }, "outro+=0.2")
+              .to('.ball-2', { y: viewHeight + 200, ease: "power2.in", duration: 1.5 }, "outro+=0.3")
+              .to('.ball-3', { y: viewHeight + 200, ease: "power2.in", duration: 1.5 }, "outro+=0.4");
+        });
+
+        // Recalculate positions on resize to maintain responsiveness
+        window.addEventListener("resize", () => {
+             ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>
