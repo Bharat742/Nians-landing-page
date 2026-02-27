@@ -1565,94 +1565,92 @@ gsap.utils.toArray(".service").forEach((section) => {
 // }
 </script>
 
+<!-- services section gsap  -->
 <script>
  gsap.registerPlugin(ScrollTrigger);
 
 const allServices = gsap.utils.toArray(".service");
 const serviceImage = document.getElementById("serviceImage");
 
-
 /* ======================================
-   1️⃣ SERVICE LIST PIN + INSTANT HIDE
+   1️⃣ HEADER PINNING (Optimized)
 ====================================== */
-
 ScrollTrigger.create({
   trigger: ".service_list",
   start: "top top",
-  end: "+=200",
+  // Use a relative end based on the total height of all services
+  endTrigger: ".service-wrapper-container", 
+  end: "bottom bottom",
   pin: true,
-  pinSpacing: false,   // 🔥 THIS FIXES THE GAP
-  onLeave: () => {
-    gsap.set(".service_list", { autoAlpha: 0 });
-  },
-  onEnterBack: () => {
-    gsap.set(".service_list", { autoAlpha: 1 });
-  }
+  pinSpacing: false,
+  // Using autoAlpha for performance (combines opacity + visibility)
+  onLeave: () => gsap.to(".service_list", { autoAlpha: 0, duration: 0.3 }),
+  onEnterBack: () => gsap.to(".service_list", { autoAlpha: 1, duration: 0.3 })
 });
 
-
 /* ======================================
-   2️⃣ SERVICES PIN + REVEAL
+   2️⃣ SERVICES REVEAL (Smoothing the Scrub)
 ====================================== */
-
 allServices.forEach((section) => {
-
   const items = section.querySelectorAll("li");
 
-  // initial hidden state
-  gsap.set(items, { opacity: 0, y: 40 });
-
+  // Setting a timeline with a scrub value (e.g., 1 or 1.5) 
+  // makes the animation follow the scroll with a smooth "catch-up" delay.
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: section,
       start: "top top",
-      end: "+=120%",
-      scrub: true,
+      end: "+=100%", 
+      scrub: 1.5, // 🔥 Higher number = smoother/slower catch-up
       pin: true,
       anticipatePin: 1,
-      onEnter: () => changeImage(section.dataset.img),
-      onEnterBack: () => changeImage(section.dataset.img)
+      onToggle: (self) => {
+        if (self.isActive) changeImage(section.dataset.img);
+      }
     }
   });
 
-  // 👇 Important:
-  // No early animation before pinned properly
-  tl.fromTo(items,
-    { opacity: 0, y: 40 },
-    {
-      opacity: 1,
-      y: 0,
-      stagger: 0.2,
-      ease: "power2.out"
+  tl.fromTo(items, 
+    { opacity: 0, y: 60, filter: "blur(10px)" }, // Added blur for a more modern reveal
+    { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      stagger: 0.1, 
+      ease: "power3.out" 
     }
-  );
-
+  ).to(items, { opacity: 0, y: -40, delay: 0.5 }); // Optional: fade out as it leaves
 });
 
-
 /* ======================================
-   3️⃣ IMAGE CHANGE
+   3️⃣ IMAGE CHANGE (Crossfade logic)
 ====================================== */
+function changeImage(src) {
+  if (!src || serviceImage.getAttribute("src") === src) return;
 
-function changeImage(src){
-
-  if(!src) return;
-  if(serviceImage.getAttribute("src") === src) return;
-
+  // Kill current transitions to prevent flickering
   gsap.killTweensOf(serviceImage);
 
+  // Smooth Crossfade: scale slightly for a "breath" effect
   gsap.to(serviceImage, {
     opacity: 0,
-    duration: 0.3,
+    scale: 0.95,
+    duration: 0.4,
+    ease: "power2.inOut",
     onComplete: () => {
       serviceImage.setAttribute("src", src);
-      gsap.to(serviceImage, { opacity: 1, duration: 0.3 });
+      gsap.to(serviceImage, { 
+        opacity: 1, 
+        scale: 1, 
+        duration: 0.6, 
+        ease: "power2.out" 
+      });
     }
   });
-
 }
 </script>
 
+<!-- Dots animation style -->
 <script>
   gsap.registerPlugin(ScrollTrigger);
   
@@ -1998,11 +1996,6 @@ function changeImage(src){
 </script> -->
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 59693895cc9a6c7ef6fab9ba8609efffc862a980
-
 
 <!-- Testimonial section script  -->
 <script>
@@ -2199,3 +2192,5 @@ var nextNumberEl = root.querySelector(".svc__number--next");
 </body>
 
 </html>
+
+
