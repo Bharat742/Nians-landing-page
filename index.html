@@ -589,6 +589,46 @@
 
 
 
+/* Styling for the traveling ball */
+.magic-scroll-ball {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  /* background: radial-gradient(circle, #FFA106, #FF4D4D); Matches your brand colors */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5; /* Keeps it behind the images */
+  opacity: 1;
+  z-index: 2;
+  background: #FFA106;
+  transform: translate(-50%, -50%);
+  /* box-shadow: 0 4px 15px rgba(255, 161, 6, 0.6); */
+}
+/* .magic-scroll-ball { background: #002A54; }
+.magic-scroll-ball:nth-child(2) { background: #1DB7D1; }
+.magic-scroll-ball:nth-child(3) { background: #FFA106; } */
+
+.magic-scroll-ball:nth-of-type(1) {
+  background: #002A54;
+}
+
+/* Second ball */
+.magic-scroll-ball:nth-of-type(2) {
+  background: #1DB7D1;
+}
+
+/* Third ball */
+.magic-scroll-ball:nth-of-type(3) {
+  background: #FFA106;
+}
+/* Utility class to ensure images sit above the ball so it can "hide" behind them */
+.relative-z-top {
+  position: relative;
+  z-index: 10; 
+}
+
+
+
 /* ===============personal-tabing-section======== */
 #pin-master {
             height: 100vh;
@@ -2143,6 +2183,119 @@ slidesPerView:5,spaceBetween: 15,
 </script>
 <!-- =======================background color case study section animate script end============================== -->
 
+
+
+
+
+
+
+
+<!-- ============================ magic scroll ball animation script start========================================= -->
+<script>
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Create the 3 balls dynamically and append them to the body
+    const b1 = document.createElement('div'); b1.className = 'magic-scroll-ball'; document.body.appendChild(b1);
+    const b2 = document.createElement('div'); b2.className = 'magic-scroll-ball'; document.body.appendChild(b2);
+    const b3 = document.createElement('div'); b3.className = 'magic-scroll-ball'; document.body.appendChild(b3);
+
+    // Force all balls to be hidden initially and ensure they sit on top of everything
+    gsap.set([b1, b2, b3], { opacity: 0, zIndex: 9999, scale: 1 });
+
+    // 2. Add z-index classes so the ball hides perfectly behind these specific images
+    const centerLogo = document.querySelector('.center_logo');
+    if (centerLogo) centerLogo.classList.add('relative-z-top');
+    
+    const brandLogo = document.querySelector('img[src="images/brand-logo.png"]');
+    if(brandLogo) brandLogo.classList.add('relative-z-top');
+
+    // Helper: Gets absolute center coordinates of an element safely
+    const getPos = (el) => {
+      if(!el) return {x: window.innerWidth / 2, y: window.innerHeight / 2}; // Fallback center
+      const rect = el.getBoundingClientRect();
+      return { 
+        x: rect.left + rect.width / 2 + window.scrollX, 
+        y: rect.top + rect.height / 2 + window.scrollY 
+      };
+    };
+
+    // Helper: Gets the top-center of the case study boxes with a 30px offset downwards safely
+    const getBoxEntryPos = (el) => {
+      if(!el) return {x: 0, y: 0};
+      const rect = el.getBoundingClientRect();
+      return { 
+        x: rect.left + rect.width / 2 + window.scrollX, 
+        y: rect.top + window.scrollY + 30              
+      };
+    };
+
+    // --- INITIAL SETUP ---
+    // Park b2 and b3 exactly at the brand logo right from the start so they don't get lost
+    const resetStartPos = () => {
+      const startCircle = document.querySelector('.circle');
+      if(startCircle) {
+        gsap.set(b1, { left: getPos(startCircle).x, top: getPos(startCircle).y });
+      }
+      if(brandLogo) {
+        gsap.set([b2, b3], { left: getPos(brandLogo).x, top: getPos(brandLogo).y });
+      }
+    };
+    resetStartPos();
+
+    // --- PHASE 1: Move from .circle and hide behind .center_logo ---
+    gsap.to(b1, {
+      scrollTrigger: {
+        trigger: ".always_do",
+        start: "top 80%",   
+        end: "center center", 
+        scrub: 1,
+        invalidateOnRefresh: true, 
+        onEnter: () => gsap.set(b1, { opacity: 1 }), 
+        onLeaveBack: () => gsap.set(b1, { opacity: 0 }) 
+      },
+      left: () => getPos(centerLogo).x,
+      top: () => getPos(centerLogo).y,
+      opacity: 0, 
+      ease: "power1.inOut"
+    });
+
+    // --- PHASE 2 & 3: Emerge from brand-logo.png, split, and enter the Case Study boxes ---
+    let splitTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".case-study",
+        start: "top 95%", 
+        end: "top 40%",   
+        scrub: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // 1. Ensure all 3 are packed together behind the logo before the move starts
+    splitTl.set([b1, b2, b3], {
+      left: () => getPos(brandLogo).x,
+      top: () => getPos(brandLogo).y,
+      opacity: 0,
+      scale: 1
+    })
+    // 2. Make them visible
+    .to([b1, b2, b3], { opacity: 1, duration: 0.1 })
+    
+    // 3. Move them to their respective boxes. I've separated these to guarantee GSAP calculates each one!
+    .to(b1, { left: () => getBoxEntryPos(document.querySelector('.case_study_box1')).x, top: () => getBoxEntryPos(document.querySelector('.case_study_box1')).y, ease: "power2.inOut" }, 0.1)
+    .to(b2, { left: () => getBoxEntryPos(document.querySelector('.case_study_box2')).x, top: () => getBoxEntryPos(document.querySelector('.case_study_box2')).y, ease: "power2.inOut" }, 0.1)
+    .to(b3, { left: () => getBoxEntryPos(document.querySelector('.case_study_box3')).x, top: () => getBoxEntryPos(document.querySelector('.case_study_box3')).y, ease: "power2.inOut" }, 0.1)
+    
+    // 4. Hit the 30px mark, scale up, and fade out
+    .to([b1, b2, b3], { opacity: 0, scale: 2.5, duration: 0.15 });
+
+    // --- RESIZE HANDLER ---
+    window.addEventListener('resize', () => {
+      resetStartPos();
+      ScrollTrigger.refresh();
+    });
+  });
+</script>
 </body>
 
 </html>
