@@ -237,22 +237,70 @@
             font-weight: 900;
         }
         
-        .title-main { 
-            position: relative;
-            z-index: 2;
-            font-size: 36px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            color: #000;
-            text-transform: uppercase;
-        }
-       .graph_bar p, .graph_bar a  {font-size: 16px;
+       .title-main { 
+    position: relative;
+    z-index: 2;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    text-transform: uppercase;
+}
+      .graph_bar p, .graph_bar a {
+    font-size: 16px;
     font-family: "Nunito", sans-serif;
     font-weight: 400;
-    color: #000;}
-    .graph_bar a{color: #fff;background: #FFA106;text-decoration: none;padding: 15px 30px;border-radius: 30px;margin-top: 25px; display: inline-block;}
-    .graph_bar{ background: #F6F6F6;}
+    color: #000;
+}
+.graph_bar a {
+    color: #fff;
+    background: #FFA106;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    margin-top: 25px; 
+    display: inline-block;
+}     .graph_bar{ background: #F6F6F6;}
+/* --- Updated 3D Bar Image Styles --- */
+.chart-wrapper {
+    height: 500px;
+    display: flex;
+    align-items: flex-end; /* Anchors the bars to the bottom so they grow upwards */
+    justify-content: center;
+    padding-bottom: 0px;
+    margin-top: -90px;
+}
 
+.bar-container {
+    position: relative;
+    width: 200px; /* Adjust this width based on the actual aspect ratio of your images */
+    margin-right: -20px; 
+    height: 0px; /* Initial height for GSAP to grab */
+    margin-bottom: -70px;
+}
+
+/* Stretches the image to fit the container dynamically */
+.bar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Ensures the image stretches vertically as GSAP animates height */
+    display: block;
+}
+
+/* Positions the text cleanly above the images */
+.bar-text {
+    position: absolute;
+    bottom: 100%; /* Pushes text directly to the top edge of the image */
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    text-align: center;
+    margin-bottom: 15px; /* Adds breathing room between the text and the 3D top */
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.2;
+    z-index: 10;
+}
         .title-bg {
             font-size: 4rem;
             color: #b0b5c1;
@@ -308,8 +356,8 @@
 
         .bar-container {
             position: relative;
-            width: 130px;
-            margin-right: 60px; /* Space for depth */
+            width: 200px;
+            margin-right: -50px;
             height: 0px;margin-bottom: -70px; /* Initial height for GSAP */
         }
 
@@ -787,6 +835,80 @@
 
   /* ======================== case study style ================================= */
 
+
+
+
+/* Styling for the traveling ball */
+.magic-scroll-ball {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  /* background: radial-gradient(circle, #FFA106, #FF4D4D); Matches your brand colors */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5; /* Keeps it behind the images */
+  opacity: 1;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  /* box-shadow: 0 4px 15px rgba(255, 161, 6, 0.6); */
+}
+.magic-scroll-ball { background: #002A54; }
+.magic-scroll-ball:nth-child(2) { background: #1DB7D1; }
+.magic-scroll-ball:nth-child(3) { background: #FFA106; }
+
+.magic-scroll-ball:nth-of-type(1) {
+  background: #002A54;
+}
+
+/* Second ball */
+.magic-scroll-ball:nth-of-type(2) {
+  background: #1DB7D1;
+}
+
+/* Third ball */
+.magic-scroll-ball:nth-of-type(3) {
+  background: #FFA106;
+}
+/* Utility class to ensure images sit above the ball so it can "hide" behind them */
+.relative-z-top {
+  position: relative;
+  z-index: 10; 
+}
+
+
+
+.personal-tabing-section {
+    position: relative;
+    z-index: 10;
+    background: #ffffff; /* Ensures it covers content behind it */
+    width: 100%;
+}
+
+
+/* Add breathing room to the bottom of the previous section */
+.always_do {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 80px; 
+}
+
+/* Ensure the tabbing section sits cleanly underneath */
+.personal-tabing-section {
+    position: relative;
+    z-index: 10;
+    background: #ffffff;
+}
+
+/* Change from strict 100vh to min-height so it doesn't clip */
+#pin-master {
+    min-height: 100vh;
+    height: auto; 
+    padding-top: 60px; /* Pushes the content down slightly so it's not glued to the top edge */
+    display: flex;
+    align-items: flex-start;
+    background: #ffffff;
+    overflow: hidden;
+}
 </style>
 </head>
 
@@ -1316,51 +1438,46 @@
 
 
 <!-- Statices bar section -->
-    <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar">
-        <div class="container mt-5">
-            <div class="row align-items-center">
+  <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar">
+    <div class="container mt-5">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
+                <div class="position-relative">
+                    <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
+                </div>
                 
-                <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
-                    <div class="position-relative">
-                        <!-- <div class="title-bg fw-black">CREATE A WEBSITE</div> -->
-                        <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
-                        <!-- <div class="cursive-title">sell out<br>your event</div> -->
-                    </div>
-                    
-                    <p>
-                      We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.
-                    </p>
-                    
-                    <a href="#">Discuss the project with us</a>
-                </div>
-
-                <div class="col-lg-7">
-                    <div class="chart-wrapper">
-                        
-                        <div class="bar-container bar-1">
-                            <div class="bar-top"><span>Grab<br>attention</span></div>
-                            <div class="bar-front"></div>
-                            <div class="bar-right"></div>
-                        </div>
-
-                        <div class="bar-container bar-2">
-                            <div class="bar-top"><span>Explain<br>value</span></div>
-                            <div class="bar-front"></div>
-                            <div class="bar-right"></div>
-                        </div>
-
-                        <div class="bar-container bar-3">
-                            <div class="bar-top"><span>Drive to<br>purchase</span></div>
-                            <div class="bar-front"></div>
-                            <div class="bar-right"></div>
-                        </div>
-
-                    </div>
-                </div>
-
+                <p>
+                  We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.
+                </p>
+                
+                <a href="#">Discuss the project with us</a>
             </div>
+
+            <div class="col-lg-7">
+                <div class="chart-wrapper">
+                    
+                    <div class="bar-container bar-1">
+                        <div class="bar-text"><span>Grab<br>attention</span></div>
+                        <img src="./images/orange_graph.png" alt="Orange Bar" class="bar-img">
+                    </div>
+
+                    <div class="bar-container bar-2">
+                        <div class="bar-text"><span>Explain<br>value</span></div>
+                        <img src="./images/blue1.png" alt="Blue Bar" class="bar-img">
+                    </div>
+
+                    <div class="bar-container bar-3">
+                        <div class="bar-text"><span>Drive to<br>purchase</span></div>
+                        <img src="./images/green_graph.png" alt="Green Bar" class="bar-img">
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
 
    
@@ -1670,14 +1787,13 @@
   var tl2 = gsap.timeline({
       scrollTrigger: {
           trigger: "#stats-section",
-          start: "top 55%",     // Start animation when section's top hits 75% of viewport
-          end: "bottom 80%",    // End animation when section's bottom hits 80% of viewport
-          scrub: 1,             // 1 second scrub smoothing (creates the responsive scroll feel)
+          start: "top 40%",
+          end: "bottom 80%",
+          scrub: 1, 
       }
   });
 
   // Animate the height of each bar. 
-  // Because of how the CSS is structured, increasing the front face height automatically pushes the top face up!
   tl2.to(".bar-1", { height: "200px", ease: "none" }, 0)
     .to(".bar-2", { height: "330px", ease: "none" }, 0)
     .to(".bar-3", { height: "480px", ease: "none" }, 0);
@@ -1761,17 +1877,19 @@ slidesPerView:5,spaceBetween: 15,
       });
 
       // Adjust total scroll duration based on how many items exist
-      const totalScrollDuration = accItems.length * 1000;
+      const totalScrollDuration = accItems.length * 300;
 
       // --- Master Timeline ---
       const tl = gsap.timeline({
           scrollTrigger: {
-              trigger: "#pin-master",
+              trigger: ".personal-tabing-section",
+              pin: true,
               start: "top top",
               end: "+=" + totalScrollDuration, 
-              pin: true,
+              
               scrub: 1, 
-              anticipatePin: 1
+              anticipatePin: 1,
+              invalidateOnRefresh: true
           }
       });
 
@@ -2101,6 +2219,115 @@ slidesPerView:5,spaceBetween: 15,
 </script>
 <!-- =======================background color case study section animate script end============================== -->
 
+
+
+<script>
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Create the 3 balls dynamically and append them to the body
+    const b1 = document.createElement('div'); b1.className = 'magic-scroll-ball'; document.body.appendChild(b1);
+    const b2 = document.createElement('div'); b2.className = 'magic-scroll-ball'; document.body.appendChild(b2);
+    const b3 = document.createElement('div'); b3.className = 'magic-scroll-ball'; document.body.appendChild(b3);
+
+    // 2. Add z-index classes so the ball hides behind these specific images
+    document.querySelector('.center_logo').classList.add('relative-z-top');
+    const integrateCenterImg = document.querySelector('.integrate .text-center img');
+    integrateCenterImg.classList.add('relative-z-top');
+
+    // Helper Function: Gets the exact absolute center coordinates of any element
+    const getPos = (el) => {
+      if(!el) return {x: 0, y: 0};
+      const rect = el.getBoundingClientRect();
+      return { 
+        x: rect.left + rect.width / 2 + window.scrollX, 
+        y: rect.top + rect.height / 2 + window.scrollY 
+      };
+    };
+
+    // --- PHASE 1: Move from .circle and hide behind .center_logo ---
+    gsap.to(b1, {
+      scrollTrigger: {
+        trigger: ".always_do",
+        start: "top 80%",   // Starts when always_do section comes into view
+        end: "center center", 
+        scrub: 1,
+        invalidateOnRefresh: true, // Recalculates on resize
+        onEnter: () => gsap.set(b1, { opacity: 1 }), // Make visible
+        onLeaveBack: () => gsap.set(b1, { opacity: 0 }) // Hide if scrolled back up
+      },
+      left: () => getPos(document.querySelector('.center_logo')).x,
+      top: () => getPos(document.querySelector('.center_logo')).y,
+      opacity: 0, // Fades out right as it hits the center logo
+      ease: "power1.inOut"
+    });
+
+    // --- PHASE 2: Appear in .integrate and drop behind the center box ---
+    let dropTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".integrate",
+        start: "top 60%",
+        end: "center center",
+        scrub: 1,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    dropTl.fromTo(b1,
+      { 
+        left: () => getPos(integrateCenterImg).x, 
+        top: () => getPos(document.querySelector('.integrate')).y, 
+        opacity: 0 
+      },
+      { opacity: 1, duration: 0.2 } // Fade in quickly
+    )
+    .to(b1, { 
+      left: () => getPos(integrateCenterImg).x, 
+      top: () => getPos(integrateCenterImg).y, 
+      duration: 0.6,
+      ease: "power2.in"
+    })
+    .to(b1, { opacity: 1, duration: 0.2 }); // Hide into the box
+
+    // --- PHASE 3: Split into 3 and hit the Case Study boxes ---
+    let splitTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".case-study",
+        start: "top 90%", // Trigger right as case study section appears
+        end: "center 60%", 
+        scrub: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // Bring all 3 balls to the center box instantly, make them visible
+    splitTl.set([b1, b2, b3], {
+      left: () => getPos(integrateCenterImg).x,
+      top: () => getPos(integrateCenterImg).y,
+      opacity: 1
+    })
+    // Move them simultaneously to their target case study boxes
+    .to(b1, { left: () => getPos(document.querySelector('.case_study_box1')).x, top: () => getPos(document.querySelector('.case_study_box1')).y, ease: "power1.out" }, 0)
+    .to(b2, { left: () => getPos(document.querySelector('.case_study_box2')).x, top: () => getPos(document.querySelector('.case_study_box2')).y, ease: "power1.out" }, 0)
+    .to(b3, { left: () => getPos(document.querySelector('.case_study_box3')).x, top: () => getPos(document.querySelector('.case_study_box3')).y, ease: "power1.out" }, 0)
+    // Scale up and fade out to simulate them "exploding" into the background bubbles!
+    .to([b1, b2, b3], { opacity: 0, scale: 3, duration: 0.2 }, "-=0.2");
+
+    // --- INITIAL SETUP & RESIZE HANDLER ---
+    const resetStartPos = () => {
+      gsap.set(b1, { 
+        left: getPos(document.querySelector('.circle')).x, 
+        top: getPos(document.querySelector('.circle')).y 
+      });
+    };
+    
+    resetStartPos();
+    window.addEventListener('resize', () => {
+      resetStartPos();
+      ScrollTrigger.refresh();
+    });
+  });
+</script>
 </body>
 
 </html>

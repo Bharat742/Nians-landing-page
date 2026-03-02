@@ -237,22 +237,70 @@
             font-weight: 900;
         }
         
-        .title-main { 
-            position: relative;
-            z-index: 2;
-            font-size: 36px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            color: #000;
-            text-transform: uppercase;
-        }
-       .graph_bar p, .graph_bar a  {font-size: 16px;
+       .title-main { 
+    position: relative;
+    z-index: 2;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    text-transform: uppercase;
+}
+      .graph_bar p, .graph_bar a {
+    font-size: 16px;
     font-family: "Nunito", sans-serif;
     font-weight: 400;
-    color: #000;}
-    .graph_bar a{color: #fff;background: #FFA106;text-decoration: none;padding: 15px 30px;border-radius: 30px;margin-top: 25px; display: inline-block;}
-    .graph_bar{ background: #F6F6F6;}
+    color: #000;
+}
+.graph_bar a {
+    color: #fff;
+    background: #FFA106;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    margin-top: 25px; 
+    display: inline-block;
+}     .graph_bar{ background: #F6F6F6;}
+/* --- Updated 3D Bar Image Styles --- */
+.chart-wrapper {
+    height: 500px;
+    display: flex;
+    align-items: flex-end; /* Anchors the bars to the bottom so they grow upwards */
+    justify-content: center;
+    padding-bottom: 0px;
+    margin-top: -90px;
+}
 
+.bar-container {
+    position: relative;
+    width: 200px; /* Adjust this width based on the actual aspect ratio of your images */
+    margin-right: -20px; 
+    height: 0px; /* Initial height for GSAP to grab */
+    margin-bottom: -70px;
+}
+
+/* Stretches the image to fit the container dynamically */
+.bar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Ensures the image stretches vertically as GSAP animates height */
+    display: block;
+}
+
+/* Positions the text cleanly above the images */
+.bar-text {
+    position: absolute;
+    bottom: 100%; /* Pushes text directly to the top edge of the image */
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    text-align: center;
+    margin-bottom: 15px; /* Adds breathing room between the text and the 3D top */
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.2;
+    z-index: 10;
+}
         .title-bg {
             font-size: 4rem;
             color: #b0b5c1;
@@ -308,8 +356,8 @@
 
         .bar-container {
             position: relative;
-            width: 130px;
-            margin-right: 60px; /* Space for depth */
+            width: 200px;
+            margin-right: -50px; /* Space for depth */
             height: 0px;margin-bottom: -70px; /* Initial height for GSAP */
         }
 
@@ -1316,51 +1364,46 @@
 
 
 <!-- Statices bar section -->
-    <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar">
-        <div class="container mt-5">
-            <div class="row align-items-center">
+  <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar">
+    <div class="container mt-5">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
+                <div class="position-relative">
+                    <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
+                </div>
                 
-                <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
-                    <div class="position-relative">
-                        <!-- <div class="title-bg fw-black">CREATE A WEBSITE</div> -->
-                        <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
-                        <!-- <div class="cursive-title">sell out<br>your event</div> -->
-                    </div>
-                    
-                    <p>
-                      We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.
-                    </p>
-                    
-                    <a href="#">Discuss the project with us</a>
-                </div>
-
-                <div class="col-lg-7">
-                    <div class="chart-wrapper">
-                        
-                        <div class="bar-container bar-1">
-                            <div class="bar-top"><span>Grab<br>attention</span></div>
-                            <div class="bar-front"></div>
-                            <div class="bar-right"></div>
-                        </div>
-
-                        <div class="bar-container bar-2">
-                            <div class="bar-top"><span>Explain<br>value</span></div>
-                            <div class="bar-front"></div>
-                            <div class="bar-right"></div>
-                        </div>
-
-                        <div class="bar-container bar-3">
-                            <div class="bar-top"><span>Drive to<br>purchase</span></div>
-                            <div class="bar-front"></div>
-                            <div class="bar-right"></div>
-                        </div>
-
-                    </div>
-                </div>
-
+                <p>
+                  We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.
+                </p>
+                
+                <a href="#">Discuss the project with us</a>
             </div>
+
+            <div class="col-lg-7">
+                <div class="chart-wrapper">
+                    
+                    <div class="bar-container bar-1">
+                        <div class="bar-text"><span>Grab<br>attention</span></div>
+                        <img src="./images/orange_graph.png" alt="Orange Bar" class="bar-img">
+                    </div>
+
+                    <div class="bar-container bar-2">
+                        <div class="bar-text"><span>Explain<br>value</span></div>
+                        <img src="./images/blue1.png" alt="Blue Bar" class="bar-img">
+                    </div>
+
+                    <div class="bar-container bar-3">
+                        <div class="bar-text"><span>Drive to<br>purchase</span></div>
+                        <img src="./images/green_graph.png" alt="Green Bar" class="bar-img">
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
 
    
@@ -1670,14 +1713,13 @@
   var tl2 = gsap.timeline({
       scrollTrigger: {
           trigger: "#stats-section",
-          start: "top 55%",     // Start animation when section's top hits 75% of viewport
-          end: "bottom 80%",    // End animation when section's bottom hits 80% of viewport
-          scrub: 1,             // 1 second scrub smoothing (creates the responsive scroll feel)
+          start: "top 40%",
+          end: "bottom 80%",
+          scrub: 1, 
       }
   });
 
   // Animate the height of each bar. 
-  // Because of how the CSS is structured, increasing the front face height automatically pushes the top face up!
   tl2.to(".bar-1", { height: "200px", ease: "none" }, 0)
     .to(".bar-2", { height: "330px", ease: "none" }, 0)
     .to(".bar-3", { height: "480px", ease: "none" }, 0);
