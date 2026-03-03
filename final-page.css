@@ -30,7 +30,7 @@ section{padding: 60px 0px;}
 .creative_agency h1{font-size: 46px;font-weight: 500;line-height: 58px;color: #000;max-width: 520px;}
 .creative_agency h1 span{position: relative;}
 .creative_agency h1 span::after{width: 85%;background-position: right;left: 24px;bottom: -10px;}
-.creative_agency .circle{height: 230px;width: 230px;border-radius: 50%;background:url("images/circle.png");background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;}
+.creative_agency .circle{height: 230px;width: 230px;border-radius: 50%;background:url("images/circle.png");background: unset; background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;}
 .creative_agency h2{position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;font-size: 84px;font-weight: 800;color: #fff; display: flex;align-items: center;justify-content: center;}
 .creative_agency h2 sup{font-weight: 400;font-size: 35px;}
 .creative_agency h3{font-size: 16px;font-weight: 500;line-height: 30px;padding: 0 20px;}
