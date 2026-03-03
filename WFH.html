@@ -913,6 +913,45 @@
     background: #ffffff;
     overflow: hidden;
 }
+
+
+
+
+
+
+
+/* =============================================== */
+/* Add this to your existing CSS */
+
+/* Make sure the circle sits on top of the ball */
+.circle {
+  position: relative;
+  z-index: 10;
+  /* If your circle is transparent, give it a background color so the ball actually hides behind it */
+  background-color: #ffffff; 
+}
+
+/* Make sure the center logo sits on top of the ball */
+.center_logo {
+  position: relative;
+  z-index: 10;
+  /* background-color: #F6F6F6; Match the section background so the ball hides completely */
+}
+
+/* The travelling ball */
+.bubble-ball {
+  width: 30px;
+  height: 30px;
+  /* background: radial-gradient(circle, #FFA106, #FF4D4D); Your theme colors */
+  background: #125682;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 5; /* Lower than the circle and logo (10) */
+  transform: translate(-50%, -50%); /* Centers the ball on its coordinates */
+}
 </style>
 </head>
 
@@ -2092,8 +2131,7 @@ slidesPerView:5,spaceBetween: 15,
 <!-- =======================center box section animate script end============================== -->
 
 <!-- =======================pipe box section animate script ============================== -->
-
- <script>
+<script>
   // Ensure ScrollTrigger is registered
   gsap.registerPlugin(ScrollTrigger);
 
@@ -2101,43 +2139,40 @@ slidesPerView:5,spaceBetween: 15,
   const integrateTl = gsap.timeline({
     scrollTrigger: {
       trigger: ".integrate",
-      start: "top 50%", // Animation starts when the top of the section is 30% down your screen
-      end: "top 0%",   // Animation ends when the section gets near the top of the screen
-      scrub: 1,         // Ties the animation smoothly to your scrollbar
+      start: "top 60%", // Adjusted: Start slightly earlier to give more room
+      end: "top -20%",  // Adjusted: Extend the end point so the animation has a longer physical scroll distance to complete
+      scrub: 1.5,       // INCREASED: Adds a slightly longer "catch-up" delay for a buttery, floating effect
     }
   });
 
-  // 1. Center Image: Comes from top to bottom
-  // We start it high up (y: -200) and faded out (opacity: 0)
+  // 1. Center Image
   integrateTl.from(".integrate .col-md-4.text-center img", {
-    y: -200,
+    y: -150,           // Slightly reduced distance so it doesn't have to travel as fast
     opacity: 0,
-    ease: "power2.out"
-  }, 0); // The '0' tells it to start at the exact beginning of the scroll trigger
-
-  // 2. Left Boxes: Start in the center and spread to the Left
-  // We start them shifted to the right (x: 200) so they move left to their normal spots
-  integrateTl.from(".social_service_left .social_service_text", {
-    x: 200,
-    opacity: 0,
-    stagger: 0.1, // Adds a slight domino effect so they don't all move at the exact same time
-    ease: "power2.out"
-  }, 0); 
-
-  // 3. Right Boxes: Start in the center and spread to the Right
-  // We start them shifted to the left (x: -200) so they move right to their normal spots
-  integrateTl.from(".social_service_right .social_service_text", {
-    x: -200,
-    opacity: 0,
-    stagger: 0.1,
-    ease: "power2.out"
+    ease: "none"       // CHANGED: Removed power2.out. See explanation below!
   }, 0);
 
-  // Optional: If you want the background Lottie lines to fade in as the boxes spread
+  // 2. Left Boxes
+  integrateTl.from(".social_service_left .social_service_text", {
+    x: 100,            // Reduced distance for a subtler, smoother slide
+    opacity: 0,
+    stagger: 0.15,     // Slightly increased stagger to separate them more
+    ease: "none"       // CHANGED
+  }, 0); 
+
+  // 3. Right Boxes
+  integrateTl.from(".social_service_right .social_service_text", {
+    x: -100,           // Reduced distance
+    opacity: 0,
+    stagger: 0.15,
+    ease: "none"       // CHANGED
+  }, 0);
+
+  // 4. Background Lottie lines
   integrateTl.from("#brandLogoLottie", {
     opacity: 0,
-    scale: 0.8, // Slightly scales up as it appears
-    duration: 1
+    scale: 0.9, 
+    ease: "none" 
   }, 0);
 
 </script>
@@ -2328,6 +2363,66 @@ slidesPerView:5,spaceBetween: 15,
       resetStartPos();
       ScrollTrigger.refresh();
     });
+  });
+</script>
+
+
+
+
+
+<script>
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Get the starting and ending elements
+    const startEl = document.querySelector('.circle');
+    const endEl = document.querySelector('.center_logo');
+
+    // 2. Create the bubble ball dynamically
+    const bubbleBall = document.createElement('div');
+    bubbleBall.className = 'bubble-ball';
+    document.body.appendChild(bubbleBall);
+
+    // 3. Helper function to get the exact center of an element on the page
+    const getCenterPos = (el) => {
+      if (!el) return { x: 0, y: 0 };
+      const rect = el.getBoundingClientRect();
+      return { 
+        x: rect.left + rect.width / 2 + window.scrollX, 
+        y: rect.top + rect.height / 2 + window.scrollY 
+      };
+    };
+
+    // 4. Create the GSAP ScrollTrigger Animation
+    // We use fromTo to explicitly set the start and end points
+    // 4. Create the GSAP ScrollTrigger Animation
+    gsap.fromTo(bubbleBall, 
+      {
+        // START POINT
+        x: () => getCenterPos(startEl).x,
+        y: () => getCenterPos(startEl).y,
+        opacity: 1,
+        // scale: 0.5,
+        backgroundColor: "#125682" // Starts as your brand Orange
+      },
+      {
+        // END POINT
+        x: () => getCenterPos(endEl).x,
+        y: () => getCenterPos(endEl).y,
+        opacity: 1, 
+        scale: 1,
+        backgroundColor: "#ffffff", // Smoothly transitions to White!
+        ease: "none", 
+        scrollTrigger: {
+          trigger: ".circle",          
+          start: "center center",      
+          endTrigger: ".center_logo",  
+          end: "center center",        
+          scrub: 1.5,                  
+          invalidateOnRefresh: true    
+        }
+      }
+    );
   });
 </script>
 </body>
