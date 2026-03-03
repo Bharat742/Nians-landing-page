@@ -934,7 +934,7 @@
 </style>
 </head>
 
-<body>
+<body class="fast-scroll-page">
 
     <header>
 		<ul>
@@ -1708,10 +1708,22 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js" type="module"></script>
 <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
-
+<!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script> -->
 
  
- 
+<!-- Scroll trigger animation smooth -->
+ <script>
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+if (document.body.classList.contains("fast-scroll-page")) {
+
+  ScrollSmoother.create({
+    smooth: 1.2,   // lower = faster scroll feel
+    effects: true
+  });
+
+}
+</script>
 
 <!-- Dots animation style -->
 <script>
