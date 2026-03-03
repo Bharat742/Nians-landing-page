@@ -339,7 +339,7 @@ section{padding: 60px 0px;}
 }
 
 .image-container img{
-  width:70%;
+  width:100%;
   transition:opacity 0.3s ease;
 }
 .main-wrapper{
@@ -464,7 +464,7 @@ section{padding: 60px 0px;}
 }
 
 .image-container img{
-  width:70%;
+  width:100%;
   max-width:500px;
   height:auto;
   display:block;
