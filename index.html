@@ -924,6 +924,13 @@
         0px -2px 0px #155884;
  
 }
+.personal-tabing-section {
+    min-height: 100vh; /* Ensures the section takes up the full screen height while pinned */
+    display: flex;
+    align-items: center; /* Centers your content vertically while it is stuck on the screen */
+    background-color: #ffffff; /* Make sure it has a solid background, or the next section might bleed through */
+    overflow: hidden; /* Prevents the flying balls from causing horizontal scrollbars */
+}
 </style>
 </head>
 
@@ -977,7 +984,7 @@
 										<option value="3">Three</option>
 									</select>
 								</div>
-								<div class="col-md-6 p-1">
+								<!-- <div class="col-md-6 p-1">
 									<select class="form-select" aria-label="Default select example">
 										<option selected>Min Budget</option>
 										<option value="1">One</option>
@@ -992,7 +999,7 @@
 										<option value="2">Two</option>
 										<option value="3">Three</option>
 									</select>
-								</div>
+								</div> -->
 								<div class="col-md-12 p-1">
 									<textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
 								</div>
@@ -1185,16 +1192,14 @@
     <li><span class="color_square color_square3"><span class="dot-target"></span></span> Design</li>
   </ul>
 </section> -->
-<section  class="personal-tabing-section">
-  <div id="pin-master">
+<section class="personal-tabing-section">
   <div class="container">
       <div class="row">
           
           <div class="col-md-5 offset-md-1">
-              
               <div class="acc-item">
                   <div class="acc-header">
-                      <div class="dotted-slot"  data-color="#FF4D4D"><div class="ball bg-red"></div></div>
+                      <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
                       <span style="color: #000 !important;">Design</span>
                   </div>
                   <div class="acc-content">
@@ -1207,7 +1212,7 @@
                   </div>
               </div>
 
-              <div class="acc-item" >
+              <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
                       <span style="color: #000;">Technology</span>
@@ -1222,7 +1227,7 @@
                   </div>
               </div>
 
-              <div class="acc-item" >
+              <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
                       <span style="color: #000;">Marketing</span>
@@ -1237,38 +1242,30 @@
                   </div>
               </div>
 
-               
-
           </div>
 
           <div class="col-md-5 offset-md-1">
               <div class="visual-container">
-                  
                   <div class="visual-item">
                       <div class="image-container">
                           <img src="./images/gif.gif" alt="Design">
                       </div>
                   </div>
-                  
                   <div class="visual-item">
                       <div class="image-container">
                           <img src="./images/gif.gif" alt="Tech">
                       </div>
                   </div>
-                  
                   <div class="visual-item">
                       <div class="image-container">
                           <img src="./images/gif.gif" alt="Marketing">
                       </div>
                   </div>
- 
-
               </div>
           </div>
 
       </div>
   </div>
-</div>
 </section>
    
 
@@ -1860,20 +1857,18 @@ slidesPerView:5,spaceBetween: 15,
   }
 
   window.addEventListener("load", () => {
-      // Select all items using generic classes (Works for 3, 4, 10, or 20 items automatically)
       const accItems = document.querySelectorAll(".acc-item");
       const visuals = document.querySelectorAll(".visual-item");
       const balls = document.querySelectorAll(".ball");
 
-      // Calculate exact slide up distance based on the first item
       const headerHeight = document.querySelector(".acc-header").offsetHeight;
       const accItemStyle = window.getComputedStyle(accItems[0]);
       const marginBottom = parseFloat(accItemStyle.marginBottom);
       const slideUpDistance = headerHeight + marginBottom;
 
-      // --- Context Rectangles for Origins/Destinations ---
-      const pinMaster = document.querySelector("#pin-master");
-      const masterRect = pinMaster.getBoundingClientRect();
+      // --- Context Rectangles (Updated to use the Section instead of pin-master) ---
+      const sectionMaster = document.querySelector(".personal-tabing-section");
+      const masterRect = sectionMaster.getBoundingClientRect();
       
       const startX = masterRect.width / 2;
       const startY = 0; 
@@ -1889,7 +1884,6 @@ slidesPerView:5,spaceBetween: 15,
           const diffStartX = startX - (ballRect.left - masterRect.left + ballRect.width / 2);
           const diffStartY = startY - (ballRect.top - masterRect.top + ballRect.height / 2);
           
-          // Store the bottom destination for each ball
           endCoords.push({
               x: endX - (ballRect.left - masterRect.left + ballRect.width / 2),
               y: endY - (ballRect.top - masterRect.top + ballRect.height / 2)
@@ -1898,25 +1892,23 @@ slidesPerView:5,spaceBetween: 15,
           gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 1, scale: 0.5 });
       });
 
-      // Adjust total scroll duration based on how many items exist
-      const totalScrollDuration = accItems.length * 1000;
-
+      // --- Master Timeline (Updated ScrollTrigger logic) ---
+      // --- Master Timeline ---
       // --- Master Timeline ---
       const tl = gsap.timeline({
           scrollTrigger: {
-              trigger: "#pin-master",
-              start: "top top",
-              end: "+=" + totalScrollDuration, 
-              pin: true,
-              scrub: 1, 
-              anticipatePin: 1
+              trigger: ".personal-tabing-section",
+              start: "top top",      // Pins exactly when the top of the section hits the top of the screen
+              end: "+=2500",         // THE SPEED CONTROL: The section will stay pinned for exactly 2500 pixels of scrolling.
+              pin: true,             // Makes the section sticky!
+              scrub: 1,              // Smoothly links the animation to your scrollbar
+              anticipatePin: 1       // Prevents a slight visual jump when the pinning starts
           }
       });
 
       // PHASE 0: ALL balls fly in from Top-Center
       tl.addLabel("start")
         .to(balls, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "start");
-
 
       // DYNAMIC LOOP: Build the open/close sequence for every item
       accItems.forEach((item, index) => {
@@ -1925,21 +1917,17 @@ slidesPerView:5,spaceBetween: 15,
           const h = getAutoHeight(content);
           const vis = visuals[index];
           const span = item.querySelector(".acc-header > span");
-          
-          // Get the unique color for this heading from the HTML data attribute
           const targetColor = item.getAttribute("data-color") || "#000";
           
           let phaseLabel = "phase" + index;
 
           if (index === 0) {
-              // First item just opens
               tl.addLabel(phaseLabel, "start+=0.4")
                 .to(span, { color: targetColor, duration: 0.3 }, phaseLabel)
                 .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel)
                 .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel)
                 .to(lis, { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power2.out" }, phaseLabel + "+=0.2");
           } else {
-              // All subsequent items: Close the Previous, then Open the Current
               let prevItem = accItems[index - 1];
               let prevContent = prevItem.querySelector(".acc-content");
               let prevLis = prevContent.querySelectorAll("li");
@@ -1949,21 +1937,13 @@ slidesPerView:5,spaceBetween: 15,
               let prevBall = prevItem.querySelector(".ball");
 
               tl.addLabel(phaseLabel, "+=0.5")
-                
-                // 1. Close Previous Content
                 .to(prevLis, { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, phaseLabel)
                 .to(prevContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
-                
-                // 2. Hide Previous Header & Ball
                 .to(prevSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevBall, { opacity: 0, duration: 0.1, ease: "power2.inOut" }, phaseLabel + "+=0.2")
-                
-                // 3. Slide Previous Parent Up
                 .to(prevItem, { marginTop: -slideUpDistance, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevVis, { opacity: 0, scale: 0.95, duration: 0.4 }, phaseLabel)
-                
-                // 4. Open Current Content
                 .to(span, { color: targetColor, duration: 0.3 }, phaseLabel + "+=0.2")
                 .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel + "+=0.2")
@@ -1971,8 +1951,7 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-
-      // OUTRO PHASE: Close the very last item in the list
+      // OUTRO PHASE
       const lastIdx = accItems.length - 1;
       const lastItem = accItems[lastIdx];
       const lastContent = lastItem.querySelector(".acc-content");
@@ -1984,16 +1963,11 @@ slidesPerView:5,spaceBetween: 15,
       tl.addLabel("outro", "+=0.5")
         .to(lastLis, { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, "outro")
         .to(lastContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
-        
         .to(lastSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
         .to(lastSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
-        
         .to(lastVis, { opacity: 0, scale: 0.95, duration: 0.4 }, "outro");
 
-      // Loop through all balls to bring them to the bottom center
       balls.forEach((ball, i) => {
-          // Dynamic compensation math: ensuring all balls align perfectly at the bottom
-          // despite their parent containers sliding up at different times.
           const slidesApplied = Math.min(i + 1, accItems.length - 1);
           const yCompensation = endCoords[i].y + (slideUpDistance * slidesApplied);
 
