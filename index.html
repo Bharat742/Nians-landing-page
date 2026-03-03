@@ -931,6 +931,34 @@
     background-color: #ffffff; /* Make sure it has a solid background, or the next section might bleed through */
     overflow: hidden; /* Prevents the flying balls from causing horizontal scrollbars */
 }
+
+.multi-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.select-item {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease;
+  user-select: none;
+}
+
+.select-item.active {
+  /* background: #111; */
+  /* color: #fff; */
+  border-color: #111;
+}
+
+.select-item.active::after {
+  content: "✔";
+  font-size: 14px;
+  margin-left: 8px;
+}
 </style>
 </head>
 
@@ -977,12 +1005,19 @@
 									<input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number">
 								</div>
 								<div class="col-md-12 p-1">
-									<select class="form-select" aria-label="Default select example">
+									<!-- <select class="form-select" aria-label="Default select example">
 										<option selected>Services</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</select>
+										<option value="1">Paid Marketing / E-commerce</option>
+										<option value="2">SMO / ORM</option>
+										<option value="3">SEO / Automation</option>
+									</select> -->
+                  <!-- <div class="col-md-12 p-1"> -->
+  <div class="multi-select" >
+    <div class="select-item">Paid Marketing / E-commerce</div>
+    <div class="select-item">SMO / ORM</div>
+    <div class="select-item">SEO / Automation</div>
+  </div>
+<!-- </div> -->
 								</div>
 								<!-- <div class="col-md-6 p-1">
 									<select class="form-select" aria-label="Default select example">
@@ -1710,7 +1745,13 @@
 <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js" type="module"></script>
 <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script> -->
-
+<script>
+  document.querySelectorAll(".select-item").forEach(item => {
+    item.addEventListener("click", function () {
+      this.classList.toggle("active");
+    });
+  });
+</script>
  
 <!-- Scroll trigger animation smooth -->
  <script>
