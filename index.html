@@ -913,6 +913,17 @@
   z-index: 5; /* Lower than the circle and logo (10) */
   transform: translate(-50%, -50%); /* Centers the ball on its coordinates */
 }
+ 
+
+ 
+.circle h2 { 
+  margin: 0;
+   text-shadow: 2px 0px 0px #155884, 
+        -2px 0px 0px #155884, 
+        0px 2px 0px #155884, 
+        0px -2px 0px #155884;
+ 
+}
 </style>
 </head>
 
@@ -1129,7 +1140,14 @@
                   </div>
                   <div class="col-md-4 p-2">
                     <div class="center_logo">
-                      <img src="images/center-logo.png" alt="img" class="img-fluid w-100">
+                      <!-- <img src="images/center-logo.png" alt="img" class="img-fluid w-100"> -->
+                      <img src="images/nians_logo.png" alt="img" class="img-fluid w-100" style="    width: 210px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: auto;
+    margin-top: 110px;">
                     </div>
                   </div>
                   <div class="col-md-4 p-2">
@@ -2335,7 +2353,6 @@ slidesPerView:5,spaceBetween: 15,
 
 
 
-
 <script>
   window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -2349,7 +2366,7 @@ slidesPerView:5,spaceBetween: 15,
     bubbleBall.className = 'bubble-ball';
     document.body.appendChild(bubbleBall);
 
-    // 3. Helper function to get the exact center of an element on the page
+    // 3. Helper function to get the exact center
     const getCenterPos = (el) => {
       if (!el) return { x: 0, y: 0 };
       const rect = el.getBoundingClientRect();
@@ -2359,36 +2376,54 @@ slidesPerView:5,spaceBetween: 15,
       };
     };
 
-    // 4. Create the GSAP ScrollTrigger Animation
-    // We use fromTo to explicitly set the start and end points
-    // 4. Create the GSAP ScrollTrigger Animation
-    gsap.fromTo(bubbleBall, 
-      {
-        // START POINT
-        x: () => getCenterPos(startEl).x,
-        y: () => getCenterPos(startEl).y,
-        opacity: 1,
-        // scale: 0.5,
-        backgroundColor: "#125682" // Starts as your brand Orange
-      },
-      {
-        // END POINT
-        x: () => getCenterPos(endEl).x,
-        y: () => getCenterPos(endEl).y,
-        opacity: 1, 
-        scale: 1,
-        backgroundColor: "#ffffff", // Smoothly transitions to White!
-        ease: "none", 
-        scrollTrigger: {
-          trigger: ".circle",          
-          start: "center center",      
-          endTrigger: ".center_logo",  
-          end: "center center",        
-          scrub: 1.5,                  
-          invalidateOnRefresh: true    
-        }
+    // 4. Set the initial starting state for the ball
+    gsap.set(bubbleBall, {
+      x: () => getCenterPos(startEl).x,
+      y: () => getCenterPos(startEl).y,
+      opacity: 1,
+      backgroundColor: "#125682", // Brand Orange/Blue
+      borderRadius: "50%"         // Starts as a perfect circle
+    });
+
+    // 5. Create the Timeline tied to the scroll
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".circle",          
+        start: "center center",      
+        endTrigger: ".center_logo",  
+        end: "center center",        
+        scrub: 1.5,                  
+        invalidateOnRefresh: true    
       }
-    );
+    });
+
+    // --- TIMELINE ANIMATIONS ---
+    // The '0' at the end of each tween tells them all to start at the exact same time.
+    // The 'duration' controls how much of the scroll distance they take to finish.
+
+    // A. The Movement (Takes the full scroll distance: duration 1)
+    tl.to(bubbleBall, {
+      x: () => getCenterPos(endEl).x,
+      y: () => getCenterPos(endEl).y,
+      scale: 1.8  , // Scales up slightly as it moves
+      ease: "none",
+      duration: 1 
+    }, 0);
+
+    // B. The Shape Morph (Takes the full scroll distance: duration 1)
+    tl.to(bubbleBall, {
+      borderRadius: "3%", // Morphs smoothly into a square!
+      ease: "none",
+      duration: 1
+    }, 0);
+
+    // C. The Fast Color Change (Finishes in the first 15% of the scroll: duration 0.15)
+    tl.to(bubbleBall, {
+      backgroundColor: "#ffffff",
+      ease: "none",
+      duration: 0.6 // Change this number to tweak how fast the white appears (e.g., 0.1 is 10%, 0.3 is 30%)
+    }, 0);
+
   });
 </script>
 </body>
