@@ -1866,14 +1866,18 @@ slidesPerView:5,spaceBetween: 15,
       const marginBottom = parseFloat(accItemStyle.marginBottom);
       const slideUpDistance = headerHeight + marginBottom;
 
-      // --- Context Rectangles (Updated to use the Section instead of pin-master) ---
+      // --- Context Rectangles (Updated with extra top/bottom distance) ---
       const sectionMaster = document.querySelector(".personal-tabing-section");
       const masterRect = sectionMaster.getBoundingClientRect();
       
+      // 🛠️ TWEAK THESE NUMBERS:
+      const extraTop = 200;    // How many pixels ABOVE the section to start
+      const extraBottom = 150; // How many pixels BELOW the section to end
+
       const startX = masterRect.width / 2;
-      const startY = 0; 
+      const startY = -extraTop; // The negative value pushes it up and out of the section
       const endX = masterRect.width / 2;
-      const endY = masterRect.height - 30; 
+      const endY = masterRect.height + extraBottom; // Adds extra distance to the bottom
       
       const endCoords = [];
 
