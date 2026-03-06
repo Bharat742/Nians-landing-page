@@ -997,6 +997,50 @@
     position: relative;
     z-index: 11; /* Slightly higher so the balls can dive "behind/into" these boxes */
 }
+
+
+.campaign_stats h4 {
+  color: #fff; 
+  font-size: 1.5rem;
+}
+
+.campaign_stats span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff !important;
+}
+.campaign_stats {
+  /* border-top: 1px solid #eaeaea; */
+  padding-top: 1rem;
+}
+
+.image-container dotlottie-wc{
+  width: 100%;
+  max-width: 420px;   /* increase this value if needed */
+  height: 420px;
+}
+
+/* Styling for the three merging balls */
+/* Styling for the three smaller merging balls */
+.magic-merge-ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px; /* Small size as requested */
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5; /* Lower than the image */
+  transform: translate(-50%, -50%);
+  will-change: transform, border-radius, background-color, opacity;
+}
+
+/* Ensure the target image sits above the balls so they can hide behind it */
+.integrate .col-md-4.text-center img {
+  position: relative;
+  z-index: 10;
+}
 </style>
 </head>
 
@@ -1161,19 +1205,19 @@
             <div class="row">
               <div class="col-md-7 mx-auto">
                   <div class="heading-wrap align-center">
-                    <h2 class="heading">
-                      <span class="word">We always do</span>
+                    <h2 class="heading">  
+                      <span class="word">Data That Turns</span>
 
                       <span class="line line-2">
-                        <p><span class="word yellow_text">More</span>
-                        <span class="word fw-400">than just</span></p>
-                        <span class="word fw-400">websites</span>
+                        <p><span class="word yellow_text">Insight</span>
+                        <span class="word fw-400">Into Real</span></p>
+                        <span class="word fw-400"> Revenue.</span>
                       </span>
                     </h2>
 
                     <div class="hero-subheading-wrap">
                       <p class="txt-32">
-                       Every campaign we run lives and breathes through data.  
+                       Every campaign we run lives and breathes through data. 
                       </p>
                     </div>
                   </div>
@@ -1310,17 +1354,41 @@
               <div class="visual-container">
                   <div class="visual-item">
                       <div class="image-container">
-                          <img src="./images/gif.gif" alt="Design">
+                          <!-- <img src="./images/20210908-071511lf30_editor_rwzdclmm-1 (1).lottie" alt="Design"> -->
+                           <dotlottie-wc 
+                      src="/images/20210908-072604lf30_editor_ia9xic2y.lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                      style="width:420px;height:420px;"
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                       </div>
                   </div>
                   <div class="visual-item">
                       <div class="image-container">
-                          <img src="./images/gif.gif" alt="Tech">
+                          <!-- <img src="./images/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" alt="Tech"> -->
+                           <dotlottie-wc 
+                      src="/images/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                       style="width:420px;height:420px;"
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                       </div>
                   </div>
                   <div class="visual-item">
                       <div class="image-container">
-                          <img src="./images/gif.gif" alt="Marketing">
+                          <!-- <img src="./images/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" alt="Marketing"> -->
+                          <dotlottie-wc 
+                      src="/images/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" 
+                      speed="1"  
+                      loop 
+                      autoplay
+                       style="width:420px;height:420px;"
+                      class="mx-auto d-block"
+                    ></dotlottie-wc>
                       </div>
                   </div>
               </div>
@@ -1331,24 +1399,7 @@
 </section>
    
 
-
-<style>
-.campaign_stats h4 {
-  color: #fff; 
-  font-size: 1.5rem;
-}
-
-.campaign_stats span {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #fff !important;
-}
-.campaign_stats {
-  /* border-top: 1px solid #eaeaea; */
-  padding-top: 1rem;
-}
-</style>
+ 
 
 <section class="case-study pt-0">
   <div class="container-fluid">
@@ -1534,7 +1585,7 @@
             <p class="mb-5">We start by getting under the skin of your business. Through brand workshops and business analysis, we identify your strengths, growth opportunities and selling points. We then segment your market, map out customer pain points and buying behaviour and study the broader competitive landscape to make sure every move we make is rooted in reality, not assumptions.</p>
             <!-- <img src="./images/20210917-072012lf30_editor_6hszztkk.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 1"> -->
             <dotlottie-wc 
-                      src="images/20211129-042402lf30_editor_6n0omtwy.lottie" 
+                      src="images/20210908-071511lf30_editor_rwzdclmm-1.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -1547,7 +1598,7 @@
             <p class="mb-5">With discovery done, we identify the most profitable channels based on where your customers spend their time. Our creative team builds compelling assets while we construct a high-converting sales funnel around every stage of your customer's journey. Budget is allocated through a data-driven process, ensuring every rupee is mapped to both creative impact and performance potential.</p>
             <!-- <img src="./images/20211129-042402lf30_editor_6n0omtwy.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 2"> -->
             <dotlottie-wc 
-                      src="images/20210917-072012lf30_editor_6hszztkk.lottie" 
+                      src="images/20210908-071821lf30_editor_l2vr3l6s-1.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -1560,7 +1611,7 @@
             <p class="mb-5">Once the strategy is signed off, we deploy the right mix of creative content, platforms and tools to launch campaigns built for peak performance. Our creative and performance teams work in sync, continuously refining messaging, visuals, targeting and budgets in real time. After every campaign, we review, learn and come back with sharper creative and stronger results. Continuous improvement isn't a promise, it's our process. </p>
             <!-- <img src="./images/20211216-135041lf30_editor_vu9u2tko.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 3"> -->
             <dotlottie-wc 
-                      src="images/20211216-135041lf30_editor_vu9u2tko.lottie" 
+                      src="images/20210909-074915lf30_editor_fy6tfzer-1.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -2408,7 +2459,10 @@ slidesPerView:5,spaceBetween: 15,
 
 
 
-
+<!-- ####################################################
+ #########################################
+ [Center background circle move bottom nians logo]
+ ###################################### -->
 
 <!-- ================================Center background circle move bottom nians logo============================================================================= -->
 <!-- 
@@ -2485,15 +2539,19 @@ slidesPerView:5,spaceBetween: 15,
 
   });
 </script> -->
+<!-- ####################################################
+ #########################################
+ [20+ circle Center background circle move bottom nians logo]
+ ###################################### -->
 <!-- ================================Center background circle move bottom nians logo============================================================================= -->
-
 <script>
   window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1. Get the starting and ending elements
+    // 1. Get the starting, ending, and target elements
     const startEl = document.querySelector('.circle');
     const endEl = document.querySelector('.center_logo');
+    const logoImg = document.querySelector('.center_logo img'); // Target the logo image itself
 
     // 2. Create the bubble ball dynamically
     const bubbleBall = document.createElement('div');
@@ -2515,31 +2573,35 @@ slidesPerView:5,spaceBetween: 15,
       x: () => getCenterPos(startEl).x,
       y: () => getCenterPos(startEl).y,
       opacity: 1,
-      backgroundColor: "#125682", // Brand Orange/Blue
-      borderRadius: "50%"         // Starts as a perfect circle
+      backgroundColor: "#125682", 
+      borderRadius: "50%" 
+    });
+
+    // Set the initial state for the logo (hidden and scaled down to 0)
+    gsap.set(logoImg, {
+      scale: 0,
+      opacity: 0
     });
 
     // 5. Create the Timeline tied to the scroll
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".circle",          
-        start: "bottom 50%",         // Triggers as soon as the user scrolls slightly past the circle
-        toggleActions: "play none none reverse", // Plays automatically, reverses if you scroll back up
-        // scrub: -4.2,              // <-- REMOVED: This was forcing the slow scroll-based movement
+        start: "bottom 50%",         
+        toggleActions: "play none none reverse", 
         invalidateOnRefresh: true    
       }
     });
 
     // --- TIMELINE ANIMATIONS ---
-    // NOTE: Because scrub is removed, 'duration' is now measured in SECONDS, not scroll distance!
 
     // A. The Movement
     tl.to(bubbleBall, {
       x: () => getCenterPos(endEl).x,
       y: () => getCenterPos(endEl).y,
       scale: 1.8, 
-      ease: "power2.out", // Added a smooth, fast-start easing 
-      duration: 2.2       // Finishes the movement in 0.6 seconds
+      ease: "power2.out", 
+      duration: 2.2       
     }, 0);
 
     // B. The Shape Morph
@@ -2553,12 +2615,107 @@ slidesPerView:5,spaceBetween: 15,
     tl.to(bubbleBall, {
       backgroundColor: "#ffffff",
       ease: "none",
-      duration: 1.5       // Changes color very fast (0.3 seconds)
+      duration: 1.5       
     }, 0);
+
+    // D. The Logo Appearance (New)
+    // We use the position parameter '1.4' so the logo starts scaling up 
+    // right as the bubble ball is finishing its arrival behind it.
+    tl.to(logoImg, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.8,
+      ease: "back.out(1.5)" // Gives a very smooth, slightly bouncy pop effect
+    }, 1.4); 
 
   });
 </script>
 
+
+<!-- ####################################################
+ #########################################
+ [CASE STUDY SECTION three ball into center brand image]
+ ###################################### -->
+<!-- <script>
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Identify the 3 starting boxes
+    const startBoxes = [
+      document.querySelector('.case_study_box1'),
+      document.querySelector('.case_study_box2'),
+      document.querySelector('.case_study_box3')
+    ];
+    
+    // 2. Identify the target logo in the integrate section
+    const targetEl = document.querySelector('.integrate .col-md-4.text-center img');
+    
+    // Safety check: Don't run if elements are missing
+    if(!targetEl || startBoxes.includes(null)) return; 
+
+    // Theme colors for the 3 balls
+    const colors = ["#002A54", "#1DB7D1", "#FFA106"];
+    const balls = [];
+
+    // 3. Helper function: Calculates the EXACT center pixel of any element on the page
+    const getCenterPos = (el) => {
+      const rect = el.getBoundingClientRect();
+      return { 
+        x: rect.left + rect.width / 2 + window.scrollX, 
+        y: rect.top + rect.height / 2 + window.scrollY 
+      };
+    };
+
+    // 4. Create the 3 balls and place them in the center of their respective boxes
+    startBoxes.forEach((box, index) => {
+      const ball = document.createElement('div');
+      ball.className = 'magic-merge-ball';
+      ball.style.backgroundColor = colors[index];
+      document.body.appendChild(ball);
+      balls.push(ball);
+
+      // Set initial position to the exact center of Box 1, Box 2, and Box 3
+      gsap.set(ball, {
+        x: () => getCenterPos(box).x,
+        y: () => getCenterPos(box).y,
+        opacity: 1
+      });
+    });
+
+    // 5. Create the Scroll Timeline (scrub: 1 makes it reverse smoothly on scroll up)
+    const mergeTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".case-study", 
+        start: "center center", // Start moving when the case study boxes are mid-screen
+        endTrigger: ".integrate",
+        end: "center center",   // Finish moving when the logo is mid-screen
+        scrub: 1,               // Links the animation tightly to the scrollbar for reversing
+        invalidateOnRefresh: true // Recalculates exact centers if the browser is resized
+      }
+    });
+
+    // 6. Animate all 3 balls to the exact center of the target logo
+    balls.forEach((ball) => {
+      
+      // Move all 3 to the same exact X/Y coordinates
+      mergeTl.to(ball, {
+        x: () => getCenterPos(targetEl).x,
+        y: () => getCenterPos(targetEl).y,
+        ease: "power1.inOut",
+      }, 0); // The '0' ensures all 3 balls move at the exact same time
+
+      // As they move, blend them together into a background square
+      mergeTl.to(ball, {
+        borderRadius: "8px",         // Turns the circle into a slightly rounded square
+        backgroundColor: "#e8eff5",  // Blends all 3 into this single color behind the logo
+        scale: 4.5,                  // Scales up from 40px to create a large backdrop
+        ease: "power1.inOut",
+      }, 0);
+      
+    });
+
+  });
+</script> -->
 
 </body>
 
