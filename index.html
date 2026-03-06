@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.24.0/dist/css/coreui.min.css" rel="stylesheet">
 <title>Landing Page</title>
 <link rel="stylesheet" href="final-page.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -14,6 +15,12 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
 />
+
+<script defer src="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.24.0/dist/js/coreui.bundle.min.js"></script>
+
+
+
+
 <style> 
 /* Spacer sections */
 .spacer{
@@ -230,7 +237,10 @@
 /* ====================Bars section style============================  */
 
 
-#stats-section{background-color: #F6F6F6;}
+#stats-section{background-color: #F6F6F6; padding-top: 100px !important; padding-bottom: 40px !important;}
+#stats-section .section-title{text-align: left; color: #002a54;}
+
+
         /* Spacers to allow scrolling for the demo */
         /* Typography Styles */
         .fw-black {
@@ -273,7 +283,7 @@
 
 .bar-container {
     position: relative;
-    width: 200px; /* Adjust this width based on the actual aspect ratio of your images */
+    width: 250px; /* Adjust this width based on the actual aspect ratio of your images */
     margin-right: -20px; 
     height: 0px; /* Initial height for GSAP to grab */
     margin-bottom: -70px;
@@ -356,7 +366,7 @@
 
         .bar-container {
             position: relative;
-            width: 200px;
+            width: 250px;
             margin-right: -50px; /* Space for depth */
             height: 0px;margin-bottom: -70px; /* Initial height for GSAP */
         }
@@ -664,6 +674,7 @@
         }
 
         .personal-tabing-section .dotted-slot {
+          padding: 5px;
             width: 55px;
             height: 50px;
             border: 2px dotted #ccc;
@@ -764,6 +775,7 @@
     /* Padding to allow scrolling space for the demo */
     .website-creation-stages {
       padding: 100px 0;
+      background-color: #002A54;
     }
 
     /* --- Left Sticky Indicator Styles --- */
@@ -804,7 +816,7 @@
       justify-content: center;
       font-size: 8rem;
       font-weight: 800;
-      color: var(--text-inactive);
+      color: #106093;
       margin-bottom:-10px; /* Space between numbers when stacked below */
       transition: color 0.4s ease;
       line-height: 1;
@@ -828,6 +840,7 @@
       align-items: center;
       gap: 15px;
       font-size: 38px;
+      color: #fff;
     }
 
   .website-creation-stages  .content-section p {
@@ -849,6 +862,7 @@
 
 
         /* ======================== case study style ================================= */
+        .case-study {padding-bottom: 0;}
  .case-study .col-md-4 {
     overflow: hidden; 
 }
@@ -861,7 +875,7 @@
   padding: 30px 0px 0px;
   height: 100%;
   background: transparent; 
-}
+} 
 .case-study .case_study_box::before {
   content: "";
   position: absolute;
@@ -961,6 +975,28 @@
   font-size: 14px;
   margin-left: 8px;
 }
+
+/* Form css */
+.form-multi-select-input-group {border: 1px solid #cccccc;}
+.form-multi-select-indicator::before{background-color: rgb(52 58 64);}
+
+
+/* ================PERSONAL TABING SECTION ========== */
+.personal-tabing-section {
+    min-height: 100vh; 
+    display: flex;
+    align-items: center; 
+    background-color: #ffffff; /* Solid background prevents overlapping */
+    /* overflow: hidden;  <-- REMOVED: So balls can escape into the next section */
+    position: relative;
+    z-index: 10; /* Keeps this section above the previous ones */
+}
+
+.case-study {
+    padding-bottom: 0;
+    position: relative;
+    z-index: 11; /* Slightly higher so the balls can dive "behind/into" these boxes */
+}
 </style>
 </head>
 
@@ -980,21 +1016,21 @@
 					<div class="banner_data">
 						<h4>MAXIMISE YOUR BUSINESS GROWTH WITH,</h4>
 						<h1>India's Top <br> Digital <span>Marketing</span> <br> Agency</h1>
-						<p>Armed with a data-driven approach, we tackle the toughest challenges in the digital marketing arena. Let your brand thrive with our result-driven digital marketing services and martech solutions.</p>
+						<p>Armed with AI-driven strategies and a sharp data-first mindset, we tackle the toughest challenges in the digital marketing arena. Watch your CAC drop while your revenue climbs, because growth isn't luck, it's a system we've perfected.</p>
 						<ul>
 							<li>
-								<div><span>350+</span> very satisfied clients around the worldwide.</div> <img src="images/smile.png" alt="img" class="img-fluid">
+								<div><span>80+</span>Industry Awards Won</div> <img src="images/smile.png" alt="img" class="img-fluid">
 							</li>
 							<li>
-								<div><span>200+</span> good award winning digital media agency.</div> <img src="images/microphone.png" alt="img" class="img-fluid">
+								<div><span>700+</span>Brands Served Across the Globe</div> <img src="images/microphone.png" alt="img" class="img-fluid">
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form_div">
-						<h2>Let's connect Constellation</h2>
-						<p>Let's connect our constellation! Reach out and let the magic of collaboration illuminate our skies.</p>
+						<h2>Ready to Grow? Let's Start With a Conversation.</h2>
+						<p>Growth is Closer Than You Think. Let's Talk.</p>
 						<form>
 							<div class="row">
 								<div class="col-md-6 p-1">
@@ -1007,41 +1043,25 @@
 									<input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number">
 								</div>
 								<div class="col-md-12 p-1">
-									<!-- <select class="form-select" aria-label="Default select example">
-										<option selected>Services</option>
-										<option value="1">Paid Marketing / E-commerce</option>
-										<option value="2">SMO / ORM</option>
-										<option value="3">SEO / Automation</option>
-									</select> -->
-                  <!-- <div class="col-md-12 p-1"> -->
-  <div class="multi-select" >
-    <div class="select-item">Paid Marketing / E-commerce</div>
-    <div class="select-item">SMO / ORM</div>
-    <div class="select-item">SEO / Automation</div>
-  </div>
-<!-- </div> -->
-								</div>
-								<!-- <div class="col-md-6 p-1">
-									<select class="form-select" aria-label="Default select example">
-										<option selected>Min Budget</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+                  <select class="form-multi-select" multiple >
+                    <option value="0">Paid Marketing / E-commerce</option>
+                    <option value="1">SMO / ORM</option>
+                    <option value="2">SEO / Automation</option> 
+                  </select> 
+								</div> 
+                <div class="col-md-12 p-1">
+                  	<select class="form-select" aria-label="Default select example">
+										<option selected>Budgets</option>
+										<option value="1">Less than 5 lakh</option>
+										<option value="2">5 lakh to 20 lakh</option>
+										<option value="3">20 lakh above</option>
 									</select>
-								</div>
-								<div class="col-md-6 p-1">
-									<select class="form-select" aria-label="Default select example">
-										<option selected>Max Budget</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</select>
-								</div> -->
+                </div>
 								<div class="col-md-12 p-1">
 									<textarea class="form-control" placeholder="Message" id="floatingTextarea"></textarea>
 								</div>
 								<div class="col-12 p-1">
-									<input type="submit" value="Send it to the moon">
+									<input type="submit" value="Request a Free Consultation">
 								</div>
 							</div>  
 						</form>
@@ -1099,7 +1119,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h1>We are a creative bold digital <span>agency</span> based in india.</h1>
+					<h1>We are a creative bold <span>agency</span> backed by technology.</h1>
 				</div>
 				<div class="col-md-6">
 					<div class="row align-items-center">
@@ -1112,22 +1132,22 @@
               <div class="dots dot3"></div> -->
 						</div>
 						<div class="col-md-7">
-							<h3><span>20+ years of experience</span> We are dedicated to providing outstanding digital and design services meet the functional and aesthetic.</h3>
+							<h3><span>20+ Years of Turning Strategy Into Revenue</span> We combine creativity with hard data to deliver digital and design solutions that don't just look good but perform even better.</h3>
 						</div>
 					</div>
 				</div>
 				<div class="col-12">
 					<ul class="work">
 						<li>
-							<h4><span>350+</span> very satisfied clients around the worldwide.</h4>
+							<h4><span>80%</span> Client Retention Rate </h4>
 							<img src="images/smile.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<h4><span>200+</span> good award winning digital media agency.</h4>
+							<h4><span>100+</span> Strong & Growing Team</h4>
 							<img src="images/microphone.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<h4><span>750+</span> successfully project completed in one year.</h4>
+							<h4><span>__X</span> Revenue Growth</h4>
 							<img src="images/projects.png" alt="img" class="img-fluid">
 						</li>
 					</ul>
@@ -1153,7 +1173,7 @@
 
                     <div class="hero-subheading-wrap">
                       <p class="txt-32">
-                        We conduct research and transform insights into an effective website
+                       Every campaign we run lives and breathes through data.  
                       </p>
                     </div>
                   </div>
@@ -1237,14 +1257,16 @@
               <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
-                      <span style="color: #000 !important;">Design</span>
+                      <span style="color: #000 !important;">Performance Marketing</span>
                   </div>
                   <div class="acc-content">
                       <ul>
-                          <li>UI Design</li>
-                          <li>UX Design</li>
-                          <li>UX Consultancy</li>
-                          <li>Design System</li>
+                          <li>Meta ads  </li>
+                          <li>Google ads</li>
+                          <li>programmatic ads </li>
+                          <li>Brand awareness </li>
+                          <li>lead generation</li>
+                          <li>OTT Ads </li>
                       </ul>
                   </div>
               </div>
@@ -1252,14 +1274,15 @@
               <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
-                      <span style="color: #000;">Technology</span>
+                      <span style="color: #000;">SEO </span>
                   </div>
                   <div class="acc-content">
                       <ul>
-                          <li>Web Development</li>
-                          <li>Mobile Apps</li>
-                          <li>Web Apps</li>
-                          <li>Front-End</li>
+                          <li>AEO</li>
+                          <li>Traffic </li>
+                          <li>Improve ranking</li>
+                          <li>Organic growth </li>
+                          <li>Landing page optimization </li>
                       </ul>
                   </div>
               </div>
@@ -1267,14 +1290,16 @@
               <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
-                      <span style="color: #000;">Marketing</span>
+                      <span style="color: #000;">SMM </span>
                   </div>
                   <div class="acc-content">
                       <ul>
-                          <li>Branding</li>
-                          <li>Brand Strategy</li>
-                          <li>Digital Marketing</li>
-                          <li>S.E.O.</li>
+                          <li>UGC Marketing </li>
+                          <li>Meme & trend Marketing</li>
+                          <li>ORM </li>
+                          <li>Automation </li>
+                          <li>Organic Marketing</li>
+                          <li>Influencer marketing </li>
                       </ul>
                   </div>
               </div>
@@ -1307,13 +1332,131 @@
    
 
 
+<style>
+.campaign_stats h4 {
+  color: #fff; 
+  font-size: 1.5rem;
+}
+
+.campaign_stats span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff !important;
+}
+.campaign_stats {
+  /* border-top: 1px solid #eaeaea; */
+  padding-top: 1rem;
+}
+</style>
+
+<section class="case-study pt-0">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- <div class="col-md-4 p-1 ps-0">
+        <div class="case_study_box case_study_box1">
+          <h1>OYO</h1>
+          <p>Innovated Community Empowerment Website</p>
+          <p class="list_pointers">
+            <span>UI/UX</span>
+            <span>Web</span>
+            <span>Mobile</span>
+          </p> 
+          <img src="images/oyo-img.png" alt="img" class="img-fluid">
+        </div>
+      </div> -->
+      <div class="col-md-4 p-1 ps-0">
+  <div class="case_study_box case_study_box1">
+    <h1>JK Maxx Paints</h1>
+    <!-- <p>Innovated Community Empowerment Website</p> -->
+
+    <div class="campaign_stats row text-center mt-3 mb-3">
+      <div class="col-6 mb-3">
+        <h4 class="fw-bold mb-0">1.17B</h4>
+        <span class="text-muted small">Impressions</span>
+      </div>
+      <div class="col-6 mb-3">
+        <h4 class="fw-bold mb-0">246M</h4>
+        <span class="text-muted small">Total Reach</span>
+      </div>
+      <div class="col-6">
+        <h4 class="fw-bold mb-0">1B+</h4>
+        <span class="text-muted small">Views</span>
+      </div>
+      <div class="col-6">
+        <h4 class="fw-bold mb-0">5.3M</h4>
+        <span class="text-muted small">Clicks</span>
+      </div>
+    </div>
+
+    <img src="images/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
+  </div>
+</div>
+      <div class="col-md-4 p-1">
+        <div class="case_study_box case_study_box2">
+          <h1>Hero Motocorp</h1>
+          <!-- <p>Innovated Community Empowerment Website</p> -->
+          <div class="campaign_stats row text-center mt-3 mb-3">
+      <div class="col-6 mb-3">
+        <h4 class="fw-bold mb-0">310K+</h4>
+        <span class="text-muted small">App Installs </span>
+      </div>
+      <div class="col-6 mb-3">
+        <h4 class="fw-bold mb-0">57,554</h4>
+        <span class="text-muted small">Total Bookings </span>
+      </div>
+      <div class="col-6">
+        <h4 class="fw-bold mb-0">3.6M</h4>
+        <span class="text-muted small">Traffic Generated</span>
+      </div>
+      <div class="col-6">
+        <h4 class="fw-bold mb-0">1.3M </h4>
+        <span class="text-muted small">New Users Acquired</span>
+      </div>
+    </div>
+          <img src="images/baidynath.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 p-1 pe-0">
+        <div class="case_study_box case_study_box3">
+          <h1>Faces Canada</h1>
+          <!-- <p>Innovated Community Empowerment Website</p> -->
+
+          <div class="campaign_stats row text-center mt-3 mb-3">
+      <div class="col-6 mb-3">
+        <h4 class="fw-bold mb-0">300%</h4>
+        <span class="text-muted small">Increment in Traffic</span>
+      </div>
+      <div class="col-6 mb-3">
+        <h4 class="fw-bold mb-0">180%</h4>
+        <span class="text-muted small">Increase in Conversion Rate</span>
+      </div>
+      <div class="col-6">
+        <h4 class="fw-bold mb-0">435%</h4>
+        <span class="text-muted small">Sakes Increment via Organic Traffic</span>
+      </div>
+      <div class="col-6">
+        <h4 class="fw-bold mb-0">4000+ </h4>
+        <span class="text-muted small">Keywords in Top 10</span>
+      </div>
+    </div>
+          <img src="images/ace-cloud.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 <!-- Pipe spread box section -->
 <section class="integrate">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-7 text-center mx-auto">
-        <h1>then integrate the site</h1>
-        <p>into your sales system</p>
+        <h1>Stop Juggling Channels.</h1> 
+        <p>Start Running a System.</p>
       </div>
       <div class="brand_logo" id="brand_logo"> 
    <dotlottie-wc 
@@ -1361,51 +1504,6 @@
   </div>
 </section>
 
-
-<section class="case-study pt-0">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 p-1 ps-0">
-        <div class="case_study_box case_study_box1">
-          <h1>OYO</h1>
-          <p>Innovated Community Empowerment Website</p>
-          <p class="list_pointers">
-            <span>UI/UX</span>
-            <span>Web</span>
-            <span>Mobile</span>
-          </p> 
-          <img src="images/oyo-img.png" alt="img" class="img-fluid">
-        </div>
-      </div>
-      <div class="col-md-4 p-1">
-        <div class="case_study_box case_study_box2">
-          <h1>BAIDYANATH</h1>
-          <p>Innovated Community Empowerment Website</p>
-          <p class="list_pointers">
-            <span>UI/UX</span>
-            <span>Web</span>
-            <span>Mobile</span>
-          </p>
-          <img src="images/baidynath.png" alt="img" class="img-fluid">
-        </div>
-      </div>
-      <div class="col-md-4 p-1 pe-0">
-        <div class="case_study_box case_study_box3">
-          <h1>ACE CLOUD</h1>
-          <p>Innovated Community Empowerment Website</p>
-          <p class="list_pointers">
-            <span>UI/UX</span>
-            <span>Web</span>
-            <span>Mobile</span>
-          </p>
-          <img src="images/ace-cloud.png" alt="img" class="img-fluid">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- =========================number section================================= -->
 
 
@@ -1423,7 +1521,7 @@
                 <div class="num-item active">1</div>
                 <div class="num-item">2</div>
                 <div class="num-item">3</div>
-                <div class="num-item">4</div>
+                <!-- <div class="num-item">4</div> -->
               </div>
             </div>
           </div>
@@ -1432,8 +1530,8 @@
         <div class="col-lg-9 ps-lg-5">
           
           <article class="content-section" id="stage-0">
-            <h2 class="mb-4">STRATEGIC SESSIONS <span class="badge-free">Free</span></h2>
-            <p class="mb-5">We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.</p>
+            <h2 class="mb-4">Strategic Discovery  <!-- <span class="badge-free">Free</span> --></h2>
+            <p class="mb-5">We start by getting under the skin of your business. Through brand workshops and business analysis, we identify your strengths, growth opportunities and selling points. We then segment your market, map out customer pain points and buying behaviour and study the broader competitive landscape to make sure every move we make is rooted in reality, not assumptions.</p>
             <!-- <img src="./images/20210917-072012lf30_editor_6hszztkk.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 1"> -->
             <dotlottie-wc 
                       src="images/20211129-042402lf30_editor_6n0omtwy.lottie" 
@@ -1445,8 +1543,8 @@
           </article>
 
           <article class="content-section" id="stage-1">
-            <h2 class="mb-4">UX/UI AND VISUAL DESIGN</h2>
-            <p class="mb-5">We work on the conceptual content of future design solutions, considering user interaction logic. We select colors, font pairs, and create graphic elements to enhance the previously established meanings with relevant visuals. We create adaptive design layouts.</p>
+            <h2 class="mb-4">Growth Blueprint </h2>
+            <p class="mb-5">With discovery done, we identify the most profitable channels based on where your customers spend their time. Our creative team builds compelling assets while we construct a high-converting sales funnel around every stage of your customer's journey. Budget is allocated through a data-driven process, ensuring every rupee is mapped to both creative impact and performance potential.</p>
             <!-- <img src="./images/20211129-042402lf30_editor_6n0omtwy.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 2"> -->
             <dotlottie-wc 
                       src="images/20210917-072012lf30_editor_6hszztkk.lottie" 
@@ -1458,8 +1556,8 @@
           </article>
 
           <article class="content-section" id="stage-2">
-            <h2 class="mb-4">DEVELOPMENT</h2>
-            <p class="mb-5">We bring design layouts to life with code, create interactive animations where needed, and adapt the site for different screen types. We make necessary integrations: CRM, chatbot, or anything else you need. We ensure everything works like clockwork: adaptation, loading speed. We connect the site to your domain and publish it.</p>
+            <h2 class="mb-4">Execute & Evolve </h2>
+            <p class="mb-5">Once the strategy is signed off, we deploy the right mix of creative content, platforms and tools to launch campaigns built for peak performance. Our creative and performance teams work in sync, continuously refining messaging, visuals, targeting and budgets in real time. After every campaign, we review, learn and come back with sharper creative and stronger results. Continuous improvement isn't a promise, it's our process. </p>
             <!-- <img src="./images/20211216-135041lf30_editor_vu9u2tko.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 3"> -->
             <dotlottie-wc 
                       src="images/20211216-135041lf30_editor_vu9u2tko.lottie" 
@@ -1470,10 +1568,10 @@
                     ></dotlottie-wc>
           </article>
 
-          <article class="content-section" id="stage-3">
+          <!-- <article class="content-section" id="stage-3">
             <h2 class="mb-4">GUARANTEE SUPPORT</h2>
             <p class="mb-5">After the release, we provide one month of warranty support to ensure everything runs smoothly. We can also make content updates or additional changes on an hourly basis, such as updating event programs, adding new speakers, or other modifications as needed.</p>
-            <!-- <img src="./images/20230313-123604lf30_editor_mdusfuwr.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 4"> -->
+            <img src="./images/20230313-123604lf30_editor_mdusfuwr.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 4">
             <dotlottie-wc 
                       src="images/20230313-123604lf30_editor_mdusfuwr.lottie" 
                       speed="1"  
@@ -1481,7 +1579,7 @@
                       autoplay
                       class="mx-auto d-block"
                     ></dotlottie-wc>
-          </article>
+          </article> -->
 
         </div>
       </div>
@@ -1494,20 +1592,19 @@
 
 
 <!-- Statices bar section -->
-  <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar">
+  <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar testimonial">
     <div class="container mt-5">
         <div class="row align-items-center">
             
-            <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title">
+            <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title" style="top: -50px;">
                 <div class="position-relative">
-                    <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2>
+                    <!-- <h2 class="title-main fw-black mb-0">WHY CHOOSE US</h2> -->
+                    <h2 class="section-title">WHY<br>CHOOSE <span>US</span></h2>
                 </div>
                 
-                <p>
-                  We get to know you, discuss your goals, preferences, and ideas. We gather information about your event. Next, we prepare a presentation with the concept of your future website: showcasing references and features that can be implemented on the site. We develop the site structure in the form of a flowchart.
-                </p>
+                <p>Most agencies give you deliverables. We give you growth. With 20+ years of experience, an AI-powered approach and a track record of reducing CAC by 40% while scaling revenue, we've built our reputation on results that are measurable, repeatable and real. We work as an extension of your team, not just a vendor, because we genuinely believe your growth is our growth.</p>
                 
-                <a href="#">Discuss the project with us</a>
+                <a href="#">Start Growing With Us → </a>
             </div>
 
             <div class="col-lg-7">
@@ -1622,10 +1719,10 @@
   
   <div class="container cta-content">
       <h2 class="cta-heading">
-          Let’s create a measurable impact on your business.
+        Ready to Turn Strategy Into Revenue?
       </h2>
       <a href="#" class="btn-custom">
-          Discuss the project with us
+         Unlock Your Brand's Potential
       </a>
   </div>
 </section>
@@ -1735,6 +1832,10 @@
 <!-- ====================Footer section END========================== -->
 
 
+<!-- ####################################################
+ #########################################
+ [Footer files links]
+ ###################################### -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1747,6 +1848,12 @@
 <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js" type="module"></script>
 <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/bundled/lenis.min.js"></script> -->
+
+
+<!-- ####################################################
+ #########################################
+ [Banner form multi select field script]
+ ###################################### -->
 <script>
   document.querySelectorAll(".select-item").forEach(item => {
     item.addEventListener("click", function () {
@@ -1755,6 +1862,10 @@
   });
 </script>
  
+<!-- ####################################################
+ #########################################
+ [sCROLL FAST ON PAGE SCRIPT]
+ ###################################### -->
 <!-- Scroll trigger animation smooth -->
  <script>
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -1762,69 +1873,19 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 if (document.body.classList.contains("fast-scroll-page")) {
 
   ScrollSmoother.create({
-    smooth: 0.2,   // lower = faster scroll feel
+    smooth: 3.2,   // lower = faster scroll feel
     effects: true
   });
 
 }
 </script>
 
-<!-- Dots animation style -->
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-  
-  const dots = gsap.utils.toArray(".dots");
-  
-  // VERY IMPORTANT
-  gsap.set(dots, {
-    position: "fixed",
-    left: "50%",
-    top: "100%",        // start from bottom of screen
-    xPercent: -50,
-    yPercent: -50
-  });
-  
-  
-  // helper → center of screen
-  function centerX() {
-    return window.innerWidth / 2;
-  }
-  
-  function centerY() {
-    return window.innerHeight / 2;
-  }
-  
-  
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".creative_agency",
-      start: "top bottom",      // start when section enters screen
-      end: "bottom top",        // end when section leaves
-      scrub: 1.5,
-      invalidateOnRefresh: true
-    }
-  });
-  
-  
-  // ==========================
-  // STEP 1 → rise from bottom
-  // ==========================
-  tl.to(dots, {
-    top: centerY,
-    stagger: 0.2,
-    ease: "none"
-  });
-  
-  
-  // ==========================
-  // STEP 2 → spread slightly
-  // ==========================
-  tl.to(dots, {
-    x: (i) => (i - 1) * 60,
-    scale: 1.2,
-    ease: "none"
-  });
-  </script> 
+
+
+<!-- ####################################################
+ #########################################
+ [TESTIMONIAL SECTION SCRIPT]
+ ###################################### -->
 <!-- Testimonial section script  -->
 <script>
   gsap.registerPlugin(ScrollTrigger);
@@ -1853,6 +1914,12 @@ if (document.body.classList.contains("fast-scroll-page")) {
  
  
 
+
+
+<!-- ####################################################
+ #########################################
+ [STATS BAR ANIMATION SCRIPT]
+ ###################################### -->
 <!-- Bars animation script -->
 <script>
   // Register ScrollTrigger plugin
@@ -1862,19 +1929,25 @@ if (document.body.classList.contains("fast-scroll-page")) {
   var tl2 = gsap.timeline({
       scrollTrigger: {
           trigger: "#stats-section",
-          start: "top 40%",
+          start: "top 70%",
           end: "bottom 80%",
           scrub: 1, 
       }
   });
 
   // Animate the height of each bar. 
-  tl2.to(".bar-1", { height: "200px", ease: "none" }, 0)
-    .to(".bar-2", { height: "330px", ease: "none" }, 0)
-    .to(".bar-3", { height: "480px", ease: "none" }, 0);
+  tl2.to(".bar-1", { height: "300px", ease: "none" }, 0)
+    .to(".bar-2", { height: "420px", ease: "none" }, 0)
+    .to(".bar-3", { height: "580px", ease: "none" }, 0);
 </script>
 <!--  -->
 
+
+
+<!-- ####################################################
+ #########################################
+ [FOOTER SWIPER SCRIPT]
+ ###################################### -->
 <!-- ==============Footer swiper script================== -->
 <script>
   const footer_logo = new Swiper('.footer_logo', {
@@ -1899,8 +1972,13 @@ slidesPerView:5,spaceBetween: 15,
 <!-- ==============Footer swiper script end================== -->
 
 
-<!-- =============personal-tabing-section script======================= -->
 
+
+<!-- ####################################################
+ #########################################
+ [PERSONAL TABING SECTION SCRIPT ]
+ ###################################### -->
+<!-- =============personal-tabing-section script======================= -->
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
@@ -1912,28 +1990,42 @@ slidesPerView:5,spaceBetween: 15,
       return height;
   }
 
-  window.addEventListener("load", () => {
+  let masterTl; // We declare this globally so we can kill it on window resize
+
+  function initGSAP() {
+      // FIX 1: If the user opens the inspector/resizes, kill old animations and wipe transforms 
+      // so getBoundingClientRect() calculates fresh, accurate native DOM positions.
+      if (masterTl) {
+          masterTl.kill();
+          ScrollTrigger.getAll().forEach(t => t.kill());
+          gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot", { clearProps: "all" });
+      }
+
       const accItems = document.querySelectorAll(".acc-item");
       const visuals = document.querySelectorAll(".visual-item");
       const balls = document.querySelectorAll(".ball");
+      
+      // FIX 2: Define your target destination boxes for the balls
+      const caseBoxes = [
+          document.querySelector(".case_study_box1"),
+          document.querySelector(".case_study_box2"),
+          document.querySelector(".case_study_box3")
+      ];
+
+      // Safety check to ensure elements exist before running math
+      if (!accItems.length || !balls.length) return; 
 
       const headerHeight = document.querySelector(".acc-header").offsetHeight;
       const accItemStyle = window.getComputedStyle(accItems[0]);
       const marginBottom = parseFloat(accItemStyle.marginBottom);
       const slideUpDistance = headerHeight + marginBottom;
 
-      // --- Context Rectangles (Updated with extra top/bottom distance) ---
       const sectionMaster = document.querySelector(".personal-tabing-section");
       const masterRect = sectionMaster.getBoundingClientRect();
       
-      // 🛠️ TWEAK THESE NUMBERS:
-      const extraTop = 200;    // How many pixels ABOVE the section to start
-      const extraBottom = 150; // How many pixels BELOW the section to end
-
+      const extraTop = 200;    
       const startX = masterRect.width / 2;
-      const startY = -extraTop; // The negative value pushes it up and out of the section
-      const endX = masterRect.width / 2;
-      const endY = masterRect.height + extraBottom; // Adds extra distance to the bottom
+      const startY = -extraTop; 
       
       const endCoords = [];
 
@@ -1941,33 +2033,41 @@ slidesPerView:5,spaceBetween: 15,
       balls.forEach((ball, index) => {
           const ballRect = ball.getBoundingClientRect();
           
+          // Fly-IN coords (Top Center)
           const diffStartX = startX - (ballRect.left - masterRect.left + ballRect.width / 2);
           const diffStartY = startY - (ballRect.top - masterRect.top + ballRect.height / 2);
           
-          endCoords.push({
-              x: endX - (ballRect.left - masterRect.left + ballRect.width / 2),
-              y: endY - (ballRect.top - masterRect.top + ballRect.height / 2)
-          });
+          // FIX 3: Calculate the exact distance to the center of each specific case study box
+          let targetX = 0;
+          let targetY = 0;
 
+          if (caseBoxes[index]) {
+              const boxRect = caseBoxes[index].getBoundingClientRect();
+              // Math: (Target Box Center) - (Native Ball Center)
+              targetX = (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
+              targetY = (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
+          }
+
+          endCoords.push({ x: targetX, y: targetY });
           gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 1, scale: 0.5 });
       });
-
-      // --- Master Timeline (Updated ScrollTrigger logic) ---
+ 
       // --- Master Timeline ---
-      // --- Master Timeline ---
-      const tl = gsap.timeline({
+      masterTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".personal-tabing-section",
-              start: "top top",      // Pins exactly when the top of the section hits the top of the screen
-              end: "+=2500",         // THE SPEED CONTROL: The section will stay pinned for exactly 2500 pixels of scrolling.
-              pin: true,             // Makes the section sticky!
-              scrub: 1,              // Smoothly links the animation to your scrollbar
-              anticipatePin: 1       // Prevents a slight visual jump when the pinning starts
+              //  FIX: Change this back to "top top" to remove the giant white space!
+              start: "top top",      
+              end: "+=2500",         
+              pin: true,             
+              scrub: 1,              
+              anticipatePin: 1,
+              invalidateOnRefresh: true 
           }
       });
 
       // PHASE 0: ALL balls fly in from Top-Center
-      tl.addLabel("start")
+      masterTl.addLabel("start")
         .to(balls, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "start");
 
       // DYNAMIC LOOP: Build the open/close sequence for every item
@@ -1982,7 +2082,7 @@ slidesPerView:5,spaceBetween: 15,
           let phaseLabel = "phase" + index;
 
           if (index === 0) {
-              tl.addLabel(phaseLabel, "start+=0.4")
+              masterTl.addLabel(phaseLabel, "start+=0.4")
                 .to(span, { color: targetColor, duration: 0.3 }, phaseLabel)
                 .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel)
                 .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel)
@@ -1996,7 +2096,7 @@ slidesPerView:5,spaceBetween: 15,
               let prevSlot = prevItem.querySelector(".dotted-slot");
               let prevBall = prevItem.querySelector(".ball");
 
-              tl.addLabel(phaseLabel, "+=0.5")
+              masterTl.addLabel(phaseLabel, "+=0.5")
                 .to(prevLis, { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, phaseLabel)
                 .to(prevContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
@@ -2020,7 +2120,7 @@ slidesPerView:5,spaceBetween: 15,
       const lastSpan = lastItem.querySelector(".acc-header > span");
       const lastSlot = lastItem.querySelector(".dotted-slot");
 
-      tl.addLabel("outro", "+=0.5")
+      masterTl.addLabel("outro", "+=0.5")
         .to(lastLis, { opacity: 0, x: -20, duration: 0.3, stagger: -0.05 }, "outro")
         .to(lastContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
         .to(lastSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
@@ -2029,27 +2129,44 @@ slidesPerView:5,spaceBetween: 15,
 
       balls.forEach((ball, i) => {
           const slidesApplied = Math.min(i + 1, accItems.length - 1);
+          // Keep your compensation logic, but use our new targeted endCoords
           const yCompensation = endCoords[i].y + (slideUpDistance * slidesApplied);
 
-          tl.to(ball, { 
+          masterTl.to(ball, { 
               x: endCoords[i].x, 
               y: yCompensation, 
               opacity: 1, 
-              scale: 0.5, 
-              duration: 0.9, 
+              scale: 1.5, 
+              duration: 2.9, 
               ease: "power2.in" 
           }, "outro+=0.2");
       });
+  }
 
+  // 1. Run on initial load
+  window.addEventListener("load", initGSAP);
+
+  // 2. FIX 5: Run on window resize (Opening Web Inspector)
+  // We use a debounce timer so it doesn't freeze the browser while dragging the window edge
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+          initGSAP(); 
+          ScrollTrigger.refresh(); 
+      }, 250); 
   });
+
 </script>
 
 <!-- =============personal-tabing-section script end======================= -->
 
 
-
+<!-- ####################################################
+ #########################################
+ [Dark section with numbers 1 2 3 with slide section script]
+ ###################################### -->
 <!-- =======================number section script============================== -->
- 
 <script>
   // Wait for the window to fully load (Lotties, images, etc.)
   window.addEventListener("load", () => {
@@ -2096,8 +2213,11 @@ slidesPerView:5,spaceBetween: 15,
 <!-- =======================number section script end============================== -->
 
 
+<!-- ####################################################
+ #########################################
+ [nians logo center section all box animation script ]
+ ###################################### -->
 <!-- =======================center box section animate script ============================== -->
-
 <script>
   // Register the ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
@@ -2141,8 +2261,12 @@ slidesPerView:5,spaceBetween: 15,
 
 <!-- =======================center box section animate script end============================== -->
 
-<!-- =======================pipe box section animate script ============================== -->
 
+<!-- ####################################################
+ #########################################
+ [ PIPE SECTION SCRIPT FOR ALL BOXES ANIMATE]
+ ###################################### -->
+<!-- =======================pipe box section animate script ============================== -->
  <script>
   // Ensure ScrollTrigger is registered
   gsap.registerPlugin(ScrollTrigger);
@@ -2191,8 +2315,12 @@ slidesPerView:5,spaceBetween: 15,
 <!-- =======================pipe box section animate script end============================== -->
 
 
-<!-- =======================cta section animate script ============================== -->
 
+<!-- ####################################################
+ #########################################
+ [CTA SECTION SCRIPT FOR COLOR FILL]
+ ###################################### -->
+<!-- =======================cta section animate script ============================== -->
 <script>
   // Ensure ScrollTrigger is registered
   gsap.registerPlugin(ScrollTrigger);
@@ -2217,8 +2345,12 @@ slidesPerView:5,spaceBetween: 15,
 <!-- =======================cta section animate script end============================== -->
 
 
-<!-- =======================background color case study section animate script ============================== -->
 
+<!-- ####################################################
+ #########################################
+ [CASE STUDY SECTION SCRIPT FOR BACKGROUND COLOR]
+ ###################################### -->
+<!-- =======================background color case study section animate script ============================== -->
 <!-- <script>
   // Ensure ScrollTrigger is registered
   gsap.registerPlugin(ScrollTrigger);
@@ -2277,116 +2409,9 @@ slidesPerView:5,spaceBetween: 15,
 
 
 
-<!-- ============================ magic scroll ball animation script start========================================= -->
-<script>
-  window.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollTrigger);
 
-    // 1. Create the 3 balls dynamically and append them to the body
-    const b1 = document.createElement('div'); b1.className = 'magic-scroll-ball'; document.body.appendChild(b1);
-    const b2 = document.createElement('div'); b2.className = 'magic-scroll-ball'; document.body.appendChild(b2);
-    const b3 = document.createElement('div'); b3.className = 'magic-scroll-ball'; document.body.appendChild(b3);
-
-    // Force all balls to be hidden initially and ensure they sit on top of everything
-    gsap.set([b1, b2, b3], { opacity: 0, zIndex: 9999, scale: 1 });
-
-    // 2. Add z-index classes so the ball hides perfectly behind these specific images
-    const centerLogo = document.querySelector('.center_logo');
-    if (centerLogo) centerLogo.classList.add('relative-z-top');
-    
-    const brandLogo = document.querySelector('img[src="images/brand-logo.png"]');
-    if(brandLogo) brandLogo.classList.add('relative-z-top');
-
-    // Helper: Gets absolute center coordinates of an element safely
-    const getPos = (el) => {
-      if(!el) return {x: window.innerWidth / 2, y: window.innerHeight / 2}; // Fallback center
-      const rect = el.getBoundingClientRect();
-      return { 
-        x: rect.left + rect.width / 2 + window.scrollX, 
-        y: rect.top + rect.height / 2 + window.scrollY 
-      };
-    };
-
-    // Helper: Gets the top-center of the case study boxes with a 30px offset downwards safely
-    const getBoxEntryPos = (el) => {
-      if(!el) return {x: 0, y: 0};
-      const rect = el.getBoundingClientRect();
-      return { 
-        x: rect.left + rect.width / 2 + window.scrollX, 
-        y: rect.top + window.scrollY + 30              
-      };
-    };
-
-    // --- INITIAL SETUP ---
-    // Park b2 and b3 exactly at the brand logo right from the start so they don't get lost
-    const resetStartPos = () => {
-      const startCircle = document.querySelector('.circle');
-      if(startCircle) {
-        gsap.set(b1, { left: getPos(startCircle).x, top: getPos(startCircle).y });
-      }
-      if(brandLogo) {
-        gsap.set([b2, b3], { left: getPos(brandLogo).x, top: getPos(brandLogo).y });
-      }
-    };
-    resetStartPos();
-
-    // --- PHASE 1: Move from .circle and hide behind .center_logo ---
-    gsap.to(b1, {
-      scrollTrigger: {
-        trigger: ".always_do",
-        start: "top 80%",   
-        end: "center center", 
-        scrub: 1,
-        invalidateOnRefresh: true, 
-        onEnter: () => gsap.set(b1, { opacity: 1 }), 
-        onLeaveBack: () => gsap.set(b1, { opacity: 0 }) 
-      },
-      left: () => getPos(centerLogo).x,
-      top: () => getPos(centerLogo).y,
-      opacity: 0, 
-      ease: "power1.inOut"
-    });
-
-    // --- PHASE 2 & 3: Emerge from brand-logo.png, split, and enter the Case Study boxes ---
-    let splitTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".case-study",
-        start: "top 95%", 
-        end: "top 40%",   
-        scrub: 1,
-        invalidateOnRefresh: true
-      }
-    });
-
-    // 1. Ensure all 3 are packed together behind the logo before the move starts
-    splitTl.set([b1, b2, b3], {
-      left: () => getPos(brandLogo).x,
-      top: () => getPos(brandLogo).y,
-      opacity: 0,
-      scale: 1
-    })
-    // 2. Make them visible
-    .to([b1, b2, b3], { opacity: 1, duration: 0.1 })
-    
-    // 3. Move them to their respective boxes. I've separated these to guarantee GSAP calculates each one!
-    .to(b1, { left: () => getBoxEntryPos(document.querySelector('.case_study_box1')).x, top: () => getBoxEntryPos(document.querySelector('.case_study_box1')).y, ease: "power2.inOut" }, 0.1)
-    .to(b2, { left: () => getBoxEntryPos(document.querySelector('.case_study_box2')).x, top: () => getBoxEntryPos(document.querySelector('.case_study_box2')).y, ease: "power2.inOut" }, 0.1)
-    .to(b3, { left: () => getBoxEntryPos(document.querySelector('.case_study_box3')).x, top: () => getBoxEntryPos(document.querySelector('.case_study_box3')).y, ease: "power2.inOut" }, 0.1)
-    
-    // 4. Hit the 30px mark, scale up, and fade out
-    .to([b1, b2, b3], { opacity: 0, scale: 2.5, duration: 0.15 });
-
-    // --- RESIZE HANDLER ---
-    window.addEventListener('resize', () => {
-      resetStartPos();
-      ScrollTrigger.refresh();
-    });
-  });
-</script>
-
-
-
-
+<!-- ================================Center background circle move bottom nians logo============================================================================= -->
+<!-- 
 <script>
   window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -2426,7 +2451,7 @@ slidesPerView:5,spaceBetween: 15,
         start: "center center",      
         endTrigger: ".center_logo",  
         end: "center center",        
-        scrub: 1.5,                  
+        scrub: -4.2,                  
         invalidateOnRefresh: true    
       }
     });
@@ -2459,7 +2484,82 @@ slidesPerView:5,spaceBetween: 15,
     }, 0);
 
   });
+</script> -->
+<!-- ================================Center background circle move bottom nians logo============================================================================= -->
+
+<script>
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Get the starting and ending elements
+    const startEl = document.querySelector('.circle');
+    const endEl = document.querySelector('.center_logo');
+
+    // 2. Create the bubble ball dynamically
+    const bubbleBall = document.createElement('div');
+    bubbleBall.className = 'bubble-ball';
+    document.body.appendChild(bubbleBall);
+
+    // 3. Helper function to get the exact center
+    const getCenterPos = (el) => {
+      if (!el) return { x: 0, y: 0 };
+      const rect = el.getBoundingClientRect();
+      return { 
+        x: rect.left + rect.width / 2 + window.scrollX, 
+        y: rect.top + rect.height / 2 + window.scrollY 
+      };
+    };
+
+    // 4. Set the initial starting state for the ball
+    gsap.set(bubbleBall, {
+      x: () => getCenterPos(startEl).x,
+      y: () => getCenterPos(startEl).y,
+      opacity: 1,
+      backgroundColor: "#125682", // Brand Orange/Blue
+      borderRadius: "50%"         // Starts as a perfect circle
+    });
+
+    // 5. Create the Timeline tied to the scroll
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".circle",          
+        start: "bottom 50%",         // Triggers as soon as the user scrolls slightly past the circle
+        toggleActions: "play none none reverse", // Plays automatically, reverses if you scroll back up
+        // scrub: -4.2,              // <-- REMOVED: This was forcing the slow scroll-based movement
+        invalidateOnRefresh: true    
+      }
+    });
+
+    // --- TIMELINE ANIMATIONS ---
+    // NOTE: Because scrub is removed, 'duration' is now measured in SECONDS, not scroll distance!
+
+    // A. The Movement
+    tl.to(bubbleBall, {
+      x: () => getCenterPos(endEl).x,
+      y: () => getCenterPos(endEl).y,
+      scale: 1.8, 
+      ease: "power2.out", // Added a smooth, fast-start easing 
+      duration: 2.2       // Finishes the movement in 0.6 seconds
+    }, 0);
+
+    // B. The Shape Morph
+    tl.to(bubbleBall, {
+      borderRadius: "3%", 
+      ease: "power2.out",
+      duration: 2.2
+    }, 0);
+
+    // C. The Fast Color Change
+    tl.to(bubbleBall, {
+      backgroundColor: "#ffffff",
+      ease: "none",
+      duration: 1.5       // Changes color very fast (0.3 seconds)
+    }, 0);
+
+  });
 </script>
+
+
 </body>
 
 </html>

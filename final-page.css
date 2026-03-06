@@ -35,7 +35,7 @@ section{padding: 60px 0px;}
 .creative_agency h2 sup{font-weight: 400;font-size: 35px;}
 .creative_agency h3{font-size: 16px;font-weight: 500;line-height: 30px;padding: 0 20px;}
 .creative_agency h3 span{font-weight: 700;text-transform: uppercase;display: block;}
-.creative_agency .work{display: flex;padding-left: 0px;list-style: none;gap: 35px;padding-top: 50px;}
+.creative_agency .work{display: flex;padding-left: 0px;list-style: none;gap: 35px;padding-top: 50px;     justify-content: space-between;}
 .creative_agency .work li{border-top: 1px solid #D5D5D5;display: flex;align-items: center;justify-content: space-between;padding: 20px 0 0;gap: 50px;}
 .creative_agency .work li img{filter: invert(1);}
 .creative_agency .work li:last-child img{filter: invert(0);}
@@ -647,7 +647,7 @@ section{padding: 60px 0px;}
 .our_process{font-size: 36px;
     font-weight: 800;
     font-family: 'Poppins', sans-serif;
-    color: #000;margin-top: -80px;}
+    color: #fff;margin-top: -80px;}
 @media (max-width: 860px) {
   .svc {
     /* once stacked: keep both blocks same width + centered, and avoid sticky weirdness */
