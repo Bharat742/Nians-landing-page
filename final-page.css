@@ -1,4 +1,4 @@
-header {position: absolute;left: 0;right: 0;}
+header {position: absolute;left: 0;right: 0; padding: 15px 0;}
 header ul{list-style: none;}
 .banner{background: url("images/landingpage-gif.gif");background-repeat: no-repeat;background-size: cover;}
 h1, h2, h3, h4, h5, h6 {
