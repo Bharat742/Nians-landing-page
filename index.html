@@ -655,7 +655,7 @@
 
         /* Generic Classes (No more -1, -2 suffixes needed) */
        .personal-tabing-section .acc-item {
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
             position: relative;
             will-change: margin-top, opacity;
         }
@@ -1232,7 +1232,7 @@ body {
 				</div>
 				<div class="col-md-6">
 					<div class="row align-items-center">
-						<div class="col-md-5">
+						<div class="col-5">
 							<div class="circle">
 								<h2>20<sup>+</sup></h2>
 							</div>
@@ -1240,7 +1240,7 @@ body {
               <div class="dots dot2"></div>
               <div class="dots dot3"></div> -->
 						</div>
-						<div class="col-md-7">
+						<div class="col-7">
 							<h3><span>20+ Years of Turning Strategy Into Revenue</span> We combine creativity with hard data to deliver digital and design solutions that don't just look good but perform even better.</h3>
 						</div>
 					</div>
@@ -2181,7 +2181,7 @@ slidesPerView:5,spaceBetween: 15,
           scrollTrigger: {
               trigger: ".personal-tabing-section",
               start: "top 15%",      
-              end: "+=2500",         
+              end: "+=1500",         
               pin: true,             
               scrub: 1,              
               anticipatePin: 1,
@@ -2651,23 +2651,20 @@ slidesPerView:5,spaceBetween: 15,
     bubbleBall.className = 'bubble-ball';
     
     // Ensure the h2 can hold the absolute positioned ball behind its text
-    // h2.style.position = 'relative';
     h2.style.zIndex = '1';
-    h2.prepend(bubbleBall); // Inserts it right before the text inside h2
+    h2.prepend(bubbleBall);
 
-    // 3. Helper function to get the responsive distance (Delta) between h2 and the target
+    // 3. Helper function to get the responsive distance (Delta)
     const getTargetDelta = () => {
       if (!endEl || !h2) return { x: 0, y: 0 };
       const startRect = h2.getBoundingClientRect();
       const endRect = endEl.getBoundingClientRect();
       
-      // Calculate the exact center of both elements
       const startX = startRect.left + startRect.width / 2;
       const startY = startRect.top + startRect.height / 2;
       const endX = endRect.left + endRect.width / 2;
       const endY = endRect.top + endRect.height / 2;
       
-      // Return the difference (how far the ball needs to travel)
       return { 
         x: endX - startX, 
         y: endY - startY 
@@ -2675,7 +2672,6 @@ slidesPerView:5,spaceBetween: 15,
     };
 
     // 4. Set the initial starting state for the ball
-    // Using top/left 50% + x/yPercent -50 centers it perfectly inside the h2
     gsap.set(bubbleBall, {
       position: "absolute",
       top: "50%",
@@ -2687,18 +2683,21 @@ slidesPerView:5,spaceBetween: 15,
       opacity: 1,
       backgroundColor: "#32312f", 
       borderRadius: "50%",
-      zIndex: -1 // Puts the ball behind the h2 text
+      zIndex: -1 
     });
 
+    // -> THIS IS NEW: Move the logo up to the starting h2 position so it can travel down
     gsap.set(logoImg, {
-      scale: 0,
+      x: () => -getTargetDelta().x,
+      y: () => -getTargetDelta().y,
+      scale: 0.5, // Starts slightly smaller
       opacity: 0
     });
 
-    // 5. Create the Timeline (paused by default so we can control reverse speed)
+    // 5. Create the Timeline (paused by default)
     const tl = gsap.timeline({ paused: true });
 
-    // A. The Movement (Using the dynamic delta calculation for responsiveness)
+    // A. Ball Movement
     tl.to(bubbleBall, {
       x: () => getTargetDelta().x,
       y: () => getTargetDelta().y,
@@ -2707,38 +2706,70 @@ slidesPerView:5,spaceBetween: 15,
       duration: 3       
     }, 0);
 
-    // B. The Shape Morph
+    // B. Logo Movement (Moves exactly with the ball)
+    tl.to(logoImg, {
+      x: 0,
+      y: 0,
+      ease: "power2.out",
+      duration: 3
+    }, 0);
+
+    // C. The Shape Morph
     tl.to(bubbleBall, {
       borderRadius: "3%", 
       ease: "power2.out",
       duration: 3
     }, 0);
 
-    // C. The Fast Color Change
+    // D. The Fast Color Change
     tl.to(bubbleBall, {
       backgroundColor: "#ffffff",
       ease: "none",
-      duration: 2.2       
+      duration: 0.6       
     }, 0);
 
-    // D. The Logo Appearance
+    // E. Logo fades in partially as it travels
     tl.to(logoImg, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.8,
-      ease: "back.out(1.5)" 
-    }, 1.4); 
+      opacity: 0.4,
+      scale: 0.8,
+      duration: 1.5,
+      ease: "none"
+    }, 0);
 
-    // 6. Connect the Timeline to ScrollTrigger with Custom Speeds
+    tl.to(bubbleBall, {
+      opacity: 0.4,
+      // scale: 0.8,
+      duration: 1.5,
+      ease: "none"
+    }, 0);
+
+    
+
+    // F. Logo reaches full 100% opacity as it lands in the box
+    tl.to(logoImg, {
+      opacity: 1,
+      scale: 1,
+      duration: 1.5,
+      ease: "power2.out"
+    }, 1.5); 
+
+    tl.to(bubbleBall, {
+      opacity: 1,
+      // scale: 1,
+      duration: 1.2,
+      ease: "power3.out"
+    }, 1.2); 
+
+    // 6. Connect the Timeline to ScrollTrigger
     ScrollTrigger.create({
       trigger: ".circle",          
       start: "bottom 50%",         
-      invalidateOnRefresh: true, // Recalculates getTargetDelta on screen resize
+      invalidateOnRefresh: true,
       onEnter: () => {
-        tl.timeScale(1).play(); // Plays at normal speed when scrolling down
+        tl.timeScale(1).play(); 
       },
       onLeaveBack: () => {
-        tl.timeScale(4).reverse(); // Plays 4x FASTER when scrolling back up
+        tl.timeScale(4).reverse(); 
       }
     });
 
