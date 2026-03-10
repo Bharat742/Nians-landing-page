@@ -220,6 +220,7 @@ section{padding: 60px 0px;}
   width: 40em;
   margin-bottom: auto;
   display: flex;
+  text-align: center;
 }
 .txt-32 {
   z-index: 2;
