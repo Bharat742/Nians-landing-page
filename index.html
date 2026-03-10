@@ -256,13 +256,14 @@
     color: #000;
     text-transform: uppercase;
 }
-      .graph_bar p, .graph_bar a {
+      .graph_bar p, .graph_bar a, .graph_bar a .content {
     font-size: 16px;
     font-family: "Nunito", sans-serif;
     font-weight: 400;
     color: #000;
 }
-.graph_bar a {
+
+.graph_bar a, .graph_bar a .content {
     color: #fff;
     background: #FFA106;
     text-decoration: none;
@@ -271,7 +272,13 @@
     margin-top: 25px;
     display: inline-block;
     line-height: 25px;
-}     .graph_bar{ background: #F6F6F6;}
+} 
+.graph_bar a .content{margin-top: 0px;
+    padding: 6px 20px 0;}
+.graph_bar a:hover .vertical .hover-text, .graph_bar a:hover .vertical .text {
+    transform: translateY(-120%);
+}
+.graph_bar{ background: #F6F6F6;}
 /* --- Updated 3D Bar Image Styles --- */
 .chart-wrapper {
     height: 500px;
@@ -338,6 +345,7 @@
 
         .btn-custom {
             background-color: #5333ed;
+            background: linear-gradient(45deg, #002a54, #185fa6);
             color: white;
             border-radius: 50px;
             padding: 12px 32px;
@@ -503,12 +511,12 @@
         /* Background GIF and Gradient Overlay */
 /* .cta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./images/cta-gif.gif') center center / cover no-repeat; z-index: 1;} */
         /* Gradient Overlay to match the image's orange-to-yellow feel */
-.cta-overlay {  position: absolute;  top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255, 126, 0, 0.85) 0%, rgba(255, 212, 0, 0.7) 100%); z-index: 2;background: #FFA106;}
+.cta-overlay {  position: absolute;  top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255, 126, 0, 0.85) 0%, rgba(255, 212, 0, 0.7) 100%); z-index: 2;}
         /* Content Container */
 .cta-content { position: relative; z-index: 3; margin: 0 auto;}
 .cta-heading { font-size: 47px; font-weight: 700; color: #ffffff; margin-bottom: 40px; line-height: 1.1; letter-spacing: -1px;}
         /* Rounded Pill Button */
-.btn-custom {  background-color: #002a54;  color: #fff;   font-weight: 500; padding: 8px 30px; border-radius: 10px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; border: none;font-size: 19px; font-family: 'Nunito', sans-serif;text-transform: inherit;letter-spacing: 0px;box-shadow: none;line-height: 25px;}
+.btn-custom {  background-color: #002a54;  color: #fff;   font-weight: 500; padding: 8px 30px; border-radius: 10px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; border: none;font-size: 19px; font-family: 'Nunito', sans-serif;text-transform: inherit;letter-spacing: 0px;box-shadow: none;line-height: 15px;cursor: pointer;}
 /* .btn-custom:hover {  transform: translateY(-3px);  box-shadow: 0 10px 20px rgba(0,0,0,0.1); background-color: #f8f9fa; color: #002A54;} */
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -925,7 +933,7 @@
   width: 200px;
   height: 200px;
   /* background: radial-gradient(circle, #FFA106, #FF4D4D); Your theme colors */
-  background: #125682;
+  background: #125682;background: repeating-linear-gradient(315deg, #000000, transparent 4px);
   border-radius: 50%;
   position: absolute;
   top: 0;
@@ -995,6 +1003,10 @@
     position: relative;
     z-index: 10; /* Keeps this section above the previous ones */
     padding: 10px 0 !important;
+}
+
+@media (min-width: 1600px){
+  .chart-wrapper{margin-top: 180px !important;}
 }
 
 .case-study {
@@ -1160,7 +1172,7 @@ body {
 								</div> 
                 <div class="col-md-6 p-1">
                   	<select class="form-select" aria-label="Default select example">
-										<option selected>Estimated Budget</option>
+										<option selected disabled>Estimated Budget</option>
 										<option value="1">Less than 5 lakh</option>
 										<option value="2">5 lakh to 20 lakh</option>
 										<option value="3">20 lakh above</option>
@@ -1253,7 +1265,7 @@ body {
 						</li>
 						<li>
 							<h4><span>100+</span> Strong & Growing Team</h4>
-							<img src="images/microphone.png" alt="img" class="img-fluid">
+							<img src="images/speaker.png" alt="img" class="img-fluid">
 						</li>
 						<li>
 							<h4><span>__X</span> Revenue Growth</h4>
@@ -1724,8 +1736,14 @@ body {
                 <p>Most agencies give you deliverables. We give you growth. With 20+ years of experience, an AI-powered approach and a track record of reducing CAC by 40% while scaling revenue, we've built our reputation on results that are measurable, repeatable and real. We work as an extension of your team, not just a vendor, because we genuinely believe your growth is our growth.</p>
                 
                 <!-- <a href="#">Start Growing With Us → </a> -->
-                <a href="#" class="btn-custom button button--nina button--text-thick button--text-upper button--size-s" data-text="Start Growing With Us →">
+                <!-- <a href="#" class="btn-custom button button--nina button--text-thick button--text-upper button--size-s" data-text="Start Growing With Us →">
                     <span>S</span><span>t</span><span>a</span><span>r</span><span>t</span><span class="space"></span><span>G</span><span>r</span><span>o</span><span>w</span><span>i</span><span>n</span><span>g</span><span class="space"></span><span>W</span><span>i</span><span>t</span><span>h</span><span class="space"></span><span>U</span><span>s</span><span>→</span> 
+              </a> -->
+              <a class="btn-custom ">
+                <div class="content vertical">
+                  <div class="text">Start Growing With Us →</div>
+                  <div class="hover-text">Start Growing With Us →</div>
+                </div>
               </a>
             </div>
 
@@ -1843,10 +1861,16 @@ body {
       <h2 class="cta-heading">
         Ready to Turn Strategy Into Revenue?
       </h2>
-      <a href="#" class="btn-custom button button--nina button--text-thick button--text-upper button--size-s" data-text="Unlock Your Brand's Potential">
+      <!-- <a href="#" class="btn-custom button button--nina button--text-thick button--text-upper button--size-s" data-text="Unlock Your Brand's Potential">
          
 						<span>U</span><span>n</span><span>l</span><span>o</span><span>c</span><span>k</span><span class="space"></span><span>Y</span><span>o</span><span>u</span><span>r</span><span class="space"></span><span>B</span><span>r</span><span>a</span><span>n</span><span>d</span><span>'</span><span>s</span><span class="space"></span><span>P</span><span>o</span><span>t</span><span>e</span><span>n</span><span>t</span><span>i</span><span>a</span><span>l</span>
 					 
+      </a> -->
+      <a class="btn-custom ">
+        <div class="content vertical">
+          <div class="text">Unlock Your Brand's Potential</div>
+          <div class="hover-text">Unlock Your Brand's Potential</div>
+        </div>
       </a>
   </div>
 </section>
