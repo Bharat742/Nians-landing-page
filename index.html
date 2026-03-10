@@ -662,10 +662,11 @@
         .personal-tabing-section .acc-header {
             display: flex;
             align-items: center;
-            font-size: 31px;
+            font-size: 42px;
             font-weight: 800;
             color: #000;
-            margin-bottom: 10px;
+            margin-bottom: 10px;font-family: "poppins", sans-serif;
+    letter-spacing: 0.5px;
         }
         
         /* Smooth color transition for the span */
@@ -675,8 +676,8 @@
 
         .personal-tabing-section .dotted-slot {
           padding: 5px;
-            width: 55px;
-            height: 50px;
+            width: 75px;
+            height: 75px;
             border: 2px dotted #ccc;
             border-radius: 7px;
             display: flex;
@@ -687,8 +688,8 @@
         }
 
         .personal-tabing-section .ball {
-            width: 40px;
-            height: 35px;
+            width: 50px;
+            height: 50px;
             /* border-radius: 50%; */
             border-radius: 7px;
             will-change: transform, opacity;
@@ -703,7 +704,7 @@
         .personal-tabing-section .acc-content {
             height: 0;
             overflow: hidden;
-            padding-left: 66px; 
+            padding-left: 95px; 
             will-change: height;
         }
 
@@ -714,9 +715,10 @@
             padding-bottom: 20px;
         }
 
-        .personal-tabing-section  .acc-content li {
-            font-size: 1.3rem;
-            font-weight: 500;
+        .personal-tabing-section .acc-content li {
+            font-size: 23px;
+    font-weight: 400;
+    font-family: "poppins", sans-serif;
             margin-bottom: 12px;
             color: #333;
             opacity: 0;
@@ -792,8 +794,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 200px;
-      height: 200px;
+      width: 220px;
+      height: 220px;
       background-color: var(--box-purple);
       border-radius: 16px;
       z-index: 1;
@@ -809,17 +811,17 @@
     }
 
    .website-creation-stages .num-item {
-      width: 200px;
-      height: 200px;
+      width: 220px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 8rem;
+      font-size: 125px;
       font-weight: 800;
       color: #106093;
       margin-bottom:-10px; /* Space between numbers when stacked below */
       transition: color 0.4s ease;
-      line-height: 1;
+      line-height: 1;font-family: "poppins", sans-serif;
     }
 
    .website-creation-stages .num-item.active {
@@ -1299,7 +1301,7 @@
   <div class="container">
       <div class="row">
           
-          <div class="col-md-5 offset-md-1">
+          <div class="col-md-7">
               <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
@@ -1352,7 +1354,7 @@
 
           </div>
 
-          <div class="col-md-5 offset-md-1">
+          <div class="col-md-5 ">
               <div class="visual-container">
                   <div class="visual-item">
                       <div class="image-container">
@@ -1400,7 +1402,11 @@
   </div>
 </section>
    
-
+<div class="bubble-wrapper">
+      <div class="bubble bubble1"></div>
+      <div class="bubble bubble2"></div>
+      <div class="bubble bubble3"></div>
+    </div>
  
 
 <section class="case-study pt-0">
@@ -2574,6 +2580,9 @@ slidesPerView:5,spaceBetween: 15,
     gsap.set(bubbleBall, {
       x: () => getCenterPos(startEl).x,
       y: () => getCenterPos(startEl).y,
+      width: 230,
+      height: 230, 
+  yPercent: -50,
       opacity: 1,
       backgroundColor: "#125682", 
       borderRadius: "50%" 
@@ -2601,23 +2610,23 @@ slidesPerView:5,spaceBetween: 15,
     tl.to(bubbleBall, {
       x: () => getCenterPos(endEl).x,
       y: () => getCenterPos(endEl).y,
-      scale: 1.8, 
+      scale: 1.6, 
       ease: "power2.out", 
-      duration: 2.2       
+      duration: 3       
     }, 0);
 
     // B. The Shape Morph
     tl.to(bubbleBall, {
       borderRadius: "3%", 
       ease: "power2.out",
-      duration: 2.2
+      duration: 3
     }, 0);
 
     // C. The Fast Color Change
     tl.to(bubbleBall, {
       backgroundColor: "#ffffff",
       ease: "none",
-      duration: 1.5       
+      duration: 2.2       
     }, 0);
 
     // D. The Logo Appearance (New)
@@ -2718,7 +2727,76 @@ slidesPerView:5,spaceBetween: 15,
 
   });
 </script> -->
-
+<script>
+      gsap.registerPlugin(ScrollTrigger);
+ 
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".case-study",
+          start: "bottom 70%",
+          end: "bottom 50%",
+          scrub: 1.5,
+        },
+      });
+ 
+      /* PHASE 1: Appear at Red Marks */
+      tl.to(".bubble", {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        stagger: 0.1,
+      })
+ 
+        /* PHASE 2: Move towards center & Turn BLUE */
+        // We move them towards the center (x) and down towards the "Running" text (y)
+        .to(
+          ".bubble1",
+          {
+            x: "30.3vw",
+            y: "15vh",
+            backgroundColor: "#ffffff",
+            ease: "power1.inOut",
+            duration: 3,
+          },
+          "move",
+        )
+        .to(
+          ".bubble2",
+          {
+            x: "0vw",
+            y: "15vh",
+            backgroundColor: "#ffffff",
+            ease: "power1.inOut",
+            duration: 3,
+          },
+          "move",
+        )
+        .to(
+          ".bubble3",
+          {
+            x: "-33.3vw",
+            y: "15vh",
+            backgroundColor: "#ffffff",
+            ease: "power1.inOut",
+            duration: 3,
+          },
+          "move",
+        )
+ 
+        /* PHASE 3: Meet at "RUNNING", Turn WHITE, and Vanish */
+        .to(
+          ".bubble",
+          {
+            backgroundColor: "#ffffff", // Turns white at the impact point
+            filter: "blur(30px)", // Full blur on alignment
+            opacity: 0, // Disappears
+            scale: 0.2, // Shrinks into the text
+            duration: 1,
+            ease: "none",
+          },
+          "-=0.5",
+        ); // Starts slightly before the movement ends for a smooth blend
+    </script>
 </body>
 
 </html>
