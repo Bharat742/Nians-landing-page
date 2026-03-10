@@ -1164,7 +1164,8 @@ body {
 									<input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number">
 								</div>
 								<div class="col-md-6 p-1">
-                  <select class="form-multi-select form-select" multiple data-none-selected-text="Services"> 
+                  <select  id="servicesSelect" class="form-multi-select form-select" multiple> 
+                    	<option disabled>Services</option>
                     <option value="0">Paid Marketing / E-commerce</option>
                     <option value="1">SMO / ORM</option>
                     <option value="2">SEO / Automation</option> 
@@ -2889,6 +2890,24 @@ slidesPerView:5,spaceBetween: 15,
     duration: 1, 
     ease: "power2.out" 
   });
+</script>
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+
+  const checkPlaceholder = setInterval(function () {
+
+    const placeholder = document.querySelector(
+      '#servicesSelect + .form-multi-select .form-multi-select-placeholder'
+    );
+
+    if (placeholder) {
+      placeholder.textContent = "Services";
+      clearInterval(checkPlaceholder);
+    }
+
+  }, 100);
+
+});
 </script>
 </body>
 
