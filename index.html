@@ -936,11 +936,10 @@
  
 .circle h2 { 
   margin: 0;
-   text-shadow: 2px 0px 0px #155884, 
-        -2px 0px 0px #155884, 
-        0px 2px 0px #155884, 
-        0px -2px 0px #155884;
- 
+   text-shadow: 2px 0px 0px #32312f, 
+        -2px 0px 0px #32312f, 
+        0px 2px 0px #32312f, 
+        0px -2px 0px #32312f;
 }
 .personal-tabing-section {
     min-height: 100vh; /* Ensures the section takes up the full screen height while pinned */
@@ -2282,36 +2281,39 @@ slidesPerView:5,spaceBetween: 15,
   gsap.registerPlugin(ScrollTrigger);
 
   // 1. Column A: Move UP as you scroll down
+  // INCREASED: y changed from -130 to -350
   gsap.to(".always_do .d-flex > ul:not(.mt)", {
-    y: -120, 
+    y: -350, 
     ease: "none",
     scrollTrigger: {
       trigger: ".always_do",
-      start: "top top", // Starts when the top of the section hits the top of the screen
+      start: "top top", 
       end: "bottom top",
       scrub: 1, 
     }
   });
 
   // 2. Column B: Move DOWN as you scroll down
+  // INCREASED: y changed from 60 to 200
   gsap.to(".center_logo", {
-    y: 50, 
+    y: 60, 
     ease: "none",
     scrollTrigger: {
       trigger: ".always_do",
-      start: "top top", // Starts when the top of the section hits the top of the screen
+      start: "top top", 
       end: "bottom top",
       scrub: 1,
     }
   });
 
   // 3. Center Globe Logo
+  // INCREASED: y changed from -50 to -180
   gsap.to(".always_do .d-flex > ul.mt", {
-    y: -40,
+    y: -180,
     ease: "none",
     scrollTrigger: {
       trigger: ".always_do",
-      start: "top top", // Starts when the top of the section hits the top of the screen
+      start: "top top", 
       end: "bottom top",
       scrub: 1, 
     }
@@ -2557,59 +2559,66 @@ slidesPerView:5,spaceBetween: 15,
     gsap.registerPlugin(ScrollTrigger);
 
     // 1. Get the starting, ending, and target elements
-    const startEl = document.querySelector('.circle');
+    const h2 = document.querySelector('.circle h2');
     const endEl = document.querySelector('.center_logo');
-    const logoImg = document.querySelector('.center_logo img'); // Target the logo image itself
+    const logoImg = document.querySelector('.center_logo img'); 
 
-    // 2. Create the bubble ball dynamically
+    // 2. Create the bubble ball dynamically and prepend it to the h2
     const bubbleBall = document.createElement('div');
     bubbleBall.className = 'bubble-ball';
-    document.body.appendChild(bubbleBall);
+    
+    // Ensure the h2 can hold the absolute positioned ball behind its text
+    // h2.style.position = 'relative';
+    h2.style.zIndex = '1';
+    h2.prepend(bubbleBall); // Inserts it right before the text inside h2
 
-    // 3. Helper function to get the exact center
-    const getCenterPos = (el) => {
-      if (!el) return { x: 0, y: 0 };
-      const rect = el.getBoundingClientRect();
+    // 3. Helper function to get the responsive distance (Delta) between h2 and the target
+    const getTargetDelta = () => {
+      if (!endEl || !h2) return { x: 0, y: 0 };
+      const startRect = h2.getBoundingClientRect();
+      const endRect = endEl.getBoundingClientRect();
+      
+      // Calculate the exact center of both elements
+      const startX = startRect.left + startRect.width / 2;
+      const startY = startRect.top + startRect.height / 2;
+      const endX = endRect.left + endRect.width / 2;
+      const endY = endRect.top + endRect.height / 2;
+      
+      // Return the difference (how far the ball needs to travel)
       return { 
-        x: rect.left + rect.width / 2 + window.scrollX, 
-        y: rect.top + rect.height / 2 + window.scrollY 
+        x: endX - startX, 
+        y: endY - startY 
       };
     };
 
     // 4. Set the initial starting state for the ball
+    // Using top/left 50% + x/yPercent -50 centers it perfectly inside the h2
     gsap.set(bubbleBall, {
-      x: () => getCenterPos(startEl).x,
-      y: () => getCenterPos(startEl).y,
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      xPercent: -50,
+      yPercent: -50,
       width: 230,
       height: 230, 
-  yPercent: -50,
       opacity: 1,
-      backgroundColor: "#125682", 
-      borderRadius: "50%" 
+      backgroundColor: "#32312f", 
+      borderRadius: "50%",
+      zIndex: -1 // Puts the ball behind the h2 text
     });
 
-    // Set the initial state for the logo (hidden and scaled down to 0)
     gsap.set(logoImg, {
       scale: 0,
       opacity: 0
     });
 
-    // 5. Create the Timeline tied to the scroll
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".circle",          
-        start: "bottom 50%",         
-        toggleActions: "play none none reverse", 
-        invalidateOnRefresh: true    
-      }
-    });
+    // 5. Create the Timeline (paused by default so we can control reverse speed)
+    const tl = gsap.timeline({ paused: true });
 
-    // --- TIMELINE ANIMATIONS ---
-
-    // A. The Movement
+    // A. The Movement (Using the dynamic delta calculation for responsiveness)
     tl.to(bubbleBall, {
-      x: () => getCenterPos(endEl).x,
-      y: () => getCenterPos(endEl).y,
+      x: () => getTargetDelta().x,
+      y: () => getTargetDelta().y,
       scale: 1.6, 
       ease: "power2.out", 
       duration: 3       
@@ -2629,15 +2638,26 @@ slidesPerView:5,spaceBetween: 15,
       duration: 2.2       
     }, 0);
 
-    // D. The Logo Appearance (New)
-    // We use the position parameter '1.4' so the logo starts scaling up 
-    // right as the bubble ball is finishing its arrival behind it.
+    // D. The Logo Appearance
     tl.to(logoImg, {
       scale: 1,
       opacity: 1,
       duration: 0.8,
-      ease: "back.out(1.5)" // Gives a very smooth, slightly bouncy pop effect
+      ease: "back.out(1.5)" 
     }, 1.4); 
+
+    // 6. Connect the Timeline to ScrollTrigger with Custom Speeds
+    ScrollTrigger.create({
+      trigger: ".circle",          
+      start: "bottom 50%",         
+      invalidateOnRefresh: true, // Recalculates getTargetDelta on screen resize
+      onEnter: () => {
+        tl.timeScale(1).play(); // Plays at normal speed when scrolling down
+      },
+      onLeaveBack: () => {
+        tl.timeScale(4).reverse(); // Plays 4x FASTER when scrolling back up
+      }
+    });
 
   });
 </script>
