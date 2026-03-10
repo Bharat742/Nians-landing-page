@@ -1003,3 +1003,18 @@ section{padding: 60px 0px;}
 }
 
 
+
+
+
+
+
+
+
+
+
+/* =========================Responsive media query================================= */
+@media (max-width:767px){
+  .form_div{ margin-bottom: -450px;}
+  .global_brands{margin-top: 350px;}
+  section{padding: 30px 0;}
+}
