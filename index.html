@@ -300,7 +300,7 @@
 /* Stretches the image to fit the container dynamically */
 .bar-img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: fill; /* Ensures the image stretches vertically as GSAP animates height */
     display: block;
 }
@@ -1726,7 +1726,7 @@ body {
 
 <!-- Statices bar section -->
   <section id="stats-section" class="pt-5 pb-0 overflow-hidden graph_bar testimonial">
-    <div class="container mt-5">
+    <div class="container-fluid mt-5 ps-lg-5 ms-lg-5">
         <div class="row align-items-center">
             
             <div class="col-lg-5 mb-5 mb-lg-0 position-relative main-title" style="top: -50px;">
@@ -2132,7 +2132,7 @@ slidesPerView:5,spaceBetween: 15,
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  
+
   function getAutoHeight(element) {
       gsap.set(element, { height: "auto" });
       const height = element.offsetHeight;
@@ -2701,132 +2701,143 @@ slidesPerView:5,spaceBetween: 15,
     const endEl = document.querySelector('.center_logo');
     const logoImg = document.querySelector('.center_logo img'); 
 
-    // 2. Create the bubble ball dynamically and prepend it to the h2
-    const bubbleBall = document.createElement('div');
-    bubbleBall.className = 'bubble-ball';
-    
-    // Ensure the h2 can hold the absolute positioned ball behind its text
-    h2.style.zIndex = '1';
-    h2.prepend(bubbleBall);
+    // Create a GSAP matchMedia instance
+    let mm = gsap.matchMedia();
 
-    // 3. Helper function to get the responsive distance (Delta)
-    const getTargetDelta = () => {
-      if (!endEl || !h2) return { x: 0, y: 0 };
-      const startRect = h2.getBoundingClientRect();
-      const endRect = endEl.getBoundingClientRect();
+    // The code inside this block will only run when the screen is 768px or wider
+    mm.add("(min-width: 768px)", () => {
       
-      const startX = startRect.left + startRect.width / 2;
-      const startY = startRect.top + startRect.height / 2;
-      const endX = endRect.left + endRect.width / 2;
-      const endY = endRect.top + endRect.height / 2;
+      // 2. Create the bubble ball dynamically and prepend it to the h2
+      const bubbleBall = document.createElement('div');
+      bubbleBall.className = 'bubble-ball';
       
-      return { 
-        x: endX - startX, 
-        y: endY - startY 
+      // Ensure the h2 can hold the absolute positioned ball behind its text
+      h2.style.zIndex = '1';
+      h2.prepend(bubbleBall);
+
+      // 3. Helper function to get the responsive distance (Delta)
+      const getTargetDelta = () => {
+        if (!endEl || !h2) return { x: 0, y: 0 };
+        const startRect = h2.getBoundingClientRect();
+        const endRect = endEl.getBoundingClientRect();
+        
+        const startX = startRect.left + startRect.width / 2;
+        const startY = startRect.top + startRect.height / 2;
+        const endX = endRect.left + endRect.width / 2;
+        const endY = endRect.top + endRect.height / 2;
+        
+        return { 
+          x: endX - startX, 
+          y: endY - startY 
+        };
       };
-    };
 
-    // 4. Set the initial starting state for the ball
-    gsap.set(bubbleBall, {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      xPercent: -50,
-      yPercent: -50,
-      width: 230,
-      height: 230, 
-      opacity: 1,
-      backgroundColor: "#32312f", 
-      borderRadius: "50%",
-      zIndex: -1 
-    });
+      // 4. Set the initial starting state for the ball
+      gsap.set(bubbleBall, {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        xPercent: -50,
+        yPercent: -50,
+        width: 230,
+        height: 230, 
+        opacity: 1,
+        backgroundColor: "#32312f", 
+        borderRadius: "50%",
+        zIndex: -1 
+      });
 
-    // -> THIS IS NEW: Move the logo up to the starting h2 position so it can travel down
-    gsap.set(logoImg, {
-      x: () => -getTargetDelta().x,
-      y: () => -getTargetDelta().y,
-      scale: 0.5, // Starts slightly smaller
-      opacity: 0
-    });
+      // Move the logo up to the starting h2 position so it can travel down
+      gsap.set(logoImg, {
+        x: () => -getTargetDelta().x,
+        y: () => -getTargetDelta().y,
+        scale: 0.5, 
+        opacity: 0
+      });
 
-    // 5. Create the Timeline (paused by default)
-    const tl = gsap.timeline({ paused: true });
+      // 5. Create the Timeline (paused by default)
+      const tl = gsap.timeline({ paused: true });
 
-    // A. Ball Movement
-    tl.to(bubbleBall, {
-      x: () => getTargetDelta().x,
-      y: () => getTargetDelta().y,
-      scale: 1.6, 
-      ease: "power2.out", 
-      duration: 3       
-    }, 0);
+      // A. Ball Movement
+      tl.to(bubbleBall, {
+        x: () => getTargetDelta().x,
+        y: () => getTargetDelta().y,
+        scale: 1.6, 
+        ease: "power2.out", 
+        duration: 3       
+      }, 0);
 
-    // B. Logo Movement (Moves exactly with the ball)
-    tl.to(logoImg, {
-      x: 0,
-      y: 0,
-      ease: "power2.out",
-      duration: 3
-    }, 0);
+      // B. Logo Movement (Moves exactly with the ball)
+      tl.to(logoImg, {
+        x: 0,
+        y: 0,
+        ease: "power2.out",
+        duration: 3
+      }, 0);
 
-    // C. The Shape Morph
-    tl.to(bubbleBall, {
-      borderRadius: "3%", 
-      ease: "power2.out",
-      duration: 3
-    }, 0);
+      // C. The Shape Morph
+      tl.to(bubbleBall, {
+        borderRadius: "3%", 
+        ease: "power2.out",
+        duration: 3
+      }, 0);
 
-    // D. The Fast Color Change
-    tl.to(bubbleBall, {
-      background: "#ffffff",
-      ease: "none",
-      duration: 0.6       
-    }, 0);
+      // D. The Fast Color Change
+      tl.to(bubbleBall, {
+        background: "#ffffff",
+        ease: "none",
+        duration: 0.6       
+      }, 0);
 
-    // E. Logo fades in partially as it travels
-    tl.to(logoImg, {
-      opacity: 0.4,
-      scale: 0.8,
-      duration: 1.5,
-      ease: "none"
-    }, 0);
+      // E. Logo fades in partially as it travels
+      tl.to(logoImg, {
+        opacity: 0.4,
+        scale: 0.8,
+        duration: 1.5,
+        ease: "none"
+      }, 0);
 
-    tl.to(bubbleBall, {
-      opacity: 0.4,
-      // scale: 0.8,
-      duration: 1.5,
-      ease: "none"
-    }, 0);
+      tl.to(bubbleBall, {
+        opacity: 0.4,
+        duration: 1.5,
+        ease: "none"
+      }, 0);
 
-    
+      // F. Logo reaches full 100% opacity as it lands in the box
+      tl.to(logoImg, {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out"
+      }, 1.5); 
 
-    // F. Logo reaches full 100% opacity as it lands in the box
-    tl.to(logoImg, {
-      opacity: 1,
-      scale: 1,
-      duration: 1.5,
-      ease: "power2.out"
-    }, 1.5); 
+      tl.to(bubbleBall, {
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out"
+      }, 1.2); 
 
-    tl.to(bubbleBall, {
-      opacity: 1,
-      // scale: 1,
-      duration: 1.2,
-      ease: "power3.out"
-    }, 1.2); 
+      // 6. Connect the Timeline to ScrollTrigger
+      ScrollTrigger.create({
+        trigger: ".circle",          
+        start: "bottom 50%",         
+        invalidateOnRefresh: true,
+        onEnter: () => {
+          tl.timeScale(1).play(); 
+        },
+        onLeaveBack: () => {
+          tl.timeScale(4).reverse(); 
+        }
+      });
 
-    // 6. Connect the Timeline to ScrollTrigger
-    ScrollTrigger.create({
-      trigger: ".circle",          
-      start: "bottom 50%",         
-      invalidateOnRefresh: true,
-      onEnter: () => {
-        tl.timeScale(1).play(); 
-      },
-      onLeaveBack: () => {
-        tl.timeScale(4).reverse(); 
-      }
-    });
+      // 7. CLEANUP FUNCTION (Crucial for matchMedia)
+      // This fires automatically if the window is resized below 768px
+      return () => {
+        bubbleBall.remove(); // Removes the dynamically added DOM element
+        gsap.set([logoImg, h2], { clearProps: "all" }); // Clears inline styles GSAP added
+      };
+
+    }); // End of matchMedia block
 
   });
 </script>

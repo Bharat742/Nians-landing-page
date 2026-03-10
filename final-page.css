@@ -1017,4 +1017,13 @@ section{padding: 60px 0px;}
   .form_div{ margin-bottom: -450px;}
   .global_brands{margin-top: 350px;}
   section{padding: 30px 0;}
+  .creative_agency .work li{gap: 20px;}
+  .creative_agency .work{flex-direction: column;}
+  .creative_agency h1{font-size: 31px;}
+  .personal-tabing-section .acc-content{height: auto !important;}
+  .personal-tabing-section .acc-content ul{list-style-type: disc !important;}
+  .personal-tabing-section .acc-content li{opacity: 1 !important;}
+  .testimonial .section-title{font-size: 31px;}
+  .testimonial p{font-size: 16px;}
+  #stats-section{height: auto !important; padding-top: 20px !important; padding-bottom: 20px !important;} 
 }
