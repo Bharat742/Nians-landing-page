@@ -2116,11 +2116,16 @@ slidesPerView:5,spaceBetween: 15,
   let masterTl; 
 
   function initGSAP() {
+      // 1. Always run cleanup first. This ensures that if the user resizes 
+      // from Desktop to Mobile, the animations are killed and styles are reset.
       if (masterTl) {
           masterTl.kill();
           ScrollTrigger.getAll().forEach(t => t.kill());
           gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot, .three-ball-hide", { clearProps: "all" });
       }
+
+      // 2. Stop execution here if the screen width is 767px or smaller
+      if (window.innerWidth <= 767) return;
 
       const accItems = document.querySelectorAll(".acc-item");
       const visuals = document.querySelectorAll(".visual-item");
@@ -2171,7 +2176,7 @@ slidesPerView:5,spaceBetween: 15,
           // Set initial starting position directly over the placeholders at normal scale
           gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 0, scale: 1 });
       });
- 
+
       masterTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".personal-tabing-section",
@@ -2288,42 +2293,62 @@ slidesPerView:5,spaceBetween: 15,
   window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const sections = document.querySelectorAll('.content-section');
-    const numbersTrack = document.querySelector('.numbers-track');
-    const numItems = document.querySelectorAll('.num-item');
+    // Create a matchMedia instance
+    let mm = gsap.matchMedia();
 
-    // Calculate step distance (160px height + 30px gap)
-    const stepDistance = 290; 
+    // Run this code ONLY on screens 768px and wider (above 767px)
+    mm.add("(min-width: 768px)", () => {
+      
+      const sections = document.querySelectorAll('.content-section');
+      const numbersTrack = document.querySelector('.numbers-track');
+      const numItems = document.querySelectorAll('.num-item');
 
-    function updateActiveStage(index) {
-      gsap.to(numbersTrack, {
-        y: -(index * stepDistance),
-        duration: 0.5,
-        ease: "power2.out",
-        overwrite: "auto" // Prevents stuttering if you scroll really fast
-      });
+      // Calculate step distance (160px height + 30px gap)
+      const stepDistance = 290; 
 
-      numItems.forEach((num, i) => {
-        num.classList.toggle('active', i === index);
-      });
-    }
-
-    // DELAY FIX: Wait 100ms so the pinned section scripts can finish setting up
-    setTimeout(() => {
-        sections.forEach((section, index) => {
-          ScrollTrigger.create({
-            trigger: section,
-            start: "top 50%", // Triggers when the top of the article hits the middle of the screen
-            end: "bottom 50%",
-            onEnter: () => updateActiveStage(index),
-            onEnterBack: () => updateActiveStage(index)
-          });
+      function updateActiveStage(index) {
+        gsap.to(numbersTrack, {
+          y: -(index * stepDistance),
+          duration: 0.5,
+          ease: "power2.out",
+          overwrite: "auto" // Prevents stuttering if you scroll really fast
         });
 
-        // MAGIC FIX: Re-sort triggers by physical DOM order and recalculate all heights
-        ScrollTrigger.sort();
-        ScrollTrigger.refresh();
-    }, 100); 
+        numItems.forEach((num, i) => {
+          num.classList.toggle('active', i === index);
+        });
+      }
+
+      // DELAY FIX: Wait 100ms so the pinned section scripts can finish setting up
+      setTimeout(() => {
+          sections.forEach((section, index) => {
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top 50%", // Triggers when the top of the article hits the middle of the screen
+              end: "bottom 50%",
+              onEnter: () => updateActiveStage(index),
+              onEnterBack: () => updateActiveStage(index)
+            });
+          });
+
+          // MAGIC FIX: Re-sort triggers by physical DOM order and recalculate all heights
+          ScrollTrigger.sort();
+          ScrollTrigger.refresh();
+      }, 100); 
+
+      // CLEANUP FUNCTION: This runs automatically if the user resizes below 768px
+      return () => {
+        // Reset the track position
+        if (numbersTrack) {
+            gsap.set(numbersTrack, { clearProps: "y" }); 
+        }
+        // Remove active classes
+        if (numItems) {
+            numItems.forEach(num => num.classList.remove('active'));
+        }
+      };
+
+    }); // End of matchMedia
   });
 </script>
 <!-- =======================number section script end============================== -->
