@@ -994,12 +994,13 @@
     /* overflow: hidden;  <-- REMOVED: So balls can escape into the next section */
     position: relative;
     z-index: 10; /* Keeps this section above the previous ones */
+    padding: 10px 0 !important;
 }
 
 .case-study {
     padding-bottom: 0;
     position: relative;
-    z-index: 11; /* Slightly higher so the balls can dive "behind/into" these boxes */
+    z-index: 999; /* Slightly higher so the balls can dive "behind/into" these boxes */
 }
 
 
@@ -1044,6 +1045,64 @@
 .integrate .col-md-4.text-center img {
   position: relative;
   z-index: 10;
+}
+
+.three-ball-hide {
+    width: 20px;       /* Change to match your exact .ball width */
+    height: 20px;      /* Change to match your exact .ball height */
+    border-radius: 4px; /* Use 50% if they are circles, or keep 4px if they are squares like your image */
+    opacity: 1;        /* Make them visible initially */
+}
+
+
+/* 1. Force the top section to overlap the bottom section */
+/* .always_do {
+    position: relative;
+    z-index: 20 !important; 
+} */
+
+/* 2. Ensure the accordion section stays underneath */
+.personal-tabing-section {
+    position: relative;
+    z-index: 10;
+}
+
+/* 3. Keep the logo image in front */
+/* .logo-front {
+    position: relative;
+    z-index: 5;
+} */
+
+/* 4. Pull the placeholders up and tuck them behind the logo */
+.starting-balls-container {
+    position: relative;
+    z-index: 1; /* Lower than the logo */
+    /* margin-top: -80px; This pulls the dots upward so they sit directly behind the logo */
+}
+
+
+
+
+/* 1. Force the logo section to sit underneath the flying balls */
+/* .always_do {
+    position: relative;
+    z-index: 10 !important; 
+} */
+
+/* 2. Force the accordion section ON TOP, and allow the balls to overflow */
+.personal-tabing-section {
+    position: relative;
+    z-index: 20 !important; 
+    overflow: visible !important; /* CRITICAL: This stops the browser from cutting the balls off! */
+    min-height: 100vh; 
+    display: flex;
+    align-items: center; 
+    background-color: #ffffff;
+}
+
+/* 3. Add this so removing overflow above doesn't cause horizontal scrolling */
+body {
+    overflow-x: hidden;
 }
 </style>
 </head>
@@ -1253,16 +1312,15 @@
                     </div>
                   </div>
                   <div class="col-md-4 p-2">
-                    <div class="center_logo">
-                      <!-- <img src="images/center-logo.png" alt="img" class="img-fluid w-100"> -->
-                      <img src="images/nians_logo.png" alt="img" class="img-fluid w-100" style="    width: 210px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    height: auto;
-    margin-top: 110px;">
-                    </div>
+                   <div class="center_logo d-flex flex-column align-items-center">
+  <img src="images/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; display: flex; align-items: center; justify-content: center; margin: auto; height: auto; margin-top: 110px;">
+  
+  <div class="starting-balls-container d-flex flex-column gap-2">
+    <div class="three-ball-hide bg-red"></div>
+    <div class="three-ball-hide bg-blue"></div>
+    <div class="three-ball-hide bg-purple"></div>
+  </div>
+</div>
                   </div>
                   <div class="col-md-4 p-2">
                     <div class="d-flex gap-2 justify-content-start">
@@ -2048,7 +2106,6 @@ slidesPerView:5,spaceBetween: 15,
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // Helper: Get height of closed element
   function getAutoHeight(element) {
       gsap.set(element, { height: "auto" });
       const height = element.offsetHeight;
@@ -2056,29 +2113,28 @@ slidesPerView:5,spaceBetween: 15,
       return height;
   }
 
-  let masterTl; // We declare this globally so we can kill it on window resize
+  let masterTl; 
 
   function initGSAP() {
-      // FIX 1: If the user opens the inspector/resizes, kill old animations and wipe transforms 
-      // so getBoundingClientRect() calculates fresh, accurate native DOM positions.
       if (masterTl) {
           masterTl.kill();
           ScrollTrigger.getAll().forEach(t => t.kill());
-          gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot", { clearProps: "all" });
+          gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot, .three-ball-hide", { clearProps: "all" });
       }
 
       const accItems = document.querySelectorAll(".acc-item");
       const visuals = document.querySelectorAll(".visual-item");
       const balls = document.querySelectorAll(".ball");
       
-      // FIX 2: Define your target destination boxes for the balls
+      // Select our new visible placeholder dots
+      const hideBalls = document.querySelectorAll(".three-ball-hide");
+      
       const caseBoxes = [
           document.querySelector(".case_study_box1"),
           document.querySelector(".case_study_box2"),
           document.querySelector(".case_study_box3")
       ];
 
-      // Safety check to ensure elements exist before running math
       if (!accItems.length || !balls.length) return; 
 
       const headerHeight = document.querySelector(".acc-header").offsetHeight;
@@ -2086,44 +2142,40 @@ slidesPerView:5,spaceBetween: 15,
       const marginBottom = parseFloat(accItemStyle.marginBottom);
       const slideUpDistance = headerHeight + marginBottom;
 
-      const sectionMaster = document.querySelector(".personal-tabing-section");
-      const masterRect = sectionMaster.getBoundingClientRect();
-      
-      const extraTop = 200;    
-      const startX = masterRect.width / 2;
-      const startY = -extraTop; 
-      
       const endCoords = [];
 
-      // Dynamically prep all balls
+      // Dynamically prep all balls to start EXACTLY at their matching placeholder
       balls.forEach((ball, index) => {
           const ballRect = ball.getBoundingClientRect();
-          
-          // Fly-IN coords (Top Center)
-          const diffStartX = startX - (ballRect.left - masterRect.left + ballRect.width / 2);
-          const diffStartY = startY - (ballRect.top - masterRect.top + ballRect.height / 2);
-          
-          // FIX 3: Calculate the exact distance to the center of each specific case study box
+          let diffStartX = 0;
+          let diffStartY = 0;
+
+          // Map Ball 1 to Placeholder 1, Ball 2 to Placeholder 2, etc.
+          if (hideBalls[index]) {
+              const hideRect = hideBalls[index].getBoundingClientRect();
+              diffStartX = (hideRect.left + hideRect.width / 2) - (ballRect.left + ballRect.width / 2);
+              diffStartY = (hideRect.top + hideRect.height / 2) - (ballRect.top + ballRect.height / 2);
+          }
+
           let targetX = 0;
           let targetY = 0;
 
           if (caseBoxes[index]) {
               const boxRect = caseBoxes[index].getBoundingClientRect();
-              // Math: (Target Box Center) - (Native Ball Center)
               targetX = (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
               targetY = (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
           }
 
           endCoords.push({ x: targetX, y: targetY });
-          gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 1, scale: 0.5 });
+          
+          // Set initial starting position directly over the placeholders at normal scale
+          gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 0, scale: 1 });
       });
  
-      // --- Master Timeline ---
       masterTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".personal-tabing-section",
-              //  FIX: Change this back to "top top" to remove the giant white space!
-              start: "top top",      
+              start: "top 15%",      
               end: "+=2500",         
               pin: true,             
               scrub: 1,              
@@ -2132,11 +2184,14 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-      // PHASE 0: ALL balls fly in from Top-Center
+      // PHASE 0: The animation begins
       masterTl.addLabel("start")
+        // Hide the static placeholders immediately so we don't see double
+        .to(hideBalls, { opacity: 0, duration: 0.01 }, "start")
+        // Animate the actual balls down into the accordion
         .to(balls, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "start");
 
-      // DYNAMIC LOOP: Build the open/close sequence for every item
+      // DYNAMIC LOOP (Unchanged)
       accItems.forEach((item, index) => {
           const content = item.querySelector(".acc-content");
           const lis = content.querySelectorAll("li");
@@ -2177,7 +2232,7 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-      // OUTRO PHASE
+      // OUTRO PHASE (Unchanged)
       const lastIdx = accItems.length - 1;
       const lastItem = accItems[lastIdx];
       const lastContent = lastItem.querySelector(".acc-content");
@@ -2195,7 +2250,6 @@ slidesPerView:5,spaceBetween: 15,
 
       balls.forEach((ball, i) => {
           const slidesApplied = Math.min(i + 1, accItems.length - 1);
-          // Keep your compensation logic, but use our new targeted endCoords
           const yCompensation = endCoords[i].y + (slideUpDistance * slidesApplied);
 
           masterTl.to(ball, { 
@@ -2209,11 +2263,8 @@ slidesPerView:5,spaceBetween: 15,
       });
   }
 
-  // 1. Run on initial load
   window.addEventListener("load", initGSAP);
 
-  // 2. FIX 5: Run on window resize (Opening Web Inspector)
-  // We use a debounce timer so it doesn't freeze the browser while dragging the window edge
   let resizeTimer;
   window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
@@ -2222,7 +2273,6 @@ slidesPerView:5,spaceBetween: 15,
           ScrollTrigger.refresh(); 
       }, 250); 
   });
-
 </script>
 
 <!-- =============personal-tabing-section script end======================= -->
@@ -2360,7 +2410,7 @@ slidesPerView:5,spaceBetween: 15,
   // 2. Left Boxes
   integrateTl.from(".social_service_left .social_service_text", {
     x: 100,            // Reduced distance for a subtler, smoother slide
-    opacity: 0,
+    // opacity: 0,
     stagger: 0.15,     // Slightly increased stagger to separate them more
     ease: "none"       // CHANGED
   }, 0); 
@@ -2368,7 +2418,7 @@ slidesPerView:5,spaceBetween: 15,
   // 3. Right Boxes
   integrateTl.from(".social_service_right .social_service_text", {
     x: -100,           // Reduced distance
-    opacity: 0,
+    // opacity: 0,
     stagger: 0.15,
     ease: "none"       // CHANGED
   }, 0);
@@ -2756,75 +2806,41 @@ slidesPerView:5,spaceBetween: 15,
   });
 </script> -->
 <script>
-      gsap.registerPlugin(ScrollTrigger);
- 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".case-study",
-          start: "bottom 70%",
-          end: "bottom 50%",
-          scrub: 1.5,
-        },
-      });
- 
-      /* PHASE 1: Appear at Red Marks */
-      tl.to(".bubble", {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        stagger: 0.1,
-      })
- 
-        /* PHASE 2: Move towards center & Turn BLUE */
-        // We move them towards the center (x) and down towards the "Running" text (y)
-        .to(
-          ".bubble1",
-          {
-            x: "30.3vw",
-            y: "15vh",
-            backgroundColor: "#ffffff",
-            ease: "power1.inOut",
-            duration: 3,
-          },
-          "move",
-        )
-        .to(
-          ".bubble2",
-          {
-            x: "0vw",
-            y: "15vh",
-            backgroundColor: "#ffffff",
-            ease: "power1.inOut",
-            duration: 3,
-          },
-          "move",
-        )
-        .to(
-          ".bubble3",
-          {
-            x: "-33.3vw",
-            y: "15vh",
-            backgroundColor: "#ffffff",
-            ease: "power1.inOut",
-            duration: 3,
-          },
-          "move",
-        )
- 
-        /* PHASE 3: Meet at "RUNNING", Turn WHITE, and Vanish */
-        .to(
-          ".bubble",
-          {
-            backgroundColor: "#ffffff", // Turns white at the impact point
-            filter: "blur(30px)", // Full blur on alignment
-            opacity: 0, // Disappears
-            scale: 0.2, // Shrinks into the text
-            duration: 1,
-            ease: "none",
-          },
-          "-=0.5",
-        ); // Starts slightly before the movement ends for a smooth blend
-    </script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".case-study",
+      start: "bottom 70%",
+      end: "bottom 30%", 
+      scrub: 1.5,
+    },
+  });
+
+  /* STEP 1: Move down and FADE (Start solid, fade as they move) */
+  tl.to(".bubble1", { x: "30.3vw", y: "15vh", duration: 3, ease: "power2.inOut" }, "move")
+    .to(".bubble2", { x: "0vw", y: "15vh", duration: 3, ease: "power2.inOut" }, "move")
+    .to(".bubble3", { x: "-33.3vw", y: "15vh", duration: 3, ease: "power2.inOut" }, "move")
+    // This reduces the opacity down to 0.5 while they are moving down
+    .to(".bubble", { backgroundColor: "#ffffff", opacity: 1, duration: 2, ease: "none" }, "move"); 
+
+  /* STEP 2: Change to WHITE at the exact end position */
+  // This triggers right after they finish moving
+  tl.to(".bubble", { 
+    backgroundColor: "#ffffff", 
+    duration: 0.2, 
+    ease: "none" 
+  });
+
+  /* STEP 3: Disappear completely (Blur, shrink, opacity 0) */
+  tl.to(".bubble", { 
+    opacity: 0, 
+    scale: 0.5, 
+    // filter: "blur(30px)", 
+    duration: 1, 
+    ease: "power2.out" 
+  });
+</script>
 </body>
 
 </html>
