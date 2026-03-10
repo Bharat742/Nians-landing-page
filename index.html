@@ -237,7 +237,7 @@
 /* ====================Bars section style============================  */
 
 
-#stats-section{background-color: #F6F6F6; padding-top: 100px !important; padding-bottom: 40px !important;}
+#stats-section{background-color: #F6F6F6; padding-top: 100px !important; padding-bottom: 40px !important;height: 100vh;}
 #stats-section .section-title{text-align: left; color: #002a54;}
 
 
@@ -266,10 +266,11 @@
     color: #fff;
     background: #FFA106;
     text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 30px;
-    margin-top: 25px; 
+    padding: 7px 30px;
+    border-radius: 50px;
+    margin-top: 25px;
     display: inline-block;
+    line-height: 25px;
 }     .graph_bar{ background: #F6F6F6;}
 /* --- Updated 3D Bar Image Styles --- */
 .chart-wrapper {
@@ -278,7 +279,7 @@
     align-items: flex-end; /* Anchors the bars to the bottom so they grow upwards */
     justify-content: center;
     padding-bottom: 0px;
-    margin-top: -90px;
+    margin-top: -68px;
 }
 
 .bar-container {
@@ -344,15 +345,15 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease;text-align: center;
             box-shadow: 0 4px 15px rgba(83, 51, 237, 0.3);
         }
 
-        .btn-custom:hover {
+        /* .btn-custom:hover {
             background-color: #4221d0;
             color: white;
             transform: translateY(-2px);
-        }
+        } */
 
         /* --- 3D Bar Chart Styles --- */
         .chart-wrapper {
@@ -507,8 +508,8 @@
 .cta-content { position: relative; z-index: 3; margin: 0 auto;}
 .cta-heading { font-size: 47px; font-weight: 700; color: #ffffff; margin-bottom: 40px; line-height: 1.1; letter-spacing: -1px;}
         /* Rounded Pill Button */
-.btn-custom {  background-color: #ffffff;  color: #002A54;   font-weight: 500; padding: 15px 20px; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; font-size: 1.1rem; border: none;font-size: 16px;font-weight: 400;font-family: 'Nunito', sans-serif;text-transform: inherit;letter-spacing: 0px;box-shadow: none;}
-.btn-custom:hover {  transform: translateY(-3px);  box-shadow: 0 10px 20px rgba(0,0,0,0.1); background-color: #f8f9fa; color: #002A54;}
+.btn-custom {  background-color: #373a3e;  color: #fff;   font-weight: 500; padding: 8px 30px; border-radius: 10px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; border: none;font-size: 19px; font-family: 'Nunito', sans-serif;text-transform: inherit;letter-spacing: 0px;box-shadow: none;line-height: 25px;}
+/* .btn-custom:hover {  transform: translateY(-3px);  box-shadow: 0 10px 20px rgba(0,0,0,0.1); background-color: #f8f9fa; color: #002A54;} */
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .cta-heading {
@@ -716,7 +717,7 @@
         }
 
         .personal-tabing-section .acc-content li {
-            font-size: 23px;
+            font-size: 20px;
     font-weight: 400;
     font-family: "poppins", sans-serif;
             margin-bottom: 12px;
@@ -846,7 +847,7 @@
     }
 
   .website-creation-stages  .content-section p {
-      color: var(--text-paragraph);
+      color: #fff;
       font-size: 1.15rem;
       line-height: 1.6;
       max-width: 90%;
@@ -876,7 +877,9 @@
   text-align: center;
   padding: 30px 0px 0px;
   height: 100%;
-  background: transparent; 
+  background: transparent; display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 } 
 .case-study .case_study_box::before {
   content: "";
@@ -936,10 +939,10 @@
  
 .circle h2 { 
   margin: 0;
-   text-shadow: 2px 0px 0px #32312f, 
-        -2px 0px 0px #32312f, 
-        0px 2px 0px #32312f, 
-        0px -2px 0px #32312f;
+   text-shadow: 2px 0px 0px #002a54, 
+        -2px 0px 0px #002a54, 
+        0px 2px 0px #002a54, 
+        0px -2px 0px #002a54;
 }
 .personal-tabing-section {
     min-height: 100vh; /* Ensures the section takes up the full screen height while pinned */
@@ -1019,7 +1022,7 @@
 
 .image-container dotlottie-wc{
   width: 100%;
-  max-width: 420px;   /* increase this value if needed */
+  max-width: 500px;   /* increase this value if needed */
   height: 420px;
 }
 
@@ -1116,7 +1119,7 @@ body {
 	</header>
 	<section class="banner">
 		<div class="container">
-			<div class="row">
+			<div class="row align-items-center">
 				<div class="col-md-6">
 					<div class="banner_data">
 						<h4>MAXIMISE YOUR BUSINESS GROWTH WITH,</h4>
@@ -1124,7 +1127,7 @@ body {
 						<p>Armed with AI-driven strategies and a sharp data-first mindset, we tackle the toughest challenges in the digital marketing arena. Watch your CAC drop while your revenue climbs, because growth isn't luck, it's a system we've perfected.</p>
 						<ul>
 							<li>
-								<div><span>80+</span>Industry Awards Won</div> <img src="images/smile.png" alt="img" class="img-fluid">
+								<div><span>80+</span>Industry Awards Won</div> <img src="images/trophy.png" alt="img" class="img-fluid" style="filter: invert(1);width: 42px;">
 							</li>
 							<li>
 								<div><span>700+</span>Brands Served Across the Globe</div> <img src="images/microphone.png" alt="img" class="img-fluid">
@@ -1147,14 +1150,14 @@ body {
 								<div class="col-md-12 p-1"> 
 									<input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number">
 								</div>
-								<div class="col-md-12 p-1">
-                  <select class="form-multi-select" multiple >
+								<div class="col-md-6 p-1">
+                  <select class="form-multi-select form-select" multiple >
                     <option value="0">Paid Marketing / E-commerce</option>
                     <option value="1">SMO / ORM</option>
                     <option value="2">SEO / Automation</option> 
                   </select> 
 								</div> 
-                <div class="col-md-12 p-1">
+                <div class="col-md-6 p-1">
                   	<select class="form-select" aria-label="Default select example">
 										<option selected>Budgets</option>
 										<option value="1">Less than 5 lakh</option>
@@ -1277,7 +1280,7 @@ body {
                     </h2>
 
                     <div class="hero-subheading-wrap">
-                      <p class="txt-32" style="font-size: 25px; margin: auto; text-align: center;">
+                      <p class="txt-32 text-center" style="font-size: 25px; margin: auto; text-align: center;">
                        Every campaign we run lives and breathes through data. 
                       </p>
                     </div>
@@ -1357,11 +1360,11 @@ body {
   <div class="container">
       <div class="row">
           
-          <div class="col-md-7">
+          <div class="col-md-5">
               <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
-                      <span style="color: #000 !important;">Performance Marketing</span>
+                      <span style="color: #000 !important;">Paid Ads</span>
                   </div>
                   <div class="acc-content">
                       <ul>
@@ -1410,17 +1413,17 @@ body {
 
           </div>
 
-          <div class="col-md-5 ">
+          <div class="col-md-7">
               <div class="visual-container">
                   <div class="visual-item">
                       <div class="image-container">
                           <!-- <img src="./images/20210908-071511lf30_editor_rwzdclmm-1 (1).lottie" alt="Design"> -->
                            <dotlottie-wc 
-                      src="/images/20210908-072604lf30_editor_ia9xic2y.lottie" 
+                      src="images/dm.lottie" 
                       speed="1"  
                       loop 
                       autoplay
-                      style="width:420px;height:420px;"
+                      style="width:500px;height:500px;"
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
@@ -1429,11 +1432,11 @@ body {
                       <div class="image-container">
                           <!-- <img src="./images/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" alt="Tech"> -->
                            <dotlottie-wc 
-                      src="/images/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" 
+                      src="images/seo.lottie" 
                       speed="1"  
                       loop 
                       autoplay
-                       style="width:420px;height:420px;"
+                       style="width:500px;height:500px;"
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
@@ -1442,11 +1445,11 @@ body {
                       <div class="image-container">
                           <!-- <img src="./images/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" alt="Marketing"> -->
                           <dotlottie-wc 
-                      src="/images/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" 
+                      src="images/smm.lottie" 
                       speed="1"  
                       loop 
                       autoplay
-                       style="width:420px;height:420px;"
+                       style="width:500px;height:500px;"
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
@@ -1719,7 +1722,10 @@ body {
                 
                 <p>Most agencies give you deliverables. We give you growth. With 20+ years of experience, an AI-powered approach and a track record of reducing CAC by 40% while scaling revenue, we've built our reputation on results that are measurable, repeatable and real. We work as an extension of your team, not just a vendor, because we genuinely believe your growth is our growth.</p>
                 
-                <a href="#">Start Growing With Us → </a>
+                <!-- <a href="#">Start Growing With Us → </a> -->
+                <a href="#" class="btn-custom button button--nina button--text-thick button--text-upper button--size-s" data-text="Start Growing With Us →">
+                    <span>S</span><span>t</span><span>a</span><span>r</span><span>t</span><span class="space"></span><span>G</span><span>r</span><span>o</span><span>w</span><span>i</span><span>n</span><span>g</span><span class="space"></span><span>W</span><span>i</span><span>t</span><span>h</span><span class="space"></span><span>U</span><span>s</span><span>→</span> 
+              </a>
             </div>
 
             <div class="col-lg-7">
@@ -1836,8 +1842,10 @@ body {
       <h2 class="cta-heading">
         Ready to Turn Strategy Into Revenue?
       </h2>
-      <a href="#" class="btn-custom">
-         Unlock Your Brand's Potential
+      <a href="#" class="btn-custom button button--nina button--text-thick button--text-upper button--size-s" data-text="Unlock Your Brand's Potential">
+         
+						<span>U</span><span>n</span><span>l</span><span>o</span><span>c</span><span>k</span><span class="space"></span><span>Y</span><span>o</span><span>u</span><span>r</span><span class="space"></span><span>B</span><span>r</span><span>a</span><span>n</span><span>d</span><span>'</span><span>s</span><span class="space"></span><span>P</span><span>o</span><span>t</span><span>e</span><span>n</span><span>t</span><span>i</span><span>a</span><span>l</span>
+					 
       </a>
   </div>
 </section>
