@@ -1060,10 +1060,10 @@
 }
 
 .three-ball-hide {
-    width: 20px;       /* Change to match your exact .ball width */
-    height: 20px;      /* Change to match your exact .ball height */
-    border-radius: 4px; /* Use 50% if they are circles, or keep 4px if they are squares like your image */
-    opacity: 1;        /* Make them visible initially */
+    width: 20px;       
+    height: 20px;      
+    border-radius: 50%; /* Makes them perfect circles */
+    opacity: 1;        
 }
 
 
@@ -1116,6 +1116,7 @@
 body {
     overflow-x: hidden;
 }
+.chart_list ul li img{border-radius: 10px;}
 </style>
 </head>
 
@@ -1306,29 +1307,29 @@ body {
                     <div class="d-flex gap-2 justify-content-end">
                       <ul>
                         <li>
-                          <img src="images/chart1.png" alt="img" class="img-fluid">
+                          <img src="images/app-stat 1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="images/chart2.png" alt="img" class="img-fluid">
+                          <img src="images/google-ads-stat-66f4efc58901f 1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                       <ul class="mt">
                         <li>
-                          <img src="images/chart3.png" alt="img" class="img-fluid">
+                          <img src="images/mobile-site-stat 1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="images/chart4.png" alt="img" class="img-fluid">
+                          <img src="images/smm-stat 1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-4 p-2">
                    <div class="center_logo d-flex flex-column align-items-center">
-  <img src="images/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; display: flex; align-items: center; justify-content: center; margin: auto; height: auto; margin-top: 110px;">
+  <img src="images/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; display: flex; align-items: center; justify-content: center; margin: auto; height: auto; margin-top: 50px;">
   
-  <div class="starting-balls-container d-flex flex-column gap-2">
+ <div class="starting-balls-container d-flex flex-row justify-content-center gap-3">
     <div class="three-ball-hide bg-red"></div>
     <div class="three-ball-hide bg-blue"></div>
     <div class="three-ball-hide bg-purple"></div>
@@ -1339,20 +1340,20 @@ body {
                     <div class="d-flex gap-2 justify-content-start">
                       <ul class="mt">
                         <li>
-                          <img src="images/chart5.png" alt="img" class="img-fluid">
+                          <img src="images/app-stat 1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="images/chart6.png" alt="img" class="img-fluid">
+                          <img src="images/google-ads-stat-66f4efc58901f 1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                       <ul>
                         <li>
-                          <img src="images/chart7.png" alt="img" class="img-fluid">
+                          <img src="images/mobile-site-stat 1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="images/chart8.png" alt="img" class="img-fluid">
+                          <img src="images/smm-stat 1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                     </div>
@@ -2139,24 +2140,25 @@ slidesPerView:5,spaceBetween: 15,
   }
 
   let masterTl; 
+  let dropTl; 
 
   function initGSAP() {
-      // 1. Always run cleanup first. This ensures that if the user resizes 
-      // from Desktop to Mobile, the animations are killed and styles are reset.
+      // 1. Clean up ONLY this section's timelines (Leave the rest of the page alone!)
       if (masterTl) {
+          if (masterTl.scrollTrigger) masterTl.scrollTrigger.kill();
           masterTl.kill();
-          ScrollTrigger.getAll().forEach(t => t.kill());
-          gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot, .three-ball-hide", { clearProps: "all" });
       }
-
-      // 2. Stop execution here if the screen width is 767px or smaller
+      if (dropTl) {
+          if (dropTl.scrollTrigger) dropTl.scrollTrigger.kill();
+          dropTl.kill();
+      }
+      
+      gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot, .three-ball-hide", { clearProps: "all" });
       if (window.innerWidth <= 767) return;
 
       const accItems = document.querySelectorAll(".acc-item");
       const visuals = document.querySelectorAll(".visual-item");
       const balls = document.querySelectorAll(".ball");
-      
-      // Select our new visible placeholder dots
       const hideBalls = document.querySelectorAll(".three-ball-hide");
       
       const caseBoxes = [
@@ -2169,18 +2171,17 @@ slidesPerView:5,spaceBetween: 15,
 
       const headerHeight = document.querySelector(".acc-header").offsetHeight;
       const accItemStyle = window.getComputedStyle(accItems[0]);
-      const marginBottom = parseFloat(accItemStyle.marginBottom);
+      const marginBottom = parseFloat(accItemStyle.marginBottom) || 0;
       const slideUpDistance = headerHeight + marginBottom;
 
       const endCoords = [];
 
-      // Dynamically prep all balls to start EXACTLY at their matching placeholder
       balls.forEach((ball, index) => {
           const ballRect = ball.getBoundingClientRect();
           let diffStartX = 0;
           let diffStartY = 0;
 
-          // Map Ball 1 to Placeholder 1, Ball 2 to Placeholder 2, etc.
+          // CALCULATE STARTING POSITION FROM THE .three-ball-hide PLACEHOLDERS
           if (hideBalls[index]) {
               const hideRect = hideBalls[index].getBoundingClientRect();
               diffStartX = (hideRect.left + hideRect.width / 2) - (ballRect.left + ballRect.width / 2);
@@ -2198,14 +2199,47 @@ slidesPerView:5,spaceBetween: 15,
 
           endCoords.push({ x: targetX, y: targetY });
           
-          // Set initial starting position directly over the placeholders at normal scale
-          gsap.set(ball, { x: diffStartX, y: diffStartY, opacity: 0, scale: 1 });
+          // START STATE: Scaled down, perfectly circular (50%)
+          gsap.set(ball, { 
+              x: diffStartX, 
+              y: diffStartY, 
+              opacity: 0, 
+              scale: 0.4, 
+              borderRadius: "50%" 
+          });
       });
 
+      // ==========================================
+      // TIMELINE 1: THE DROP (No Pinning)
+      // ==========================================
+      dropTl = gsap.timeline({
+          scrollTrigger: {
+              trigger: ".personal-tabing-section",
+              start: "top 55%", // Starts animating when the section is halfway up the screen
+              end: "top top",   // Finishes perfectly right as the section hits the top
+              scrub: 1
+          }
+      });
+
+      dropTl.to(hideBalls, { opacity: 0, duration: 0.01 }, 0)
+            .to(balls, { opacity: 1, duration: 0.01 }, 0)
+            .to(balls, { 
+                x: 0, 
+                y: 0, 
+                scale: 1, 
+                borderRadius: "7px", 
+                duration: 1, 
+                ease: "power2.out" 
+            }, 0);
+
+
+      // ==========================================
+      // TIMELINE 2: THE ACCORDION (With Pinning)
+      // ==========================================
       masterTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".personal-tabing-section",
-              start: "top 15%",      
+              start: "top top",      // Pins flawlessly to the top without a gap!
               end: "+=1500",         
               pin: true,             
               scrub: 1,              
@@ -2214,14 +2248,9 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-      // PHASE 0: The animation begins
-      masterTl.addLabel("start")
-        // Hide the static placeholders immediately so we don't see double
-        .to(hideBalls, { opacity: 0, duration: 0.01 }, "start")
-        // Animate the actual balls down into the accordion
-        .to(balls, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, "start");
+      masterTl.addLabel("start");
 
-      // DYNAMIC LOOP (Unchanged)
+      // DYNAMIC LOOP
       accItems.forEach((item, index) => {
           const content = item.querySelector(".acc-content");
           const lis = content.querySelectorAll("li");
@@ -2233,7 +2262,7 @@ slidesPerView:5,spaceBetween: 15,
           let phaseLabel = "phase" + index;
 
           if (index === 0) {
-              masterTl.addLabel(phaseLabel, "start+=0.4")
+              masterTl.addLabel(phaseLabel, "start+=0.1") // Starts opening instantly after pinning
                 .to(span, { color: targetColor, duration: 0.3 }, phaseLabel)
                 .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel)
                 .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel)
@@ -2262,7 +2291,7 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-      // OUTRO PHASE (Unchanged)
+      // OUTRO PHASE
       const lastIdx = accItems.length - 1;
       const lastItem = accItems[lastIdx];
       const lastContent = lastItem.querySelector(".acc-content");
@@ -2748,7 +2777,7 @@ slidesPerView:5,spaceBetween: 15,
 
     // D. The Fast Color Change
     tl.to(bubbleBall, {
-      backgroundColor: "#ffffff",
+      background: "#ffffff",
       ease: "none",
       duration: 0.6       
     }, 0);
