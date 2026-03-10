@@ -8,7 +8,11 @@ p{font-family: "Nunito", sans-serif;}
 .banner {padding: 100px 0px;}
 .banner .banner_data h4{font-size: 15px;font-weight: 400;color: #fff;padding-bottom: 10px;position: relative;}
 .banner .banner_data h4::after{content: "";position: absolute;bottom: 0;left: 0;right:0;top: auto;bottom:0;width: 200px;height: 1px;background: #fff;}
-.banner .banner_data h1{font-size: 48px;font-weight: 900;color: #fff;line-height: 60px;}
+.banner .banner_data h1{font-size: 48px;font-weight: 900;color: #fff;line-height: 60px;margin-bottom: 30px;}
+.form-multi-select-input-group{border: 1px solid #ccc !important;padding: 4px;}
+input, textarea, select, .form-multi-select-input-group{color: #203857;font-family: "poppins",sans-serif !important;}
+.form-multi-select-placeholder{color: #203857;}
+.form-multi-select{padding: 0px !important;border: 0px !important;}
 .banner .banner_data p{color: #fff;font-size: 15px;font-weight: 300;}
 .banner .banner_data ul{color: #fff;list-style: none;display: flex;font-family: "Nunito", sans-serif;padding-left: 0px;margin-bottom: 0;margin-top: 30px;gap: 18px;}
 .banner .banner_data ul span::after{content: unset;}
@@ -31,7 +35,26 @@ section{padding: 60px 0px;}
 .creative_agency h1 span{position: relative;}
 .creative_agency h1 span::after{width: 85%;background-position: right;left: 24px;bottom: -10px;}
 .creative_agency .circle{height: 230px;width: 230px;border-radius: 50%;background:url("images/circle.png");background: unset; background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;}
-.creative_agency h2{position: absolute;top: -60px;bottom: 0;left: 0;right: 0;margin: auto;font-size: 84px;font-weight: 800;color: #fff; display: flex;align-items: center;justify-content: center;}
+/* .creative_agency h2{position: absolute;top: -60px;bottom: 0;left: 0;right: 0;margin: auto;font-size: 84px;font-weight: 800;color: #fff; display: flex;align-items: center;justify-content: center;} */
+.creative_agency h2 {
+    /* top: -60px; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-weight: 800;
+    color: #002a54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #002a5400;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 4px #155884;
+    font-size: 140px;
+    margin: 0;
+    /* line-height: 1; */
+}
 .creative_agency h2 sup{font-weight: 400;font-size: 35px;}
 .creative_agency h3{font-size: 16px;font-weight: 500;line-height: 30px;padding: 0 20px;}
 .creative_agency h3 span{font-weight: 700;text-transform: uppercase;display: block;}
