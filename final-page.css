@@ -14,7 +14,7 @@ input, textarea, select, .form-multi-select-input-group{color: #203857;font-fami
 .form-multi-select-placeholder{color: #203857;}
 .form-multi-select{padding: 0px !important;border: 0px !important;}
 .banner .banner_data p{color: #fff;font-size: 15px;font-weight: 300;}
-.banner .banner_data ul{color: #fff;list-style: none;display: flex;font-family: "Nunito", sans-serif;padding-left: 0px;margin-bottom: 0;margin-top: 30px;gap: 18px;font-size: 18px;}
+.banner .banner_data ul{color: #fff;list-style: none;display: flex;font-family: "Nunito", sans-serif;padding-left: 0px;margin-bottom: 0;margin-top: 30px;gap: 50px;font-size: 18px;}
 .banner .banner_data ul span::after{content: unset;}
 .banner .banner_data ul span{font-size: 24px;font-weight: 700;margin-right: 5px;}
 .banner .banner_data ul li{display: flex;align-items: center;}
@@ -1059,9 +1059,9 @@ section{padding: 60px 0px;}
   /* graph box section mobile version */
   /* Mobile Swiper Box Styling */
 .mobile-chart-box {
-  background-color: #ffffff;
+  /* background-color: #ffffff;
   border-radius: 16px;
-  padding: 10px;
+  padding: 10px; */
   box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Stronger shadow on dark background */
   display: flex;
   justify-content: center;

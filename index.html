@@ -380,7 +380,7 @@
             position: relative;
             width: 250px;
             margin-right: -50px; /* Space for depth */
-            height: 0px;margin-bottom: -70px; /* Initial height for GSAP */
+            height: 0px;margin-bottom: 100px; /* Initial height for GSAP */
         }
 
         /* Base faces */
@@ -1158,10 +1158,10 @@ body {
 						<p>Armed with AI-driven strategies and a sharp data-first mindset, we tackle the toughest challenges in the digital marketing arena. Watch your CAC drop while your revenue climbs, because growth isn't luck, it's a system we've perfected.</p>
 						<ul>
 							<li>
-								<div><span>80+</span>Industry Awards Won</div> <img src="images/trophy.png" alt="img" class="img-fluid" style="filter: invert(1);width: 42px;">
+								<div><span>80+</span>Industry <br> Awards Won</div> <img src="images/trophy.png" alt="img" class="img-fluid" style="filter: invert(1);width: 42px;">
 							</li>
 							<li>
-								<div><span>700+</span>Brands Served Across the Globe</div> <img src="images/microphone.png" alt="img" class="img-fluid">
+								<div><span>700+</span>Brands Served <br> Across the Globe</div> <img src="images/microphone.png" alt="img" class="img-fluid">
 							</li>
 						</ul>
 					</div>
@@ -2686,7 +2686,6 @@ slidesPerView:5,spaceBetween: 15,
 
   let masterTl; 
   let dropTl; 
-  let bridgeTl; // 1. Added a new timeline for the transition
 
   function initGSAP() {
       // Clean up ONLY this section's timelines on resize
@@ -2698,12 +2697,13 @@ slidesPerView:5,spaceBetween: 15,
           if (dropTl.scrollTrigger) dropTl.scrollTrigger.kill();
           dropTl.kill();
       }
-      if (bridgeTl) {
-          if (bridgeTl.scrollTrigger) bridgeTl.scrollTrigger.kill();
-          bridgeTl.kill();
-      }
       
       gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot, .three-ball-hide", { clearProps: "all" });
+      
+      // CRITICAL FIX: Ensure balls can visually break out of their containers and sit on top of the bottom section
+      gsap.set(".acc-item, .acc-header", { overflow: "visible" });
+      gsap.set(".ball", { zIndex: 9999, position: "relative" });
+
       if (window.innerWidth <= 767) return;
 
       const accItems = document.querySelectorAll(".acc-item");
@@ -2744,9 +2744,7 @@ slidesPerView:5,spaceBetween: 15,
           });
       });
 
-      // ==========================================
       // TIMELINE 1: THE DROP 
-      // ==========================================
       dropTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".personal-tabing-section",
@@ -2768,9 +2766,7 @@ slidesPerView:5,spaceBetween: 15,
             }, 0);
 
 
-      // ==========================================
-      // TIMELINE 2: THE ACCORDION
-      // ==========================================
+      // TIMELINE 2: THE ACCORDION & FINAL DROP
       masterTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".tabing-scroll-track", 
@@ -2813,7 +2809,7 @@ slidesPerView:5,spaceBetween: 15,
                 .to(prevContent, { height: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevSpan, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
-                .to(prevBall, { opacity: 0, duration: 0.1, ease: "power2.inOut" }, phaseLabel + "+=0.2")
+                .to(prevBall, { opacity: 0, duration: 0.1, ease: "power2.inOut" }, phaseLabel + "+=0.2") // Hides previous ball
                 .to(prevItem, { marginTop: -slideUpDistance, duration: 0.6, ease: "power2.inOut" }, phaseLabel + "+=0.2")
                 .to(prevVis, { opacity: 0, scale: 0.95, duration: 0.4 }, phaseLabel)
                 .to(span, { color: targetColor, duration: 0.3 }, phaseLabel + "+=0.2")
@@ -2823,7 +2819,7 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-      // OUTRO PHASE (No ball animations here anymore)
+      // OUTRO PHASE: ACCORDION CLOSES
       const lastIdx = accItems.length - 1;
       const lastItem = accItems[lastIdx];
       const lastContent = lastItem.querySelector(".acc-content");
@@ -2839,46 +2835,30 @@ slidesPerView:5,spaceBetween: 15,
         .to(lastSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
         .to(lastVis, { opacity: 0, scale: 0.95, duration: 0.4 }, "outro");
 
+      // FINAL PHASE: ALL 3 BALLS FLY DOWN TO CASE STUDY BOXES
+      balls.forEach((ball, i) => {
+          if (!caseBoxes[i]) return;
 
-      // ==========================================
-      // TIMELINE 3: BALLS FLY TO CASE STUDY BOXES
-      // ==========================================
-      // This triggers exactly as the section ends and the page starts scrolling down
-      if (caseBoxes[0] && balls.length) {
-          bridgeTl = gsap.timeline({
-              scrollTrigger: {
-                  trigger: ".tabing-scroll-track", 
-                  start: "bottom 85%", // Triggers right as you leave the sticky track
-                  endTrigger: caseBoxes[0], // Connects the timing to the bottom section
-                  end: "center center", // Finishes when the target box hits the center of screen
-                  scrub: 1,
-                  invalidateOnRefresh: true 
-              }
-          });
+          // 1. Force all balls back to full opacity instantly before they move
+          masterTl.to(ball, { opacity: 1, duration: 0.01 }, "outro");
 
-          balls.forEach((ball, i) => {
-              if (!caseBoxes[i]) return;
-
-              // Dynamically calculates the exact coordinates between the ball and target box
-              bridgeTl.to(ball, {
-                  x: () => {
-                      const boxRect = caseBoxes[i].getBoundingClientRect();
-                      const ballRect = ball.getBoundingClientRect();
-                      const currentX = gsap.getProperty(ball, "x");
-                      return currentX + (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
-                  },
-                  y: () => {
-                      const boxRect = caseBoxes[i].getBoundingClientRect();
-                      const ballRect = ball.getBoundingClientRect();
-                      const currentY = gsap.getProperty(ball, "y");
-                      return currentY + (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
-                  },
-                  opacity: 1,
-                  scale: 1.5,
-                  ease: "power1.inOut" 
-              }, 0);
-          });
-      }
+          // 2. Fly downwards to the exact center of the new divs
+          masterTl.to(ball, {
+              x: () => {
+                  const boxRect = caseBoxes[i].getBoundingClientRect();
+                  const ballRect = ball.getBoundingClientRect();
+                  return gsap.getProperty(ball, "x") + (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
+              },
+              y: () => {
+                  const boxRect = caseBoxes[i].getBoundingClientRect();
+                  const ballRect = ball.getBoundingClientRect();
+                  return gsap.getProperty(ball, "y") + (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
+              },
+              scale: 1.5,
+              duration: 0.8, 
+              ease: "power1.inOut" 
+          }, "outro+=0.1"); 
+      });
   }
 
   window.addEventListener("load", initGSAP);
@@ -2893,6 +2873,112 @@ slidesPerView:5,spaceBetween: 15,
   });
 </script>
 
+
+<script>
+  window.addEventListener("load", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Colors matching your layout
+      const colors = ['#002A54', '#1DB7D1', '#FFA106'];
+      const ghostBalls = [];
+
+      // 1. Create the Ghost Balls WITH top and left anchors
+      for (let i = 0; i < 3; i++) {
+          let ball = document.createElement('div');
+          ball.classList.add('ghost-ball'); 
+          ball.style.width = '30px';  
+          ball.style.height = '30px'; 
+          ball.style.backgroundColor = colors[i];
+          
+          ball.style.position = 'fixed'; 
+          ball.style.top = '0px';   
+          ball.style.left = '0px';  
+          
+          ball.style.borderRadius = '7px'; 
+          ball.style.zIndex = '999999';
+          ball.style.opacity = '0'; // Keeps them completely hidden before scrolling!
+          ball.style.pointerEvents = 'none'; 
+          
+          document.body.appendChild(ball);
+          ghostBalls.push(ball);
+      }
+
+      function initGhostTransition() {
+          const caseBoxes = [
+              document.querySelector(".case_study_box1"),
+              document.querySelector(".case_study_box2"),
+              document.querySelector(".case_study_box3")
+          ];
+          
+          // Where they spawn from
+          const headers = document.querySelectorAll(".acc-header");
+
+          if (!caseBoxes[0] || !headers.length) return;
+
+          // 2. The scroll timeline for the jump
+          let bridgeTl = gsap.timeline({
+              scrollTrigger: {
+                  trigger: ".tabing-scroll-track", 
+                  start: "bottom 80%", 
+                  endTrigger: caseBoxes[0], 
+                  end: "top 30%", 
+                  scrub: 1,
+                  invalidateOnRefresh: true 
+              }
+          });
+
+          // 3. Animate each ghost ball at the EXACT SAME TIME
+          ghostBalls.forEach((ball, i) => {
+              if (!caseBoxes[i] || !headers[i]) return;
+
+              // CRITICAL FIX: Instantly make them visible ONLY when the scroll timeline begins
+              bridgeTl.to(ball, { opacity: 1, duration: 0.01 }, 0);
+
+              bridgeTl.fromTo(ball, {
+                  // Removed opacity from here so it doesn't break the reverse scroll
+                  scale: 1,
+                  borderRadius: "7px",
+                  x: () => {
+                      const rect = headers[i].getBoundingClientRect();
+                      return rect.left + 30; 
+                  },
+                  y: () => {
+                      const rect = headers[i].getBoundingClientRect();
+                      return rect.top + (rect.height / 2) - 15; 
+                  }
+              }, {
+                  // Removed opacity from here too
+                  scale: 1.5,
+                  borderRadius: "50%",
+                  x: () => {
+                      const rect = caseBoxes[i].getBoundingClientRect();
+                      return rect.left + (rect.width / 2) - 15; // Kept at -15 for perfect dead center
+                  },
+                  y: () => {
+                      const rect = caseBoxes[i].getBoundingClientRect();
+                      return rect.top + (rect.height / 2) - 15; // Kept at -15 for perfect dead center
+                  },
+                  ease: "power1.out", // Fixed typo: 'Out' to 'out'
+                  duration: 2
+              }, 0); 
+              
+              // Fade out at the very end to "merge" into the box
+              bridgeTl.to(ball, { opacity: 0, duration: 0.9 }, "+=0.1");
+          });
+      }
+
+      initGhostTransition();
+
+      // Refresh math on window resize
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+              ScrollTrigger.refresh();
+          }, 250);
+      });
+  });
+</script>
 <!-- =============personal-tabing-section script end======================= -->
 
 
