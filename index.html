@@ -1000,13 +1000,14 @@
     align-items: center; 
     background-color: #ffffff; /* Solid background prevents overlapping */
     /* overflow: hidden;  <-- REMOVED: So balls can escape into the next section */
-    position: relative;
+    /* position: relative; */
     z-index: 10; /* Keeps this section above the previous ones */
     padding: 10px 0 !important;
 }
 
 @media (min-width: 1600px){
   .chart-wrapper{margin-top: 180px !important;}
+  .creative_agency .work li h4{font-size: 20px;}
 }
 
 .case-study {
@@ -1075,7 +1076,7 @@
 
 /* 2. Ensure the accordion section stays underneath */
 .personal-tabing-section {
-    position: relative;
+    /* position: relative; */
     z-index: 10;
 }
 
@@ -1103,7 +1104,7 @@
 
 /* 2. Force the accordion section ON TOP, and allow the balls to overflow */
 .personal-tabing-section {
-    position: relative;
+    /* position: relative; */
     z-index: 20 !important; 
     overflow: visible !important; /* CRITICAL: This stops the browser from cutting the balls off! */
     min-height: 100vh; 
@@ -1117,6 +1118,8 @@ body {
     overflow-x: hidden;
 }
 .chart_list ul li img{border-radius: 10px;}
+.form-multi-select-placeholder{color: #5f5b7f;}
+ .form_div select{color: #5f5b7f;}
 </style>
 </head>
 
@@ -1173,8 +1176,8 @@ body {
                   </select> 
 								</div> 
                 <div class="col-md-6 p-1">
-                  	<select class="form-select" aria-label="Default select example">
-										<!-- <option selected disabled>Estimated Budget</option> -->
+                  	<select class="form-select" aria-label="Default select example" >
+										<option style="visibility: hidden; display: none;" value="" selected disabled>Estimated Budget</option>
 										<option value="1">Less than 5 lakh</option>
 										<option value="2">5 lakh to 20 lakh</option>
 										<option value="3">20 lakh above</option>
@@ -1371,7 +1374,8 @@ body {
     <li><span class="color_square color_square3"><span class="dot-target"></span></span> Design</li>
   </ul>
 </section> -->
-<section class="personal-tabing-section">
+<div class="tabing-scroll-track" style="height: 180vh; position: relative;">
+<section class="personal-tabing-section sticky-top vh-100 d-flex align-items-center">
   <div class="container">
       <div class="row">
           
@@ -1383,11 +1387,11 @@ body {
                   </div>
                   <div class="acc-content">
                       <ul>
-                          <li>Meta ads  </li>
-                          <li>Google ads</li>
-                          <li>programmatic ads </li>
-                          <li>Brand awareness </li>
-                          <li>lead generation</li>
+                          <li>Meta Ads  </li>
+                          <li>Google Ads</li>
+                          <li>Programmatic Ads </li>
+                          <li>Brand Awareness </li>
+                          <li>Lead Generation</li>
                           <li>OTT Ads </li>
                       </ul>
                   </div>
@@ -1402,9 +1406,9 @@ body {
                       <ul>
                           <li>AEO</li>
                           <li>Traffic </li>
-                          <li>Improve ranking</li>
-                          <li>Organic growth </li>
-                          <li>Landing page optimization </li>
+                          <li>Improve Ranking</li>
+                          <li>Organic Growth </li>
+                          <li>Landing Page Optimization </li>
                       </ul>
                   </div>
               </div>
@@ -1417,11 +1421,11 @@ body {
                   <div class="acc-content">
                       <ul>
                           <li>UGC Marketing </li>
-                          <li>Meme & trend Marketing</li>
+                          <li>Meme & Trend Marketing</li>
                           <li>ORM </li>
                           <li>Automation </li>
                           <li>Organic Marketing</li>
-                          <li>Influencer marketing </li>
+                          <li>Influencer Marketing </li>
                       </ul>
                   </div>
               </div>
@@ -1475,6 +1479,7 @@ body {
       </div>
   </div>
 </section>
+</div>
    
 <div class="bubble-wrapper">
       <div class="bubble bubble1"></div>
@@ -1483,7 +1488,7 @@ body {
     </div>
  
 
-<section class="case-study pt-0">
+<section class="case-study pt-0 position-relative" style="z-index: 2; background: #fff;">
   <div class="container-fluid">
     <div class="row">
       <!-- <div class="col-md-4 p-1 ps-0">
@@ -2235,16 +2240,16 @@ slidesPerView:5,spaceBetween: 15,
 
 
       // ==========================================
-      // TIMELINE 2: THE ACCORDION (With Pinning)
+      // TIMELINE 2: THE ACCORDION (With Bootstrap Sticky)
       // ==========================================
       masterTl = gsap.timeline({
           scrollTrigger: {
-              trigger: ".personal-tabing-section",
-              start: "top top",      // Pins flawlessly to the top without a gap!
-              end: "+=1500",         
-              pin: true,             
-              scrub: 1,              
-              anticipatePin: 1,
+              trigger: ".tabing-scroll-track", // 1. Target the new wrapper
+              start: "top top", 
+              end: "bottom bottom",            // 2. Ends perfectly as the next section pulls up
+              scrub: 1, 
+              // pin: true,                    // 3. REMOVED: No more GSAP pin-spacer
+              // anticipatePin: 1,             // 4. REMOVED: No longer needed
               invalidateOnRefresh: true 
           }
       });
@@ -2315,9 +2320,9 @@ slidesPerView:5,spaceBetween: 15,
           masterTl.to(ball, { 
               x: endCoords[i].x, 
               y: yCompensation, 
-              opacity: 1, 
+              opacity: 0,         
               scale: 1.5, 
-              duration: 2.9, 
+              duration: 0.4,      // <-- CHANGED: Reduced from 2.9 to 0.4!
               ease: "power2.in" 
           }, "outro+=0.2");
       });
@@ -2592,7 +2597,7 @@ slidesPerView:5,spaceBetween: 15,
       // stagger: 0.15,
       scrollTrigger: {
         trigger: ".case-study",
-        start: "top 70%",   
+        start: "top 100%",   
         end: "center 40%",  
         scrub: 1            
       }
@@ -2935,7 +2940,7 @@ slidesPerView:5,spaceBetween: 15,
       trigger: ".case-study",
       start: "bottom 70%",
       end: "bottom 30%", 
-      scrub: 1.5,
+      scrub: 0.5,
     },
   });
 
@@ -2944,14 +2949,15 @@ slidesPerView:5,spaceBetween: 15,
     .to(".bubble2", { x: "0vw", y: "15vh", duration: 3, ease: "power2.inOut" }, "move")
     .to(".bubble3", { x: "-33.3vw", y: "15vh", duration: 3, ease: "power2.inOut" }, "move")
     // This reduces the opacity down to 0.5 while they are moving down
-    .to(".bubble", { backgroundColor: "#ffffff", opacity: 1, duration: 2, ease: "none" }, "move"); 
+    .to(".bubble", { backgroundColor: "#ffffff", opacity: 1, duration: 5, ease: "power2.out" }, "move"); 
 
   /* STEP 2: Change to WHITE at the exact end position */
   // This triggers right after they finish moving
   tl.to(".bubble", { 
     backgroundColor: "#ffffff", 
+    opacity:1,
     duration: 0.2, 
-    ease: "none" 
+    ease: "power2.out" 
   });
 
   /* STEP 3: Disappear completely (Blur, shrink, opacity 0) */
@@ -2963,6 +2969,9 @@ slidesPerView:5,spaceBetween: 15,
     ease: "power2.out" 
   });
 </script>
+
+
+
 <script>
  document.addEventListener("DOMContentLoaded", function () {
 
@@ -2973,7 +2982,7 @@ slidesPerView:5,spaceBetween: 15,
     );
 
     if (placeholder) {
-      placeholder.textContent = "Services";
+      placeholder.textContent = "Services looking for";
       clearInterval(checkPlaceholder);
     }
 

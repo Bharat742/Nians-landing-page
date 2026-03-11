@@ -1,4 +1,4 @@
-header {position: absolute;left: 0;right: 0; padding: 15px 0;}
+header {position: absolute;left: 0;right: 0; padding: 25px 0;}
 header ul{list-style: none;}
 .banner{background: url("images/landingpage-gif.gif");background-repeat: no-repeat;background-size: cover;}
 h1, h2, h3, h4, h5, h6 {
@@ -14,7 +14,7 @@ input, textarea, select, .form-multi-select-input-group{color: #203857;font-fami
 .form-multi-select-placeholder{color: #203857;}
 .form-multi-select{padding: 0px !important;border: 0px !important;}
 .banner .banner_data p{color: #fff;font-size: 15px;font-weight: 300;}
-.banner .banner_data ul{color: #fff;list-style: none;display: flex;font-family: "Nunito", sans-serif;padding-left: 0px;margin-bottom: 0;margin-top: 30px;gap: 18px;font-size: 16px;}
+.banner .banner_data ul{color: #fff;list-style: none;display: flex;font-family: "Nunito", sans-serif;padding-left: 0px;margin-bottom: 0;margin-top: 30px;gap: 18px;font-size: 18px;}
 .banner .banner_data ul span::after{content: unset;}
 .banner .banner_data ul span{font-size: 21px;font-weight: 700;margin-right: 5px;}
 .banner .banner_data ul li{display: flex;align-items: center;}
@@ -26,7 +26,7 @@ input, textarea, select, .form-multi-select-input-group{color: #203857;font-fami
 .form_div p{color: #3c5d84;margin-bottom: 12px;}
 .form_div input, .form_div select, .form_div textarea{width: 100%;padding: 10px;border: 1px solid #ccc;border-radius: 5px;font-family: "Nunito", sans-serif;color: #203857;}
 .form_div input[type="submit"]{background: linear-gradient(45deg, #03355e, #189bb8);color: #fff;font-weight: 600;border: none;cursor: pointer;}
-.global_brands .star{list-style: none;display: flex;justify-content: center;margin-bottom: 20px;}
+.global_brands .star{list-style: none;display: flex;justify-content: center;margin-bottom: 10px; padding: 0;}
 .global_brands h3{font-size: 19px;font-weight: 500;color: #060606;margin-bottom: 10px;text-transform: uppercase;}
 section{padding: 60px 0px;}
 .global_brands .brand_logos{list-style: none;display: flex;justify-content: center;flex-wrap: wrap;gap: 25px;padding-left: 0px; margin-top: 50px;}
@@ -126,13 +126,13 @@ section{padding: 60px 0px;}
 .creative_agency h2 sup{font-weight: 400;font-size: 35px;}
 .creative_agency h3{font-size: 16px;font-weight: 500;line-height: 30px;padding: 0 20px;}
 .creative_agency h3 span{font-weight: 700;text-transform: uppercase;display: block;}
-.creative_agency .work{display: flex;padding-left: 0px;list-style: none;gap: 35px;padding-top: 50px;     justify-content: space-between;}
-.creative_agency .work li{border-top: 1px solid #D5D5D5;display: flex;align-items: center;justify-content: space-between;padding: 20px 0 0;gap: 50px;}
+.creative_agency .work{display: flex;padding-left: 0px;list-style: none;gap: 100px;padding-top: 10px;     justify-content: space-between;}
+.creative_agency .work li{border-top: 1px solid #D5D5D5;display: flex;align-items: center;justify-content: space-between;padding: 20px 0 0;gap: 40px; width: 100%;}
 .creative_agency .work li img{filter: invert(1);width: 30px;
     height: 32px;
     object-fit: contain;}
 .creative_agency .work li:last-child img{filter: invert(0);}
-.creative_agency .work li h4{font-size: 16px;font-weight: 400;color: #464646;font-family: "Nunito", sans-serif;line-height: 28px;}
+.creative_agency .work li h4{font-size: 16px;font-weight: 400;color: #464646;font-family: "Nunito", sans-serif;line-height: 28px; margin-bottom: 0;}
 .creative_agency .work li h4 span{font-weight: 800; font-size: 20px;color: #2d2c2b;}
 .case-study .case_study_box img{    margin: auto;
     margin-bottom: 0;}
@@ -351,6 +351,7 @@ section{padding: 60px 0px;}
   margin-bottom: auto;
   display: flex;
   text-align: center;
+  margin-bottom: 30px;
 }
 .txt-32 {
   z-index: 2;
@@ -607,13 +608,14 @@ section{padding: 60px 0px;}
 }
 .brand_logo{position: relative;z-index: 1;}
 .brand_logo::before{content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;/*background: url("images/bg-gif1.gif");*/background-size: cover;background-repeat: no-repeat;padding: 80px 0;z-index:-1;}
-.integrate{background: #F6F6F6;}
+.integrate{background: #F6F6F6; height: 100vh;}
 .integrate h1{font-size: 50px; font-weight: 700;text-transform: uppercase;font-family: 'Poppins', sans-serif;color: #000;margin-bottom: 0px;}
 .integrate p{font-size: 43px;line-height: 50px;font-weight: 400;font-family: 'Poppins', sans-serif;text-transform: uppercase;}
 #brand_logo {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
+.integrate .row .col-md-7{margin-bottom: 80px;}
 
 #brandLogoLottie {
   position: absolute;
@@ -1018,12 +1020,24 @@ section{padding: 60px 0px;}
   .global_brands{margin-top: 350px;}
   section{padding: 30px 0;}
   .creative_agency .work li{gap: 20px;}
-  .creative_agency .work{flex-direction: column;}
-  .creative_agency h1{font-size: 31px;}
+  .creative_agency .work{flex-direction: column; padding-top: 20px; gap: 15px;}
+  .creative_agency h1{font-size: 31px; line-height: 40px;}
   .personal-tabing-section .acc-content{height: auto !important;}
   .personal-tabing-section .acc-content ul{list-style-type: disc !important;}
   .personal-tabing-section .acc-content li{opacity: 1 !important;}
   .testimonial .section-title{font-size: 31px;}
   .testimonial p{font-size: 16px;}
   #stats-section{height: auto !important; padding-top: 20px !important; padding-bottom: 20px !important;} 
+  .form_div{padding: 25px; border-radius: 10px;}
+  .banner .banner_data h1{line-height: 50px; font-size: 35px; margin-bottom: unset;}
+  .form_div h2{font-size: 23px;}
+  .creative_agency .circle{width: 130px; height: 130px;}
+  .creative_agency h3{font-size: 13px; line-height: 25px;}
+  .global_brands .brand_logos{margin-bottom: 20px;}
+  .bar-container{width:130px !important; margin-right:-30px !important;}
+  .bar-img{height:100% !important;}
+  .chart-wrapper{margin-top: 0px !important; margin-left: 0 !important;}
+  .banner .banner_data ul{margin-top: 10px !important; margin-bottom: 10px !important; gap: 40px;}
+  .bar-img{width: 80% !important;}
+  .bar-container{margin-bottom: -120px !important;}
 }
