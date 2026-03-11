@@ -1040,4 +1040,89 @@ section{padding: 60px 0px;}
   .banner .banner_data ul{margin-top: 10px !important; margin-bottom: 10px !important; gap: 40px;}
   .bar-img{width: 80% !important;}
   .bar-container{margin-bottom: -120px !important;}
+  .banner .banner_data ul{font-size: 13px;}
+  .banner .banner_data ul span{font-size: 16px;}
+  .case-study .case_study_box img{margin-top: 10px;}
+  .personal-tabing-section .ball{width: 40px !important; height: 35px !important;}
+  .personal-tabing-section .dotted-slot{width: 50px !important; height: 50px !important;}
+  .personal-tabing-section .acc-header{font-size: 30px !important;}
+  .personal-tabing-section .dotted-slot{margin-right: 10px !important;}
+  .website-creation-stages{padding: 30px 0;}
+  .website-creation-stages .content-section h2{font-size: 28px;}
+  .website-creation-stages .content-section p{font-size: 16px;}
+  .content{font-size: 16px; padding: 5px 8px;}
+  .cta-content .btn-custom{width: 100% !important;}
+  .btn-custom{padding: 8px 10px;}
+
+
+
+  /* graph box section mobile version */
+  /* Mobile Swiper Box Styling */
+.mobile-chart-box {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Stronger shadow on dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* Make sure swiper height adapts to content */
+.alwaysDoSwiper .swiper-slide {
+  height: auto; 
+}
+
+/* Pagination dots style to match dark theme */
+.alwaysDoSwiper .swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.alwaysDoSwiper .swiper-pagination-bullet-active {
+  background-color: #ffb400; /* Yellow to match insight text */
+}
+.alwaysDoSwiper {margin-left: 20px;}
+
+
+/* personal tabing section mobile version */
+ /* Mobile Services Section Styles */
+.mobile-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #000;
+  margin: 0;
+  line-height: 1;
+}
+
+.mobile-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.mobile-list {
+  list-style-type: none;
+  padding-left: 43px; /* Aligns the text with the title perfectly */
+  margin: 0;
+}
+
+.mobile-list li {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Constrain Lottie size on mobile so it doesn't break the layout */
+.mobile-lottie {
+  width: 100%;
+  max-width: 300px; /* Adjust this value if you want the animations larger/smaller */
+  height: auto;
+}
+
+
+
+}
+
+ 

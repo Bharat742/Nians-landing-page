@@ -524,7 +524,7 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .cta-heading {
-                font-size: 2.2rem;
+                font-size: 28px;
             }
         }
 
@@ -1128,6 +1128,12 @@ body {
   display: none;
   opacity: 0;
 }
+
+.form-multi-select-all,
+.form-multi-select-select-all {
+  display: none !important;
+}
+
 </style>
 </head>
 
@@ -1290,7 +1296,8 @@ body {
 		</div>
 	</section>
 
-    <section class="always_do">
+  <!-- ===================================== Graph Box section ======================================= -->
+    <section class="always_do d-none d-md-block">
         <div class="container">
             <div class="row">
               <div class="col-md-7 mx-auto">
@@ -1374,6 +1381,127 @@ body {
             </div>
         </div>
     </section>
+ 
+<!-- ===================================== Graph Box section mobile version ======================================= -->
+<section class="always_do d-block d-md-none" style="background-color: #042446; padding: 50px 0; color: white;">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-7 mx-auto mb-4">
+        <div class="heading-wrap align-center text-center">
+          <h2 class="heading fw-bold" style="font-size: 38px;">  
+            <span class="word text-uppercase">Data That Turns</span><br>
+            <span class="line line-2" style="font-family: 'Brush Script MT', cursive; font-size: 48px; color: #ffb400;">
+              Insight
+            </span>
+            <span class="word fw-400 text-uppercase">Into Real Revenue.</span>
+          </h2>
+          <div class="hero-subheading-wrap mt-3">
+            <p class="txt-32 text-center" style="font-size: 18px; margin: auto;">
+              Every campaign we run lives and breathes through data. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 chart_list d-none d-md-block mt-4">
+        <div class="row align-items-center">
+          <div class="col-md-4 p-2">
+            <div class="d-flex gap-3 justify-content-end">
+              <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                <li><img src="images/app-stat 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="images/google-ads-stat-66f4efc58901f 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+              </ul>
+              <ul class="list-unstyled mb-0 mt-4 d-flex flex-column gap-3">
+                <li><img src="images/mobile-site-stat 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="images/smm-stat 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-md-4 p-2">
+            <div class="center_logo d-flex flex-column align-items-center">
+              <img src="images/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; margin-top: 50px;">
+              <div class="starting-balls-container d-flex flex-row justify-content-center gap-3 mt-4">
+                <div class="three-ball-hide bg-red" style="width: 15px; height: 15px; border-radius: 50%; background: red;"></div>
+                <div class="three-ball-hide bg-blue" style="width: 15px; height: 15px; border-radius: 50%; background: blue;"></div>
+                <div class="three-ball-hide bg-purple" style="width: 15px; height: 15px; border-radius: 50%; background: purple;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 p-2">
+            <div class="d-flex gap-3 justify-content-start">
+              <ul class="list-unstyled mb-0 mt-4 d-flex flex-column gap-3">
+                <li><img src="images/app-stat 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="images/google-ads-stat-66f4efc58901f 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+              </ul>
+              <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                <li><img src="images/mobile-site-stat 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="images/smm-stat 1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 d-block d-md-none mt-4 px-0">
+        <div class="swiper alwaysDoSwiper">
+          <div class="swiper-wrapper py-3">
+            
+            <div class="swiper-slide">
+              <div class="d-flex flex-column gap-3 px-2">
+                <div class="mobile-chart-box">
+                  <img src="images/app-stat 1.png" alt="img" class="img-fluid w-100">
+                </div>
+                <div class="mobile-chart-box">
+                  <img src="images/google-ads-stat-66f4efc58901f 1.png" alt="img" class="img-fluid w-100">
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="d-flex flex-column gap-3 px-2">
+                <div class="mobile-chart-box">
+                  <img src="images/mobile-site-stat 1.png" alt="img" class="img-fluid w-100">
+                </div>
+                <div class="mobile-chart-box">
+                  <img src="images/smm-stat 1.png" alt="img" class="img-fluid w-100">
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="d-flex flex-column gap-3 px-2">
+                <div class="mobile-chart-box">
+                  <img src="images/app-stat 1.png" alt="img" class="img-fluid w-100">
+                </div>
+                <div class="mobile-chart-box">
+                  <img src="images/google-ads-stat-66f4efc58901f 1.png" alt="img" class="img-fluid w-100">
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="d-flex flex-column gap-3 px-2">
+                <div class="mobile-chart-box">
+                  <img src="images/mobile-site-stat 1.png" alt="img" class="img-fluid w-100">
+                </div>
+                <div class="mobile-chart-box">
+                  <img src="images/smm-stat 1.png" alt="img" class="img-fluid w-100">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- <section class="service_list">
   <ul>
@@ -1382,7 +1510,9 @@ body {
     <li><span class="color_square color_square3"><span class="dot-target"></span></span> Design</li>
   </ul>
 </section> -->
-<div class="tabing-scroll-track" style="height: 180vh; position: relative;">
+
+<!-- ======================Personal tabing section============================ -->
+<div class="tabing-scroll-track d-none d-md-block" style="height: 180vh; position: relative;">
 <section class="personal-tabing-section sticky-top vh-100 d-flex align-items-center">
   <div class="container">
       <div class="row">
@@ -1488,15 +1618,88 @@ body {
   </div>
 </section>
 </div>
+ 
+<!-- ======================Personal tabing section mobile version============================ -->
+<section class="mobile-services-section d-block d-md-none bg-white personal-tabing-section">
+  <div class="container px-4">
+    
+    <div class="mobile-service-block mb-5 acc-item">
+      <!-- <div class="d-flex align-items-center mb-3">
+        <div class="mobile-icon shadow-sm" style="background-color: #FF4D4D;"></div>
+        <h2 class="mobile-title">Paid Ads</h2>
+      </div> -->
+      <div class="acc-header">
+                      <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
+                      <span style="color: #000 !important;">Paid Ads</span>
+                  </div>
+      <ul class="mobile-list">
+        <li>Meta Ads</li>
+        <li>Google Ads</li>
+        <li>Programmatic Ads</li>
+        <li>Brand Awareness</li>
+        <li>Lead Generation</li>
+        <li>OTT Ads</li>
+      </ul>
+      <div class="mobile-visual text-center mt-4">
+        <dotlottie-wc src="images/dm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+      </div>
+    </div>
+
+    <div class="mobile-service-block mb-5 acc-item">
+      <!-- <div class="d-flex align-items-center mb-3">
+        <div class="mobile-icon shadow-sm" style="background-color: #4D4DFF;"></div>
+        <h2 class="mobile-title">SEO</h2>
+      </div> -->
+      <div class="acc-header">
+                      <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
+                      <span style="color: #000;">SEO </span>
+                  </div>
+      <ul class="mobile-list">
+        <li>AEO</li>
+        <li>Traffic</li>
+        <li>Improve Ranking</li>
+        <li>Organic Growth</li>
+        <li>Landing Page Optimization</li>
+      </ul>
+      <div class="mobile-visual text-center mt-4">
+        <dotlottie-wc src="images/seo-new-z.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+      </div>
+    </div>
+
+    <div class="mobile-service-block mb-5 acc-item">
+      <!-- <div class="d-flex align-items-center mb-3">
+        <div class="mobile-icon shadow-sm" style="background-color: #A020F0;"></div>
+        <h2 class="mobile-title">SMM</h2>
+      </div> -->
+      <div class="acc-header">
+                      <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
+                      <span style="color: #000;">SMM </span>
+                  </div>
+      <ul class="mobile-list">
+        <li>UGC Marketing</li>
+        <li>Meme & Trend Marketing</li>
+        <li>ORM</li>
+        <li>Automation</li>
+        <li>Organic Marketing</li>
+        <li>Influencer Marketing</li>
+      </ul>
+      <div class="mobile-visual text-center mt-4">
+        <dotlottie-wc src="images/smm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+      </div>
+    </div>
+
+  </div>
+</section>
    
-<div class="bubble-wrapper">
+<div class="bubble-wrapper d-none d-md-block">
       <div class="bubble bubble1"></div>
       <div class="bubble bubble2"></div>
       <div class="bubble bubble3"></div>
-    </div>
+</div>
  
 
-<section class="case-study pt-0 position-relative" style="z-index: 2; background: #fff;">
+<!-- ==================================== Case study section ============================================= -->
+<section class="case-study pt-0 position-relative d-none d-md-block" style="z-index: 2; background: #fff;">
   <div class="container-fluid">
     <div class="row">
       <!-- <div class="col-md-4 p-1 ps-0">
@@ -1593,11 +1796,198 @@ body {
   </div>
 </section>
 
+<style>
+  /* <style> */
+  /* Ensure the cards take up full height of the slider row */
+  .swiper-slide {
+    height: auto; 
+  }
+  
+  .case_study_box {
+    padding: 20px;
+    border-radius: 12px; /* Ensure your boxes have smooth rounded edges */
+    /* Add any specific shadow or background colors you already use here */
+  }
+</style>
+
+<!-- </style> -->
+<!-- =============Mobile version ============ -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+
+<section class="case-study pt-0 position-relative d-block d-md-none" style="z-index: 2; background: #fff;">
+  <div class="container-fluid">
+    
+    <div class="row d-none d-md-flex">
+      <div class="col-md-4 p-1 ps-0">
+        <div class="case_study_box case_study_box1 h-100">
+          <h1>JK Maxx Paints</h1>
+          <div class="campaign_stats row text-center mt-3 mb-3">
+            <div class="col-6 mb-3">
+              <h4 class="fw-bold mb-0">1.17B</h4>
+              <span class="text-muted small">Impressions</span>
+            </div>
+            <div class="col-6 mb-3">
+              <h4 class="fw-bold mb-0">246M</h4>
+              <span class="text-muted small">Total Reach</span>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold mb-0">1B+</h4>
+              <span class="text-muted small">Views</span>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold mb-0">5.3M</h4>
+              <span class="text-muted small">Clicks</span>
+            </div>
+          </div>
+          <img src="images/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
+        </div>
+      </div>
+      
+      <div class="col-md-4 p-1">
+        <div class="case_study_box case_study_box2 h-100">
+          <h1>Hero Motocorp</h1>
+          <div class="campaign_stats row text-center mt-3 mb-3">
+            <div class="col-6 mb-3">
+              <h4 class="fw-bold mb-0">310K+</h4>
+              <span class="text-muted small">App Installs </span>
+            </div>
+            <div class="col-6 mb-3">
+              <h4 class="fw-bold mb-0">57,554</h4>
+              <span class="text-muted small">Total Bookings </span>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold mb-0">3.6M</h4>
+              <span class="text-muted small">Traffic Generated</span>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold mb-0">1.3M </h4>
+              <span class="text-muted small">New Users Acquired</span>
+            </div>
+          </div>
+          <img src="images/baidynath.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+      
+      <div class="col-md-4 p-1 pe-0">
+        <div class="case_study_box case_study_box3 h-100">
+          <h1>Faces Canada</h1>
+          <div class="campaign_stats row text-center mt-3 mb-3">
+            <div class="col-6 mb-3">
+              <h4 class="fw-bold mb-0">300%</h4>
+              <span class="text-muted small">Increment in Traffic</span>
+            </div>
+            <div class="col-6 mb-3">
+              <h4 class="fw-bold mb-0">180%</h4>
+              <span class="text-muted small">Increase in Conversion Rate</span>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold mb-0">435%</h4>
+              <span class="text-muted small">Sales Increment via Organic Traffic</span>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold mb-0">4000+ </h4>
+              <span class="text-muted small">Keywords in Top 10</span>
+            </div>
+          </div>
+          <img src="images/ace-cloud.png" alt="img" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-block d-md-none">
+      <div class="col-12 p-0">
+        <div class="swiper caseStudySwiper">
+          <div class="swiper-wrapper py-3">
+            
+            <div class="swiper-slide">
+              <div class="case_study_box case_study_box1 h-100">
+                <h1>JK Maxx Paints</h1>
+                <div class="campaign_stats row text-center mt-3 mb-3">
+                  <div class="col-6 mb-3">
+                    <h4 class="fw-bold mb-0">1.17B</h4>
+                    <span class="text-muted small">Impressions</span>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h4 class="fw-bold mb-0">246M</h4>
+                    <span class="text-muted small">Total Reach</span>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="fw-bold mb-0">1B+</h4>
+                    <span class="text-muted small">Views</span>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="fw-bold mb-0">5.3M</h4>
+                    <span class="text-muted small">Clicks</span>
+                  </div>
+                </div>
+                <img src="images/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="case_study_box case_study_box2 h-100">
+                <h1>Hero Motocorp</h1>
+                <div class="campaign_stats row text-center mt-3 mb-3">
+                  <div class="col-6 mb-3">
+                    <h4 class="fw-bold mb-0">310K+</h4>
+                    <span class="text-muted small">App Installs </span>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h4 class="fw-bold mb-0">57,554</h4>
+                    <span class="text-muted small">Total Bookings </span>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="fw-bold mb-0">3.6M</h4>
+                    <span class="text-muted small">Traffic Generated</span>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="fw-bold mb-0">1.3M </h4>
+                    <span class="text-muted small">New Users Acquired</span>
+                  </div>
+                </div>
+                <img src="images/baidynath.png" alt="img" class="img-fluid">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="case_study_box case_study_box3 h-100">
+                <h1>Faces Canada</h1>
+                <div class="campaign_stats row text-center mt-3 mb-3">
+                  <div class="col-6 mb-3">
+                    <h4 class="fw-bold mb-0">300%</h4>
+                    <span class="text-muted small">Increment in Traffic</span>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h4 class="fw-bold mb-0">180%</h4>
+                    <span class="text-muted small">Increase in Conversion Rate</span>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="fw-bold mb-0">435%</h4>
+                    <span class="text-muted small">Sales Increment via Organic Traffic</span>
+                  </div>
+                  <div class="col-6">
+                    <h4 class="fw-bold mb-0">4000+ </h4>
+                    <span class="text-muted small">Keywords in Top 10</span>
+                  </div>
+                </div>
+                <img src="images/ace-cloud.png" alt="img" class="img-fluid">
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 
 
-
-<!-- Pipe spread box section -->
-<section class="integrate">
+<!-- =====================================Pipe spread box section =============================================-->
+<section class="integrate d-none d-md-block">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-7 text-center mx-auto">
@@ -1649,7 +2039,149 @@ body {
     </div>
   </div>
 </section>
+<style>
+  /* Mobile Specific Styles */
+.mobile_service_card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 15px 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); /* Soft shadow like the image */
+  font-size: 11px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.2;
+}
 
+.mobile_service_card img {
+  max-height: 28px; /* Adjust icon size to fit perfectly */
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+.mobile_brand_card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  min-height: 250px; /* Gives the large square feel */
+}
+
+.mobile_brand_card img {
+  max-width: 160px; /* Adjust based on your actual logo size */
+}
+</style>
+<!-- mobile version -->
+<section class="integrate d-block d-md-none" style="background-color: #f8f9fa; padding: 40px 0;"> <div class="container-fluid">
+    <div class="row">
+      <!-- <div class="col-md-7 text-center mx-auto mb-4">
+        <h1>Stop Juggling Channels.</h1> 
+        <p>Start Running a System.</p>
+      </div> -->
+
+      <div class="brand_logo d-none d-md-block" id="brand_logo"> 
+        <dotlottie-wc 
+          src="images/integrate.lottie"  id="brandLogoLottie"
+          speed="1"  
+          loop 
+          autoplay
+          class="mx-auto d-block"
+        ></dotlottie-wc>
+        <div class="col-md-11 mx-auto">
+          <div class="row align-items-center">
+            <div class="col-md-4">
+              <div class="social_service social_service_left">
+                <div class="social_service_text">
+                  <img src="images/megaphone.png" alt="img" class="img-fluid"> Ads
+                </div>
+                <div class="social_service_text">
+                  <img src="images/mail.png" alt="img" class="img-fluid"> Email <br/> distribution
+                </div>
+                <div class="social_service_text">
+                  <img src="images/photo.png" alt="img" class="img-fluid"> Social <br/> media
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <img src="images/brand-logo.png" alt="img" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+              <div class="social_service social_service_right">
+                <div class="social_service_text">
+                  <img src="images/crm.png" alt="img" class="img-fluid"> CRM
+                </div>
+                <div class="social_service_text">
+                  <img src="images/chat-ai.png" alt="img" class="img-fluid"> Chat bot
+                </div>
+                <div class="social_service_text">
+                  <img src="images/ticket.png" alt="img" class="img-fluid"> Tickets <br/> operator
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 d-block d-md-none brand_logo_mobile">
+        <div class="row g-2 text-center px-2">
+          
+          <div class="col-4">
+            <div class="mobile_service_card">
+              <img src="images/megaphone.png" alt="Ads" class="img-fluid">
+              <span>Ads</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mobile_service_card">
+              <img src="images/mail.png" alt="Email" class="img-fluid">
+              <span>Email<br>distribution</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mobile_service_card">
+              <img src="images/photo.png" alt="Social" class="img-fluid">
+              <span>Social<br>media</span>
+            </div>
+          </div>
+
+          <div class="col-12 my-2">
+            <div class="mobile_brand_card">
+              <img src="images/brand-logo.png" alt="Brand Logo" class="img-fluid">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="mobile_service_card">
+              <img src="images/crm.png" alt="CRM" class="img-fluid">
+              <span>CRM</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mobile_service_card">
+              <img src="images/chat-ai.png" alt="Chat bot" class="img-fluid">
+              <span>Chat bot</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mobile_service_card">
+              <img src="images/ticket.png" alt="Tickets" class="img-fluid">
+              <span>Tickets<br>operator</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
 <!-- =========================number section================================= -->
 
 
@@ -2145,7 +2677,6 @@ slidesPerView:5,spaceBetween: 15,
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-
   function getAutoHeight(element) {
       gsap.set(element, { height: "auto" });
       const height = element.offsetHeight;
@@ -2155,9 +2686,10 @@ slidesPerView:5,spaceBetween: 15,
 
   let masterTl; 
   let dropTl; 
+  let bridgeTl; // 1. Added a new timeline for the transition
 
   function initGSAP() {
-      // 1. Clean up ONLY this section's timelines (Leave the rest of the page alone!)
+      // Clean up ONLY this section's timelines on resize
       if (masterTl) {
           if (masterTl.scrollTrigger) masterTl.scrollTrigger.kill();
           masterTl.kill();
@@ -2165,6 +2697,10 @@ slidesPerView:5,spaceBetween: 15,
       if (dropTl) {
           if (dropTl.scrollTrigger) dropTl.scrollTrigger.kill();
           dropTl.kill();
+      }
+      if (bridgeTl) {
+          if (bridgeTl.scrollTrigger) bridgeTl.scrollTrigger.kill();
+          bridgeTl.kill();
       }
       
       gsap.set(".ball, .acc-item, .acc-content, .acc-header > span, .visual-item, li, .dotted-slot, .three-ball-hide", { clearProps: "all" });
@@ -2188,32 +2724,17 @@ slidesPerView:5,spaceBetween: 15,
       const marginBottom = parseFloat(accItemStyle.marginBottom) || 0;
       const slideUpDistance = headerHeight + marginBottom;
 
-      const endCoords = [];
-
       balls.forEach((ball, index) => {
           const ballRect = ball.getBoundingClientRect();
           let diffStartX = 0;
           let diffStartY = 0;
 
-          // CALCULATE STARTING POSITION FROM THE .three-ball-hide PLACEHOLDERS
           if (hideBalls[index]) {
               const hideRect = hideBalls[index].getBoundingClientRect();
               diffStartX = (hideRect.left + hideRect.width / 2) - (ballRect.left + ballRect.width / 2);
               diffStartY = (hideRect.top + hideRect.height / 2) - (ballRect.top + ballRect.height / 2);
           }
-
-          let targetX = 0;
-          let targetY = 0;
-
-          if (caseBoxes[index]) {
-              const boxRect = caseBoxes[index].getBoundingClientRect();
-              targetX = (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
-              targetY = (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
-          }
-
-          endCoords.push({ x: targetX, y: targetY });
           
-          // START STATE: Scaled down, perfectly circular (50%)
           gsap.set(ball, { 
               x: diffStartX, 
               y: diffStartY, 
@@ -2224,13 +2745,13 @@ slidesPerView:5,spaceBetween: 15,
       });
 
       // ==========================================
-      // TIMELINE 1: THE DROP (No Pinning)
+      // TIMELINE 1: THE DROP 
       // ==========================================
       dropTl = gsap.timeline({
           scrollTrigger: {
               trigger: ".personal-tabing-section",
-              start: "top 55%", // Starts animating when the section is halfway up the screen
-              end: "top top",   // Finishes perfectly right as the section hits the top
+              start: "top 55%",
+              end: "top top", 
               scrub: 1
           }
       });
@@ -2248,23 +2769,20 @@ slidesPerView:5,spaceBetween: 15,
 
 
       // ==========================================
-      // TIMELINE 2: THE ACCORDION (With Bootstrap Sticky)
+      // TIMELINE 2: THE ACCORDION
       // ==========================================
       masterTl = gsap.timeline({
           scrollTrigger: {
-              trigger: ".tabing-scroll-track", // 1. Target the new wrapper
+              trigger: ".tabing-scroll-track", 
               start: "top top", 
-              end: "bottom bottom",            // 2. Ends perfectly as the next section pulls up
+              end: "bottom bottom", 
               scrub: 1, 
-              // pin: true,                    // 3. REMOVED: No more GSAP pin-spacer
-              // anticipatePin: 1,             // 4. REMOVED: No longer needed
               invalidateOnRefresh: true 
           }
       });
 
       masterTl.addLabel("start");
 
-      // DYNAMIC LOOP
       accItems.forEach((item, index) => {
           const content = item.querySelector(".acc-content");
           const lis = content.querySelectorAll("li");
@@ -2276,7 +2794,7 @@ slidesPerView:5,spaceBetween: 15,
           let phaseLabel = "phase" + index;
 
           if (index === 0) {
-              masterTl.addLabel(phaseLabel, "start+=0.1") // Starts opening instantly after pinning
+              masterTl.addLabel(phaseLabel, "start+=0.1") 
                 .to(span, { color: targetColor, duration: 0.3 }, phaseLabel)
                 .to(content, { height: h, duration: 0.6, ease: "power2.inOut" }, phaseLabel)
                 .to(vis, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, phaseLabel)
@@ -2305,7 +2823,7 @@ slidesPerView:5,spaceBetween: 15,
           }
       });
 
-      // OUTRO PHASE
+      // OUTRO PHASE (No ball animations here anymore)
       const lastIdx = accItems.length - 1;
       const lastItem = accItems[lastIdx];
       const lastContent = lastItem.querySelector(".acc-content");
@@ -2321,19 +2839,46 @@ slidesPerView:5,spaceBetween: 15,
         .to(lastSlot, { borderColor: "transparent", duration: 0.6, ease: "power2.inOut" }, "outro+=0.2")
         .to(lastVis, { opacity: 0, scale: 0.95, duration: 0.4 }, "outro");
 
-      balls.forEach((ball, i) => {
-          const slidesApplied = Math.min(i + 1, accItems.length - 1);
-          const yCompensation = endCoords[i].y + (slideUpDistance * slidesApplied);
 
-          masterTl.to(ball, { 
-              x: endCoords[i].x, 
-              y: yCompensation, 
-              opacity: 0,         
-              scale: 1.5, 
-              duration: 0.4,      // <-- CHANGED: Reduced from 2.9 to 0.4!
-              ease: "power2.in" 
-          }, "outro+=0.2");
-      });
+      // ==========================================
+      // TIMELINE 3: BALLS FLY TO CASE STUDY BOXES
+      // ==========================================
+      // This triggers exactly as the section ends and the page starts scrolling down
+      if (caseBoxes[0] && balls.length) {
+          bridgeTl = gsap.timeline({
+              scrollTrigger: {
+                  trigger: ".tabing-scroll-track", 
+                  start: "bottom 85%", // Triggers right as you leave the sticky track
+                  endTrigger: caseBoxes[0], // Connects the timing to the bottom section
+                  end: "center center", // Finishes when the target box hits the center of screen
+                  scrub: 1,
+                  invalidateOnRefresh: true 
+              }
+          });
+
+          balls.forEach((ball, i) => {
+              if (!caseBoxes[i]) return;
+
+              // Dynamically calculates the exact coordinates between the ball and target box
+              bridgeTl.to(ball, {
+                  x: () => {
+                      const boxRect = caseBoxes[i].getBoundingClientRect();
+                      const ballRect = ball.getBoundingClientRect();
+                      const currentX = gsap.getProperty(ball, "x");
+                      return currentX + (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
+                  },
+                  y: () => {
+                      const boxRect = caseBoxes[i].getBoundingClientRect();
+                      const ballRect = ball.getBoundingClientRect();
+                      const currentY = gsap.getProperty(ball, "y");
+                      return currentY + (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
+                  },
+                  opacity: 1,
+                  scale: 1.5,
+                  ease: "power1.inOut" 
+              }, 0);
+          });
+      }
   }
 
   window.addEventListener("load", initGSAP);
@@ -3007,7 +3552,58 @@ slidesPerView:5,spaceBetween: 15,
 
   }, 100);
 
-});
+}); 
+new FormMultiSelect('#servicesSelect', {
+    selectAll: false
+  });
+</script>
+
+
+
+
+<!-- ####################################################
+ #########################################
+ [CASE STUDY SECTION swiper script for mobile]
+ ###################################### -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.caseStudySwiper', {
+      slidesPerView: 1.15, // This shows 1 full card and 15% of the next card
+      spaceBetween: 15,    // Gap between cards
+      // grabCursor: true,    // Shows a hand cursor for dragging
+      // --- Drag & Swipe Settings ---
+      grabCursor: true,    // Shows the "grab" hand cursor on desktop
+      simulateTouch: true, // Allows mouse dragging to work like touch swiping
+      allowTouchMove: true,// Ensures touch/swipe is enabled on mobile
+      shortSwipes: true,   // Allows a quick, short swipe to advance to the next slide
+      resistanceRatio: 0.85, // Adds a slight "bounce" resistance at the beginning/end of the slider
+      // pagination: {
+      //   el: '.swiper-pagination',
+      //   clickable: true,
+      // },
+    });
+  });
+</script>
+
+
+<!-- ####################################################
+ #########################################
+ [ALWAYS DO SECTION swiper script for mobile]
+ ###################################### -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var alwaysDoSwiper = new Swiper('.alwaysDoSwiper', {
+      slidesPerView: 1.9, // Shows 1 column of 2 charts, and 20% of the next column
+      spaceBetween: 5,
+      grabCursor: true,
+      simulateTouch: true,
+      // pagination: {
+      //   el: '.swiper-pagination',
+      //   clickable: true,
+      //   dynamicBullets: true, 
+      // },
+    });
+  });
 </script>
 </body>
 
