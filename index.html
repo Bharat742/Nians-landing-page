@@ -355,7 +355,10 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;text-align: center;
             box-shadow: 0 4px 15px rgba(83, 51, 237, 0.3);
+            
         }
+        .cta-content .btn-custom{width: 30%;
+            margin: auto;}
 
         /* .btn-custom:hover {
             background-color: #4221d0;
@@ -553,10 +556,11 @@
     font-family: "Nunito", sans-serif !important;}
 
         /* Social Icons */
-        .social-links { display: flex; gap: 20px; margin-top: 30px; }
+        .social-links { display: flex; gap: 20px; margin-top: 30px; align-items: flex-end;
+    justify-content: flex-start; }
         .social-links i{font-size: 30px;}
         .social-links img:hover{filter: brightness(1) I !important;}
-        .social-links a { color: #333; font-size: 1.5rem; transition: color 0.3s; }
+        .social-links a { color: #333; font-size: 12px; transition: color 0.3s; }
         .social-links a:hover { color: #106093; }
 
         /* Locations Box */
@@ -1035,7 +1039,7 @@
 
 .image-container dotlottie-wc{
   width: 100%;
-  max-width: 600px;   
+  max-width: 700px;   
   height: 420px;
 }
 
@@ -1120,6 +1124,10 @@ body {
 .chart_list ul li img{border-radius: 10px;}
 .form-multi-select-placeholder{color: #5f5b7f;}
  .form_div select{color: #5f5b7f;}
+.cta-content .btn-custom {
+  display: none;
+  opacity: 0;
+}
 </style>
 </head>
 
@@ -1442,7 +1450,7 @@ body {
                       speed="1"  
                       loop 
                       autoplay
-                      style="width:600px;height:600px;"
+                      style="width:700px;height:700px;"
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
@@ -1455,7 +1463,7 @@ body {
                       speed="1"  
                       loop 
                       autoplay
-                       style="width:600px;height:600px;"
+                       style="width:700px;height:700px;"
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
@@ -1468,7 +1476,7 @@ body {
                       speed="1"  
                       loop 
                       autoplay
-                       style="width:600px;height:600px;"
+                       style="width:700px;height:700px;"
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
@@ -1900,8 +1908,8 @@ body {
               <div class="social-links">
                   <a href="https://www.linkedin.com/company/nians/posts/?feedView=all"><i class="fa-brands fa-linkedin-in"></i></a>
                   <a href="https://www.instagram.com/nians.official/"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="https://x.com/NiansOfficial"><img src="https://nians.com/wp-content/uploads/2025/09/twitter_new.png" style="height:26px;filter: brightness(0);"> </a> 
-                  <a href="https://www.facebook.com/Nians.Official"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://x.com/NiansOfficial"><img src="https://nians.com/wp-content/uploads/2025/09/twitter_new.png" style="height:25px;filter: brightness(0);"> </a> 
+                  <a href="https://www.facebook.com/Nians.Official"><i class="fa-brands fa-facebook-f" style="font-size: 28px;"></i></a>
               </div>
           </div>
 
@@ -2545,6 +2553,17 @@ slidesPerView:5,spaceBetween: 15,
       }
     }
   );
+
+  gsap.to(".cta-content .btn-custom", {
+  display: "block",     // Changes from 'none' so it takes up space in the DOM
+  opacity: 1,          // Smoothly fades in due to the scrub
+  scrollTrigger: {
+    trigger: ".cta-section",
+    start: "top 60%",  // Animation starts when the top of the section hits 70% from the top of the screen
+    end: "center 60%", // Animation ends when the center of the section reaches that 70% mark
+    scrub: 1           // Links the fade-in directly to your scroll direction
+  }
+});
 </script>
 <!-- =======================cta section animate script end============================== -->
 

@@ -16,7 +16,7 @@ input, textarea, select, .form-multi-select-input-group{color: #203857;font-fami
 .banner .banner_data p{color: #fff;font-size: 15px;font-weight: 300;}
 .banner .banner_data ul{color: #fff;list-style: none;display: flex;font-family: "Nunito", sans-serif;padding-left: 0px;margin-bottom: 0;margin-top: 30px;gap: 18px;font-size: 18px;}
 .banner .banner_data ul span::after{content: unset;}
-.banner .banner_data ul span{font-size: 21px;font-weight: 700;margin-right: 5px;}
+.banner .banner_data ul span{font-size: 24px;font-weight: 700;margin-right: 5px;}
 .banner .banner_data ul li{display: flex;align-items: center;}
 .banner .banner_data ul li img{margin-left: 5px;}
 .banner .banner_data span{position: relative;z-index: 1;}
@@ -969,11 +969,11 @@ section{padding: 60px 0px;}
 .testimonial {background: #002A54;}
 .testimonial .section-title{color: #fff;font-size: 60px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 0.9;
     text-transform: uppercase;
     font-family: "Funnel Display", sans-serif;
     letter-spacing: -.04em;
-    text-align: center;}
+    text-align: center; margin-bottom: 20px;}
 .testimonial .section-title span{font-family: "Covered By Your Grace", sans-serif;
     font-size: 2em;
     font-weight: 400;
