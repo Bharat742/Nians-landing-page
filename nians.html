@@ -8,7 +8,7 @@ $pageid = get_the_ID();?>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-	
+	<?php wp_head();?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.24.0/dist/css/coreui.min.css" rel="stylesheet">
 <title>Landing Page</title>
@@ -18,18 +18,18 @@ $pageid = get_the_ID();?>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Funnel+Display:wght@300..800&family=Geist:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
 <script defer src="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.24.0/dist/js/coreui.bundle.min.js"></script>
 
 
-
-
 <style> 
-	#field_115_61 .gform-field-label{display:none;}
+	.select2-container--default .select2-selection--multiple{padding:7px !important;}
+	.select2-container .select2-search--inline .select2-search__field{height:22px !important;}
+	.select2-container .select2-search--inline .select2-search__field{margin-top:0 !important;}
+	.select2-container--default .select2-selection--multiple{border:1px solid #cccccc !important;}
+/* 	.chart_list .center_logo{margin-top: -20px !important; background: #fff; height: 100%; border-radius: 20px;} */
+	#field_114_61 .gform-field-label{display:none;}
 	.form_div .gfield .ginput_container input, .form_div .gfield .ginput_container textarea, .form_div .gfield .ginput_container select{background-color:#fff;}
 	.gform_wrapper.gravity-theme .chosen-container-multi .chosen-choices{padding:5px 10px !important; border-radius:6px;}
 	.gform_wrapper.gravity-theme .gform_validation_errors{margin-bottom: 0 !important; margin-top: 0 !important; padding: 5px 0px !important;
@@ -41,7 +41,7 @@ border: unset !important; box-shadow: unset !important;}
 /* ####################### Final page css#############################	 */
 header {position: absolute;left: 0;right: 0; padding: 25px 0;}
 header ul{list-style: none;}
-.banner{background: url("https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/landingpage-gif.gif");background-repeat: no-repeat;background-size: cover;}
+.banner{background: url("https://nians.com/wp-content/uploads/2026/03/landingpage-gif.gif");background-repeat: no-repeat;background-size: cover;}
 h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
 }
@@ -61,7 +61,7 @@ input, textarea, select, .form-multi-select-input-group{color: #203857;font-fami
 .banner .banner_data ul li{display: flex;align-items: center;}
 .banner .banner_data ul li img{margin-left: 5px; width: 50px; filter: invert(1);}
 .banner .banner_data span{position: relative;z-index: 1;}
-.banner .banner_data span::after, .creative_agency h1 span::after{content: "";position: absolute;top: auto;bottom: -5px;left: 0;right: 0;background: url("https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/text-vector.png");background-position: center;background-repeat: no-repeat;background-size: contain;z-index: -1;height: 15px;width: 100%;}
+.banner .banner_data span::after, .creative_agency h1 span::after{content: "";position: absolute;top: auto;bottom: -5px;left: 0;right: 0;background: url("https://nians.com/wp-content/uploads/2026/03/text-vector.png");background-position: center;background-repeat: no-repeat;background-size: contain;z-index: -1;height: 15px;width: 100%;}
 .form_div{background: #fff;padding: 50px;border-radius: 20px;box-shadow: 0px 0px 10px rgba(0,0,0,0.1);}
 .form_div h2{font-size: 27px;font-weight: 600;color: #203857;margin-bottom: 2px;}
 .form_div p{color: #3c5d84;margin-bottom: 12px;}
@@ -75,7 +75,7 @@ section{padding: 60px 0px;}
 .creative_agency h1{font-size: 46px;font-weight: 600;letter-spacing: -2px;line-height: 58px;color: #000;max-width: 520px;}
 .creative_agency h1 span{position: relative;}
 .creative_agency h1 span::after{width: 85%;background-position: right;left: 24px;bottom: -10px;}
-.creative_agency .circle{height: 230px;width: 230px;border-radius: 50%;background:url("https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/circle.png");background: unset; background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;}
+.creative_agency .circle{height: 230px;width: 230px;border-radius: 50%;background:url("https://nians.com/wp-content/uploads/2026/03/circle.png");background: unset; background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;}
 .creative_agency h2{position: absolute;top: -60px;bottom: 0;left: 0;right: 0;margin: auto;font-size: 84px;font-weight: 600;color: #fff; display: flex;align-items: center;justify-content: center;letter-spacing: -2px;}
 /* .creative_agency h2 {
     /* top: -60px; */
@@ -648,8 +648,8 @@ section{padding: 60px 0px;}
   overflow: hidden;
 }
 .brand_logo{position: relative;z-index: 1;}
-.brand_logo::before{content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;/*background: url("https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/bg-gif1.gif");*/background-size: cover;background-repeat: no-repeat;padding: 80px 0;z-index:-1;}
-.integrate{background: #F6F6F6; height: 100vh;}
+.brand_logo::before{content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;/*background: url("https://nians.com/wp-content/uploads/2026/03/bg-gif1.gif");*/background-size: cover;background-repeat: no-repeat;padding: 80px 0;z-index:-1;}
+.integrate{background: #F6F6F6; height: auto;}
 .integrate h1{font-size: 50px; font-weight: 700;text-transform: uppercase;font-family: 'Poppins', sans-serif;color: #000;margin-bottom: 0px;}
 .integrate p{font-size: 43px;line-height: 50px;font-weight: 400;font-family: 'Poppins', sans-serif;text-transform: uppercase;}
 #brand_logo {
@@ -1485,7 +1485,7 @@ section{padding: 60px 0px;}
 /* CTA Section Styling */
 .cta-section {position: relative; overflow: hidden;text-align: center; }
         /* Background GIF and Gradient Overlay */
-/* .cta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/cta-gif.gif') center center / cover no-repeat; z-index: 1;} */
+/* .cta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./https://nians.com/wp-content/uploads/2026/03/cta-gif.gif') center center / cover no-repeat; z-index: 1;} */
         /* Gradient Overlay to match the image's orange-to-yellow feel */
 .cta-overlay {  position: absolute;  top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255, 126, 0, 0.85) 0%, rgba(255, 212, 0, 0.7) 100%); z-index: 2;}
         /* Content Container */
@@ -1497,7 +1497,7 @@ section{padding: 60px 0px;}
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .cta-heading {
-                font-size: 28px;margin-bottom: 20px;
+                font-size: 21px;margin-bottom: 20px;
             }
         }
 
@@ -2087,20 +2087,92 @@ body {
   display: none !important;
 }
 
-
-
+	.gform_wrapper.gravity-theme input, .gform_wrapper.gravity-theme select{font-size: 13px;}
+	.form_div select{color: #817d79 !important;}
 /* =========================Responsive media query================================= */
+	
+
+	@media (max-width:1200px){
+		.bubble-ball{width:200px !important; height:200px !important;}
+		.center_logo img{margin: 0px auto auto !important;}
+		.personal-tabing-section{margin-top:20px !important; margin-bottom:20px !important;}
+		.integrate h1{font-size:30px;}
+		.integrate p{font-size:27px;}
+		.integrate .row .col-md-7{margin-bottom:unset;}
+		.brand_logo .social_service.social_service_right .social_service_text:nth-child(1){top:20px; left:90px;}
+		.brand_logo .social_service.social_service_right .social_service_text:nth-child(2){left:20px;}
+		.brand_logo .social_service.social_service_left .social_service_text:nth-child(2){left:70px;}
+		.brand_logo .social_service.social_service_left .social_service_text:nth-child(3){left:230px;}
+		.heading{font-size:45px;}
+		.our_process{font-size:33px;}
+		.website-creation-stages .content-section h2{font-size: 32px; margin-bottom: 10px !important;}
+		.website-creation-stages .content-section p {font-size:18px;}
+		.chart-wrapper{margin-right:100px !important;}
+		.testimonial .section-title{font-size:50px;}
+		.testimonial-card{padding: 20px; top:100px;}
+		.testimonial .d-flex{margin-bottom:15px;}
+		.testimonial p b{font-size:20px;}
+		.testimonial h3 {font-size:22px;}
+		.cta-overlay{height:100%;}
+		.cta-content .btn-custom{display:block !important; opacity:1 !important;}
+		.bar-container{margin-bottom:-60px !important;}
+		.integrate{height:auto;}
+		
+	}
+	@media (max-width:575px){
+		.case-study .case_study_box h1{font-size: 30px !important;}
+		.campaign_stats{padding-top: 0rem;}
+		br{display:none;}
+		.banner .banner_data p{font-size:13px; margin-bottom:0;}
+		.banner .banner_data ul{gap:10px !important; flex-direction:column;}
+		.banner .banner_data ul li{justify-content:space-between;}
+		.banner .banner_data ul li img{width:35px !important;}
+		.banner .banner_data ul{margin-bottom:20px !important;}
+		.form_div h2{font-size:19px !important;}
+		.form_div p{font-size:13px !important;}
+		.gform_footer.top_label .gform_button {font-size:14px; padding:6px;}
+		.star li img{width:25px;}
+		.creative_agency h1{font-size:30px; font-weight:500;}
+		.creative_agency h3 span, .creative_agency h3{font-size:13px;}
+		.creative_agency .work{gap:6px !important;}
+		.creative_agency .work li{border:unset !important; padding:10px 0 !important;}
+		.testimonial .section-title{font-size:29px !important; }
+		.creative_agency .work li img{width:35px; height:auto;}
+	}
 @media (max-width:767px){
+	.logos{padding: 5px;}
+	.testimonial .d-flex{margin-bottom:10px;}
+	.location-item{margin-bottom:10px;}
+	.footer-section{padding:30px 0; text-align: center;}
+	.social-links i{font-size:21px;}
+	.social-links a:nth-child(3) img{height: 21px !important;}
+	.social-links a:nth-child(4) i{font-size: 22px !important;}
+	.locations-container{padding:15px;}
+	.address-text{font-size:13px;}
+	.phone-box, .sub-title, .location-name {font-size:16px !important; justify-content:center;}
+	.social-links{margin-top:10px !important; justify-content:center;}
+	.footer-title{font-size:20px !important;}
+	.footer-section .col-lg-3 {margin-bottom:20px !important;}
+	.footer-title{margin-bottom:10px !important; margin-top:10px !important;}
+	.mobile_service_card{font-weight:500 !important;}
+	.logo-item{height:auto;}
+	.testimonial .section-title span{line-height:1.5; margin-left: 6px;}
+	.stack-container{padding:0 !important;}
+	.testimonial h6{font-size:12px;}
+	.chart-wrapper{margin-right:30px !important;}
+	.testimonial .section-title br{display:block;}
+	#stats-section .container-fluid .row .col-lg-5{top:0px !important;}
+	.banner .banner_data h4{font-size:13px; padding-bottom: 6px;}
 	.integrate{height: auto;}
 	.banner .banner_data p{padding: 15px 0 10px;}
-    .testimonial-card img{width: 60px;}
+    .testimonial-card img{width: 50px;}
     .testimonial .text-end img{width: 150px;}
-    .testimonial p b{font-size: 16px;}
-    .testimonial h3{font-size: 16px;}
-    .testimonial-card{padding: 15px !important;}
+    .testimonial p b{font-size: 15px !important;}
+    .testimonial h3{font-size: 15px !important; font-weight:700;margin-bottom: 2px;}
+    .testimonial-card{padding: 15px !important; top: 60px !important; min-height:auto !important;}
     #stats-section .stats-content {margin-bottom: 0 !important;}
     .chart-wrapper{margin-top: 0 !important;}
-    .graph_bar a{padding: 2px 9px !important; margin-top: 15px !important;}
+    .graph_bar a{padding: 2px 9px !important; margin-top: 5px !important;}
     .personal-tabing-section, .mobile-services-section {padding: 30px 0 !important;}
     /* section{padding: 30px 0 !important}; */
     .always_do{padding: 30px 0 !important;} 
@@ -2116,7 +2188,7 @@ body {
   .personal-tabing-section .acc-content ul{list-style-type: disc !important;}
   .personal-tabing-section .acc-content li{opacity: 1 !important;}
   .testimonial .section-title{font-size: 31px;}
-  .testimonial p{font-size: 16px;}
+  .testimonial p{font-size: 14px;}
   #stats-section{height: auto !important; padding-top: 30px !important; padding-bottom: 30px !important;} 
 	#stats-section .section-title{font-weight: 900;}
   .form_div{padding: 25px; border-radius: 10px;}
@@ -2127,24 +2199,24 @@ body {
   .global_brands .brand_logos{margin-bottom: 20px;}
   .bar-container{width:130px !important; margin-right:-30px !important;}
   .bar-img{height:100% !important;}
-  .chart-wrapper{margin-top: 0px !important; margin-left: 0 !important; height: 400px !important;}
-  .banner .banner_data ul{margin-top: 10px !important; margin-bottom: 10px !important; gap: 40px;}
-  .bar-img{width: 80% !important;}
+  .chart-wrapper{margin-top: 0px !important; margin-left: 0 !important; height: 250px !important;}
+  .banner .banner_data ul{margin-top: 10px !important; margin-bottom: 30px !important; gap: 40px;}
+  .bar-img{width: 100% !important;}
   .bar-container{margin-bottom: -120px !important;}
   .banner .banner_data ul{font-size: 13px;}
   .banner .banner_data ul span{font-size: 16px;}
-  .case-study .case_study_box img{margin-top: 10px;}
+  .case-study .case_study_box img{margin-top: 10px; height:280px; object-fit:cover;}
   .personal-tabing-section .ball{width: 40px !important; height: 35px !important;}
   .personal-tabing-section .dotted-slot{width: 50px !important; height: 50px !important;}
   .personal-tabing-section .acc-header{font-size: 35px !important;}
   .personal-tabing-section .dotted-slot{margin-right: 10px !important;}
   .website-creation-stages{padding: 30px 0 !important;}
-  .website-creation-stages .content-section h2{font-size: 30px !important;}
-  .website-creation-stages .content-section p{font-size: 16px !important;}
+  .website-creation-stages .content-section h2{font-size: 27px !important;}
+  .website-creation-stages .content-section p{font-size: 14px !important;}
   .content{font-size: 16px; padding: 5px 8px;}
-  .cta-content .btn-custom{width: 100% !important;}
-  .btn-custom{padding: 8px 10px;}
-  .website-creation-stages .content-section{margin-bottom: 20px;}
+  .cta-content .btn-custom{width: fit-content !important;}
+  .btn-custom{padding: 6px 10px;}
+  .website-creation-stages .content-section{margin-bottom: 20px; height:auto !important; min-height: auto !important;}
   .website-creation-stages .content-section p{max-width: 100% !important; margin-bottom: 20px !important;}
 
 /* Reset list styles */
@@ -2228,9 +2300,9 @@ body {
 
 /* Constrain Lottie size on mobile so it doesn't break the layout */
 .mobile-lottie {
-  width: 100%;
-  max-width: 400px; /* Adjust this value if you want the animations larger/smaller */
-  height: auto;
+/*   width: 100%;
+  max-width: 400px;  
+  height: auto; */
 }
 
 }
@@ -2243,7 +2315,7 @@ body {
       <div class="container">
 		<ul style="padding-left: 0;">
 			<li>
-				<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/white_logo.png" alt="Logo">
+				<img src="https://nians.com/wp-content/uploads/2026/03/white_logo.png" alt="Logo">
 			</li>
 		</ul>
     </div>  
@@ -2258,10 +2330,10 @@ body {
 						<p>Armed with AI-driven strategies and a sharp data-first mindset, we tackle the toughest challenges in the digital marketing arena. Watch your CAC drop while your revenue climbs, because growth isn't luck, it's a system we've perfected.</p>
 						<ul>
 							<li>
-								<div><span>80+</span>Industry <br> Awards Won</div> <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/trophy.png" alt="img" class="img-fluid" style="filter: invert(1);width: 42px;">
+								<div><span>80+</span>Industry <br> Awards Won</div> <img src="https://nians.com/wp-content/uploads/2026/03/trophy.png" alt="img" class="img-fluid" style="filter: invert(1);width: 42px;">
 							</li>
 							<li>
-								<div><span>700+</span>Brands Served <br> Across the Globe</div> <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/internet-1.png" alt="img" class="img-fluid">
+								<div><span>700+</span>Brands Served <br> Across the Globe</div> <img src="https://nians.com/wp-content/uploads/2026/03/internet-1.png" alt="img" class="img-fluid">
 							</li>
 						</ul>
 					</div>
@@ -2270,7 +2342,7 @@ body {
 					<div class="form_div">
 						<h2>Ready to Grow? Let's Start With a Conversation.</h2>
 						<p>Growth is Closer Than You Think. Let's Talk.</p>
-						<?php echo do_shortcode('[gravityform id="115" title="false" description="true" ajax="false"]');?>
+						<?php echo do_shortcode('[gravityform id="114" title="false" description="true" ajax="false"]');?>
 						
 <!-- 						<form> -->
 <!-- 							<div class="row"> -->
@@ -2319,11 +2391,11 @@ body {
 			<div class="row">
 				<div class="col-md-6 mx-auto text-center">
 					<ul class="star">
-						<li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
-						<li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
-						<li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
-						<li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
-						<li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="https://nians.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="https://nians.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="https://nians.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="https://nians.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
+						<li><img src="https://nians.com/wp-content/uploads/2026/03/Star.png" alt="img" class="img-fluid"></li>
 					</ul>
 				</div>
 				<div class="col-12 text-center"> 
@@ -2331,25 +2403,25 @@ body {
 					
 					<ul class="brand_logos d-none d-md-flex">
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/aditya-birla-capital.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/aditya-birla-capital.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Max-Healthcare.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/Max-Healthcare.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/tata.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/tata.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Hero_MotoCorp.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/Hero_MotoCorp.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/shl.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/shl.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Housing.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/Housing.png" alt="img" class="img-fluid">
 						</li>
 						<li>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/OYO.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/OYO.png" alt="img" class="img-fluid">
 						</li>
 					</ul>
 
@@ -2358,25 +2430,25 @@ body {
 <div class="swiper brand-swiper d-block d-md-none">
     <ul class=" swiper-wrapper">
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/aditya-birla-capital.png" alt="Aditya Birla" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/aditya-birla-capital.png" alt="Aditya Birla" class="img-fluid">
         </li>
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Max-Healthcare.png" alt="Max Healthcare" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/Max-Healthcare.png" alt="Max Healthcare" class="img-fluid">
         </li>
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/tata.png" alt="Tata" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/tata.png" alt="Tata" class="img-fluid">
         </li>
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Hero_MotoCorp.png" alt="Hero MotoCorp" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/Hero_MotoCorp.png" alt="Hero MotoCorp" class="img-fluid">
         </li>
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/shl.png" alt="SHL" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/shl.png" alt="SHL" class="img-fluid">
         </li>
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/Housing.png" alt="Housing" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/Housing.png" alt="Housing" class="img-fluid">
         </li>
         <li class="swiper-slide">
-            <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/OYO.png" alt="OYO" class="img-fluid">
+            <img src="https://nians.com/wp-content/uploads/2026/03/OYO.png" alt="OYO" class="img-fluid">
         </li>
     </ul>
 </div>
@@ -2413,15 +2485,15 @@ body {
 					<ul class="work">
 						<li>
 							<h4><span>80%</span> Client Retention Rate </h4>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/handshake.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/handshake.png" alt="img" class="img-fluid">
 						</li>
 						<li>
 							<h4><span>100+</span> Strong & Growing Team</h4>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/people.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/people.png" alt="img" class="img-fluid">
 						</li>
 						<li>
 							<h4><span>__X</span> Revenue Growth</h4>
-							<img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/revenue.png" alt="img" class="img-fluid">
+							<img src="https://nians.com/wp-content/uploads/2026/03/revenue.png" alt="img" class="img-fluid">
 						</li>
 					</ul>
 				</div>
@@ -2458,27 +2530,27 @@ body {
                     <div class="d-flex gap-2 justify-content-end">
                       <ul>
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                       <ul class="mt">
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-4 p-2">
                    <div class="center_logo d-flex flex-column align-items-center">
-  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; display: flex; align-items: center; justify-content: center; margin: auto; height: auto; margin-top: 50px;">
+  <img src="https://nians.com/wp-content/uploads/2026/03/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; display: flex; align-items: center; justify-content: center; margin: auto; height: auto; margin-top: 50px;">
   
  <div class="starting-balls-container d-flex flex-row justify-content-center gap-3">
     <div class="three-ball-hide bg-red"></div>
@@ -2491,20 +2563,20 @@ body {
                     <div class="d-flex gap-2 justify-content-start">
                       <ul class="mt">
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                       <ul>
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid">
                         </li>
                         
                         <li>
-                          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid">
+                          <img src="https://nians.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid">
                         </li>
                       </ul>
                     </div>
@@ -2542,19 +2614,19 @@ body {
           <div class="col-md-4 p-2">
             <div class="d-flex gap-3 justify-content-end">
               <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
               </ul>
               <ul class="list-unstyled mb-0 mt-4 d-flex flex-column gap-3">
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
               </ul>
             </div>
           </div>
           
           <div class="col-md-4 p-2">
             <div class="center_logo d-flex flex-column align-items-center">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; margin-top: 50px;">
+              <img src="https://nians.com/wp-content/uploads/2026/03/nians_logo.png" alt="img" class="img-fluid w-100 logo-front" style="width: 210px !important; margin-top: 50px;">
               <div class="starting-balls-container d-flex flex-row justify-content-center gap-3 mt-4">
                 <div class="three-ball-hide bg-red" style="width: 15px; height: 15px; border-radius: 50%; background: red;"></div>
                 <div class="three-ball-hide bg-blue" style="width: 15px; height: 15px; border-radius: 50%; background: blue;"></div>
@@ -2566,40 +2638,29 @@ body {
           <div class="col-md-4 p-2">
             <div class="d-flex gap-3 justify-content-start">
               <ul class="list-unstyled mb-0 mt-4 d-flex flex-column gap-3">
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
               </ul>
               <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
-                <li><img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
+                <li><img src="https://nians.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid rounded-4 bg-white p-2 shadow"></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-12 d-block d-md-none mt-4 px-0">
+      <div class="col-12 d-block d-md-none px-0">
         <div class="swiper alwaysDoSwiper">
           <div class="swiper-wrapper py-3">
             
             <div class="swiper-slide">
               <div class="d-flex flex-column gap-3 px-1">
                 <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid w-100">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid w-100">
                 </div>
                 <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid w-100">
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="d-flex flex-column gap-3 px-1">
-                <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid w-100">
-                </div>
-                <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid w-100">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid w-100">
                 </div>
               </div>
             </div>
@@ -2607,10 +2668,10 @@ body {
             <div class="swiper-slide">
               <div class="d-flex flex-column gap-3 px-1">
                 <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid w-100">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid w-100">
                 </div>
                 <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid w-100">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid w-100">
                 </div>
               </div>
             </div>
@@ -2618,10 +2679,21 @@ body {
             <div class="swiper-slide">
               <div class="d-flex flex-column gap-3 px-1">
                 <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid w-100">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/app-stat-1.png" alt="img" class="img-fluid w-100">
                 </div>
                 <div class="mobile-chart-box">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid w-100">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/google-ads-stat-66f4efc58901f-1.png" alt="img" class="img-fluid w-100">
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="d-flex flex-column gap-3 px-1">
+                <div class="mobile-chart-box">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/mobile-site-stat-1.png" alt="img" class="img-fluid w-100">
+                </div>
+                <div class="mobile-chart-box">
+                  <img src="https://nians.com/wp-content/uploads/2026/03/smm-stat-1.png" alt="img" class="img-fluid w-100">
                 </div>
               </div>
             </div>
@@ -2701,9 +2773,9 @@ body {
               <div class="visual-container">
                   <div class="visual-item">
                       <div class="image-container">
-                          <!-- <img src="./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210908-071511lf30_editor_rwzdclmm-1 (1).lottie" alt="Design"> -->
+                          <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20210908-071511lf30_editor_rwzdclmm-1 (1).lottie" alt="Design"> -->
                            <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/dm.lottie" 
+                      src="https://nians.com/wp-content/uploads/2026/03/dm.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -2714,9 +2786,9 @@ body {
                   </div>
                   <div class="visual-item">
                       <div class="image-container">
-                          <!-- <img src="./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" alt="Tech"> -->
+                          <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" alt="Tech"> -->
                            <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/seo-new-z.lottie" 
+                      src="https://nians.com/wp-content/uploads/2026/03/seo-new-z.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -2727,9 +2799,9 @@ body {
                   </div>
                   <div class="visual-item">
                       <div class="image-container">
-                          <!-- <img src="./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" alt="Marketing"> -->
+                          <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" alt="Marketing"> -->
                           <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm.lottie" 
+                      src="https://nians.com/wp-content/uploads/2026/03/smm.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -2765,7 +2837,7 @@ body {
         <li>OTT Ads</li>
       </ul>
       <div class="mobile-visual text-center mt-4">
-        <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/dm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+        <dotlottie-wc src="https://nians.com/wp-content/uploads/2026/03/dm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
       </div>
     </div>
 
@@ -2786,11 +2858,11 @@ body {
         <li>Landing Page Optimization</li>
       </ul>
       <div class="mobile-visual text-center mt-4">
-        <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/seo-new-z.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+        <dotlottie-wc src="https://nians.com/wp-content/uploads/2026/03/seo-new-z.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
       </div>
     </div>
 
-    <div class="mobile-service-block mb-5 acc-item">
+    <div class="mobile-service-block acc-item">
       <!-- <div class="d-flex align-items-center mb-3">
         <div class="mobile-icon shadow-sm" style="background-color: #A020F0;"></div>
         <h2 class="mobile-title">SMM</h2>
@@ -2808,7 +2880,7 @@ body {
         <li>Influencer Marketing</li>
       </ul>
       <div class="mobile-visual text-center mt-4">
-        <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+        <dotlottie-wc src="https://nians.com/wp-content/uploads/2026/03/smm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
       </div>
     </div>
 
@@ -2829,7 +2901,8 @@ body {
       
       <div class="col-md-4 p-1 ps-0">
   <div class="case_study_box case_study_box1">
-    <h1>JK Maxx Paints</h1>
+	   <div class="d-flex" style="flex-direction: row;justify-content: end;"> <span ></span> </div>
+    <h1 class="case_study_box_ball1">JK Maxx Paints</h1>
     <!-- <p>Innovated Community Empowerment Website</p> -->
 
     <div class="campaign_stats row text-center mt-3 mb-3">
@@ -2851,11 +2924,12 @@ body {
       </div>
     </div>
 
-    <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
+    <img src="https://nians.com/wp-content/uploads/2026/03/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
   </div>
 </div>
       <div class="col-md-4 p-1">
         <div class="case_study_box case_study_box2">
+			<div class="d-flex" style="flex-direction: row;justify-content: end; margin-right: 100px;"> <span class="case_study_box_ball2"></span> </div>
           <h1>Hero Motocorp</h1>
           <!-- <p>Innovated Community Empowerment Website</p> -->
           <div class="campaign_stats row text-center mt-3 mb-3">
@@ -2876,33 +2950,34 @@ body {
         <span class="text-muted small">New Users Acquired</span>
       </div>
     </div>
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/baidynath.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/baidynath.png" alt="img" class="img-fluid">
         </div>
       </div>
       <div class="col-md-4 p-1 pe-0">
         <div class="case_study_box case_study_box3">
-          <h1>Faces Canada</h1>
+			<div class="d-flex" style="flex-direction: row;justify-content: end;"> <span class="case_study_box_ball3"></span> </div>
+          <h1>Housing.com</h1>
           <!-- <p>Innovated Community Empowerment Website</p> -->
 
           <div class="campaign_stats row text-center mt-3 mb-3">
       <div class="col-6 mb-3">
-        <h4 class="fw-bold mb-0">300%</h4>
+        <h4 class="fw-bold mb-0">1653%</h4>
         <span class="text-muted small">Increment in Traffic</span>
       </div>
       <div class="col-6 mb-3">
-        <h4 class="fw-bold mb-0">180%</h4>
-        <span class="text-muted small">Increase in Conversion Rate</span>
+        <h4 class="fw-bold mb-0">14k+</h4>
+        <span class="text-muted small">Increase in Backlinks</span>
       </div>
       <div class="col-6">
-        <h4 class="fw-bold mb-0">435%</h4>
-        <span class="text-muted small">Sakes Increment via Organic Traffic</span>
+        <h4 class="fw-bold mb-0">2400+</h4>
+        <span class="text-muted small">Keywords in top 3</span>
       </div>
       <div class="col-6">
-        <h4 class="fw-bold mb-0">4000+ </h4>
+        <h4 class="fw-bold mb-0">5000+ </h4>
         <span class="text-muted small">Keywords in Top 10</span>
       </div>
     </div>
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/ace-cloud.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/ace-cloud.png" alt="img" class="img-fluid">
         </div>
       </div>
     </div>
@@ -2951,7 +3026,7 @@ body {
               <span class="text-muted small">Clicks</span>
             </div>
           </div>
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
         </div>
       </div>
       
@@ -2976,7 +3051,7 @@ body {
               <span class="text-muted small">New Users Acquired</span>
             </div>
           </div>
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/baidynath.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/baidynath.png" alt="img" class="img-fluid">
         </div>
       </div>
       
@@ -3001,7 +3076,7 @@ body {
               <span class="text-muted small">Keywords in Top 10</span>
             </div>
           </div>
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/ace-cloud.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/ace-cloud.png" alt="img" class="img-fluid">
         </div>
       </div>
     </div>
@@ -3032,7 +3107,7 @@ body {
                     <span class="text-muted small">Clicks</span>
                   </div>
                 </div>
-                <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
+                <img src="https://nians.com/wp-content/uploads/2026/03/oyo-img.png" alt="JK Maxx Paints Campaign" class="img-fluid">
               </div>
             </div>
 
@@ -3057,7 +3132,7 @@ body {
                     <span class="text-muted small">New Users Acquired</span>
                   </div>
                 </div>
-                <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/baidynath.png" alt="img" class="img-fluid">
+                <img src="https://nians.com/wp-content/uploads/2026/03/baidynath.png" alt="img" class="img-fluid">
               </div>
             </div>
 
@@ -3082,7 +3157,7 @@ body {
                     <span class="text-muted small">Keywords in Top 10</span>
                   </div>
                 </div>
-                <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/ace-cloud.png" alt="img" class="img-fluid">
+                <img src="https://nians.com/wp-content/uploads/2026/03/ace-cloud.png" alt="img" class="img-fluid">
               </div>
             </div>
 
@@ -3107,7 +3182,7 @@ body {
       </div>
       <div class="brand_logo" id="brand_logo"> 
    <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/integrate.lottie"  id="brandLogoLottie"
+                      src="https://nians.com/wp-content/uploads/2026/03/integrate.lottie"  id="brandLogoLottie"
                       speed="1"  
                       loop 
                       autoplay
@@ -3118,29 +3193,29 @@ body {
             <div class="col-md-4">
               <div class="social_service social_service_left">
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/megaphone.png" alt="img" class="img-fluid"> Ads
+                  <img src="https://nians.com/wp-content/uploads/2026/03/megaphone.png" alt="img" class="img-fluid"> Ads
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2025/10/email-2.webp" alt="img" class="img-fluid"> Email <br/> distribution
+                  <img src="https://nians.com/wp-content/uploads/2026/03/mail.png" alt="img" class="img-fluid"> Email <br/> distribution
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/photo.png" alt="img" class="img-fluid"> Social <br/> media
+                  <img src="https://nians.com/wp-content/uploads/2026/03/photo.png" alt="img" class="img-fluid"> Social <br/> media
                 </div>
               </div>
             </div>
             <div class="col-md-4 text-center">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/brand-logo.png" alt="img" class="img-fluid">
+              <img src="https://nians.com/wp-content/uploads/2026/03/brand-logo.png" alt="img" class="img-fluid">
             </div>
             <div class="col-md-4">
               <div class="social_service social_service_right">
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/crm.png" alt="img" class="img-fluid"> CRM
+                  <img src="https://nians.com/wp-content/uploads/2026/03/crm.png" alt="img" class="img-fluid"> CRM
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/chat-ai.png" alt="img" class="img-fluid"> Chat bot
+                  <img src="https://nians.com/wp-content/uploads/2026/03/chat-ai.png" alt="img" class="img-fluid"> Chat bot
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/ticket.png" alt="img" class="img-fluid"> Tickets <br/> operator
+                  <img src="https://nians.com/wp-content/uploads/2026/03/ticket.png" alt="img" class="img-fluid"> Tickets <br/> operator
                 </div>
               </div>
             </div>
@@ -3177,16 +3252,14 @@ body {
 .mobile_brand_card {
   background-color: #ffffff;
   border-radius: 16px;
-  padding: 50px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  min-height: 250px; /* Gives the large square feel */
 }
 
 .mobile_brand_card img {
-  max-width: 160px; /* Adjust based on your actual logo size */
+  max-width: 250px; /* Adjust based on your actual logo size */
 }
 </style>
 <!-- mobile version -->
@@ -3195,7 +3268,7 @@ body {
 
       <div class="brand_logo d-none d-md-block" id="brand_logo"> 
         <dotlottie-wc 
-          src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/integrate.lottie"  id="brandLogoLottie"
+          src="https://nians.com/wp-content/uploads/2026/03/integrate.lottie"  id="brandLogoLottie"
           speed="1"  
           loop 
           autoplay
@@ -3206,29 +3279,29 @@ body {
             <div class="col-md-4">
               <div class="social_service social_service_left">
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/megaphone.png" alt="img" class="img-fluid"> Ads
+                  <img src="https://nians.com/wp-content/uploads/2026/03/megaphone.png" alt="img" class="img-fluid"> Ads
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2025/10/email-2.webp" alt="img" class="img-fluid"> Email <br/> distribution
+                  <img src="https://nians.com/wp-content/uploads/2026/03/mail.png" alt="img" class="img-fluid"> Email <br/> distribution
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/photo.png" alt="img" class="img-fluid"> Social <br/> media
+                  <img src="https://nians.com/wp-content/uploads/2026/03/photo.png" alt="img" class="img-fluid"> Social <br/> media
                 </div>
               </div>
             </div>
             <div class="col-md-4 text-center">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/brand-logo.png" alt="img" class="img-fluid">
+              <img src="https://nians.com/wp-content/uploads/2026/03/brand-logo.png" alt="img" class="img-fluid">
             </div>
             <div class="col-md-4">
               <div class="social_service social_service_right">
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/crm.png" alt="img" class="img-fluid"> CRM
+                  <img src="https://nians.com/wp-content/uploads/2026/03/crm.png" alt="img" class="img-fluid"> CRM
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/chat-ai.png" alt="img" class="img-fluid"> Chat bot
+                  <img src="https://nians.com/wp-content/uploads/2026/03/chat-ai.png" alt="img" class="img-fluid"> Chat bot
                 </div>
                 <div class="social_service_text">
-                  <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/ticket.png" alt="img" class="img-fluid"> Tickets <br/> operator
+                  <img src="https://nians.com/wp-content/uploads/2026/03/ticket.png" alt="img" class="img-fluid"> Tickets <br/> operator
                 </div>
               </div>
             </div>
@@ -3241,45 +3314,45 @@ body {
           
           <div class="col-4">
             <div class="mobile_service_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/megaphone.png" alt="Ads" class="img-fluid">
+              <img src="https://nians.com/wp-content/uploads/2026/03/megaphone.png" alt="Ads" class="img-fluid">
               <span>Ads</span>
             </div>
           </div>
           <div class="col-4">
             <div class="mobile_service_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2025/10/email-2.webp" alt="Email" class="img-fluid">
-              <span>Email<br>distribution</span>
+              <img src="https://nians.com/wp-content/uploads/2026/03/mail.png" alt="Email" class="img-fluid">
+              <span>Email <br>Distribution</span>
             </div>
           </div>
           <div class="col-4">
             <div class="mobile_service_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/photo.png" alt="Social" class="img-fluid">
-              <span>Social<br>media</span>
+              <img src="https://nians.com/wp-content/uploads/2026/03/photo.png" alt="Social" class="img-fluid">
+              <span>Social <br>Media</span>
             </div>
           </div>
 
           <div class="col-12 my-2">
             <div class="mobile_brand_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/brand-logo.png" alt="Brand Logo" class="img-fluid">
+              <img src="https://nians.com/wp-content/uploads/2026/03/brand-logo.png" alt="Brand Logo" class="img-fluid">
             </div>
           </div>
 
           <div class="col-4">
             <div class="mobile_service_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/crm.png" alt="CRM" class="img-fluid">
+              <img src="https://nians.com/wp-content/uploads/2026/03/crm.png" alt="CRM" class="img-fluid">
               <span>CRM</span>
             </div>
           </div>
           <div class="col-4">
             <div class="mobile_service_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/chat-ai.png" alt="Chat bot" class="img-fluid">
+              <img src="https://nians.com/wp-content/uploads/2026/03/chat-ai.png" alt="Chat bot" class="img-fluid">
               <span>Chat bot</span>
             </div>
           </div>
           <div class="col-4">
             <div class="mobile_service_card">
-              <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/ticket.png" alt="Tickets" class="img-fluid">
-              <span>Tickets<br>operator</span>
+              <img src="https://nians.com/wp-content/uploads/2026/03/ticket.png" alt="Tickets" class="img-fluid">
+              <span>Tickets <br>Operator</span>
             </div>
           </div>
 
@@ -3317,9 +3390,9 @@ body {
           <article class="content-section" id="stage-0">
             <h2 class="mb-4">Strategic Discovery  <!-- <span class="badge-free">Free</span> --></h2>
             <p class="mb-5">We start by getting under the skin of your business. Through brand workshops and business analysis, we identify your strengths, growth opportunities and selling points. We then segment your market, map out customer pain points and buying behaviour and study the broader competitive landscape to make sure every move we make is rooted in reality, not assumptions.</p>
-            <!-- <img src="./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210917-072012lf30_editor_6hszztkk.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 1"> -->
+            <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20210917-072012lf30_editor_6hszztkk.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 1"> -->
             <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210908-071511lf30_editor_rwzdclmm-1.lottie" 
+                      src="https://nians.com/wp-content/uploads/2026/03/20210908-071511lf30_editor_rwzdclmm-1.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -3330,9 +3403,9 @@ body {
           <article class="content-section" id="stage-1">
             <h2 class="mb-4">Growth Blueprint </h2>
             <p class="mb-5">With discovery done, we identify the most profitable channels based on where your customers spend their time. Our creative team builds compelling assets while we construct a high-converting sales funnel around every stage of your customer's journey. Budget is allocated through a data-driven process, ensuring every rupee is mapped to both creative impact and performance potential.</p>
-            <!-- <img src="./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20211129-042402lf30_editor_6n0omtwy.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 2"> -->
+            <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20211129-042402lf30_editor_6n0omtwy.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 2"> -->
             <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210908-071821lf30_editor_l2vr3l6s-1.lottie" 
+                      src="https://nians.com/wp-content/uploads/2026/03/20210908-071821lf30_editor_l2vr3l6s-1.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -3343,9 +3416,9 @@ body {
           <article class="content-section" id="stage-2">
             <h2 class="mb-4">Execute & Evolve </h2>
             <p class="mb-5">Once the strategy is signed off, we deploy the right mix of creative content, platforms and tools to launch campaigns built for peak performance. Our creative and performance teams work in sync, continuously refining messaging, visuals, targeting and budgets in real time. After every campaign, we review, learn and come back with sharper creative and stronger results. Continuous improvement isn't a promise, it's our process. </p>
-            <!-- <img src="./https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20211216-135041lf30_editor_vu9u2tko.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 3"> -->
+            <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20211216-135041lf30_editor_vu9u2tko.lottie" class="img-fluid rounded-4 shadow-lg w-100" alt="Stage 3"> -->
             <dotlottie-wc 
-                      src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/20210909-074915lf30_editor_fy6tfzer-1.lottie" 
+                      src="https://nians.com/wp-content/uploads/2026/03/20210909-074915lf30_editor_fy6tfzer-1.lottie" 
                       speed="1"  
                       loop 
                       autoplay
@@ -3392,17 +3465,17 @@ body {
                     
                     <div class="bar-container bar-1">
                         <!-- <div class="bar-text"><span>Grab<br>attention</span></div> -->
-                        <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/orange-graph.png" alt="Orange Bar" class="bar-img">
+                        <img src="https://nians.com/wp-content/uploads/2026/03/orange-graph.png" alt="Orange Bar" class="bar-img">
                     </div>
 
                     <div class="bar-container bar-2">
                         <!-- <div class="bar-text"><span>Explain<br>value</span></div> -->
-                        <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/light-blue-graph.png" alt="Blue Bar" class="bar-img">
+                        <img src="https://nians.com/wp-content/uploads/2026/03/light-blue-graph.png" alt="Blue Bar" class="bar-img">
                     </div>
 
                     <div class="bar-container bar-3">
                         <!-- <div class="bar-text"><span>Drive to<br>purchase</span></div> -->
-                        <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/blue-graph.png" alt="Green Bar" class="bar-img">
+                        <img src="https://nians.com/wp-content/uploads/2026/03/blue-graph.png" alt="Green Bar" class="bar-img">
                     </div>
 
                 </div>
@@ -3423,7 +3496,7 @@ body {
   <div class="stack-container" id="stack-wrapper">
       <div class="testimonial-card"> 
         <div class="d-flex align-items-center">
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/client_img.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/client_img.png" alt="img" class="img-fluid">
           <div>
             <h3>Munmun Pal</h3>
             <h6>Additional Divisional Manager</h6>
@@ -3434,14 +3507,14 @@ body {
           <p>It was a great experience working with Nians (formerly Technians). Aesthetic and systematic website design delivering to client requirements was professionally done. The team was agile, responsive and responded well to our delivery needs.</p>
         </div>
         <div class="text-end">
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/client_logo.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/client_logo.png" alt="img" class="img-fluid">
         </div> 
       </div>
 
       <div class="testimonial-card"> 
         <div class="d-flex align-items-center">
-          <!-- src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2021/08/jaideepahuja.webp" -->
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2021/08/jaideepahuja.webp" alt="img" class="img-fluid" style="border-radius: 50%;"> 
+          <!-- src="https://nians.com/wp-content/uploads/2021/08/jaideepahuja.webp" -->
+          <img src="https://nians.com/wp-content/uploads/2021/08/jaideepahuja.webp" alt="img" class="img-fluid" style="border-radius: 50%;"> 
           <div>
             <h3>JAIDEEP AHUJA</h3>
             <h6>Director</h6>
@@ -3452,13 +3525,13 @@ body {
           <p>As a leading healthcare company, we have relied on Nians Marketing & Web Application. They have done a tremendous job and we highly recommend them to everyone as these people are very clear with communication, milestones, allotted timelines and the best thing about them is their perfection. They helped us to reach customers Digitally by creating an SEO-friendly web application and Digital Media Campaigns in a very short period of time. Thank you Nians Softech Pvt. Ltd. for your support and keep up the good work."</p>
         </div>
         <div class="text-end">
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/client_logo.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/client_logo.png" alt="img" class="img-fluid">
         </div> 
       </div>
 
       <div class="testimonial-card"> 
         <div class="d-flex align-items-center">
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2021/08/mridulranjansahu.webp" alt="img" class="img-fluid" style="border-radius: 50%;">
+          <img src="https://nians.com/wp-content/uploads/2021/08/mridulranjansahu.webp" alt="img" class="img-fluid" style="border-radius: 50%;">
           <div>
             <h3>MRIDUL RANJAN SAHU</h3>
             <h6>Marketing Manager</h6>
@@ -3469,7 +3542,7 @@ body {
           <p>The team was really supportive, no one hesitates to execute new things. You were a great support to get things done on time. Also, understanding the criticality of the situation and get things done out of the way was the best part of this team.</p>
         </div>
         <div class="text-end">
-          <img src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/client_logo.png" alt="img" class="img-fluid">
+          <img src="https://nians.com/wp-content/uploads/2026/03/client_logo.png" alt="img" class="img-fluid">
         </div> 
       </div>
   </div>
@@ -3602,7 +3675,40 @@ body {
 </footer>
 <!-- ====================Footer section END========================== -->
 <?php wp_footer();?>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	(function () {
+    function loadSelect2(callback) {
+        var css = document.createElement("link");
+        css.rel = "stylesheet";
+        css.href = "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
+        document.head.appendChild(css);
+        var script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js";
 
+        script.onload = function () {
+            callback();
+        };
+        document.head.appendChild(script);
+    }
+    function initMultiSelect() {
+        jQuery(function ($) {
+            var field = $('#input_114_61');
+            if (field.length) {
+                field.removeAttr('size');
+                // Override Gravity Forms placeholder
+                field.attr('data-placeholder', 'Select Services');
+
+                field.select2({
+                    placeholder: 'Select Services',
+                    width: '100%'
+                });
+            }
+        });
+    }
+    loadSelect2(initMultiSelect);
+})();
+</script>
 <!-- ####################################################
  #########################################
  [Footer files links]
@@ -3654,7 +3760,7 @@ if (document.body.classList.contains("fast-scroll-page")) {
  [TESTIMONIAL SECTION SCRIPT]
  ###################################### -->
 <!-- Testimonial section script  -->
-<script>
+<!-- <script>
   gsap.registerPlugin(ScrollTrigger);
 
   const cards = gsap.utils.toArray(".testimonial-card");
@@ -3677,6 +3783,49 @@ if (document.body.classList.contains("fast-scroll-page")) {
           });
       }
   });
+</script> -->
+<script>
+//   gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.normalizeScroll(true);
+
+  // Initialize GSAP matchMedia
+  let mm = gsap.matchMedia();
+
+  // Define your breakpoints
+  mm.add({
+    desktop: "(min-width: 769px)",
+    mobile: "(max-width: 768px)"
+  }, (context) => {
+    
+    // Check if we are currently on the mobile breakpoint
+    let { mobile } = context.conditions;
+    
+    const cards = gsap.utils.toArray(".testimonial-card");
+
+    cards.forEach((card, index) => {  
+      // We only want to animate the cards that are being covered
+      if (index !== cards.length - 1) {
+        gsap.to(card, {
+          // You might not want it to shrink as aggressively on mobile to keep text readable
+          scale: mobile ? 0.85 : 0.7,      
+          opacity: 0,  
+          ease: "none",  
+          scrollTrigger: {
+            trigger: card,
+            // Adjust the sticky trigger point: 150px is often too far down on phones
+            start: mobile ? "top 80px" : "top 150px", 
+            endTrigger: ".stack-container",
+            end: "bottom bottom",
+            scrub: true,
+            // markers: true, // Uncomment to debug
+          }
+        });
+      }
+    });
+    
+    // matchMedia automatically cleans up when breakpoints change!
+  });
 </script>
  
  
@@ -3688,7 +3837,7 @@ if (document.body.classList.contains("fast-scroll-page")) {
  [STATS BAR ANIMATION SCRIPT]
  ###################################### -->
 <!-- Bars animation script -->
-<script>
+<!-- <script>
   // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
@@ -3706,6 +3855,48 @@ if (document.body.classList.contains("fast-scroll-page")) {
   tl2.to(".bar-1", { height: "350px", ease: "none" }, 0)
     .to(".bar-2", { height: "470px", ease: "none" }, 0)
     .to(".bar-3", { height: "600px", ease: "none" }, 0);
+	
+</script> -->
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", (event) => {
+    
+    gsap.registerPlugin(ScrollTrigger);
+	  ScrollTrigger.normalizeScroll(true);
+    let mm = gsap.matchMedia();
+
+    mm.add({
+      isDesktop: "(min-width: 768px)",
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      
+      let { isMobile } = context.conditions;
+
+      var tl2 = gsap.timeline({
+          scrollTrigger: {
+              trigger: "#stats-section",
+// 			  scroller: ".my-mobile-scroll-wrapper",
+              start: "top 70%",
+              end: "bottom 80%",
+              scrub: 1, 
+              // markers: true, // Uncomment this to see if triggers are actually loading!
+          }
+      });
+
+      let height1 = isMobile ? "210px" : "350px";
+      let height2 = isMobile ? "280px" : "470px";
+      let height3 = isMobile ? "360px" : "600px";
+
+      tl2.to(".bar-1", { height: height1, ease: "none" }, 0)
+         .to(".bar-2", { height: height2, ease: "none" }, 0)
+         .to(".bar-3", { height: height3, ease: "none" }, 0);
+
+      return () => { 
+        tl2.kill(); 
+      };
+    });
+    
+  });
 </script>
 <!--  -->
 
@@ -3717,13 +3908,14 @@ if (document.body.classList.contains("fast-scroll-page")) {
  ###################################### -->
 <!-- ==============Footer swiper script================== -->
 <script>
-  const footer_logo = new Swiper('.footer_logo', {
+ const footer_logo = new Swiper('.footer_logo', {
   // Optional parameters 
   loop: true,
-slidesPerView:5,spaceBetween: 15,
+slidesPerView:5,spaceBetween: 15,speed: 1000,
+	  autoplay:{delay: 3000},
  breakpoints: {
         320: {
-            slidesPerView: 3
+            slidesPerView: 3,spaceBetween: 10,
         },
         768: {
             slidesPerView: 5
@@ -3983,23 +4175,24 @@ slidesPerView:5,spaceBetween: 15,
           }
 
           function initGhostTransition() {
-              const caseBoxes = [
-                  document.querySelector(".case_study_box1"),
-                  document.querySelector(".case_study_box2"),
-                  document.querySelector(".case_study_box3")
+              // CHANGE THESE to the classes/IDs of your bottom semi-circle elements
+              const endTargets = [
+                  document.querySelector(".case_study_box_ball1"), // Replace with your actual class
+                  document.querySelector(".case_study_box_ball2"), // Replace with your actual class
+                  document.querySelector(".case_study_box_ball3")      // Replace with your actual class
               ];
               
-              // Where they spawn from
-              const headers = document.querySelectorAll(".acc-header");
+              // Where they spawn from (Left side text elements)
+              const startTargets = document.querySelectorAll(".acc-header");
 
-              if (!caseBoxes[0] || !headers.length) return;
+              if (!endTargets[0] || !startTargets.length) return;
 
               // The scroll timeline for the jump
               let bridgeTl = gsap.timeline({
                   scrollTrigger: {
                       trigger: ".tabing-scroll-track", 
                       start: "bottom 80%", 
-                      endTrigger: caseBoxes[0], 
+                      endTrigger: endTargets[0], // End when the first bottom target is reached
                       end: "top 30%", 
                       scrub: 1,
                       invalidateOnRefresh: true 
@@ -4008,7 +4201,7 @@ slidesPerView:5,spaceBetween: 15,
 
               // Animate each ghost ball at the EXACT SAME TIME
               ghostBalls.forEach((ball, i) => {
-                  if (!caseBoxes[i] || !headers[i]) return;
+                  if (!endTargets[i] || !startTargets[i]) return;
 
                   // Instantly make them visible ONLY when the scroll timeline begins
                   bridgeTl.to(ball, { opacity: 1, duration: 0.01 }, 0);
@@ -4017,30 +4210,32 @@ slidesPerView:5,spaceBetween: 15,
                       scale: 1,
                       borderRadius: "7px",
                       x: () => {
-                          const rect = headers[i].getBoundingClientRect();
+                          const rect = startTargets[i].getBoundingClientRect();
                           return rect.left + 30; 
                       },
                       y: () => {
-                          const rect = headers[i].getBoundingClientRect();
+                          const rect = startTargets[i].getBoundingClientRect();
                           return rect.top + (rect.height / 2) - 15; 
                       }
                   }, {
                       scale: 1.5,
                       borderRadius: "50%",
                       x: () => {
-    const rect = caseBoxes[i].getBoundingClientRect();
-    return rect.left + (rect.width / 2) - 15 + (i * 80);
-},
+                          const rect = endTargets[i].getBoundingClientRect();
+                          // Keep horizontal center alignment
+                          return rect.left + (rect.width / 2) - 15; 
+                      },
                       y: () => {
-                          const rect = caseBoxes[i].getBoundingClientRect();
-                          return rect.top + (rect.height / 2) - 15; 
+                          const rect = endTargets[i].getBoundingClientRect();
+                          // CHANGED: Aim for the top edge of the semi-circle instead of the middle
+                          return rect.top - 10; 
                       },
                       ease: "power1.out", 
                       duration: 2
                   }, 0); 
                   
-                  // Fade out at the very end to "merge" into the box
-                  bridgeTl.to(ball, { opacity: 0, duration: 0.9 }, "+=0.1");
+                  // CHANGED: Instantly disappear just before it finishes the movement into the space
+                  bridgeTl.to(ball, { opacity: 0, duration: 0.01 }, "-=0.15");
               });
           }
 
@@ -4058,17 +4253,12 @@ slidesPerView:5,spaceBetween: 15,
 
           // 3. CLEANUP FUNCTION (Runs automatically if window drops below 768px)
           return () => {
-              // Remove the appended DOM elements so they don't clutter mobile
               ghostBalls.forEach(ball => {
                   if (ball.parentNode) {
                       ball.parentNode.removeChild(ball);
                   }
               });
-              
-              // Remove the resize listener
               window.removeEventListener("resize", handleResize);
-              
-              // Note: GSAP automatically kills the ScrollTrigger and timeline on cleanup!
           };
       });
   });
@@ -4316,7 +4506,7 @@ slidesPerView:5,spaceBetween: 15,
       // stagger: 0.15,
       scrollTrigger: {
         trigger: ".case-study",
-        start: "top 80%",   
+        start: "top 60%",   
         end: "center 40%",  
         scrub: 1            
       }
@@ -4610,7 +4800,7 @@ new FormMultiSelect('#servicesSelect', {
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+   document.addEventListener("DOMContentLoaded", function () {
     let brandSwiper = null;
 
     function initOrDestroySwiper() {
@@ -4621,20 +4811,19 @@ new FormMultiSelect('#servicesSelect', {
           brandSwiper = new Swiper('.brand-swiper', {
             slidesPerView: 3,      // Number of logos visible at once on mobile
             spaceBetween: 20,      // Gap between logos
-            // loop: true,            // Infinite loop
-            // autoplay: {
-            //   delay: 2500,
-            //   disableOnInteraction: false,
-            // },
+            loop: true,speed: 1000,            // Infinite loop
+            autoplay: {
+              delay: 2500, 
+            },
             // Add breakpoints if you need to adjust slides per view on very small screens
             breakpoints: {
               320: {
                 slidesPerView: 2.3,
-                spaceBetween: 15
+                spaceBetween: 10
               },
               480: {
                 slidesPerView: 3.3,
-                spaceBetween: 20
+                spaceBetween: 10
               }
             }
           });
@@ -4655,8 +4844,7 @@ new FormMultiSelect('#servicesSelect', {
     window.addEventListener('resize', initOrDestroySwiper);
   });
 </script>
-
-
+	
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 	jQuery(document).on('gform_post_render', function(){
@@ -4668,10 +4856,3 @@ new FormMultiSelect('#servicesSelect', {
 </body>
 
 </html>
-
-
-
-
-
-
-<!-- <?php //get_footer();?> -->
