@@ -2113,7 +2113,8 @@ body {
   .creative_agency .work{flex-direction: column; padding-top: 20px; gap: 15px;}
   .creative_agency h1{font-size: 31px; line-height: 40px;}
   .personal-tabing-section .acc-content{height: auto !important;}
-  .personal-tabing-section .acc-content ul{list-style-type: disc !important;}
+  .personal-tabing-section .acc-content ul{list-style-type: disc !important; padding-left:110px;}
+  .personal-tabing-section .acc-content{padding-left: unset !important;}
   .personal-tabing-section .acc-content li{opacity: 1 !important;}
   .testimonial .section-title{font-size: 31px;}
   .testimonial p{font-size: 16px;}
@@ -2233,7 +2234,7 @@ body {
   height: auto;
 }
 
-}
+} 
 </style>
 </head>
 
@@ -2747,7 +2748,8 @@ body {
 </div>
  
 <!-- ======================Personal tabing section mobile version============================ -->
-<section class="mobile-services-section d-block d-md-none bg-white personal-tabing-section">
+ <!-- <div class="mobile-sticky-track d-block d-md-none" style="height: 300vh; position: relative;"> 
+<section class="mobile-services-section sticky-top vh-100 d-block d-md-none bg-white personal-tabing-section" style="overflow-y: auto; overflow-x: hidden;">
   <div class="container px-4">
     
     <div class="mobile-service-block mb-5 acc-item">
@@ -2756,7 +2758,7 @@ body {
                       <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
                       <span style="color: #000 !important;">Paid Ads</span>
                   </div>
-      <ul class="mobile-list">
+      <ul class="mobile-list overflow-hidden m-0">
         <li>Meta Ads</li>
         <li>Google Ads</li>
         <li>Programmatic Ads</li>
@@ -2770,10 +2772,7 @@ body {
     </div>
 
     <div class="mobile-service-block mb-5 acc-item">
-      <!-- <div class="d-flex align-items-center mb-3">
-        <div class="mobile-icon shadow-sm" style="background-color: #4D4DFF;"></div>
-        <h2 class="mobile-title">SEO</h2>
-      </div> -->
+     
       <div class="acc-header">
                       <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
                       <span style="color: #000;">SEO </span>
@@ -2791,10 +2790,7 @@ body {
     </div>
 
     <div class="mobile-service-block mb-5 acc-item">
-      <!-- <div class="d-flex align-items-center mb-3">
-        <div class="mobile-icon shadow-sm" style="background-color: #A020F0;"></div>
-        <h2 class="mobile-title">SMM</h2>
-      </div> -->
+      
       <div class="acc-header">
                       <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
                       <span style="color: #000;">SMM </span>
@@ -2814,6 +2810,94 @@ body {
 
   </div>
 </section>
+</div> -->
+
+<div class="mobile-sticky-track d-block d-md-none" style="height: 300vh; position: relative;">
+  
+  <section class="mobile-services-section sticky-top bg-white personal-tabing-section" 
+           style="height: 100svh; overflow-y: auto; overflow-x: hidden; padding-top: 80px; padding-bottom: 40px; display: flex; flex-direction: column; justify-content: center;">
+    <div class="container px-4">
+      
+      <style>
+        .mobile-service-block {
+          margin-bottom: 1rem;
+        }
+        .acc-content {
+          overflow: hidden; /* Ensures folded content takes exactly 0 space */
+        }
+        .mobile-visual dotlottie-wc {
+          max-height: 25svh; /* Restricts Lottie size so content doesn't overflow the screen */
+          width: auto;
+          object-fit: contain;
+        }
+        .mobile-list {
+          margin-bottom: 0;
+          font-size: 0.9rem; /* Slightly scale down text if needed */
+        }
+      </style>
+
+      <div class="mobile-service-block acc-item">
+        <div class="acc-header">
+          <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
+          <span style="color: #000 !important; font-weight: 600;">Paid Ads</span>
+        </div>
+        <div class="acc-content">
+          <ul class="mobile-list">
+            <li>Meta Ads</li>
+            <li>Google Ads</li>
+            <li>Programmatic Ads</li>
+            <li>Brand Awareness</li>
+            <li>Lead Generation</li>
+            <li>OTT Ads</li>
+          </ul>
+          <div class="mobile-visual text-center">
+            <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/dm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-service-block acc-item">
+        <div class="acc-header">
+          <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
+          <span style="color: #000; font-weight: 600;">SEO </span>
+        </div>
+        <div class="acc-content">
+          <ul class="mobile-list">
+            <li>AEO</li>
+            <li>Traffic</li>
+            <li>Improve Ranking</li>
+            <li>Organic Growth</li>
+            <li>Landing Page Optimization</li>
+          </ul>
+          <div class="mobile-visual text-center">
+            <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/seo-new-z.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-service-block acc-item">
+        <div class="acc-header">
+          <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
+          <span style="color: #000; font-weight: 600;">SMM </span>
+        </div>
+        <div class="acc-content">
+          <ul class="mobile-list">  
+            <li>UGC Marketing</li>
+            <li>Meme & Trend Marketing</li>
+            <li>ORM</li>
+            <li>Automation</li>
+            <li>Organic Marketing</li>
+            <li>Influencer Marketing</li>
+          </ul>
+          <div class="mobile-visual text-center">
+            <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
    
 <div class="bubble-wrapper d-none d-md-block">
       <div class="bubble bubble1"></div>
@@ -3006,7 +3090,7 @@ body {
       </div>
     </div>
 
-    <div class="row d-block d-md-none">
+    <div class="mobile-case-study-section row d-block d-md-none">
       <div class="col-12 p-0">
         <div class="swiper caseStudySwiper">
           <div class="swiper-wrapper py-3">
@@ -3955,7 +4039,7 @@ slidesPerView:5,spaceBetween: 15,
       let mm = gsap.matchMedia();
 
       // 2. Wrap your entire logic inside the desktop breakpoint (768px and up)
-      mm.add("(min-width: 768px)", () => {
+      // mm.add("(min-width: 768px)", () => {
           
           // Colors matching your layout
           const colors = ['#002A54', '#1DB7D1', '#FFA106'];
@@ -4070,7 +4154,7 @@ slidesPerView:5,spaceBetween: 15,
               
               // Note: GSAP automatically kills the ScrollTrigger and timeline on cleanup!
           };
-      });
+      // });
   });
 </script>
 <!-- =============personal-tabing-section script end======================= -->
@@ -4664,6 +4748,207 @@ new FormMultiSelect('#servicesSelect', {
     field.attr('data-placeholder','Services looking for');
     field.trigger("chosen:updated");
 });
+</script>
+
+ <script>
+  window.addEventListener("load", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      let mm = gsap.matchMedia();
+
+      mm.add("(max-width: 767px)", () => {
+          
+          const stickyTrack = document.querySelector(".mobile-sticky-track");
+          const mobileBlocks = document.querySelectorAll(".mobile-services-section .mobile-service-block");
+          const mobileBalls = document.querySelectorAll(".mobile-services-section .ball");
+          
+          // Target case study boxes in the slider below
+          const mobileCaseBoxes = [
+              document.querySelector(".d-block.d-md-none .caseStudySwiper .case_study_box1") || document.querySelector(".case_study_box1"),
+              document.querySelector(".d-block.d-md-none .caseStudySwiper .case_study_box2") || document.querySelector(".case_study_box2"),
+              document.querySelector(".d-block.d-md-none .caseStudySwiper .case_study_box3") || document.querySelector(".case_study_box3")
+          ];
+
+          if (!stickyTrack || mobileBlocks.length === 0 || mobileBalls.length === 0) return;
+
+          // 1. Initial State: Balls high up, Accordions closed
+          gsap.set(mobileBalls, { display: "block", position: "relative", y: -600, x: 50, opacity: 0, scale: 0.5 });
+          
+          mobileBlocks.forEach((block) => {
+              gsap.set(block.querySelector(".mobile-list"), { height: 0, opacity: 0 });
+              gsap.set(block.querySelector(".mobile-visual"), { height: 0, opacity: 0, scale: 0.8, marginTop: 0 });
+              gsap.set(block.querySelector(".acc-header span"), { color: "#000" });
+          });
+
+          // Helper for natural height
+          const getAutoHeight = (el) => {
+              gsap.set(el, { height: "auto" });
+              const h = el.offsetHeight;
+              gsap.set(el, { height: 0 });
+              return h;
+          };
+
+          // 2. Build the Timeline attached to the wrapper track
+          let mobileTl = gsap.timeline({
+              scrollTrigger: {
+                  trigger: stickyTrack,
+                  start: "top top", 
+                  end: "bottom bottom", // Finishes exactly as the sticky track ends
+                  scrub: 1, // Smoothly ties animation to scroll
+                  invalidateOnRefresh: true
+              }
+          });
+
+          // PHASE 1: BALLS DROP IN (like the red lines in your image)
+          mobileTl.to(mobileBalls, {
+              y: 0,
+              x: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "back.out(1.2)"
+          }, "start");
+
+          // PHASE 2: ACCORDION 1 OPENS
+          const c1 = mobileBlocks[0].querySelector(".dotted-slot");
+          const l1 = mobileBlocks[0].querySelector(".mobile-list");
+          const v1 = mobileBlocks[0].querySelector(".mobile-visual");
+
+          mobileTl.to(mobileBlocks[0].querySelector(".acc-header span"), { color: c1, duration: 0.4 }, "start+=0.5")
+                  .to(l1, { height: () => getAutoHeight(l1), opacity: 1, duration: 0.4 }, "start+=0.5")
+                  .to(v1, { height: () => getAutoHeight(v1), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "start+=0.5");
+
+          // PHASE 3: ACCORDION 1 CLOSES, 2 OPENS
+          const c2 = mobileBlocks[1].querySelector(".dotted-slot");
+          const l2 = mobileBlocks[1].querySelector(".mobile-list");
+          const v2 = mobileBlocks[1].querySelector(".mobile-visual");
+
+          mobileTl.to(l1, { height: 0, opacity: 0, duration: 0.4 }, "step2")
+                  .to(v1, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step2")
+                  .to(mobileBlocks[0].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step2")
+                  
+                  .to(mobileBlocks[1].querySelector(".acc-header span"), { color: c2, duration: 0.4 }, "step2")
+                  .to(l2, { height: () => getAutoHeight(l2), opacity: 1, duration: 0.4 }, "step2")
+                  .to(v2, { height: () => getAutoHeight(v2), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "step2");
+
+          // PHASE 4: ACCORDION 2 CLOSES, 3 OPENS
+          const c3 = mobileBlocks[2].querySelector(".dotted-slot");
+          const l3 = mobileBlocks[2].querySelector(".mobile-list");
+          const v3 = mobileBlocks[2].querySelector(".mobile-visual");
+
+          mobileTl.to(l2, { height: 0, opacity: 0, duration: 0.4 }, "step3")
+                  .to(v2, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step3")
+                  .to(mobileBlocks[1].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step3")
+                  
+                  .to(mobileBlocks[2].querySelector(".acc-header span"), { color: c3, duration: 0.4 }, "step3")
+                  .to(l3, { height: () => getAutoHeight(l3), opacity: 1, duration: 0.4 }, "step3")
+                  .to(v3, { height: () => getAutoHeight(v3), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "step3");
+
+          // PHASE 5: OUTRO (Accordion 3 closes, Balls shoot down to Swiper)
+          mobileTl.addLabel("outro", "+=0.3");
+
+          mobileTl.to(l3, { height: 0, opacity: 0, duration: 0.4 }, "outro")
+                  .to(v3, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "outro")
+                  .to(mobileBlocks[2].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "outro");
+
+          mobileBalls.forEach((ball, i) => {
+              if (!mobileCaseBoxes[i]) return;
+
+              // Hide borders
+              mobileTl.to(ball.closest('.dotted-slot'), { borderColor: "transparent", duration: 0.3 }, "outro");
+
+              // Calculate distance to the next section dynamically
+              mobileTl.to(ball, {
+                  x: () => {
+                      const boxRect = mobileCaseBoxes[i].getBoundingClientRect();
+                      const ballRect = ball.getBoundingClientRect();
+                      return gsap.getProperty(ball, "x") + (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
+                  },
+                  y: () => {
+                      // Because the track ends exactly as the swiper begins, their relative distance at the end of the scroll is predictable
+                      const boxRect = mobileCaseBoxes[i].getBoundingClientRect();
+                      const ballRect = ball.getBoundingClientRect();
+                      return gsap.getProperty(ball, "y") + (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
+                  },
+                  scale: 1.5,
+                  borderRadius: "50%",
+                  duration: 0.8,
+                  ease: "power2.in" // Accelerates downward
+              }, "outro");
+          });
+
+      }); 
+  });
+</script>
+
+<!-- 
+<script>
+ gsap.registerPlugin(ScrollTrigger);
+
+// Select all accordion items
+const accItems = document.querySelectorAll('.acc-item');
+
+accItems.forEach((item) => {
+  const content = item.querySelector('.acc-content');
+
+  // 1. FORCE THE INITIAL STATE TO BE FOLDED (HIDDEN)
+  // This overrides any conflicting CSS and guarantees it starts closed.
+  gsap.set(content, { 
+    height: 0, 
+    opacity: 0, 
+    overflow: "hidden" 
+  });
+
+  // 2. CREATE THE SCROLL REVEAL ANIMATION
+  gsap.to(content, {
+    height: "auto", // Unfolds to its natural height
+    opacity: 1,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: item,
+      start: "top 70%", // Triggers when the top of the heading reaches 70% of the screen
+      toggleActions: "play none none reverse", // Unfolds when scrolling down, folds back when scrolling up
+      
+      // I highly recommend uncommenting the line below while testing! 
+      // It will show you exactly where the 70% line is on your screen.
+      // markers: true 
+    }
+  });
+});
+</script> -->
+
+
+
+
+ 
+
+<script>
+  // Ensure ScrollTrigger is registered
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Use matchMedia to restrict the animation to mobile screens (max-width: 767px)
+  let mm = gsap.matchMedia();
+
+  mm.add("(max-width: 767px)", () => {
+    gsap.fromTo(".case_study_box", 
+      {
+        "--bubble-size": "0%" // Start invisible
+      },
+      {
+        "--bubble-size": "150%", // Expand to cover the box
+        ease: "none",
+        scrollTrigger: {
+          // Triggering the parent container we will define in the HTML
+          trigger: ".mobile-case-study-section", 
+          start: "top 80%",   
+          end: "center 40%",  
+          scrub: 1            
+        }
+      }
+    );
+  });
 </script>
 </body>
 

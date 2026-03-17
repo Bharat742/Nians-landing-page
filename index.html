@@ -1138,6 +1138,19 @@ body {
 </head>
 
 <body class="fast-scroll-page">
+  <script>
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
+window.onload = function () {
+  window.scrollTo(0, 0);
+};
+</script>
 
     <header>
       <div class="container">
@@ -1512,7 +1525,7 @@ body {
 </section> -->
 
 <!-- ======================Personal tabing section============================ -->
-<div class="tabing-scroll-track d-none d-md-block" style="height: 180vh; position: relative;">
+<div class="tabing-scroll-track d-block d-md-block" style="height: 180vh; position: relative;">
 <section class="personal-tabing-section sticky-top vh-100 d-flex align-items-center">
   <div class="container">
       <div class="row">
@@ -1620,7 +1633,7 @@ body {
 </div>
  
 <!-- ======================Personal tabing section mobile version============================ -->
-<section class="mobile-services-section d-block d-md-none bg-white personal-tabing-section">
+<section class="mobile-services-section d-none d-md-none bg-white personal-tabing-section">
   <div class="container px-4">
     
     <div class="mobile-service-block mb-5 acc-item">
@@ -2704,7 +2717,7 @@ slidesPerView:5,spaceBetween: 15,
       gsap.set(".acc-item, .acc-header", { overflow: "visible" });
       gsap.set(".ball", { zIndex: 9999, position: "relative" });
 
-      if (window.innerWidth <= 767) return;
+      // if (window.innerWidth <= 767) return;
 
       const accItems = document.querySelectorAll(".acc-item");
       const visuals = document.querySelectorAll(".visual-item");
