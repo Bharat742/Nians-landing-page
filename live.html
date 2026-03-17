@@ -2811,35 +2811,70 @@ body {
   </div>
 </section>
 </div> -->
+<style>
+       
+  .mobile-services-section {
+    /* Remove flex-centering to let content sit naturally at the top */
+    display: block !important; 
+    padding-top: 20px !important; /* Adjust based on your actual header height */
+  }
+
+  .mobile-service-block {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Optional: adds a thin separator */
+    padding-bottom: 10px;
+  }
+
+  .acc-header {
+    display: flex;
+    align-items: center;
+    padding: 5px 0; /* Minimal padding to save vertical space */
+    cursor: pointer;
+  }
+
+  .acc-header span {
+    font-size: 1.1rem; /* Smaller font for a cleaner look */
+    font-weight: 700;
+    margin-left: 10px;
+  }
+
+  /* Make the icons/balls smaller so the header height shrinks */
+  .dotted-slot {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .ball {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .mobile-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin: 10px 0;
+    padding-left: 45px; /* Aligns text under the heading text, not the icon */
+    font-size: 0.85rem;
+  }
+
+  .mobile-visual dotlottie-wc {
+    max-height: 180px;
+    width: 100%;
+  }
+</style> 
 
 <div class="mobile-sticky-track d-block d-md-none" style="height: 300vh; position: relative;">
   
-  <section class="mobile-services-section sticky-top bg-white personal-tabing-section" 
-           style="height: 100svh; overflow-y: auto; overflow-x: hidden; padding-top: 80px; padding-bottom: 40px; display: flex; flex-direction: column; justify-content: center;">
+<section class="mobile-services-section sticky-top bg-white personal-tabing-section" 
+         style="height: 100svh; overflow: hidden; padding-top: 80px;">
     <div class="container px-4">
       
-      <style>
-        .mobile-service-block {
-          margin-bottom: 1rem;
-        }
-        .acc-content {
-          overflow: hidden; /* Ensures folded content takes exactly 0 space */
-        }
-        .mobile-visual dotlottie-wc {
-          max-height: 25svh; /* Restricts Lottie size so content doesn't overflow the screen */
-          width: auto;
-          object-fit: contain;
-        }
-        .mobile-list {
-          margin-bottom: 0;
-          font-size: 0.9rem; /* Slightly scale down text if needed */
-        }
-      </style>
-
+      <div class="accordion-scroll-wrapper">
+      
       <div class="mobile-service-block acc-item">
         <div class="acc-header">
           <div class="dotted-slot" data-color="#FF4D4D"><div class="ball bg-red"></div></div>
-          <span style="color: #000 !important; font-weight: 600;">Paid Ads</span>
+          <span style="color: #000 !important;">Paid Ads</span>
         </div>
         <div class="acc-content">
           <ul class="mobile-list">
@@ -2859,7 +2894,7 @@ body {
       <div class="mobile-service-block acc-item">
         <div class="acc-header">
           <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
-          <span style="color: #000; font-weight: 600;">SEO </span>
+          <span style="color: #000;">SEO</span>
         </div>
         <div class="acc-content">
           <ul class="mobile-list">
@@ -2867,7 +2902,7 @@ body {
             <li>Traffic</li>
             <li>Improve Ranking</li>
             <li>Organic Growth</li>
-            <li>Landing Page Optimization</li>
+            <li>Landing Page Opt.</li>
           </ul>
           <div class="mobile-visual text-center">
             <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/seo-new-z.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
@@ -2878,12 +2913,12 @@ body {
       <div class="mobile-service-block acc-item">
         <div class="acc-header">
           <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
-          <span style="color: #000; font-weight: 600;">SMM </span>
+          <span style="color: #000;">SMM</span>
         </div>
         <div class="acc-content">
           <ul class="mobile-list">  
             <li>UGC Marketing</li>
-            <li>Meme & Trend Marketing</li>
+            <li>Meme & Trend</li>
             <li>ORM</li>
             <li>Automation</li>
             <li>Organic Marketing</li>
@@ -2894,7 +2929,7 @@ body {
           </div>
         </div>
       </div>
-
+      </div>
     </div>
   </section>
 </div>
@@ -4810,40 +4845,50 @@ new FormMultiSelect('#servicesSelect', {
               ease: "back.out(1.2)"
           }, "start");
 
-          // PHASE 2: ACCORDION 1 OPENS
-          const c1 = mobileBlocks[0].querySelector(".dotted-slot");
-          const l1 = mobileBlocks[0].querySelector(".mobile-list");
-          const v1 = mobileBlocks[0].querySelector(".mobile-visual");
+        // ... [Keep your initial setup and PHASE 1 exactly the same] ...
 
-          mobileTl.to(mobileBlocks[0].querySelector(".acc-header span"), { color: c1, duration: 0.4 }, "start+=0.5")
-                  .to(l1, { height: () => getAutoHeight(l1), opacity: 1, duration: 0.4 }, "start+=0.5")
-                  .to(v1, { height: () => getAutoHeight(v1), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "start+=0.5");
+// PHASE 2: ACCORDION 1 OPENS
+const c1 = mobileBlocks[0].querySelector(".dotted-slot");
+const l1 = mobileBlocks[0].querySelector(".mobile-list");
+const v1 = mobileBlocks[0].querySelector(".mobile-visual");
 
-          // PHASE 3: ACCORDION 1 CLOSES, 2 OPENS
-          const c2 = mobileBlocks[1].querySelector(".dotted-slot");
-          const l2 = mobileBlocks[1].querySelector(".mobile-list");
-          const v2 = mobileBlocks[1].querySelector(".mobile-visual");
+mobileTl.to(mobileBlocks[0].querySelector(".acc-header span"), { color: c1, duration: 0.4 }, "start+=0.5")
+        .to(l1, { height: () => getAutoHeight(l1), opacity: 1, duration: 0.4 }, "start+=0.5")
+        .to(v1, { height: () => getAutoHeight(v1), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "start+=0.5");
 
-          mobileTl.to(l1, { height: 0, opacity: 0, duration: 0.4 }, "step2")
-                  .to(v1, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step2")
-                  .to(mobileBlocks[0].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step2")
-                  
-                  .to(mobileBlocks[1].querySelector(".acc-header span"), { color: c2, duration: 0.4 }, "step2")
-                  .to(l2, { height: () => getAutoHeight(l2), opacity: 1, duration: 0.4 }, "step2")
-                  .to(v2, { height: () => getAutoHeight(v2), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "step2");
+// PHASE 3: ACCORDION 1 CLOSES, 2 OPENS
+const c2 = mobileBlocks[1].querySelector(".dotted-slot");
+const l2 = mobileBlocks[1].querySelector(".mobile-list");
+const v2 = mobileBlocks[1].querySelector(".mobile-visual");
 
-          // PHASE 4: ACCORDION 2 CLOSES, 3 OPENS
-          const c3 = mobileBlocks[2].querySelector(".dotted-slot");
-          const l3 = mobileBlocks[2].querySelector(".mobile-list");
-          const v3 = mobileBlocks[2].querySelector(".mobile-visual");
+mobileTl.to(l1, { height: 0, opacity: 0, duration: 0.4 }, "step2")
+        .to(v1, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step2")
+        .to(mobileBlocks[0].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step2")
+        
+        // --- NEW LINE: Slides the whole block up to make room for SEO ---
+        .to(".accordion-scroll-wrapper", { y: -70, duration: 0.4 }, "step2") 
+        
+        .to(mobileBlocks[1].querySelector(".acc-header span"), { color: c2, duration: 0.4 }, "step2")
+        .to(l2, { height: () => getAutoHeight(l2), opacity: 1, duration: 0.4 }, "step2")
+        .to(v2, { height: () => getAutoHeight(v2), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "step2");
 
-          mobileTl.to(l2, { height: 0, opacity: 0, duration: 0.4 }, "step3")
-                  .to(v2, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step3")
-                  .to(mobileBlocks[1].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step3")
-                  
-                  .to(mobileBlocks[2].querySelector(".acc-header span"), { color: c3, duration: 0.4 }, "step3")
-                  .to(l3, { height: () => getAutoHeight(l3), opacity: 1, duration: 0.4 }, "step3")
-                  .to(v3, { height: () => getAutoHeight(v3), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "step3");
+// PHASE 4: ACCORDION 2 CLOSES, 3 OPENS
+const c3 = mobileBlocks[2].querySelector(".dotted-slot");
+const l3 = mobileBlocks[2].querySelector(".mobile-list");
+const v3 = mobileBlocks[2].querySelector(".mobile-visual");
+
+mobileTl.to(l2, { height: 0, opacity: 0, duration: 0.4 }, "step3")
+        .to(v2, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step3")
+        .to(mobileBlocks[1].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step3")
+        
+        // --- NEW LINE: Slides the whole block up even further to make room for SMM ---
+        .to(".accordion-scroll-wrapper", { y: -140, duration: 0.4 }, "step3") 
+        
+        .to(mobileBlocks[2].querySelector(".acc-header span"), { color: c3, duration: 0.4 }, "step3")
+        .to(l3, { height: () => getAutoHeight(l3), opacity: 1, duration: 0.4 }, "step3")
+        .to(v3, { height: () => getAutoHeight(v3), opacity: 1, scale: 1, marginTop: 24, duration: 0.4 }, "step3");
+
+// ... [Keep PHASE 5 OUTRO exactly the same] ...
 
           // PHASE 5: OUTRO (Accordion 3 closes, Balls shoot down to Swiper)
           mobileTl.addLabel("outro", "+=0.3");
