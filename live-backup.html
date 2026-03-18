@@ -4074,7 +4074,7 @@ slidesPerView:5,spaceBetween: 15,
       let mm = gsap.matchMedia();
 
       // 2. Wrap your entire logic inside the desktop breakpoint (768px and up)
-      mm.add("(min-width: 768px)", () => {
+      // mm.add("(min-width: 768px)", () => {
           
           // Colors matching your layout
           const colors = ['#002A54', '#1DB7D1', '#FFA106'];
@@ -4189,7 +4189,7 @@ slidesPerView:5,spaceBetween: 15,
               
               // Note: GSAP automatically kills the ScrollTrigger and timeline on cleanup!
           };
-      });
+      // });
   });
 </script>
 <!-- =============personal-tabing-section script end======================= -->
@@ -4881,18 +4881,67 @@ mobileTl.to(l2, { height: 0, opacity: 0, duration: 0.4 }, "step3")
         .to(v2, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "step3")
         .to(mobileBlocks[1].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "step3")
         
-        // --- Slides the whole block up even further to make room for SMM ---
+        // --- NEW LINE: Slides the whole block up even further to make room for SMM ---
         .to(".accordion-scroll-wrapper", { y: -140, duration: 0.4 }, "step3") 
         
         .to(mobileBlocks[2].querySelector(".acc-header span"), { color: c3, duration: 0.4 }, "step3")
         .to(l3, { height: () => getAutoHeight(l3), opacity: 1, duration: 0.4 }, "step3")
         .to(v3, { height: () => getAutoHeight(v3), opacity: 1, scale: 1,/* marginTop: 24,*/ duration: 0.4 }, "step3");
 
-// ------------------------------------------------------------------
-// EVERYTHING BELOW THIS (PHASE 5) HAS BEEN REMOVED
-// By ending the timeline here, Accordion 3 stays fully open, 
-// the text stays visible, and the balls stay perfectly in place!
-// ------------------------------------------------------------------
+// ... [Keep PHASE 5 OUTRO exactly the same] ...
+
+          // // PHASE 5: OUTRO (Accordion 3 closes, Balls shoot down to Swiper)
+          // mobileTl.addLabel("outro", "+=0.3");
+
+          // mobileTl.to(l3, { height: 0, opacity: 0, duration: 0.4 }, "outro")
+          //         .to(v3, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "outro")
+          //         .to(mobileBlocks[2].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "outro");
+
+          // mobileBalls.forEach((ball, i) => {
+          //     if (!mobileCaseBoxes[i]) return;
+
+          //     // Hide borders
+          //     mobileTl.to(ball.closest('.dotted-slot'), { borderColor: "transparent", duration: 0.3 }, "outro");
+
+          //     // Calculate distance to the next section dynamically
+          //     mobileTl.to(ball, {
+          //         x: () => {
+          //             const boxRect = mobileCaseBoxes[i].getBoundingClientRect();
+          //             const ballRect = ball.getBoundingClientRect();
+          //             return gsap.getProperty(ball, "x") + (boxRect.left + boxRect.width / 2) - (ballRect.left + ballRect.width / 2);
+          //         },
+          //         y: () => {
+          //             // Because the track ends exactly as the swiper begins, their relative distance at the end of the scroll is predictable
+          //             const boxRect = mobileCaseBoxes[i].getBoundingClientRect();
+          //             const ballRect = ball.getBoundingClientRect();
+          //             return gsap.getProperty(ball, "y") + (boxRect.top + boxRect.height / 2) - (ballRect.top + ballRect.height / 2);
+          //         },
+          //         scale: 1.5,
+          //         borderRadius: "50%",
+          //         duration: 0.8,
+          //         ease: "power2.in" // Accelerates downward
+          //     }, "outro");
+          // });
+
+
+          // PHASE 5: OUTRO (Accordion 3 closes, Balls stay in place)
+mobileTl.addLabel("outro", "+=0.3");
+
+mobileTl.to(l3, { height: 0, opacity: 0, duration: 0.4 }, "outro")
+        .to(v3, { height: 0, opacity: 0, scale: 0.8, marginTop: 0, duration: 0.4 }, "outro")
+        .to(mobileBlocks[2].querySelector(".acc-header span"), { color: "#000", duration: 0.4 }, "outro");
+
+mobileBalls.forEach((ball, i) => {
+    if (!mobileCaseBoxes[i]) return;
+
+    // Hide borders (You can keep this if you want the border to fade out, or remove it if you want the border to stay)
+    mobileTl.to(ball.closest('.dotted-slot'), { borderColor: "transparent", duration: 0.3 }, "outro");
+
+    /* REMOVED: The code that was moving the balls (x and y) 
+       to the swiper below has been completely deleted here so 
+       they will stay locked in their final position.
+    */
+});
 
       }); 
   });
@@ -4935,117 +4984,6 @@ accItems.forEach((item) => {
 });
 </script> -->
 
-<script>
-  window.addEventListener("load", () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      let mm = gsap.matchMedia();
-
-      mm.add("(max-width: 767px)", () => {
-          
-          const colors = ['#002A54', '#1DB7D1', '#FFA106'];
-          const ghostBalls = [];
-
-          // Create the Ghost Balls
-          for (let i = 0; i < 3; i++) {
-              let ball = document.createElement('div');
-              ball.classList.add('ghost-ball'); 
-              ball.style.width = '30px';  
-              ball.style.height = '30px'; 
-              ball.style.backgroundColor = colors[i];
-              
-              ball.style.position = 'fixed'; 
-              ball.style.top = '0px';   
-              ball.style.left = '0px';  
-              
-              ball.style.borderRadius = '50%'; 
-              ball.style.zIndex = '999999';
-              ball.style.opacity = '0'; 
-              ball.style.pointerEvents = 'none'; 
-              
-              document.body.appendChild(ball);
-              ghostBalls.push(ball);
-          }
-
-          function initGhostTransition() {
-              const caseBoxes = [
-                  document.querySelector(".caseStudySwiper .case_study_box1"),
-                  document.querySelector(".caseStudySwiper .case_study_box2"),
-                  document.querySelector(".caseStudySwiper .case_study_box3")
-              ];
-              
-              if (!caseBoxes[0]) return;
-
-              // 1. Updated ScrollTrigger to fire at 80% completion
-              let bridgeTl = gsap.timeline({
-                  scrollTrigger: {
-                      trigger: ".mobile-sticky-track", 
-                      // Starts when the viewport bottom hits 80% of the 300vh track
-                      start: "90% bottom", 
-                      // Ends when the bottom of the track reaches the top of the screen
-                      end: "bottom top", 
-                      scrub: 1,
-                      invalidateOnRefresh: true 
-                  }
-              });
-
-              ghostBalls.forEach((ball, i) => {
-                  if (!caseBoxes[i]) return;
-
-                  bridgeTl.to(ball, { opacity: 1, duration: 0.01 }, 0);
-
-                  // 2. Updated Coordinates to match the drawn red lines (coming from top-left)
-                  bridgeTl.fromTo(ball, {
-                      scale: 1,
-                      // Start at top-left edge of the screen (x: 0, y: 0)
-                      x: (window.innerWidth * 0.1) * i, // Spreads them slightly at the top
-                      y: -20 // Starts just above the visible viewport
-                  }, {
-                      scale: 1.5,
-                      x: () => {
-                          const rect = caseBoxes[i].getBoundingClientRect();
-                          return rect.left + (rect.width / 2) - 10;
-                      },
-                      y: () => {
-                          const rect = caseBoxes[i].getBoundingClientRect();
-                          return rect.top + (rect.height / 2) - 10; 
-                      },
-                      ease: "power2.inOut", 
-                      duration: 2
-                  }, 0); 
-                  
-                  // Mix/fade into the box at the end
-                  bridgeTl.to(ball, { opacity: 0, duration: 0.5 }, "+=0.1");
-              });
-          }
-
-          setTimeout(initGhostTransition, 100);
-
-          let resizeTimer;
-          const handleResize = () => {
-              clearTimeout(resizeTimer);
-              resizeTimer = setTimeout(() => {
-                  ScrollTrigger.refresh();
-              }, 250);
-          };
-          window.addEventListener("resize", handleResize);
-
-          return () => {
-              ghostBalls.forEach(ball => {
-                  if (ball.parentNode) {
-                      ball.parentNode.removeChild(ball);
-                  }
-              });
-              window.removeEventListener("resize", handleResize);
-          };
-      });
-  });
-</script>
-
-
-
-
-
 
 
 
@@ -5069,12 +5007,141 @@ accItems.forEach((item) => {
         scrollTrigger: {
           // Triggering the parent container we will define in the HTML
           trigger: ".mobile-case-study-section", 
-          start: "top 90%",   
+          start: "top 80%",   
           end: "center 40%",  
           scrub: 1            
         }
       }
     );
+  });
+</script>
+
+
+
+<!-- ################### GHOST BALL SCRIPT######################## -->
+    <script>
+  window.addEventListener("load", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      let mm = gsap.matchMedia();
+
+      mm.add("(max-width: 767px)", () => {
+          
+          const colors = ['#FF4D4D', '#4D4DFF', '#A020F0'];
+          const ghostBalls = [];
+          const track = document.querySelector(".mobile-sticky-track");
+
+          // Double-check your class names here!
+          const caseBoxes = [
+              document.querySelector(".case_study_box1") || document.querySelector(".case-study-1"),
+              document.querySelector(".case_study_box2") || document.querySelector(".case-study-2"),
+              document.querySelector(".case_study_box3") || document.querySelector(".case-study-3")
+          ];
+
+          if (!track) return;
+          
+          // Safety check: if the boxes don't exist yet, stop the script so it doesn't get stuck
+          if (!caseBoxes[0]) {
+              console.warn("GSAP Ghost Balls: Could not find .case_study_box1 in the DOM!");
+              return; 
+          }
+
+          // Create the Ghost Balls
+          for (let i = 0; i < 3; i++) {
+              let ball = document.createElement('div');
+              ball.classList.add('ghost-ball'); 
+              ball.style.width = '20px';  
+              ball.style.height = '20px'; 
+              ball.style.backgroundColor = colors[i];
+              
+              // ABSOLUTE positioning is crucial. It anchors them to the document body!
+              ball.style.position = 'absolute'; 
+              ball.style.top = '0px';   
+              ball.style.left = '0px';  
+              
+              ball.style.borderRadius = '50%'; 
+              ball.style.zIndex = '999999';
+              ball.style.opacity = '0'; 
+              ball.style.pointerEvents = 'none'; 
+              
+              document.body.appendChild(ball);
+              ghostBalls.push(ball);
+          }
+
+          function initGhostTransition() {
+              let bridgeTl = gsap.timeline({
+                  scrollTrigger: {
+                      trigger: track, 
+                      start: "80% bottom", // Fires when you are 80% through the sticky track
+                      end: "bottom center", // Ends when the track moves past the middle of the screen
+                      scrub: 1,
+                      invalidateOnRefresh: true 
+                  }
+              });
+
+              ghostBalls.forEach((ball, i) => {
+                  if (!caseBoxes[i]) return;
+
+                  // Force visibility the exact moment the timeline starts
+                  bridgeTl.set(ball, { opacity: 1 }, 0);
+
+                  bridgeTl.fromTo(ball, {
+                      scale: 1,
+                      // Cluster them tightly at the top-left corner
+                      x: () => 10 + (i * 15), 
+                      y: () => {
+                          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                          const rect = track.getBoundingClientRect();
+                          const absoluteTop = rect.top + scrollTop;
+                          
+                          // Mathematically find where the top of the screen is at the 80% mark
+                          const scrollStart = absoluteTop + (rect.height * 0.8) - window.innerHeight;
+                          return scrollStart - 30; // Start 30px above the viewport edge
+                      }
+                  }, {
+                      scale: 1.5,
+                      x: () => {
+                          const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+                          const rect = caseBoxes[i].getBoundingClientRect();
+                          // Target the absolute center of the box horizontally
+                          return rect.left + scrollLeft + (rect.width / 2) - 10;
+                      },
+                      y: () => {
+                          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                          const rect = caseBoxes[i].getBoundingClientRect();
+                          // Target the absolute center of the box vertically
+                          return rect.top + scrollTop + (rect.height / 2) - 10; 
+                      },
+                      ease: "power2.inOut", 
+                      duration: 1
+                  }, 0); 
+                  
+                  // Fade out seamlessly into the target section
+                  bridgeTl.to(ball, { opacity: 0, duration: 0.1 }, "-=0.1");
+              });
+          }
+
+          // Slight delay ensures the DOM completely finishes drawing before calculating coordinates
+          setTimeout(initGhostTransition, 100);
+
+          let resizeTimer;
+          const handleResize = () => {
+              clearTimeout(resizeTimer);
+              resizeTimer = setTimeout(() => {
+                  ScrollTrigger.refresh();
+              }, 250);
+          };
+          window.addEventListener("resize", handleResize);
+
+          return () => {
+              ghostBalls.forEach(ball => {
+                  if (ball.parentNode) {
+                      ball.parentNode.removeChild(ball);
+                  }
+              });
+              window.removeEventListener("resize", handleResize);
+          };
+      });
   });
 </script>
 </body>
