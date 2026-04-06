@@ -1395,7 +1395,7 @@ window.onload = function () {window.scrollTo(0, 0);};
                   </div>
               </div>
 
-              <div class="acc-item">
+              <!-- <div class="acc-item">
                   <div class="acc-header">
                       <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
                       <span style="color: #000;">SEO </span>
@@ -1426,7 +1426,7 @@ window.onload = function () {window.scrollTo(0, 0);};
                           <li>Influencer Marketing </li>
                       </ul>
                   </div>
-              </div>
+              </div> -->
 
           </div>
 
@@ -1445,10 +1445,9 @@ window.onload = function () {window.scrollTo(0, 0);};
                     ></dotlottie-wc>
                       </div>
                   </div>
-                  <div class="visual-item">
+                  <!-- <div class="visual-item">
                       <div class="image-container">
-                          <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20210908-071821lf30_editor_l2vr3l6s-1 (1).lottie" alt="Tech"> -->
-                           <dotlottie-wc 
+                            <dotlottie-wc 
                       src="https://nians.com/wp-content/uploads/2026/03/seo-new-z.lottie" 
                       speed="1"  
                       loop 
@@ -1461,8 +1460,7 @@ window.onload = function () {window.scrollTo(0, 0);};
                   </div>
                   <div class="visual-item">
                       <div class="image-container">
-                          <!-- <img src="./https://nians.com/wp-content/uploads/2026/03/20210909-074915lf30_editor_fy6tfzer-1 (1).lottie" alt="Marketing"> -->
-                          <dotlottie-wc 
+                           <dotlottie-wc 
                       src="https://nians.com/wp-content/uploads/2026/03/smm.lottie" 
                       speed="1"  
                       loop 
@@ -1471,7 +1469,7 @@ window.onload = function () {window.scrollTo(0, 0);};
                       class="mx-auto d-block"
                     ></dotlottie-wc>
                       </div>
-                  </div>
+                  </div> -->
               </div>
           </div>
 
@@ -1532,11 +1530,8 @@ window.onload = function () {window.scrollTo(0, 0);};
       </div>
 		</div>
     </div>
-    <div class="mobile-service-block   acc-item">
-      <!-- <div class="d-flex align-items-center mb-3">
-        <div class="mobile-icon shadow-sm" style="background-color: #4D4DFF;"></div>
-        <h2 class="mobile-title">SEO</h2>
-      </div> -->
+    <!-- <div class="mobile-service-block   acc-item">
+       
       <div class="acc-header">
                       <div class="dotted-slot" data-color="#4D4DFF"><div class="ball bg-blue"></div></div>
                       <span style="color: #000;">SEO </span>
@@ -1553,12 +1548,9 @@ window.onload = function () {window.scrollTo(0, 0);};
         <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/seo-new-z.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
       </div>
 		</div>
-    </div>
-    <div class="mobile-service-block acc-item">
-      <!-- <div class="d-flex align-items-center mb-3">
-        <div class="mobile-icon shadow-sm" style="background-color: #A020F0;"></div>
-        <h2 class="mobile-title">SMM</h2>
-      </div> -->
+    </div> -->
+    <!-- <div class="mobile-service-block acc-item">
+       
       <div class="acc-header">
                       <div class="dotted-slot" data-color="#A020F0"><div class="ball bg-purple"></div></div>
                       <span style="color: #000;">SMM </span>
@@ -1576,7 +1568,7 @@ window.onload = function () {window.scrollTo(0, 0);};
         <dotlottie-wc src="https://staging-9a67-technianscom.wpcomstaging.com/wp-content/uploads/2026/03/smm.lottie" speed="1" loop autoplay class="mx-auto d-block mobile-lottie"></dotlottie-wc>
       </div>
 		</div>
-    </div>
+    </div> -->
 		  </div>
   </div>
 </section>
@@ -1763,7 +1755,7 @@ window.onload = function () {window.scrollTo(0, 0);};
               <div class="case_study_box case_study_box3 h-100">
 				  <div class="d-flex" style="flex-direction: row;justify-content: end;"> <span class="case_study_box_ball3"></span> </div>
 <!--                 <h1>Faces Canada</h1> -->
-				  <img src="https://nians.com/wp-content/uploads/2026/03/housing-com-logo.webp" alt="img" class="img-fluid brand-logo" style="    width: 220px;
+				  <img src="https://nians.com/wp-content/uploads/2026/03/housing-com-logo.webp" alt="img" class="img-fluid brand-logo" style="width: 220px;
     height: auto;
     margin-top: unset !important;" loading="lazy">
                 <div class="campaign_stats row text-center mt-3 mb-3">
@@ -2728,131 +2720,16 @@ const hideBalls = document.querySelectorAll(".starting-balls-container .three-ba
 	});
 </script>
 
-
+<!-- SCRIPT for ball on desktop added on live -->
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // 1. Initialize GSAP MatchMedia
-      let mm = gsap.matchMedia();
-
-      // 2. Wrap your entire logic inside the desktop breakpoint (768px and up)
-      mm.add("(min-width: 768px)", () => {
-          
-          // Colors matching your layout
-          const colors = ['#002A54', '#FFA106', '#1DB7D1'];
-          const ghostBalls = [];
-
-          // Create the Ghost Balls
-          for (let i = 0; i < 3; i++) {
-              let ball = document.createElement('div');
-              ball.classList.add('ghost-ball'); 
-              ball.style.width = '30px';  
-              ball.style.height = '30px'; 
-              ball.style.backgroundColor = colors[i];
-              
-              ball.style.position = 'fixed'; 
-              ball.style.top = '0px';   
-              ball.style.left = '0px';  
-              
-              ball.style.borderRadius = '7px'; 
-              ball.style.zIndex = '999999';
-              ball.style.opacity = '0'; // Keeps them completely hidden before scrolling
-              ball.style.pointerEvents = 'none'; 
-              
-              document.body.appendChild(ball);
-              ghostBalls.push(ball);
-          }
-
-          function initGhostTransition() {
-              // CHANGE THESE to the classes/IDs of your bottom semi-circle elements
-              const endTargets = [
-                  document.querySelector(".case_study_box_ball1"), // Replace with your actual class
-                  document.querySelector(".case_study_box_ball2"), // Replace with your actual class
-                  document.querySelector(".case_study_box_ball3")      // Replace with your actual class
-              ];
-              
-              // Where they spawn from (Left side text elements)
-              const startTargets = document.querySelectorAll(".acc-header");
-
-              if (!endTargets[0] || !startTargets.length) return;
-
-              // The scroll timeline for the jump
-              let bridgeTl = gsap.timeline({
-                  scrollTrigger: {
-                      trigger: ".tabing-scroll-track", 
-                      start: "bottom 80%", 
-                      endTrigger: endTargets[0], // End when the first bottom target is reached
-                      end: "top 30%", 
-                      scrub: 1,
-                      invalidateOnRefresh: true 
-                  }
-              });
-
-              // Animate each ghost ball at the EXACT SAME TIME
-              ghostBalls.forEach((ball, i) => {
-                  if (!endTargets[i] || !startTargets[i]) return;
-
-                  // Instantly make them visible ONLY when the scroll timeline begins
-                  bridgeTl.to(ball, { opacity: 1, duration: 0.01 }, 0);
-
-                  bridgeTl.fromTo(ball, {
-                      scale: 1,
-                      borderRadius: "7px",
-                      x: () => {
-                          const rect = startTargets[i].getBoundingClientRect();
-                          return rect.left + 30; 
-                      },
-                      y: () => {
-                          const rect = startTargets[i].getBoundingClientRect();
-                          return rect.top + (rect.height / 2) - 15; 
-                      }
-                  }, {
-                      scale: 1.5,
-                      borderRadius: "50%",
-                      x: () => {
-                          const rect = endTargets[i].getBoundingClientRect();
-                          // Keep horizontal center alignment
-                          return rect.left + (rect.width / 2) - 15; 
-                      },
-                      y: () => {
-                          const rect = endTargets[i].getBoundingClientRect();
-                          // CHANGED: Aim for the top edge of the semi-circle instead of the middle
-                          return rect.top - 10; 
-                      },
-                      ease: "power1.out", 
-                      duration: 2
-                  }, 0); 
-                  
-                  // CHANGED: Instantly disappear just before it finishes the movement into the space
-                  bridgeTl.to(ball, { opacity: 0, duration: 0.01 }, "-=0.15");
-              });
-          }
-
-          initGhostTransition();
-
-          // Refresh math on window resize
-          let resizeTimer;
-          const handleResize = () => {
-              clearTimeout(resizeTimer);
-              resizeTimer = setTimeout(() => {
-                  ScrollTrigger.refresh();
-              }, 250);
-          };
-          window.addEventListener("resize", handleResize);
-
-          // 3. CLEANUP FUNCTION (Runs automatically if window drops below 768px)
-          return () => {
-              ghostBalls.forEach(ball => {
-                  if (ball.parentNode) {
-                      ball.parentNode.removeChild(ball);
-                  }
-              });
-              window.removeEventListener("resize", handleResize);
-          };
-      });
-  });
+document.addEventListener("DOMContentLoaded", () => { gsap.registerPlugin(ScrollTrigger);let mm = gsap.matchMedia();mm.add("(min-width: 768px)", () => {const colors = ['#002A54', '#FFA106', '#1DB7D1'];const ghostBalls = [];const endTargets = [document.querySelector(".case_study_box_ball1"), document.querySelector(".case_study_box_ball2"), document.querySelector(".case_study_box_ball3") ];const startTargets = document.querySelectorAll(".acc-header");if (startTargets.length === 0) return;
+let bridgeTl = gsap.timeline({scrollTrigger: {trigger: ".tabing-scroll-track", start: "bottom 80%", endTrigger: endTargets[0] || ".tabing-scroll-track", end: "top 30%", scrub: 1,invalidateOnRefresh: true }});endTargets.forEach((endTarget, i) => {
+if (!endTarget) return; const startTarget = startTargets[i] || startTargets[startTargets.length - 1];let ball = document.createElement('div');ball.classList.add('ghost-ball'); ball.style.width = '30px';  ball.style.height = '30px';  ball.style.backgroundColor = colors[i % colors.length];ball.style.position = 'fixed'; ball.style.top = '0px';   ball.style.left = '0px';  ball.style.borderRadius = '7px'; ball.style.zIndex = '999999';ball.style.opacity = '0';  ball.style.pointerEvents = 'none'; document.body.appendChild(ball); ghostBalls.push(ball);
+bridgeTl.to(ball, { opacity: 1, duration: 0.01 }, 0);bridgeTl.fromTo(ball, {scale: 1,borderRadius: "7px",x: () => {const rect = startTarget.getBoundingClientRect();return rect.left + 30; },y: () => {const rect = startTarget.getBoundingClientRect();return rect.top + (rect.height / 2) - 15; }}, {scale: 1.5,borderRadius: "50%",x: () => {const rect = endTarget.getBoundingClientRect();return rect.left + (rect.width / 2) - 15; },
+y: () => {const rect = endTarget.getBoundingClientRect(); return rect.top - 10; },ease: "power1.out", duration: 2}, 0); bridgeTl.to(ball, { opacity: 0, duration: 0.01 }, "-=0.15");});
+let resizeTimer;const handleResize = () => {clearTimeout(resizeTimer);resizeTimer = setTimeout(() => {ScrollTrigger.refresh();}, 250);};window.addEventListener("resize", handleResize);
+return () => {ghostBalls.forEach(ball => { if (ball.parentNode) { ball.parentNode.removeChild(ball);}}); window.removeEventListener("resize", handleResize);};});});
 </script>
 <!-- =============personal-tabing-section script end======================= -->
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Fill Cards</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+   <style>
+  :root {
+  --bg-dark-blue: #1c2042;
+  --brand-red: #cc0000;
+  --text-gray: #a0a4c0;
+  --hover-final-bg: #ffffff; /* The color it changes to after filling */
+  --hover-final-text: #1c2042; /* Dark text so it's readable on white */
+}
+
+.custom-fill-card {
+  background-color: var(--bg-dark-blue);
+  color: white;
+  /* border-top: 6px solid var(--brand-red); */
+  border-radius: 6px;
+  position: relative; 
+  overflow: hidden; 
+  z-index: 1; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* --- 1. THE HIDDEN BACKGROUND (NORMAL STATE) --- */
+.custom-fill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--brand-red);
+  z-index: -1;
+  /* When mouse LEAVES: Shrink height and revert color at the same time */
+  transition: height 0.4s ease, background-color 0.4s ease; 
+}
+
+/* --- 2. THE HOVER SEQUENCE --- */
+.custom-fill-card:hover::before {
+  height: 100%; /* Step 1: Fill the card */
+  background-color: var(--hover-final-bg); /* Step 2: Change to white */
+  
+  /* CRITICAL: The "0.4s" at the end of the second property is the DELAY.
+     It waits for the 0.4s height animation to finish before changing the color. */
+  transition: height 0.4s ease, background-color 0.3s ease 0.4s; 
+}
+
+.custom-fill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* --- 3. TEXT STYLING --- */
+.card-number, 
+.text-muted-custom, 
+.card-title, 
+.investment-info h2 {
+  transition: color 0.4s ease; 
+}
+
+.card-number {
+  color: var(--brand-red);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.text-muted-custom {
+  color: var(--text-gray);
+}
+
+/* --- 4. TEXT COLOR DELAY (MATCHING THE BACKGROUND) --- */
+/* Wait 0.4s before turning the text dark, so it matches the white background */
+.custom-fill-card:hover .card-number,
+.custom-fill-card:hover .text-muted-custom,
+.custom-fill-card:hover .card-title,
+.custom-fill-card:hover .investment-info h2 {
+  color: var(--hover-final-text);
+  transition: color 0.3s ease 0.4s; /* 0.4s delay applied here too */
+}
+   </style>
+</head>
+<body class="bg-light pt-5">
+
+  <div class="container py-5">
+    <div class="row g-4">
+      
+      <div class="col-md-6 col-lg-3">
+        <div class="custom-fill-card h-100  d-flex flex-column">
+          <div class="p-4" style="background-color: #cc0000; border-radius: 7px;">
+            <div class="card-number mb-3">01</div>
+            <h4 class="card-title fw-bold mb-4">LordsPath Basic</h4>
+          </div>
+          
+          <div class="setup-info mb-4 px-4">
+            <p class="text-muted-custom mb-1">Setup: Entry-Level Unit</p>
+            <p class="text-muted-custom mb-0">Space: 450 sq ft</p>
+          </div>
+          
+          <div class="investment-info mb-4 px-4">
+            <h2 class="fw-bold mb-0">₹5 Lakh <span class="fs-5 fw-normal">+ GST</span></h2>
+            <small class="text-muted-custom">Total Investment</small>
+          </div>
+          
+          <p class="text-muted-custom small mt-auto mb-0 px-4">
+            Low entry barrier. Designed for fast breakeven in tight markets. The smart start for first-time operators.
+          </p>
+        </div>
+      </div>
+
+      </div>
+  </div>
+
+</body>
+</html>

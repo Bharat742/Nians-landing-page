@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css">
+
+
+    <style>
+        /* ================================================================= */
+       :root {
+  --bg-dark-blue: #1c2042;
+  --brand-red: #cc0000;
+  --text-gray: #a0a4c0;
+  --hover-final-bg: #ffffff; 
+  --hover-final-text: #1c2042; 
+}
+
+.custom-fill-card {
+  background-color: var(--bg-dark-blue);
+  color: white;
+  border-top: 6px solid var(--brand-red);
+  border-radius: 6px;
+  position: relative; 
+  overflow: hidden; 
+  z-index: 1; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Base Hidden Background */
+.custom-fill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--brand-red);
+  z-index: -1;
+  transition: height 0.4s ease, background-color 0.3s ease; 
+}
+
+/* Text Base Transitions */
+.card-number, .text-muted-custom, .card-title, .investment-info h2 {
+  transition: color 0.3s ease; 
+}
+.card-number { color: var(--brand-red); font-size: 1.5rem; font-weight: 800; }
+.text-muted-custom { color: var(--text-gray); }
+
+/* --- JS TRIGGERED STATE 1: FILLING --- */
+.custom-fill-card.is-filling {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+.custom-fill-card.is-filling::before {
+  height: 100%; /* Slides the red background down */
+}
+
+/* --- JS TRIGGERED STATE 2: FILLED (COLORS CHANGE) --- */
+.custom-fill-card.is-filled::before {
+  background-color: var(--hover-final-bg);
+}
+.custom-fill-card.is-filled .card-number,
+.custom-fill-card.is-filled .text-muted-custom,
+.custom-fill-card.is-filled .card-title,
+.custom-fill-card.is-filled .investment-info h2 {
+  color: var(--hover-final-text);
+}
+        /* ================================================================= */
+ 
+    .opportunity-section {background-color: #ffffff;padding: 80px 0;font-family: 'Arial', sans-serif;  overflow: hidden; }
+    .opportunity-title {color: #cd2026;  font-size: 3.5rem;font-weight: 900;line-height: 1.2;text-transform: uppercase;margin-bottom: 20px; letter-spacing: -2%;}
+    .opportunity-title::after {content: "";display: block;width: 150px;height: 3px;background-color: #cd2026;margin-top: 10px;}
+    /* .title-divider { width: 80px; height: 4px; background-color: #cd2026; margin-bottom: 25px;} */
+    .opportunity-description {font-size: 24px;color: #000000;font-weight: 600;line-height: 1.5;max-width: 90%;}
+    .image-wrapper {text-align: right;}
+    .image-wrapper img {max-height: 550px;object-fit: contain;}
+    /* Responsive adjustments for tablets and mobile */
+    @media (max-width: 991px) {
+      .opportunity-section {padding: 50px 0;}
+      .opportunity-title {font-size: 2.5rem;}
+      .opportunity-description {font-size: 1.2rem;max-width: 100%;}
+      .image-wrapper {text-align: center; margin-top: 40px;}
+    }
+
+
+
+        /* .swiper-button-next:after, .swiper-button-prev:after{font-size: 15px !important; position: absolute !important;} */
+/* Study Solution Section css */
+.study-solution-section {background: #F2F2F2;}
+.study-solution-section .main-title h2,.study-solution-section .main-title p{color: #110053;}
+.study-solution-section .study-swiper-container{padding-top: 50px;position: relative;margin-top: -50px;}
+.study-solution-section .study-swiper-container .slide-box {display: flex;flex-direction: column;align-items: center;gap: 30px;text-align: center;position: relative;}
+
+.study-solution-section .study-swiper-container .slide-box .hover-btn{ font-weight: 700; font-size: 10px;  background-color: #F08000;box-shadow: #B56100;color: #fff;padding: 4px 10px;border-bottom: 3px solid #B56100;border-radius: 4px;border: unset;visibility: hidden;opacity: 0;box-shadow: 0px 4px 0px #B56100; margin-bottom: 5px;}
+.study-solution-section .study-swiper-container .slide-box:hover .hover-btn{visibility: visible;opacity: 1;}
+
+/* Diamond */
+.study-solution-section .study-swiper-container .diamond {width: 70px;height: 70px;transform: rotate(45deg);display: flex;align-items: center;justify-content: center;}
+.study-solution-section .study-swiper-container .content{display: flex;flex-direction: column;align-items: center;justify-content: flex-start;height: 200px;}
+.study-solution-section .study-swiper-container .gif-image{height: 180px;}
+
+/* Content */
+.study-solution-section .study-swiper-container .content h6 { color: #110053;font-weight: 700; font-size: 19px;  text-align: center;text-transform: capitalize;}
+.study-solution-section .study-swiper-container .content p { color: #110053;max-width: 200px;font-weight: 600; font-size: 12px;  text-align: center;margin-bottom: 5px;}
+
+/* GIF */
+.study-solution-section .study-swiper-container .gif {width: 100px;}
+.study-solution-section .study-swiper-container .studySwiper .swiper-wrapper {
+	transition-timing-function: linear !important;height: fit-content;
+}
+.border_line{position: absolute;left:0;right: 0;top: 65px;bottom: 0;margin: auto;width: 100%;height: 5px;background: #F08000;z-index: 0;}
+.border_line::before, .border_line::after {content: "";position: absolute;width: 35px;height: 35px;border-radius: 50%;background: #F08000;top: -16px;}
+.border_line::after {right: -0px;}
+.border_line::before {left: -0px;}
+/* Alternate Layout */
+.study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box {flex-direction: column-reverse;} 
+.study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .gif-image{display: flex;align-items: flex-end;}
+.study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .diamond{top: 12px; position: relative;}
+.study-solution-section .study-swiper-container .tilted-square {width: 75px;height: 75px; background: #FF5757;position: absolute;display: flex;justify-content: center;align-items: center;z-index: 1}
+.study-solution-section .study-swiper-container .inner-square {width: 65px;height: 65px;background-color: #FF5757;border: 1px solid white;display: flex;justify-content: center;align-items: center;}
+.study-solution-section .study-swiper-container .tilted-square img {height: 50px;transform: rotate(-45deg);align-items: center;justify-content: center;text-align: center;color: white;}
+.study-solution-section .study-swiper-container .gif-image .gif {filter: brightness(0) saturate(100%) 
+          invert(55%) sepia(92%) 
+          saturate(1100%) hue-rotate(-10deg) 
+          brightness(95%) contrast(95%);}
+.study-solution-section{padding-top: 170px !important;}
+.stats-section {margin-bottom: -90px;}
+
+
+
+        @media (min-width: 992px) and (max-width: 1240px){
+  .study-solution-section .study-swiper-container .content h6{font-size: 16px;}
+  .study-solution-section .study-swiper-container .content p{font-weight: 500; font-size: 11px;}
+  .study-solution-section .study-swiper-container .diamond{width: 60px; height: 60px;}
+  .mso-worth-section.study-solution-section .study-swiper-container .diamond{top: -55px; position: relative;}
+  .mso-worth-section.study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .content{padding-top: 0px;}
+  .mso-worth-section .study-swiper-container .content {height: 220px !important;justify-content: flex-start !important;}
+  .border_line{top: -15px;}
+  .mso-worth-section.study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .content{justify-content: flex-start !important;}
+  .study-solution-section .study-swiper-container .tilted-square{width: 65px; height: 65px;}
+  .study-solution-section .study-swiper-container .inner-square{height: 55px;width: 55px;}
+  .study-solution-section .study-swiper-container .tilted-square img{height: 38px;}
+  .study-solution-section .study-swiper-container .content{height: 150px;justify-content: flex-end;}
+  .study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .content{justify-content: flex-start;}
+  .study-solution-section .study-swiper-container .gif-image {height: 137px;}
+  .studySwiper .swiper-button-prev.study_prev{left: -9px; margin-top: -49px;}
+  .homepage-study-section .studySwiper .swiper-button-prev.study_prev{left: -9px; margin-top: -49px;}
+  .studySwiper .swiper-button-next.study_next{right: -9px; margin-top: -49px;}
+  .homepage-study-section .studySwiper .swiper-button-next.study_next{right: -9px; margin-top: -49px;}
+}
+
+@media (min-width: 1241px) and (max-width: 1399px){
+  .homepage-study-section .border_line{top: 70px !important;}
+  .border_line{top: -20px;}
+  .study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .diamond{top: 20px;}
+  .study-solution-section .study-swiper-container .content h6{font-size: 15px;}
+  .study-solution-section .study-swiper-container .content p{font-weight: 500; font-size: 12px;}
+  .study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .content{padding-top: 12px;}
+  .study-solution-section.mso-worth-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .diamond{top:-55px;}
+  .study-solution-section.mso-worth-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .content{padding-top:0px;margin-top: -50px;}
+  .study-solution-section.mso-worth-section .study-swiper-container .swiper-slide:nth-child(odd) .slide-box .diamond{top:-15px;position: relative;}
+  .study-solution-section .study-swiper-container .diamond{width: 70px; height: 70px;}
+  .study-solution-section .study-swiper-container .tilted-square{width: 75px; height: 75px;}
+  .study-solution-section .study-swiper-container .inner-square{height: 65px;width: 65px;}
+  .study-solution-section .study-swiper-container .tilted-square img{height: 45px;}
+  .study-solution-section .study-swiper-container .content{height: 150px;justify-content: flex-start;}
+  .mso-worth-section .study-swiper-container .content {height: 130px !important;}
+  .study-solution-section .study-swiper-container .gif-image {height: 130px;}
+  .study-solution-section .study-swiper-container .swiper-slide:nth-child(even) .slide-box .gif-image{position: relative;top: 20px;}
+  .study-solution-section .study-swiper-container .swiper-slide:nth-child(odd) .slide-box .content{justify-content: flex-end;}
+
+}
+     </style>
+</head>
+<body>
+    <section class="study-solution-section homepage-study-section">
+  <div class="container main-title text-center mb-lg-5">
+    <h2 class="section-title">Your Section Title Here</h2>
+    <p>Your section description or subtitle goes right here.</p>
+  </div>
+
+  <div class="container study-swiper-container">
+    <div class="border_line"></div>
+    <div class="swiper studySwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 1</h6>
+              <p>This is the content description for the first slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 2</h6>
+              <p>This is the content description for the second slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 2</h6>
+              <p>This is the content description for the second slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 2</h6>
+              <p>This is the content description for the second slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 2</h6>
+              <p>This is the content description for the second slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 2</h6>
+              <p>This is the content description for the second slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="slide-box">
+            <div class="content">
+              <h6>Slide Title 2</h6>
+              <p>This is the content description for the second slide.</p>
+              <a class="hover-btn" href="#">Read More</a>
+            </div>
+
+            <div class="diamond">
+              <div class="tilted-square">
+                <div class="inner-square">
+                  <img src="https://mso.nians.in/wp-content/uploads/2025/12/degree-center.png" class="img-fluid" alt="Center Image">
+                </div>
+              </div>
+            </div>
+
+            <div class="gif-image">
+              <img src="https://mso.nians.in/wp-content/uploads/2026/01/gif-7.gif" class="gif" alt="Animation">
+            </div>
+          </div>
+        </div>
+        
+        </div>
+      
+      <div class="swiper-btn">
+        <div class="swiper-button-next study_next"></div>
+        <div class="swiper-button-prev study_prev"></div>   
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================================================================ -->
+<section class="opportunity-section">
+    <div class="container">
+      <div class="row align-items-center">
+        
+        <div class="col-lg-6 col-md-12">
+          <h2 class="opportunity-title">
+            A Stable and<br>
+            Scalable<br>
+            Opportunity
+          </h2>
+          
+          <div class="title-divider"></div>
+          
+          <p class="opportunity-description">
+            A Demand-Driven Opportunity<br> 
+            With Strong Support, Enabling Breakeven<br> 
+            In As Early As Six Months.
+          </p>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+          <div class="image-wrapper">
+            <img src="assets/man-pointing.png" alt="Man pointing at the text" class="img-fluid">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<!-- ================================================================ -->
+
+
+<!-- ================================================================ -->
+<section>
+    <div class="container py-5">
+    <div class="row g-4">
+      
+     <div class="col-md-6 col-lg-3">
+  <div class="custom-fill-card js-hover-card h-100 p-4 d-flex flex-column">
+    <div class="card-number mb-3">01</div>
+    <h4 class="card-title fw-bold mb-4">LordsPath Basic</h4>
+    
+    <div class="setup-info mb-4">
+      <p class="text-muted-custom mb-1">Setup: Entry-Level Unit</p>
+      <p class="text-muted-custom mb-0">Space: 450 sq ft</p>
+    </div>
+    
+    <div class="investment-info mb-4">
+      <h2 class="fw-bold mb-0">₹5 Lakh <span class="fs-5 fw-normal">+ GST</span></h2>
+      <small class="text-muted-custom">Total Investment</small>
+    </div>
+  </div>
+</div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="custom-pricing-card h-100 p-4 d-flex flex-column">
+          <div class="card-number mb-3">02</div>
+          <h4 class="card-title fw-bold mb-4">LordsPath Essential</h4>
+          
+          <div class="setup-info mb-4">
+            <p class="mb-1">Setup: Smart Mid-level</p>
+            <p class="mb-0">Space: 700 sq ft</p>
+          </div>
+          
+          <div class="investment-info mb-4">
+            <h2 class="fw-bold mb-0">₹7 Lakh <span class="fs-5 fw-normal">+ GST</span></h2>
+            <small class="investment-subtitle">Total Investment</small>
+          </div>
+          
+          <p class="card-description small mt-auto mb-0">
+            A complete routine and preventive health offering. The right balance of cost, capability and community impact.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="custom-pricing-card h-100 p-4 d-flex flex-column">
+          <div class="card-number mb-3">03</div>
+          <h4 class="card-title fw-bold mb-4">LordsPath Pro</h4>
+          
+          <div class="setup-info mb-4">
+            <p class="mb-1">Setup: Advanced Lab</p>
+            <p class="mb-0">Space: 1200 sq ft</p>
+          </div>
+          
+          <div class="investment-info mb-4">
+            <h2 class="fw-bold mb-0">₹15Lakh <span class="fs-5 fw-normal">+ GST</span></h2>
+            <small class="investment-subtitle">Total Investment</small>
+          </div>
+          
+          <p class="card-description small mt-auto mb-0">
+            Expanded test menu and high scalability. Built for partners who work high volume and serious returns.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="custom-pricing-card h-100 p-4 d-flex flex-column">
+          <div class="card-number mb-3">04</div>
+          <h4 class="card-title fw-bold mb-4">LordsPath Elite</h4>
+          
+          <div class="setup-info mb-4">
+            <p class="mb-1">Setup: Flagship Centre</p>
+            <p class="mb-0">Space: 1500 sq ft</p>
+          </div>
+          
+          <div class="investment-info mb-4">
+            <h2 class="fw-bold mb-0">₹25Lakh <span class="fs-5 fw-normal">+ GST</span></h2>
+            <small class="investment-subtitle">Total Investment</small>
+          </div>
+          
+          <p class="card-description small mt-auto mb-0">
+            A premium, full-service diagnostics centre with maximum revenue potential. The benchmark for healthcare in your city.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<script>
+  const studySwiper = new Swiper(".studySwiper", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    loop: false,
+    navigation: {
+      nextEl: ".study_next",
+      prevEl: ".study_prev",
+    },
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    speed: 1500,
+    breakpoints: {
+      0: {
+        slidesPerView: 1
+      },
+      576: {
+        slidesPerView: 2
+      },
+      992: {
+        slidesPerView: 4
+      }
+    }
+  });
+
+  // Stop autoplay initially
+  studySwiper.autoplay.stop();
+
+  // Intersection Observer
+  const swiperSection = document.querySelector(".studySwiper");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          studySwiper.autoplay.start();
+        } else {
+          studySwiper.autoplay.stop();
+        }
+      });
+    },
+    {
+      threshold: 0.4 // 40% visible
+    }
+  );
+
+  observer.observe(swiperSection);
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.js-hover-card');
+
+  cards.forEach(card => {
+    let fillTimeout;
+
+    card.addEventListener('mouseenter', () => {
+      // Step 1: Start the red background slide-down
+      card.classList.add('is-filling');
+      
+      // Step 2: Wait 400ms (matching the CSS transition time), then change colors
+      fillTimeout = setTimeout(() => {
+        card.classList.add('is-filled');
+      }, 400); 
+    });
+
+    card.addEventListener('mouseleave', () => {
+      // Clear the timer immediately if the user moves the mouse away quickly
+      clearTimeout(fillTimeout);
+      
+      // Revert all classes to return to the original state
+      card.classList.remove('is-filled');
+      card.classList.remove('is-filling');
+    });
+  });
+});
+</script>
+</body>
+</html>

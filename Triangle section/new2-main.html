@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LordsPath Card Animation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+   <style>
+    :root {
+  --lp-blue: #3b4582;     /* Base card blue */
+  --lp-red: #da292e;      /* Header red */
+  --lp-white: #ffffff;
+  --lp-dark-text: #1a1e3b; /* Color text turns to when bg is white */
+  --transition-speed: 0.4s;
+}
+
+.lordspath-card {
+  position: relative;
+  width: 340px;
+  background-color: var(--lp-blue);
+  border-radius: 12px;
+  overflow: hidden;
+  color: var(--lp-white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lordspath-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+/* --- THE RED HEADER BACKGROUND --- */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 125px; /* Exactly covers the header section normally */
+  background-color: var(--lp-red);
+  z-index: 1;
+  /* We transition height and color. JS controls WHEN the color changes */
+  transition: height var(--transition-speed) ease-in-out, background-color 0.3s ease;
+}
+
+/* --- CONTENT POSITIONING --- */
+.card-content {
+  position: relative;
+  z-index: 2; /* Sits on top of the animated background */
+  padding: 30px;
+}
+
+/* Typography & Layout */
+.card-number { font-size: 1.2rem; }
+.card-title { font-size: 1.6rem; letter-spacing: 0.5px; }
+
+/* The thin white lines under the headings */
+.title-divider {
+  width: 60px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.investment-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.detail-label, .investment-label { opacity: 0.9; }
+.card-description { opacity: 0.85; line-height: 1.5; }
+
+/* JS will toggle this class on the text elements to turn them dark */
+.text-dark-mode {
+  color: var(--lp-dark-text) !important;
+}
+.divider-dark-mode {
+  background-color: var(--lp-dark-text) !important;
+}
+   </style>
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+
+  <div class="lordspath-card js-interactive-card">
+    
+    <div class="animated-bg"></div>
+
+    <div class="card-content">
+      
+      <div class="card-header-section mb-4">
+        <div class="card-number mb-2">01</div>
+        <h3 class="card-title fw-bold">LordsPath Basic</h3>
+        <div class="title-divider"></div>
+      </div>
+
+      <div class="setup-details mb-4">
+        <div class="d-flex gap-1">
+          <span class="detail-label">Setup:</span> 
+          <span class="detail-value fw-bold">Entry-Level Unit</span>
+        </div>
+        <div class="d-flex gap-1">
+          <span class="detail-label">Space:</span> 
+          <span class="detail-value fw-bold">450 sq ft</span>
+        </div>
+      </div>
+
+      <div class="investment-section mb-4">
+        <h2 class="investment-price fw-bold mb-0">₹5 Lakh <span class="fs-5 fw-normal">+ GST</span></h2>
+        <p class="investment-label mb-2">Total Investment</p>
+        <div class="investment-divider"></div>
+      </div>
+
+      <p class="card-description small mb-0">
+        Low entry barrier. Designed for fast breakeven in tight markets. The smart start for first-time operators.
+      </p>
+
+    </div>
+  </div>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const card = document.querySelector('.js-interactive-card');
+  const bg = card.querySelector('.animated-bg');
+  
+  // Select all text and divider elements that need to change color
+  const textElements = card.querySelectorAll('.card-number, .card-title, .detail-label, .detail-value, .card-description');
+  const dividers = card.querySelectorAll(' .investment-divider');
+  
+  let fillTimeout; // Keeps track of our timer
+
+  card.addEventListener('mouseenter', () => {
+    // 1. Clear any pending timeouts just in case
+    clearTimeout(fillTimeout);
+    
+    // 2. Ensure background is red and text is white as it begins to slide down
+    bg.style.backgroundColor = 'var(--lp-red)';
+    textElements.forEach(el => el.classList.remove('text-dark-mode'));
+    dividers.forEach(el => el.classList.remove('divider-dark-mode'));
+
+    // 3. Start the slide down animation
+    bg.style.height = '100%';
+
+    // 4. Wait exactly 400ms (matching CSS transition), THEN change colors
+    fillTimeout = setTimeout(() => {
+      bg.style.backgroundColor = 'var(--lp-white)'; // Background to white
+      
+      // Add classes to make text and lines dark
+      textElements.forEach(el => el.classList.add('text-dark-mode'));
+      dividers.forEach(el => el.classList.add('divider-dark-mode'));
+    }, 400); 
+  });
+
+  card.addEventListener('mouseleave', () => {
+    // 1. Stop the color change if the mouse left before 400ms was up
+    clearTimeout(fillTimeout);
+    
+    // 2. Immediately revert colors back to Red and White
+    bg.style.backgroundColor = 'var(--lp-red)';
+    textElements.forEach(el => el.classList.remove('text-dark-mode'));
+    dividers.forEach(el => el.classList.remove('divider-dark-mode'));
+    
+    // 3. Slide the background back up to its original header height
+    bg.style.height = '125px'; 
+  });
+});
+ </script>
+</body>
+</html>
